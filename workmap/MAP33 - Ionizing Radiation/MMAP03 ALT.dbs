@@ -24,7 +24,7 @@ maps
 			resource1
 			{
 				type = 1;
-				location = "C:\\Users\\goopl\\Desktop\\Lambda\\DOOM\\wads\\mywads\\PerProject\\MyPK3";
+				location = "C:\\Users\\goopl\\Desktop\\Lambda\\DOOM\\wads\\mywads\\DOOM2-Startan-Missions\\Startan-Missions";
 				option1 = 0;
 				option2 = 0;
 				notfortesting = 0;
