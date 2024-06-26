@@ -1,0 +1,63 @@
+#include "zcommon.acs"
+
+script "RedRoom_RevenantReveal" (void)
+{
+	Floor_LowerByValue(8,128,128);
+	Ceiling_RaiseByValue(8,128,128);
+}
+script "RedRoom_WallExplosion" (void)
+{  
+	SpawnProjectile(1,"Rocket",0,64,0,0,0);
+	Delay(1);
+	Floor_LowerByValue(11,256,128);
+	Delay(16);
+	SpawnSpot("TeleportFog",2,0,180);
+	SpawnSpot("DoomImp",2,0,180);
+	Delay(35);
+	SpawnSpot("TeleportFog",2,0,180);
+	SpawnSpot("HellKnight",2,0,180);
+	Delay(35);
+	SpawnSpot("TeleportFog",2,0,180);
+	SpawnSpot("Spectre",2,0,180);
+	Delay(35);
+	SpawnSpot("TeleportFog",2,0,180);
+	SpawnSpot("Revenant",2,0,180);
+}
+script "ArchRoom_ChaingunnerWall" (void)
+{
+	Floor_LowerByValue(18,128,64);
+	Ceiling_RaiseByValue(18,128,64);
+}
+
+script "Final_TPAmbush"  (void) {
+	if(ThingCount(T_NONE, 11) == 0) {
+		SpawnSpot("TeleportFog", 6);
+		SpawnSpot("BaronOfHell", 6, 99, 90);
+		SetThingSpecial(99, ACS_NamedExecute, "Final_WallExplode");
+		Delay(35*2);
+		SpawnSpot("TeleportFog", 6);
+		SpawnSpot("BaronOfHell", 6, 99, 90);
+		SetThingSpecial(99, ACS_NamedExecute, "Final_WallExplode");
+		Delay(35*2);
+		SpawnSpot("TeleportFog", 6);
+		SpawnSpot("ArchVile", 6, 99, 90);
+		SetThingSpecial(99, ACS_NamedExecute, "Final_WallExplode");
+		Delay(35*2);
+		// SpawnSpot("TeleportFog", 6);
+		// SpawnSpot("ArchVile", 6, 99, 90);
+		// SetThingSpecial(99, ACS_NamedExecute, "Final_WallExplode");
+	}
+}
+
+int Deadfinalwave;
+
+script "Final_WallExplode" (void)
+{
+	Deadfinalwave++;
+	if(Deadfinalwave == 3) {
+		SpawnProjectile(7,"Rocket",0,64,0,0,0);
+		Delay(5);
+		Floor_LowerByValue(2,256,128);
+	}
+}
+

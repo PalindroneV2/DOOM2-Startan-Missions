@@ -1,0 +1,39 @@
+#include "zcommon.acs"
+
+global int 5 : SecretLevel35;
+
+script 1 ENTER
+{
+	ClearInventory();
+	GiveInventory("Fist", 1);
+	GiveInventory("WaltherPPK",1);
+	GiveInventory("Clip",32);
+}
+
+bool YellowElevatorDownUp = false;
+script "Yellow_Elevator" (void)
+{
+	if(YellowElevatorDownUp == true)
+	{
+		Floor_RaiseByValue(4,32,384);
+		Ceiling_RaiseByValue(4,32,384);
+		YellowElevatorDownUp = false;
+		Delay(35*2);
+	}else if (YellowElevatorDownUp == false){
+		Floor_LowerByValue(4,32,384);
+		Ceiling_LowerByValue(4,32,384);
+		YellowElevatorDownUp = true;
+		Delay(35*2);
+	}
+}
+
+script "Final_Door" (void)
+{
+	Print(s: "This opens somewhere else...");
+}
+
+script "EndMap_Teleporter" (void)
+{
+	Teleport_NewMap(100,0,0);
+	SecretLevel35++;
+}

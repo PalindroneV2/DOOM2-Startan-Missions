@@ -1,0 +1,52 @@
+MP40/Fire	DSMP40AT
+WaltherPPK/Fire PPKFIRE
+M16/Fire		M16FIREB
+K98K/FIRE DSFSAKO
+K98K/BOLT DSBSAKO
+
+naziguard/die1		NZGDDIE0
+naziguard/die2		NZGDDIE1
+naziguard/die3		NZGDDIE2
+naziguard/die4		NZGDDIE3
+naziguard/die5		NZGDDIE4
+
+naziofficer/sight			NAZOSEE
+naziofficer/death			NAZODIE
+								
+naziguard/sight	NZGDSEE
+$random naziguard/death		{ naziguard/die1 naziguard/die2 naziguard/die3 naziguard/die4 naziguard/die5 }
+
+plasmass/sight            SSPLSEE
+plasmass/death           SSPLDIE
+
+superdemon/death		DSSUPDTH
+superdemon/snarl		DSSUPSNA
+superdemon/crash		DSSUPLND
+
+monster/hlnsit                  dshlnsit
+monster/hlnact                  dshlnact
+monster/hlnpai                  dshlnpai
+monster/hlndth                  dshlndth
+monster/hlnatk                  dshlnatk
+monster/hlnexp                  dshlnexp
+
+raygun/fire               RAYGSHOT
+raygun/splash       RAYGSPSH
+
+$limit Raygun/Fire	0
+
+mummy/sight			mumsit
+mummy/attack1			mumat1
+mummy/attack2			mumat2
+mummy/pain			mumpai
+mummy/death			mumdth
+mummy/active			mumsit
+mummy/head			mumhed
+
+misc/sfx/puzzlesolve HXPUZSLV
+
+TRNCFIR TRNCFIR
+TRNCREL TRNCREL
+TRNCLOA TRNCLOA
+TRNCRE2 TRNCRE2
+TRNCDRY TRNCDRY

@@ -1,0 +1,112 @@
+#include "zcommon.acs"
+
+script "SSG_Pillar" (void)
+{
+	Floor_LowerByValue(31,16,112);
+	Floor_RaiseByValue(28,16,48);
+}
+script "Plasma_Stairs" (void)
+{
+	Floor_RaiseByValue(14,16,48);
+	Floor_RaiseByValue(15,16,32);
+	Floor_RaiseByValue(16,16,16);
+	Floor_RaiseByValue(29,16,32);
+}
+script "RPG_Stairs" (void)
+{
+	Floor_RaiseByValue(11,16,48);
+	Floor_RaiseByValue(12,16,32);
+	Floor_RaiseByValue(13,16,16);
+	Floor_RaiseByValue(30,16,16);
+}
+
+script "Library2_EnemyDeath" (void)
+{
+	Thing_Destroy(1,1,0);
+}
+
+int ammo[8];
+int math[4];
+int counter = 35 * 60;
+
+script "InfiniteBFG" (void)
+{
+	GiveInventory("Cell", 160);
+        for(int x=0; x<4; x++)
+        {
+            ammo[0] = CheckInventory("Clip");
+            ammo[1] = CheckInventory("Shell");
+            ammo[2] = CheckInventory("RocketAmmo");
+            ammo[3] = CheckInventory("Cell");
+            ammo[4] = 400;
+            ammo[5] = 100;
+            ammo[6] = 100;
+            ammo[7] = 600;
+        }
+        while(counter > 0)
+        {
+            GiveInventory("Backpack", 100);
+            delay(1);
+            counter--;
+		    HudMessage(s:"Infinite Ammo! : ",i:counter / 35;  HUDMSG_FADEOUT, 1, CR_WHITE, 0.5, 0.7, 3.0, 1);
+        }
+        for(int y=0; y<4; y++)
+        {
+            math[y] = ammo[y+4]-ammo[y];
+            delay(1);
+        }
+        TakeInventory("Clip", math[0]);
+        TakeInventory("Shell", math[1]);
+        TakeInventory("Rocketammo", math[2]);
+        TakeInventory("Cell", math[3]);
+}
+
+bool SecretSwitch1;
+bool SecretSwitch2;
+bool SecretSwitch3;
+bool SecretSwitch4;
+
+script "SecretExit1" (void)
+{
+    SetLineTexture(1, SIDE_FRONT, TEXTURE_MIDDLE, "SW1MEGA");
+    Light_ChangeToValue(33, 192);
+    Sector_SetColor(33, 255,0,0,0);
+    SecretSwitch1 = true;
+	ACS_NamedExecute("SecretExitOpen",0);
+}
+script "SecretExit2" (void)
+{
+    SetLineTexture(2, SIDE_FRONT, TEXTURE_MIDDLE, "SW1MEGA");
+    Light_ChangeToValue(34, 192);
+    Sector_SetColor(34, 255,0,0,0);
+    SecretSwitch2 = true;
+	ACS_NamedExecute("SecretExitOpen",0);
+}
+script "SecretExit3" (void)
+{
+    SetLineTexture(3, SIDE_FRONT, TEXTURE_MIDDLE, "SW1MEGA");
+    Light_ChangeToValue(35, 192);
+    Sector_SetColor(35, 255,0,0,0);
+    SecretSwitch3 = true;
+	ACS_NamedExecute("SecretExitOpen",0);
+}
+script "SecretExit4" (void)
+{
+    SetLineTexture(4, SIDE_FRONT, TEXTURE_MIDDLE, "SW1MEGA");
+    Light_ChangeToValue(36, 192);
+    Sector_SetColor(36, 255,0,0,0);
+    SecretSwitch4 = true;
+	ACS_NamedExecute("SecretExitOpen",0);
+}
+
+script "SecretExitOpen" (void)
+{
+    SetFont("BIGFONT");
+    if((SecretSwitch1 == true) && (SecretSwitch2 == true) && (SecretSwitch3 == true) && (SecretSwitch4 == true))
+    {
+        Ceiling_RaiseByValue(32,16, 56);
+        Floor_LowerByValue(32, 16, 56);
+        PlaySound (0, "misc/sfx/puzzlesolve", CHAN_5, 1.0, FALSE, 0);
+        HudMessage(s:"THE SECRET EXIT IS OPEN!";  HUDMSG_FADEOUT, 1, CR_WHITE, 0.5, 0.7, 3.0, 1);
+    }
+}

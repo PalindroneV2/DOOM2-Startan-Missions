@@ -1,0 +1,213 @@
+#include "zcommon.acs"
+
+global int 1 : SecretLevel31;
+global int 2 : SecretLevel32;
+global int 3 : SecretLevel33;
+global int 4 : SecretLevel34;
+global int 5 : SecretLevel35;
+
+int hubmusic = 0;
+
+str hubmidis[10] = {"D_RUNNIN", "D_INBOX","D_WATCH", "D_DENY","D_CROOKD", "D_HATEM", "D_WELCOM","D_FEAR","D_NUISUK","D_PLUNGE"};
+str midiname[10] = {
+	"Running from Evil", "Man in the Box","Always Watching", "Denied","Behind the Crooked Cross",
+	"Hate Machine", "You're Not Welcome","The Only Thing They Fear is You","Nuisances Unknown",
+	"Plunge Saw"
+};
+str midiauthor[10] ={
+	"Bobby Prince", "Bobby Prince (Alice in Chains)", "Lippeth", "Doomkid", "Bobby Prince (Slayer)",
+	"James Paddock", "Niel Forshaw", "Supasniffy333 &  Burn 7", "Doomkid", "Bucket"
+};
+
+script "ChangeMusHub" (void)
+{
+	if(hubmusic>=9)
+	{
+		hubmusic = 0;
+		Music_Change(hubmidis[hubmusic], 0);
+		HudMessage(s:"MIDI: ",s:hubmidis[hubmusic];  HUDMSG_FADEOUT, 1, CR_WHITE, 0.5, 0.7, 3.0, 1);
+		HudMessage(s:"TITLE: ",s:midiname[hubmusic];  HUDMSG_FADEOUT, 2, CR_WHITE, 0.5, 0.72, 3.0, 1);
+		HudMessage(s:"AUTHOR: ",s:midiauthor[hubmusic];  HUDMSG_FADEOUT, 3, CR_WHITE, 0.5, 0.74, 3.0, 1);
+	}else{
+		hubmusic++;
+		Music_Change(hubmidis[hubmusic], 0);
+		HudMessage(s:"MIDI: ",s:hubmidis[hubmusic];  HUDMSG_FADEOUT, 1, CR_WHITE, 0.5, 0.7, 3.0, 1);
+		HudMessage(s:"TITLE: ",s:midiname[hubmusic];  HUDMSG_FADEOUT, 2, CR_WHITE, 0.5, 0.72, 3.0, 1);
+		HudMessage(s:"AUTHOR: ",s:midiauthor[hubmusic];  HUDMSG_FADEOUT, 3, CR_WHITE, 0.5, 0.74, 3.0, 1);
+	}
+}
+
+str secretmidis[5] = {"D_EVIL","D_LEGION","D_115","D_COLIF","D_ARCHAI"};
+str secretmidiname[5] = {
+	"Evil Incarnate", "Legion of the Damned","115", "Coliformication","Archaic Doctrine"
+};
+str secretmidiauthor[5] ={
+	"Bobby Prince", " L.A. Sieben", "Gerardo Cappa", "Lippeth", "TrialD"
+};
+
+script "ChangeMusHub31" (void)
+{
+	Music_Change(secretmidis[0], 0);
+	hubmusic = 0;
+	HudMessage(s:"MIDI: ",s:secretmidis[0];  HUDMSG_FADEOUT, 1, CR_WHITE, 0.5, 0.7, 3.0, 1);
+	HudMessage(s:"TITLE: ",s:secretmidiname[0];  HUDMSG_FADEOUT, 2, CR_WHITE, 0.5, 0.72, 3.0, 1);
+	HudMessage(s:"AUTHOR: ",s:secretmidiauthor[0];  HUDMSG_FADEOUT, 3, CR_WHITE, 0.5, 0.74, 3.0, 1);
+}
+script "ChangeMusHub32" (void)
+{
+	Music_Change(secretmidis[1], 0);
+	hubmusic = 0;
+	HudMessage(s:"MIDI: ",s:secretmidis[1];  HUDMSG_FADEOUT, 1, CR_WHITE, 0.5, 0.7, 3.0, 1);
+	HudMessage(s:"TITLE: ",s:secretmidiname[1];  HUDMSG_FADEOUT, 2, CR_WHITE, 0.5, 0.72, 3.0, 1);
+	HudMessage(s:"AUTHOR: ",s:secretmidiauthor[1];  HUDMSG_FADEOUT, 3, CR_WHITE, 0.5, 0.74, 3.0, 1);
+}
+script "ChangeMusHub33" (void)
+{
+	Music_Change(secretmidis[2], 0);
+	hubmusic = 0;
+	HudMessage(s:"MIDI: ",s:secretmidis[2];  HUDMSG_FADEOUT, 1, CR_WHITE, 0.5, 0.7, 3.0, 1);
+	HudMessage(s:"TITLE: ",s:secretmidiname[2];  HUDMSG_FADEOUT, 2, CR_WHITE, 0.5, 0.72, 3.0, 1);
+	HudMessage(s:"AUTHOR: ",s:secretmidiauthor[2];  HUDMSG_FADEOUT, 3, CR_WHITE, 0.5, 0.74, 3.0, 1);
+}
+script "ChangeMusHub34" (void)
+{
+	Music_Change(secretmidis[3], 0);
+	hubmusic = 0;
+	HudMessage(s:"MIDI: ",s:secretmidis[3];  HUDMSG_FADEOUT, 1, CR_WHITE, 0.5, 0.7, 3.0, 1);
+	HudMessage(s:"TITLE: ",s:secretmidiname[3];  HUDMSG_FADEOUT, 2, CR_WHITE, 0.5, 0.72, 3.0, 1);
+	HudMessage(s:"AUTHOR: ",s:secretmidiauthor[3];  HUDMSG_FADEOUT, 3, CR_WHITE, 0.5, 0.74, 3.0, 1);
+}
+script "ChangeMusHub35" (void)
+{
+	Music_Change(secretmidis[4], 0);
+	hubmusic = 0;
+	HudMessage(s:"MIDI: ",s:secretmidis[4];  HUDMSG_FADEOUT, 1, CR_WHITE, 0.5, 0.7, 3.0, 1);
+	HudMessage(s:"TITLE: ",s:secretmidiname[4];  HUDMSG_FADEOUT, 2, CR_WHITE, 0.5, 0.72, 3.0, 1);
+	HudMessage(s:"AUTHOR: ",s:secretmidiauthor[4];  HUDMSG_FADEOUT, 3, CR_WHITE, 0.5, 0.74, 3.0, 1);
+}
+
+script 1 (void)
+{//Enter MAP01 sector
+	SetFont("BIGFONT");
+	PlaySound(0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Enter Map:",s:"\n Infected Flesh";
+	HUDMSG_TYPEON, 10, CR_WHITE,0.5, 0.1, 2.0);
+}
+script 2(void)
+{//Enter MAP02 sector
+	SetFont("BIGFONT");
+	PlaySound(0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Enter Map:",s:"\n Volcanic Fortress";
+	HUDMSG_TYPEON, 10, CR_WHITE,0.5, 0.1, 2.0);
+}
+script 3(void)
+{//Enter MAP03 sector
+	SetFont("BIGFONT");
+	PlaySound(0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Enter Map:",s:"\nEscape Prohibited";
+	HUDMSG_TYPEON, 10, CR_WHITE,0.5, 0.1, 2.0);
+}
+script 4(void)
+{//Enter MAP04 sector
+	SetFont("BIGFONT");
+	PlaySound(0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Enter Map:",s:"\nThe Tomb of Id-K'yeth";
+	HUDMSG_TYPEON, 10, CR_WHITE,0.5, 0.1, 2.0);
+}
+script 5(void)
+{//Enter MAP05 sector
+	SetFont("BIGFONT");
+	PlaySound(0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Enter Map:",s:"\nThe FOB";
+	HUDMSG_TYPEON, 10, CR_WHITE,0.5, 0.1, 2.0);
+}
+script 6(void)
+{//Enter MAP06 sector
+	SetFont("BIGFONT");
+	PlaySound(0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Enter Map:",s:"\nSilence in the Library";
+	HUDMSG_TYPEON, 10, CR_WHITE,0.5, 0.1, 2.0);
+}
+
+script 31 (void)
+{ //Enter MAP31 Sector
+	SetFont("BIGFONT");
+	PlaySound(0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Enter Map:",s:"\nJamais Vu";
+	HUDMSG_TYPEON, 10, CR_WHITE,0.5, 0.1, 2.0);
+}
+
+script 32 (void)
+{ //Enter MAP32 Sector 
+	SetFont("BIGFONT");
+	PlaySound(0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Enter Map:",s:"\nRaiders";
+	HUDMSG_TYPEON, 10, CR_WHITE,0.5, 0.1, 2.0);
+}
+
+script 33 (void)
+{ //Enter MAP33 Sector 
+	SetFont("BIGFONT");
+	PlaySound(0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Enter Map:",s:"\nAtomic Cul-De-Sac";
+	HUDMSG_TYPEON, 10, CR_WHITE,0.5, 0.1, 2.0);
+}
+
+script 34 (void)
+{ //Enter MAP34 Sector 
+	SetFont("BIGFONT");
+	PlaySound(0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Enter Map:",s:"\n Blood Sacrifice";
+	HUDMSG_TYPEON, 10, CR_WHITE,0.5, 0.1, 2.0);
+}
+
+script 35 (void)
+{ //Enter MAP35 Sector 
+	SetFont("BIGFONT");
+	PlaySound(0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Enter Map:",s:"\n Sturme Das Schloss";
+	HUDMSG_TYPEON, 10, CR_WHITE,0.5, 0.1, 2.0);
+}
+
+script "SecretLevelUnlock31" ENTER {
+	if(SecretLevel31 > 0){
+		Delay(35);
+		Door_Open(1, 32);
+	}
+}
+script "SecretLevelUnlock32" ENTER {
+	if(SecretLevel32 > 0){
+		Delay(35);
+		Door_Open(2, 32);
+	}
+}
+script "SecretLevelUnlock33" ENTER {
+	if(SecretLevel33 > 0){
+		Delay(35);
+		Door_Open(3, 32);
+	}
+}
+script "SecretLevelUnlock34" ENTER {
+	if(SecretLevel34 > 0){
+		Delay(35);
+		Door_Open(4, 32);
+	}
+}
+script "SecretLevelUnlock35" ENTER {
+	if(SecretLevel35 > 0){
+		Delay(35);
+		Door_Open(5, 32);
+	}
+}
+
+script 666  (void)
+{
+	SetFont("BIGFONT");
+	PlaySound (0, "misc/sfx/puzzlesolve", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"ALL SECRETS REVEALED";  HUDMSG_FADEOUT, 1, CR_WHITE, 0.5, 0.7, 3.0, 1);
+	Door_Open(1, 32);
+	Door_Open(2, 32);
+	Door_Open(3, 32);
+	Door_Open(4, 32);
+	Door_Open(5, 32);
+}

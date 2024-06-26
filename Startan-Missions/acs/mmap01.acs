@@ -1,0 +1,123 @@
+#include "zcommon.acs"
+
+script 935 ENTER
+{ // Player Assign ID
+	Thing_ChangeTID(0,935);
+}
+
+int FactoryActive = 5;
+script 1 OPEN
+{
+	Scroll_Floor(5, 0, -64, 2);
+	Scroll_Floor(4, 64, 0, 2);
+}
+
+int FactoryResource = 2;
+script "Factory_ProduceAmmo" (void)
+{
+	if(FactoryResource == 2)
+	{
+		HudMessage(s:"Producing Shotgun Shells .";
+		HUDMSG_PLAIN  | HUDMSG_LOG, 1, CR_WHITE,0.5, 0.25, 2.0);
+		while(FactoryActive > 0)
+		{
+			SpawnSpotFacing("Shell", 1, 99);
+			Delay(70);
+			FactoryActive--;
+		}
+		Delay(40 * 6);
+		SpawnSpotFacing("ShellBox", 2, 0);
+		FactoryActive = 5;
+		Thing_Remove(99);
+	}else if(FactoryResource == 1)
+	{
+		HudMessage(s:"Producing Bullets.";
+		HUDMSG_PLAIN | HUDMSG_LOG, 1, CR_WHITE,0.5, 0.25, 2.0);
+		while(FactoryActive > 0)
+		{
+			SpawnSpotFacing("Clip", 1, 99);
+			Delay(70);
+			FactoryActive--;
+		}
+		Delay(40 * 6);
+		SpawnSpotFacing("ClipBox", 2, 0);
+		Thing_Remove(99);
+	} else
+	{
+		HudMessage(s:"No resources to accomplish this task.";
+		HUDMSG_PLAIN | HUDMSG_LOG, 1, CR_WHITE,0.5, 0.25, 2.0);
+	}
+	FactoryResource--;
+}
+
+script "Factory_BluKeyPickUp" (void){//reveal final teleporter
+    ChangeFloor(13,"PTEXPTP1");
+    ChangeFloor(14,"PTEXPTP1");
+    Floor_RaiseByValue(13,128,16);
+    Floor_RaiseByValue(14,128,8);
+    SetLineActivation(1 ,SPAC_Cross);
+    SetLineActivation(2 ,SPAC_Cross);
+    SpawnSpotFacing("TeleportFog",5);
+}
+
+int SpawnEnemiesExitCount;
+script "Factory_SpawnEnemiesExit" (void) {
+	if(SpawnEnemiesExitCount == 0){
+		SpawnSpotFacing("TeleportFog",3);
+		SpawnSpotFacing("DoomImp",3);
+		SpawnSpotFacing("TeleportFog",4);
+		SpawnSpotFacing("ChaingunGuy",4);
+		Delay(35);
+		SpawnSpotFacing("TeleportFog",7);
+		SpawnSpotFacing("HellKnight",7);
+		Delay(35);
+		SpawnSpotFacing("TeleportFog",6);
+		SpawnSpotFacing("Revenant",6);
+		SpawnSpotFacing("TeleportFog",4);
+		SpawnSpotFacing("Medikit",4);
+		Delay(35*3);
+		SpawnSpotFacing("TeleportFog",8);
+		SpawnSpotFacing("Archvile",8);
+		SpawnEnemiesExitCount++;
+	}
+}
+
+int RevenantScare;
+script "Bathroom_RevenantScare" (void){
+	if(RevenantScare == 0){
+		SpawnSpotFacing("TeleportFog",9);
+		SpawnSpotFacing("Revenant",9);
+		RevenantScare++;
+	}
+	Plat_DownWaitUpStay(0,32, 105);
+}
+
+script "BigBuilding_DoorOpen" (void){
+	Floor_LowerByValue(18, 32, 64);
+	Ceiling_RaiseByValue(18, 32, 64);
+	// Delay(105);
+	// Floor_RaiseByValue(0, 32, 56);
+	// Ceiling_LowerByValue(0, 32, 56);
+	Floor_LowerByValue(12, 64, 192);
+	Delay(70);
+	SpawnSpotFacing("TeleportFog",10);
+	SpawnSpotFacing("Fatso",10);
+	SpawnSpotFacing("TeleportFog",11);
+	SpawnSpotFacing("Medikit",11);
+}
+
+script "Exit_BarsRaise" (void){
+	Floor_RaiseByValue(17, 16, 112);
+	Ceiling_RaiseByValue(17, 16, 112);
+}
+
+script "Exit_BarsRaiseDeprecated" (void){
+	int ypos;
+    for(int a = 0 ; a <= 112; a++){
+		Delay(1);
+		ypos = a;
+		Line_SetTextureOffset(4, 0, ypos, SIDE_BACK, TEXFLAG_MIDDLE);
+		Line_SetTextureOffset(4, 0, ypos, SIDE_FRONT, TEXFLAG_MIDDLE);
+		Log(s: "Lineheight: ", i: ypos);
+	}
+} 

@@ -1,0 +1,129 @@
+#include "zcommon.acs"
+
+script "PlayerAssignTID" ENTER
+{
+    Thing_ChangeTID(0,935);
+}
+
+script "PlayerTestAssassinate" (void)
+{
+    Delay(35*1);
+    PlaySound (979, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+    Log(s: "F you man!");
+    Delay(35*3);
+    Thing_Damage(935,1000);
+}
+
+int TeleportReward_1;
+script "MapEntry_TeleportReward" (void)
+{
+    Teleport(1, 1, 0);
+    Delay(50);
+    TeleportReward_1++;
+    if(TeleportReward_1 == 1)
+    {
+        SpawnSpot("TeleportFog",2,0,180);
+        SpawnSpot("SuperShotgun",2,0,180);
+    }
+     if(TeleportReward_1 == 2)
+    {
+        SpawnSpot("TeleportFog",2,0,180);
+        SpawnSpot("ShellBox",2,0,180);
+    }
+}
+
+script "BarrelBlowWall" (void)
+{
+    Delay(25);
+    Floor_LowerToNearest(16,256);
+}
+
+script "Library_EnemyReveal" (void)
+{
+    Floor_LowerByValue(11, 16, 128);
+    Ceiling_RaiseByValue(18, 16, 128);
+}
+
+script "Library_EnemyReveal2" (void)
+{
+    if(ThingCount(T_NONE,11) == 0)
+    {
+        Floor_LowerByValue(17, 16, 128);
+        SpawnSpot("TeleportFog",12,0,180);
+        SpawnSpot("ShellBox",12,0,180);
+        SpawnSpot("Shell",12,0,180);
+        SpawnSpot("Shell",12,0,180);
+        SpawnSpot("TeleportFog",13,0,180);
+        SpawnSpot("RocketBox",13,0,180);
+        SpawnSpot("TeleportFog",16,0,180);
+        SpawnSpot("RocketBox",16,0,180);
+        SpawnSpot("TeleportFog",15,0,180);
+        SpawnSpot("AmmoBox",15,0,180);
+    }
+}
+
+script "Tomb_RaiseOpen" (void)
+{
+    Ceiling_RaiseToNearest(2,16);
+    Delay(35*3);
+    Floor_RaiseByValue(3, 16, 192);
+    Delay(35*3);
+    TeleportOther(665, 667, 1);
+    Delay(35);
+    Thing_Activate(666);
+    TeleportGroup(666, 664, 663, 0, 1);
+    Delay(35);
+    TeleportOther(666,18,1);
+    TeleportOther(935,19,1);
+    Thing_Activate(21);
+}
+
+script "Coffins_TrapVile" (void)
+{
+    Floor_LowerByValue(21, 32, 32);
+    SpawnSpot("DoomImp",20,0,180);
+    SpawnSpot("TeleportFog",20,0,180);
+    Thing_Activate(17);
+}
+
+script "Coffins_DieVile" (void)
+{
+    Door_Open(23, 32);
+    for(int lightlevel = 96; lightlevel < 144; lightlevel++)
+    {
+        Delay(1);
+	    Light_ChangeToValue(22, lightlevel);
+    }
+}
+
+script "WoodRoom_ActivateLift" (void)
+{
+    SetLineSpecial(5, ACS_NamedExecute, "WoodRoom_LiftSetSpecial");
+}
+script "WoodRoom_LiftSetSpecial" (void)
+{
+    Plat_DownWaitUpStay(0, 32, 35*3);
+}
+
+script "WeirdRoom_DieMonsters" (void)
+{
+    if(ThingCount(T_NONE,22) == 0)
+    {
+        Floor_LowerByValue(24, 32, 128);
+    }
+}
+
+script "BOSSFIGHT_End" (void)
+{
+    Door_Open(25, 32);
+    SpawnSpot("TeleportFog", 23);
+    SetLineSpecial(6, ACS_NamedExecute, "BOSSFIGHT_SetTeleportSpecial");
+    ChangeFloor(26,"GATE6");
+    Floor_RaiseByValue(26, 128, 8);
+    Light_ChangeToValue(26, 192);
+    Door_Open(27, 32);//reveals the secret exit
+}
+script "BOSSFIGHT_SetTeleportSpecial" (void)
+{
+    Exit_Normal(0);
+}

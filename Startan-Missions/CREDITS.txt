@@ -1,0 +1,65 @@
+MIDI CREDITS
+
+D_CROOKD - Deep Into the Code by Bobby Prince
+    Based on Behind the Crooked Cross by Slayer
+D_FEAR - The Only Thing They Fear is You by Mick Gordon
+    MIDI by Supasniffy333 & Burn7
+D_LEGION - Legion of the Lost by L.A. Sieben
+    Final DOOM: TNT Evilution
+D_NUISUK - Nuisances Unknown by Doomkid
+    MID the way id did 2
+D_PLUNGE - Plunge Saw by Bucket
+    Plutonia Midi Pack
+D_WATCH - Always Watching by Lippeth
+D_DENY - Denied by Doomkid
+D_COLIF - Coliformication by Lippeth
+
+HARBINGER / SUPERDEMON
+Submitted: Xim
+Code: Xim
+GLDefs: Xim
+Sounds: iD software, 3D Realms
+Sprites: iD software
+Sprite edit: Molten Ice, Xim, David G, Craneo
+Idea base: Cyberdemon, Baron Of Hell
+Translation to Zscript: Palindrone
+
+FORMER RANGER
+Submitted: MagicWazard
+Decorate: MagicWazard
+GLDefs: MagicWazard
+Sounds: Midway Software
+Sprites: id Software
+Sprite Edit: MagicWazard
+Idea Base: Replacement for the Wolfenstein SS
+
+HELLION
+Code: Eriance, Ghastly (ZScript conversion)
+GLDefs: Keksdose, Sandypaper (Brightmaps)
+Sounds: Id Software
+Sprites: Id Software
+Sprite Edit: Eriance
+Idea Base: Doom 2 Arch-Vile
+
+MP40
+Submitted: Captain Toenail
+Decorate: Captain Toenail
+Sprites: Apogee Software, Id Software
+SpriteEdit: Captain Toenail
+Sounds: Id Software
+
+M16
+Submitted: Okgo5555
+Code: Okgo5555
+Sounds: OKgo555
+Sprites: Id Software, Luchador (model), adapted by Sgt_Mark_IV
+Sprite Edit: Okgo5555
+World Sprite Edit: Palindrone
+Minor code edit: Palindrone
+
+RAY GUN (COD)
+Code: Palindrone
+Sounds: idSoftware
+Sprites: idSoftware, Palindrone
+Source model: Treyarch
+

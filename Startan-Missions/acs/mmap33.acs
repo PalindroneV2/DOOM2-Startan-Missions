@@ -1,0 +1,77 @@
+#include "zcommon.acs"
+
+global int 3 : SecretLevel33;
+
+script  "YelloyHouse_BlueKey"  (void){
+	SpawnSpot("ShotgunGuy",3);
+	SpawnSpot("TeleportFog",3);
+	Delay(35*1); 
+	SpawnSpot("DoomImp",2);
+	SpawnSpot("TeleportFog",2);
+	Delay(35*2);
+	SpawnSpot("FormerRanger",1);
+	SpawnSpot("TeleportFog",1); 
+	Delay(35*3); 
+	SpawnSpot("Cacodemon",4);
+	SpawnSpot("TeleportFog",4);
+	Delay(35*5);
+	Thing_Activate(5);
+	Floor_LowerByValue(9, 64, 128);
+}
+
+script "Pentagon_LightsFlicker" ENTER {
+	Light_Glow(700,168,64, 35);
+}
+
+script "Pentagon_LightsFix" (void){
+	Light_Stop(700);
+	Light_ChangeToValue(700, 168);
+    SetLineActivation(2,SPAC_Cross);
+	Delay(35);
+	Door_Open(18, 32);
+}
+
+script "Pentagon_Hangar18BFG" (void){
+	PlaySound (0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Lowering BFG 9000..."; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.1, 2.0);
+	Floor_LowerByValue(24,16,64);
+}
+
+script "Hangar18_Archviles" (void){
+	if(ThingCount(T_NONE,11) == 0) {
+		PlaySound (12, "misc/teleport", CHAN_5, 1.0, FALSE, 0);
+		SpawnSpot("TeleportFog", 12);
+		SpawnSpot("Archvile", 12, 1045, 0);
+		Delay(35*10);
+		PlaySound (12, "misc/teleport", CHAN_5, 1.0, FALSE, 0);
+		SpawnSpot("TeleportFog", 12);
+		SpawnSpot("Archvile", 12, 1045, 0);
+		Delay(35*10);
+		PlaySound (13, "misc/teleport", CHAN_5, 1.0, FALSE, 0);
+		SpawnSpot("TeleportFog", 13);
+		SpawnSpot("RedCard", 13, 0, 0);
+	}
+}
+
+script "Hangar18_TPEnd" (void){
+	SetFont("BIGFONT");
+	PlaySound(0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"TELEPORTING IN...";
+	HUDMSG_TYPEON, 1, CR_WHITE,0.5, 0.1, 2.0);
+	Delay(35);
+	PlaySound(0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"3...";
+	HUDMSG_TYPEON, 1, CR_WHITE,0.5, 0.1, 2.0);
+	Delay(35);
+	PlaySound(0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"2...";
+	HUDMSG_TYPEON, 1, CR_WHITE,0.5, 0.1, 2.0);
+	Delay(35);
+	PlaySound(0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"1...";
+	HUDMSG_TYPEON, 1, CR_WHITE,0.5, 0.1, 2.0);
+	Delay(35);
+	PlaySound (0, "misc/teleport", CHAN_5, 1.0, FALSE, 0);
+	Teleport_NewMap(100,0,0);
+	SecretLevel33++;
+}

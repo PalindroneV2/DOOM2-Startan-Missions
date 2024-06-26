@@ -1,0 +1,136 @@
+type = "Doom Builder Map Settings Configuration";
+gameconfig = "GZDoom_DoomUDMF.cfg";
+strictpatches = 0;
+
+maps
+{
+	
+	MMAP03
+	{
+		
+		resources
+		{
+			
+			resource0
+			{
+				type = 2;
+				location = "C:\\Users\\goopl\\Desktop\\Lambda\\DOOM\\GZDOOM\\lights.pk3";
+				option1 = 0;
+				option2 = 0;
+				notfortesting = 0;
+				requiredarchives = "";
+			}
+			
+			resource1
+			{
+				type = 1;
+				location = "C:\\Users\\goopl\\Desktop\\Lambda\\DOOM\\wads\\mywads\\PerProject\\MyPK3";
+				option1 = 0;
+				option2 = 0;
+				notfortesting = 0;
+				requiredarchives = "";
+			}
+		}
+		defaultfloortexture = "BRICKZD5";
+		defaultceiltexture = "F_SKY1";
+		defaulttoptexture = "STARTAN1";
+		defaultwalltexture = "STARTAN1";
+		defaultbottomtexture = "STARTAN1";
+		custombrightness = 196;
+		customfloorheight = 0;
+		customceilheight = 128;
+		overridefloortexture = false;
+		overrideceiltexture = false;
+		overridetoptexture = false;
+		overridemiddletexture = false;
+		overridebottomtexture = false;
+		overridefloorheight = false;
+		overrideceilheight = false;
+		overridebrightness = false;
+		uselongtexturenames = false;
+		viewpositionx = -580.6414f;
+		viewpositiony = -100.1868f;
+		viewscale = 0.08157241f;
+		scriptcompiler = "zdoom_acs.cfg";
+		
+		grid
+		{
+			background = "";
+			backsource = 0;
+			backoffsetx = 0;
+			backoffsety = 0;
+			backscalex = 100;
+			backscaley = 100;
+			gridsize = 8;
+			gridrotate = 0;
+			gridoriginx = 0;
+			gridoriginy = 0;
+		}
+		
+		reloadresourceprecommand
+		{
+			autocloseonsuccess = true;
+			exitcodeiserror = true;
+			stderriserror = true;
+		}
+		
+		reloadresourcepostcommand
+		{
+			autocloseonsuccess = true;
+			exitcodeiserror = true;
+			stderriserror = true;
+		}
+		
+		testprecommand
+		{
+			autocloseonsuccess = true;
+			exitcodeiserror = true;
+			stderriserror = true;
+		}
+		
+		testpostcommand
+		{
+			autocloseonsuccess = true;
+			exitcodeiserror = true;
+			stderriserror = true;
+		}
+		
+		plugins
+		{
+			
+			threedfloormode
+			{
+				
+				controlsectorarea
+				{
+					usecustomtagrange = true;
+					firsttag = 6000;
+					lasttag = 7000;
+					outerleft = -5568;
+					outerright = -5056;
+					outertop = -2688;
+					outerbottom = -3200;
+				}
+			}
+		}
+		
+		selectiongroups
+		{
+			
+			2
+			{
+				linedefs = "32 69 71 72 78 79 80 81 82 83 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 133 134 135 136 137 138 139";
+				sectors = "11 16 18 19 20";
+			}
+		}
+		
+		fieldtypes
+		{
+			
+			sector
+			{
+				user_managed_3d_floor = 3;
+			}
+		}
+	}
+}

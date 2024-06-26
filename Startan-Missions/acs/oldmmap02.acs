@@ -1,0 +1,52 @@
+#include "zcommon.acs"
+
+script 9999 ENTER
+{
+	Ceiling_CrushAndRaise(13,64,500,0);
+	SetCameraToTexture(4,"W3DCAMTX",90);
+}
+
+script 1 (void)
+{ //Courtyard all dead / Red Key
+	if(ThingCount(T_NONE,2)==0){
+		PlaySound (10, "misc/teleport", CHAN_5, 1.0, FALSE, 0);
+        SpawnSpot("RedSkull",10);
+	    SpawnSpot("TeleportFog", 10);
+	}
+}
+
+script 2 (void)
+{ //Raise bridge
+	ChangeFloor(11,"FLAT5_2");
+	SectorDamage(11,0,0,"",DAMAGE_PLAYERS);
+	Floor_RaiseByValue(11,16,48);
+}
+
+script 3 (void)
+{ //Stop machines reveal key.
+	PlaySound (0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	Ceiling_CrushStop(13);
+	Delay(70);
+	Ceiling_MoveToValue(13,16,-32);
+	Delay(70);
+	Floor_LowerByValue(17,16,64);
+	Ceiling_RaiseByValue(6,32,96);
+	Delay(70);
+	PlaySound (1, "misc/teleport", CHAN_5, 1.0, FALSE, 0);
+	SpawnSpot("TeleportFog", 1);
+	SpawnSpot("ChaingunGuy",1);
+}
+
+script 4 (void)
+{ //Reveal teleporter to soulsphere
+	PlaySound (0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	Ceiling_RaiseByValue(21,32,72);
+}
+
+script 5 (void)
+{ //Reveal exit teleporter
+	PlaySound (0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	PlaySound (0, "doors/dr2_open", CHAN_5, 1.0, FALSE, 0);
+	Ceiling_RaiseByValue(34,16,128);
+	Ceiling_RaiseByValue(37,16,24);
+}

@@ -1,0 +1,505 @@
+//Dynamic lights
+
+Flickerlight2 HellionG
+{
+ Color 0.5 0.5 0.0
+ Offset 0 40 0
+ Size 25
+ SecondarySize 30
+ Interval 0.005
+}
+
+Flickerlight2 HellionH
+{
+ Color 1.0 1.0 0.0
+ Offset 0 50 0
+ Size 32
+ SecondarySize 42
+ Interval 0.005
+}
+
+Flickerlight2 HellionI
+{
+ Color 1.0 1.0 0.0
+ Offset 0 45 0
+ Size 45
+ SecondarySize 50
+ Interval 0.005
+}
+
+Flickerlight2 HellionJ
+{
+ Color 0.9 0.9 0.0
+ Offset 0 35 -5
+ Size 55
+ SecondarySize 58
+ Interval 0.005
+}
+
+Flickerlight2 HellionK
+{
+ Color 0.7 0.7 0.0
+ Offset 0 32 -15
+ Size 60
+ SecondarySize 62
+ Interval 0.005
+}
+
+Flickerlight2 HellionL
+{
+ Color 0.2 0.2 0.0
+ Offset 0 32 -15
+ Size 62
+ SecondarySize 63
+ Interval 0.005
+}
+
+Object Hellion
+{
+ Frame HELNG { Light HellionG }
+ Frame HELNH { Light HellionH }
+ Frame HELNI { Light HellionI }
+ Frame HELNJ { Light HellionJ }
+ Frame HELNK { Light HellionK }
+ Frame HELNL { Light HellionL }
+}
+
+Flickerlight2 HellionballA
+{
+ Color 1.0 1.0 0.0
+ Offset 0 4 -8
+ Size 30
+ SecondarySize 40
+ Interval 0.005
+}
+
+Flickerlight2 HellionballB
+{
+ Color 1.0 1.0 0.0
+ Offset 0 4 -8
+ Size 35
+ SecondarySize 45
+ Interval 0.005
+}
+
+Flickerlight2 HellionballC
+{
+ Color 1.0 1.0 0.0
+ Offset 0 4 0
+ Size 35
+ SecondarySize 45
+ Interval 0.005
+}
+
+Flickerlight2 HellionballD
+{
+ Color 0.9 0.9 0.0
+ Offset 0 4 0
+ Size 32
+ SecondarySize 42
+ Interval 0.005
+}
+
+Flickerlight2 HellionballE
+{
+ Color 0.8 0.8 0.0
+ Offset 0 4 0
+ Size 29
+ SecondarySize 39
+ Interval 0.005
+}
+
+Flickerlight2 HellionballF
+{
+ Color 0.6 0.6 0.0
+ Offset 0 4 0
+ Size 26
+ SecondarySize 36
+ Interval 0.005
+}
+
+Flickerlight2 HellionballG
+{
+ Color 0.4 0.4 0.0
+ Offset 0 4 0
+ Size 20
+ SecondarySize 30
+ Interval 0.005
+}
+
+Flickerlight2 HellionballH
+{
+ Color 0.2 0.2 0.0
+ Offset 0 4 0
+ Size 10
+ SecondarySize 20
+ Interval 0.005
+}
+
+Flickerlight2 HellionballI
+{
+ Color 0.1 0.1 0.0
+ Offset 0 4 0
+ Size 5
+ SecondarySize 10
+ Interval 0.005
+}
+
+Flickerlight2 HellionballJ
+{
+ Color 0.8 0.8 0.0
+ Offset 0 4 0
+ Size 45
+ SecondarySize 55
+ Interval 0.005
+}
+
+Flickerlight2 HellionballK
+{
+ Color 0.6 0.6 0.0
+ Offset 0 4 0
+ Size 55
+ SecondarySize 60
+ Interval 0.005
+}
+
+Flickerlight2 HellionballL
+{
+ Color 0.4 0.4 0.0
+ Offset 0 4 0
+ Size 60
+ SecondarySize 65
+ Interval 0.005
+}
+
+Flickerlight2 HellionballM
+{
+ Color 0.2 0.2 0.0
+ Offset 0 4 0
+ Size 65
+ SecondarySize 68
+ Interval 0.005
+}
+
+Flickerlight2 HellionballN
+{
+ Color 0.1 0.1 0.0
+ Offset 0 4 0
+ Size 68
+ SecondarySize 72
+ Interval 0.005
+}
+
+Object Hellionball
+{
+ Frame HLBLA { Light HellionballA }
+ Frame HLBLB { Light HellionballB }
+ Frame HLBLJ { Light HellionballJ }
+ Frame HLBLK { Light HellionballK }
+ Frame HLBLL { Light HellionballL }
+ Frame HLBLM { Light HellionballM }
+ Frame HLBLN { Light HellionballN }
+}
+
+Object Hellionpuff
+{
+ Frame HLBLC { Light HellionballC }
+ Frame HLBLD { Light HellionballD }
+ Frame HLBLE { Light HellionballE }
+ Frame HLBLF { Light HellionballF }
+ Frame HLBLG { Light HellionballG }
+ Frame HLBLH { Light HellionballH }
+ Frame HLBLI { Light HellionballI }
+}
+
+//Brightmaps
+
+
+BrightMap Sprite HELNG1
+{
+Map BMHELNG1
+DisableFullBright
+}
+
+BrightMap Sprite HELNG2
+{
+Map BMHELNG2
+DisableFullBright
+}
+
+BrightMap Sprite HELNG3
+{
+Map BMHELNG3
+DisableFullBright
+}
+
+BrightMap Sprite HELNG4
+{
+Map BMHELNG4
+DisableFullBright
+}
+
+BrightMap Sprite HELNG5
+{
+Map BMHELNG5
+DisableFullBright
+}
+
+BrightMap Sprite HELNG6
+{
+Map BMHELNG6
+DisableFullBright
+}
+
+BrightMap Sprite HELNG7
+{
+Map BMHELNG7
+DisableFullBright
+}
+
+BrightMap Sprite HELNG8
+{
+Map BMHELNG8
+DisableFullBright
+}
+
+BrightMap Sprite HELNH1
+{
+Map BMHELNH1
+DisableFullBright
+}
+
+BrightMap Sprite HELNH2
+{
+Map BMHELNH2
+DisableFullBright
+}
+
+BrightMap Sprite HELNH3
+{
+Map BMHELNH3
+DisableFullBright
+}
+
+BrightMap Sprite HELNH4
+{
+Map BMHELNH4
+DisableFullBright
+}
+
+BrightMap Sprite HELNH5
+{
+Map BMHELNH5
+DisableFullBright
+}
+
+BrightMap Sprite HELNH6
+{
+Map BMHELNH6
+DisableFullBright
+}
+
+BrightMap Sprite HELNH7
+{
+Map BMHELNH7
+DisableFullBright
+}
+
+BrightMap Sprite HELNH8
+{
+Map BMHELNH8
+DisableFullBright
+}
+
+BrightMap Sprite HELNI1
+{
+Map BMHELNI1
+DisableFullBright
+}
+
+BrightMap Sprite HELNI2
+{
+Map BMHELNI2
+DisableFullBright
+}
+
+BrightMap Sprite HELNI3
+{
+Map BMHELNI3
+DisableFullBright
+}
+
+BrightMap Sprite HELNI4
+{
+Map BMHELNI4
+DisableFullBright
+}
+
+BrightMap Sprite HELNI5
+{
+Map BMHELNI5
+DisableFullBright
+}
+
+BrightMap Sprite HELNI6
+{
+Map BMHELNI6
+DisableFullBright
+}
+
+BrightMap Sprite HELNI7
+{
+Map BMHELNI7
+DisableFullBright
+}
+
+BrightMap Sprite HELNI8
+{
+Map BMHELNI8
+DisableFullBright
+}
+
+BrightMap Sprite HELNJ1
+{
+Map BMHELNJ1
+DisableFullBright
+}
+
+BrightMap Sprite HELNJ2
+{
+Map BMHELNJ2
+DisableFullBright
+}
+
+BrightMap Sprite HELNJ3
+{
+Map BMHELNJ3
+DisableFullBright
+}
+
+BrightMap Sprite HELNJ4
+{
+Map BMHELNJ4
+DisableFullBright
+}
+
+BrightMap Sprite HELNJ5
+{
+Map BMHELNJ5
+DisableFullBright
+}
+
+BrightMap Sprite HELNJ6
+{
+Map BMHELNJ6
+DisableFullBright
+}
+
+BrightMap Sprite HELNJ7
+{
+Map BMHELNJ7
+DisableFullBright
+}
+
+BrightMap Sprite HELNJ8
+{
+Map BMHELNJ8
+DisableFullBright
+}
+
+BrightMap Sprite HELNK1
+{
+Map BMHELNK1
+DisableFullBright
+}
+
+BrightMap Sprite HELNK2
+{
+Map BMHELNK2
+DisableFullBright
+}
+
+BrightMap Sprite HELNK3
+{
+Map BMHELNK3
+DisableFullBright
+}
+
+BrightMap Sprite HELNK4
+{
+Map BMHELNK4
+DisableFullBright
+}
+
+BrightMap Sprite HELNK5
+{
+Map BMHELNK5
+DisableFullBright
+}
+
+BrightMap Sprite HELNK6
+{
+Map BMHELNK6
+DisableFullBright
+}
+
+BrightMap Sprite HELNK7
+{
+Map BMHELNK7
+DisableFullBright
+}
+
+BrightMap Sprite HELNK8
+{
+Map BMHELNK8
+DisableFullBright
+}
+
+BrightMap Sprite HELNL1
+{
+Map BMBLACK //This is so it doesn't show up as full bright when you have
+DisableFullBright //brightmaps enabled
+}
+
+BrightMap Sprite HELNL2
+{
+Map BMBLACK
+DisableFullBright
+}
+
+BrightMap Sprite HELNL3
+{
+Map BMBLACK
+DisableFullBright
+}
+
+BrightMap Sprite HELNL4
+{
+Map BMBLACK
+DisableFullBright
+}
+
+BrightMap Sprite HELNL5
+{
+Map BMBLACK
+DisableFullBright
+}
+
+BrightMap Sprite HELNL6
+{
+Map BMBLACK
+DisableFullBright
+}
+
+BrightMap Sprite HELNL7
+{
+Map BMBLACK
+DisableFullBright
+}
+
+BrightMap Sprite HELNL8
+{
+Map BMBLACK
+DisableFullBright
+}
+

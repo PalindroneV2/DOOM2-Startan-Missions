@@ -1,0 +1,15 @@
+#include brightmaps/script/hellion.gldefs
+
+// Candelabra
+pointlight W3DCHANDELIER
+{
+    color 1.0 1.0 0.3
+    size 128
+    offset 0 52 0
+	attenuate 1
+}
+
+object W3DChandelier
+{
+    frame W3CH { light W3DCHANDELIER }
+}

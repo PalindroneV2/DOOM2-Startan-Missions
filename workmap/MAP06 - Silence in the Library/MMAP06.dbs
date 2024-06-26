@@ -1,0 +1,193 @@
+type = "Doom Builder Map Settings Configuration";
+gameconfig = "GZDoom_DoomUDMF.cfg";
+strictpatches = 0;
+
+maps
+{
+	
+	MAP01
+	{
+		viewpositionx = 234.3182f;
+		
+		grid
+		{
+			backsource = 0;
+			backscaley = 100;
+			backscalex = 100;
+			gridsize = 8;
+			gridoriginx = 0;
+			background = "";
+			backoffsetx = 0;
+			gridrotate = 0;
+			gridoriginy = 0;
+			backoffsety = 0;
+		}
+		overridebottomtexture = false;
+		overridemiddletexture = false;
+		customfloorheight = 0;
+		
+		testprecommand
+		{
+			exitcodeiserror = true;
+			autocloseonsuccess = true;
+			stderriserror = true;
+		}
+		overridebrightness = false;
+		
+		testpostcommand
+		{
+			exitcodeiserror = true;
+			autocloseonsuccess = true;
+			stderriserror = true;
+		}
+		defaultfloortexture = "MARBCHE3";
+		defaultbottomtexture = "WOOD_N12";
+		defaulttoptexture = "WOOD_N12";
+		defaultwalltexture = "WOOD_N12";
+		viewpositiony = 1535.117f;
+		overrideceilheight = false;
+		viewscale = 2.989391f;
+		
+		reloadresourcepostcommand
+		{
+			exitcodeiserror = true;
+			autocloseonsuccess = true;
+			stderriserror = true;
+		}
+		
+		reloadresourceprecommand
+		{
+			exitcodeiserror = true;
+			autocloseonsuccess = true;
+			stderriserror = true;
+		}
+		custombrightness = 196;
+		uselongtexturenames = false;
+		overridefloorheight = false;
+		defaultceiltexture = "SUP332BF";
+		overridefloortexture = false;
+		overrideceiltexture = false;
+		scriptcompiler = "zdoom_acs.cfg";
+		customceilheight = 128;
+		
+		resources
+		{
+			
+			resource0
+			{
+				type = 1;
+				location = "C:\\Users\\goopl\\Desktop\\Lambda\\DOOM\\wads\\mywads\\PerProject\\MyPK3";
+				option1 = 0;
+				option2 = 0;
+				notfortesting = 0;
+				requiredarchives = "";
+			}
+		}
+		overridetoptexture = false;
+	}
+	
+	MMAP06
+	{
+		viewpositionx = -1694.478f;
+		
+		grid
+		{
+			backsource = 0;
+			backscaley = 100;
+			backscalex = 100;
+			gridsize = 8;
+			gridoriginx = 0;
+			background = "";
+			backoffsetx = 0;
+			gridrotate = 0;
+			gridoriginy = 0;
+			backoffsety = 0;
+		}
+		overridebottomtexture = false;
+		overridemiddletexture = false;
+		customfloorheight = 0;
+		
+		testprecommand
+		{
+			exitcodeiserror = true;
+			autocloseonsuccess = true;
+			stderriserror = true;
+		}
+		overridebrightness = false;
+		
+		testpostcommand
+		{
+			exitcodeiserror = true;
+			autocloseonsuccess = true;
+			stderriserror = true;
+		}
+		defaultfloortexture = "MARBCHE3";
+		defaultbottomtexture = "WOOD_N12";
+		defaulttoptexture = "WOOD_N12";
+		defaultwalltexture = "WOOD_N12";
+		viewpositiony = 590.0905f;
+		overrideceilheight = false;
+		viewscale = 0.2818966f;
+		
+		reloadresourcepostcommand
+		{
+			exitcodeiserror = true;
+			autocloseonsuccess = true;
+			stderriserror = true;
+		}
+		
+		reloadresourceprecommand
+		{
+			exitcodeiserror = true;
+			autocloseonsuccess = true;
+			stderriserror = true;
+		}
+		custombrightness = 196;
+		uselongtexturenames = false;
+		overridefloorheight = false;
+		defaultceiltexture = "SUP332BF";
+		overridefloortexture = false;
+		overrideceiltexture = false;
+		scriptcompiler = "zdoom_acs.cfg";
+		customceilheight = 128;
+		
+		resources
+		{
+			
+			resource0
+			{
+				type = 1;
+				location = "C:\\Users\\goopl\\Desktop\\Lambda\\DOOM\\wads\\mywads\\PerProject\\MyPK3";
+				option1 = 0;
+				option2 = 0;
+				notfortesting = 0;
+				requiredarchives = "";
+			}
+		}
+		overridetoptexture = false;
+		
+		scriptdocuments
+		{
+			
+			document0
+			{
+				filename = "DIALOGUE";
+				hash = 3588187714;
+				resource;
+				tabtype = 0;
+				scripttype = 18;
+			}
+			
+			document1
+			{
+				filename = "SCRIPTS";
+				hash = 3469170009;
+				resource;
+				tabtype = 0;
+				scripttype = 1;
+				caretposition = 25;
+				activetab = true;
+			}
+		}
+	}
+}

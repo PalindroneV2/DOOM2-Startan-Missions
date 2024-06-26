@@ -1,0 +1,67 @@
+#include "zcommon.acs"
+
+script "RedSkullKey_Camera" ENTER
+{
+	SetCameraToTexture(9,"W3DCAMTX",90);
+}
+
+script "CaveRevealSpider" (void){
+	Floor_MoveToValue(1,64,-40,0);
+	Radius_Quake2(0,5,35,0,2048,"world/quake");
+}
+
+script "CaveBase_RevealPinkies" (void){
+	Ceiling_RaiseByValue(7,64,128);
+}
+
+bool BlueCardCheck;
+script "BlueCardPickup" (void){
+	TeleportGroup(5,3,4,0,1);
+	BlueCardCheck = true;
+}
+
+bool DeadPlasmaMarine;
+script "CaveEntrance_SpawnDeadGuy" (void){
+	if((DeadPlasmaMarine == false) && (CheckInventory("BlueCard"))){
+		Ceiling_LowerToFloor(14,256);
+		Radius_Quake2(0,4,35,0,2048,"world/quake");
+		SpawnSpotFacing("TeleportFog", 2, 0);
+		SpawnSpotFacing("DeadMarine", 2, 0);
+		SpawnSpotFacing("PlasmaRifle", 2, 0);
+		DeadPlasmaMarine = true;
+	}
+}
+
+script "CarePackage" (void){
+	ChangeFloor(15,"CRATWDM2");
+	ChangeFloor(16,"CRATWDM2");
+	ChangeFloor(17,"CRAWOODT");
+	Floor_MoveToValue(15,256,-8,0);
+	Floor_MoveToValue(16,256,48,0);
+	SpawnSpotFacing("CellPack", 6, 0);
+	SpawnSpotFacing("Cell", 7, 0);
+}
+
+script "Cathedral_Door" (void){
+	Floor_RaiseByValue(21,16,120);
+	Ceiling_RaiseByValue(21,16,120);
+	// Delay(105);
+	// Floor_LowerByValue(21,16,120);
+	// Ceiling_LowerByValue(21,16,120);
+}
+
+bool YellowCardCheck;
+
+script "YellowCardPickup" (void){
+	YellowCardCheck = true;
+	Door_Open(9,16);
+}
+
+script "ServerRoom_Door" (void){
+	if(YellowCardCheck == true){
+		Door_Close(9,64,0);
+	}else{
+		Delay(1);
+	}
+}
+

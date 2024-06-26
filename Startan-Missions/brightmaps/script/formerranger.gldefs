@@ -1,0 +1,44 @@
+flickerlight2 RANGERATK
+{
+    color 1.0 0.8 0.2
+    size 48
+    secondarySize 56
+    interval 1
+    offset 0 40 0
+}
+
+Object FormerRanger
+{
+Frame FRNGF { Light RANGERATK }
+}
+
+//brightmap definitions
+brightmap sprite FRNGF1
+{
+	map BMFRNGF1
+	disablefullbright
+}
+
+brightmap sprite FRNGF2F8
+{
+	map BMFRNGF2
+	disablefullbright
+}
+
+brightmap sprite FRNGF3F7
+{
+	map BMFRNGF3
+	disablefullbright
+}
+
+brightmap sprite FRNGF4F6
+{
+	map BMFRNGF4
+	disablefullbright
+}
+
+brightmap sprite FRNGF5
+{
+	map BMFRNGF5
+	disablefullbright
+}

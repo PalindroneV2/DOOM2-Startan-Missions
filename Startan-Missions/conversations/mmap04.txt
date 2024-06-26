@@ -1,0 +1,33 @@
+//COMPUTER TELEPORT VILE
+Conversation
+{
+	ID = 1;
+	Page
+	{
+		Name = "Computer";
+		Dialog = "Welcome to UAC System E-091. Select your command.";
+		Goodbye = "Exit.";
+		Choice
+		{
+			Text = "Teleport [EXPUNGED DATA] test.";
+			Special = 80;
+			Arg0 = 1;
+		}
+		Choice
+		{
+			Text = "State purpose.";
+			NextPage = 2;
+		}
+	}
+	Page
+	{
+		Name = "Computer";
+		Dialog = "This computer was made to test [EXPUNGED DATA] teleportation.";
+		Goodbye = "Exit.";
+		Choice
+		{
+			Text = "Return.";
+			NextPage = 1;
+		}
+	}
+}

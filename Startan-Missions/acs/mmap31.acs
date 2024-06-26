@@ -1,0 +1,132 @@
+#include "zcommon.acs"
+
+global int 1 : SecretLevel31;
+
+script 1 ENTER
+{ //Kill first SS soldier
+	ClearInventory();
+	GiveInventory("Fist", 1);
+	GiveInventory("WaltherPPK",1);
+	GiveInventory("Clip",32);
+	Thing_Damage(2,50);
+	Thing_ChangeTID(0,1000);
+	Thing_Hate(1400,1500,3);
+	Thing_Hate(1500,1400,3);
+}
+
+script 2 (void)
+{ //LOWER LIFT
+	Ceiling_MoveToValue(7,32,0);
+	Floor_MoveToValue(7,32,-64);
+}
+script 3 (void)
+{ // RAISE LIFT
+	Ceiling_MoveToValue(7,32,160);
+	Floor_MoveToValue(7,32,96);
+}
+script 4 (void)
+{ //BJ message
+	SetLineTexture(8, SIDE_FRONT, TEXTURE_MIDDLE,"W3DBJPC1");
+	PlaySound(1000, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Hey you!"; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.8, 2.0);
+	Delay(120);
+	PlaySound(1000, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"You're really doing a number on that castle..."; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.8, 2.0);
+	Delay(120);
+	PlaySound(1000, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"You don't look like someone from the OSS..."; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.8, 2.0);
+	Delay(120);
+	PlaySound(1000, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"But as long as you keep on killing nazis it's fine by me!"; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.8, 2.0);
+	Delay(120);
+	PlaySound(1000, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Give 'em hell!"; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.8, 2.0);
+	Delay(105);
+	SetLineTexture(8, SIDE_FRONT, TEXTURE_MIDDLE,"W3DCOM01");
+}
+script 5 (void)
+{ // Reveal computers
+	Ceiling_MoveToValue(9,16,-104);
+	Floor_MoveToValue(9,16,-232);
+}
+script 6 (void)
+{ // Find a way to kill the demons
+	SetLineTexture(11, SIDE_FRONT, TEXTURE_BOTTOM,"W3DBJPC1");
+	PlaySound(1000, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"These damn nazis are medling with forces they don't understand."; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.8, 2.0);
+	Delay(120);
+	PlaySound(1000, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Find a way to kill all of those monsters."; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.8, 2.0);
+	Delay(120);
+	PlaySound(1000, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Their eggheads should have some contingency plan somewhere..."; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.8, 2.0);
+	Delay(120);
+	SetLineTexture(11, SIDE_FRONT, TEXTURE_BOTTOM,"W3DCOM01");
+	Door_Open(25, 16);
+}
+int monsterrelease=0;
+script 7 (void)
+{ // RELEASE ALL MONSTERS
+	PlaySound(1000, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	SetFont("BIGFONT");
+	HudMessage(s:"Pandemonium! You released the monsters!"; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_RED, 0.5, 0.1, 2.0);
+	Ceiling_RaisebyValue(2,32,64);
+	Floor_LowerByValue(2,32,64);
+	Ceiling_RaisebyValue(8,32,192);
+	Delay(70);
+	Door_Open(19,16);
+	monsterrelease++;
+}
+script 8 OPEN
+{ //Camera thing
+	SetCameraToTexture(16,"W3DCAMTX",90);
+	Delay(105);
+	SetCameraToTexture(17,"W3DCAMTX",90);
+}
+script 9 (void)
+{ //Clear massacre room
+	PlaySound(1000, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	SetFont("BIGFONT");
+	HudMessage(s:"Demon Presence Cleared!"; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_RED, 0.5, 0.1, 2.0);
+	Thing_Damage(1500,5000);
+	Door_Open(15,16);
+}
+script 10 (void)
+{//Teleport Cyberdemon
+	PlaySound(1000, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	SetFont("BIGFONT");
+	HudMessage(s:"Purging Demon Test Subjects"; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_RED, 0.5, 0.1, 2.0);
+	TeleportOther(23,21,1);
+	Thing_Damage(10,5000);
+}
+script 11 (void)
+{ // BJ message
+	if(monsterrelease == 0)
+	{
+		SetLineTexture(24, SIDE_FRONT, TEXTURE_BOTTOM,"W3DBJPC1");
+		PlaySound(1000, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+		HudMessage(s:"This must be their control station for the containment cells."; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.8, 2.0);
+		Delay(120);
+		PlaySound(1000, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+		HudMessage(s:"This part of the facility should be deep enough that the monsters can't get out."; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.8, 2.0);
+		Delay(120);
+		PlaySound(1000, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+		HudMessage(s:"Give the bastards a surprise and wipe them out."; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.8, 2.0);
+		Delay(120);
+		SetLineTexture(24, SIDE_FRONT, TEXTURE_BOTTOM,"W3DCOM01");
+	}else{
+		SetLineTexture(24, SIDE_FRONT, TEXTURE_BOTTOM,"W3DBJPC1");
+		PlaySound(1000, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+		HudMessage(s:"Used their own monsters against them?"; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.8, 2.0);
+		Delay(120);
+		PlaySound(1000, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+		HudMessage(s:"You're lucky these monsters probably can't get out of this lab."; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.8, 2.0);
+		Delay(120);
+		SetLineTexture(24, SIDE_FRONT, TEXTURE_BOTTOM,"W3DCOM01");
+	}
+}
+
+script "ExitLevel" (void) {
+	SecretLevel31++;
+	Teleport_NewMap(100,0, 0);
+}

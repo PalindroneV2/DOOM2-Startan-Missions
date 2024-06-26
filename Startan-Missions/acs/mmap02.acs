@@ -1,0 +1,7 @@
+#include "zcommon.acs"
+
+script "RaiseBridge" (void)
+{
+	Floor_RaiseByValue(1000, 16, 256);
+	Ceiling_RaiseByValue(1000, 16, 256);
+}

@@ -1,0 +1,313 @@
+map HUBMAP "Startan Base"
+{
+	next = "HUBMAP"
+	secretnext="MAP29"
+	sky1="TNTNITE"
+	cluster = 21
+	par = 6000
+	music = "D_RUNNIN"
+	Author = "Palindrone"
+	levelnum = 100
+	ResetInventory
+	ResetItems
+	NoIntermission
+	lightmode = 16
+	NoJump
+	NoCrouch
+}
+
+map MMAP01 "Works in Progress"
+{
+	next = "HUBMAP"
+	secretnext = "MMAP31"
+    sky1 = "SKYND07"
+	cluster = 21
+	par = 300
+	music = "D_INBOX"
+	Author = "Palindrone"
+	levelnum = 101
+	ResetInventory
+	ResetItems
+	lightmode = 16
+	NoJump
+	NoCrouch
+}
+
+/* map MMAP01 "Infected Flesh"
+{
+	next = "HUBMAP"
+	secretnext = "MMAP31"
+    sky1 = "RSKY3"
+	cluster = 21
+	par = 300
+	music = "D_NUISUK"
+	Author = "Palindrone"
+	levelnum = 101
+	ResetInventory
+	ResetItems
+	lightmode = 16
+	NoJump
+	NoCrouch
+} */
+
+map MMAP02 "Volcanic Fortress"
+{
+	next = "HUBMAP"
+	secretnext = "MMAP32"
+    sky1 = "RSKY3"
+	cluster = 21
+	par = 300
+	music = "D_WATCH"
+	Author = "Palindrone"
+	levelnum = 102
+	ResetInventory
+	ResetItems
+	lightmode = 16
+	NoJump
+	NoCrouch
+}
+
+map MMAP03 "Escape Prohibited"
+{
+	next = "HUBMAP"
+	secretnext = "MMAP33"
+    sky1 = "RSKY2"
+	cluster = 21
+	par = 300
+	music = "D_DENY"
+	Author = "Palindrone"
+	levelnum = 103
+	ResetInventory
+	ResetItems
+	lightmode = 16
+	NoJump
+	NoCrouch
+}
+
+map MMAP04 "The Tomb of Id-K'yeth"
+{
+	next = "HUBMAP"
+	secretnext = "MMAP34"
+    sky1 = "SKYD13"
+	cluster = 21
+	par = 300
+	music = "D_CROOKD"
+	Author = "Palindrone"
+	levelnum = 104
+	ResetInventory
+	ResetItems
+	lightmode = 16
+	NoJump
+	NoCrouch
+}
+
+map MMAP05 "The FOB"
+{
+	next = "HUBMAP"
+	secretnext = "MMAP35"
+    sky1 = "SKYD14"
+	cluster = 21
+	par = 300
+	music = "D_HATEM"
+	Author = "Palindrone"
+	levelnum = 105
+	ResetInventory
+	ResetItems
+	lightmode = 16
+	NoJump
+	NoCrouch
+}
+
+map MMAP06 "Silence in the Library"
+{
+	next = "HUBMAP"
+	secretnext = "MMAP36"
+    sky1 = "SKYD13"
+	cluster = 21
+	par = 300
+	music = "D_WELCOM"
+	Author = "Palindrone"
+	levelnum = 106
+	ResetInventory
+	ResetItems
+	lightmode = 16
+	NoJump
+	NoCrouch
+}
+
+cluster 21
+{
+}
+
+cluster 22
+{
+	flat = W3DBLBR3
+	music = D_READ_M
+	entertext =
+ 	"The darkness fades and your senses",
+	"come back with a sharp pain on your head.",
+	"You look around and only see the blue stone",
+	"bricks of a tiny prison cell.",
+	"Your weapons and ammo are gone but not",
+	"your determination to end this nightmare..."
+	exittext =
+ 	"You are in luck, another tear in",
+	"space time allows you to finally return to",
+	"your time. You hope that whatever you",
+	"did helping out the Allies with their little",
+	"demon problem didn't do much harm to the",
+	"timeline..."
+}
+
+map MMAP31 "Jamais Vu"
+{
+	next = "HUBMAP"
+	secretnext = "HUBMAP"
+    sky1 = "RSKY1"
+	cluster = 22
+	par = 300
+	music = "D_EVIL"
+	Author = "Palindrone"
+	levelnum = 131
+	ResetHealth
+	ResetInventory
+	lightmode = 16
+	NoJump
+	NoCrouch
+}
+
+cluster 23
+{
+	flat = EGYPTRM6 
+	music = D_READ_M
+	entertext =
+ 	"Your feet have before touched the",
+	"burning embers of hell. The scorching hot",
+	"sands of the desert do not compare..."
+	exittext =
+	"An ancient evil once sealed is now",
+	"forever destroyed thanks to you.",
+ 	"Now that you have served your purpose",
+	"in this time you are forcibly displaced",
+	"back to where you belong."
+}
+
+map MMAP32 "Raiders"
+{
+	next = "HUBMAP"
+	secretnext = "HUBMAP"
+    sky1 = "SKYD14"
+	cluster = 23
+	par = 300
+	music = "D_LEGION"
+	Author = "Palindrone"
+	levelnum = 132
+	ResetHealth
+	ResetInventory
+	lightmode = 16
+	NoJump
+	NoCrouch
+}
+
+cluster 24
+{
+	flat = GRAYVRA2
+	music = D_READ_M
+	entertext =
+ 	"A town of fakes.",
+	"A bomb hangs just outside.",
+	"There's a countdown to death."
+	exittext =
+ 	"The overloaded teleporter sends you",
+	"back to your original time and place.",
+	"",
+	"Your experience across this accursed",
+	"facility proved to you once more you",
+	"can't really trust the government to",
+	"keep your best interest at heart..."
+}
+
+map MMAP33 "Atomic Cul-De-Sac"
+{
+	next = "HUBMAP"
+	secretnext = "HUBMAP"
+    sky1 = "RSKY1"
+	cluster = 24
+	par = 300
+	music = "D_115"
+	Author = "Palindrone"
+	levelnum = 133
+	ResetInventory
+	ResetItems
+	lightmode = 16
+	NoJump
+	NoCrouch
+}
+
+cluster 25
+{
+	flat = MAYABRK8
+	music = D_READ_M
+	entertext =
+ 	"Deep in the thick mesoamerican",
+	"rainforest a temple stands where",
+	"blood was shed in the name of gods..."   
+	exittext =
+ 	"You step out of the temple",
+	"and the then lush rainforest",
+	"is now a dead wasteland.",
+	"You step into the teleporter",
+	"and return to base."
+}
+
+map MMAP34 "Blood Sacrifice"
+{
+	next = "HUBMAP"
+	secretnext = "HUBMAP"
+    sky1 = "SKYD11"
+	cluster = 25
+	par = 300
+	music = "D_COLIF"
+	Author = "Palindrone"
+	levelnum = 134
+	ResetInventory
+	ResetItems
+	lightmode = 16
+	NoJump
+	NoCrouch
+}
+
+cluster 26
+{
+	flat = W3DWBR01
+	music = D_READ_M
+	entertext =
+ 	"Stepping from the shade of the",
+	"forest's trees you see it...",
+	"The white stone walls of another",
+	"Nazi-controlled castle..."
+	exittext =
+ 	"You are warped back to your time",
+	"content that you managed to send",
+	"more Nazi scum to hell.",
+	"You wonder if some of the demons you",
+	"kill next will be the same krauts you",
+	"slaughtered..."
+}
+
+map MMAP35 "Sturme das Schloss"
+{
+	next = "HUBMAP"
+	secretnext = "HUBMAP"
+    sky1 = "SKYD11"
+	cluster = 26
+	par = 300
+	music = "D_ARCHAI"
+	Author = "Palindrone"
+	levelnum = 135
+	ResetInventory
+	ResetItems
+	lightmode = 16
+	NoJump
+	NoCrouch
+}

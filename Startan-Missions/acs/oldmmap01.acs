@@ -1,0 +1,188 @@
+#include "zcommon.acs"
+
+script 0999 ENTER
+{ // Player Assign ID
+	//SetMusic("D_MESSAG");
+	Thing_ChangeTID(0,1000);
+}
+script 1 (void)
+{   //Teleporter Secret
+    Floor_MoveToValue(8,32,-8,0);
+    Floor_MoveToValue(9,32,-16,0);
+}
+int spawnercount = 0;
+script 2 (void)
+{	//Spawn Armor/SSG Secret
+    spawnercount++;
+    if (spawnercount == 1)
+    {
+	    SpawnSpot("TeleportFog", 10);
+        SpawnSpot("GreenArmor",10);
+		HudMessage(s:"A care package arrived!"; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.1, 2.0);
+		PlaySound (10, "misc/teleport", CHAN_5, 1.0, FALSE, 0);
+        Floor_MoveToValue(5,32,0,0);
+    };
+    if (spawnercount == 2)
+    {
+        SpawnSpot("TeleportFog", 10);
+        SpawnSpot("RocketLauncher",10);
+		HudMessage(s:"A care package arrived!"; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.1, 2.0);
+		PlaySound (10, "misc/teleport", CHAN_5, 1.0, FALSE, 0);
+    };
+    if (spawnercount > 2 && spawnercount < 50)
+    {
+		PlaySound (29, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+		HudMessage(s:"No more goodies..."; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.1, 2.0);
+    };
+    if (spawnercount == 150)
+    {
+		PlaySound (29, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+		HudMessage(s:"I said no..."; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.1, 2.0);
+		Delay(35);
+		Thing_Damage(1000,9999);
+    };
+}
+script 3 (void)
+{   //Archvile Spawn Blue Key Room
+	SpawnSpot("Archvile", 15, 1045, 90);
+	PlaySound (15, "misc/teleport", CHAN_5, 1.0, FALSE, 0);
+	SpawnSpot("TeleportFog", 15);
+    Floor_MoveToValue(14,32,-16,0);
+    Door_Open(16,16);
+}
+script 4 (void)
+{ //Open Yellow Tech Door
+	PlaySound (28, "doors/dr2_open", CHAN_5, 1.0, FALSE, 0);
+	PlaySound (28, "switches/normbutn", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Storage Room Opened."; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.1, 2.0);
+    Door_Open(13,16);
+}
+script 5 (void)
+{ //Open Blue Tech Door and Bars
+	PlaySound (27, "doors/dr2_open", CHAN_5, 1.0, FALSE, 0);
+	PlaySound (27, "switches/normbutn", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Water Treatment Opened."; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.1, 2.0);
+    Door_Open(17,16);
+}
+script 6 (void)
+{ // Reveal tech teleporter to castle
+	PlaySound (30, "switches/normbutn", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Teleporter access granted."; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.1, 2.0);
+	Floor_MoveToValue(21,16,-40,0);
+}
+script 7 (void)
+{ // Reveal Archvile ritual room
+	if(ThingCount(T_NONE,31) == 0) {
+		Ceiling_RaiseToNearest(32,32);
+	}
+}
+script 8 (void)
+{ // BFG Spawn
+	if(ThingCount(T_NONE,33) == 0) {
+        SpawnSpot("BFG9000",34);
+        SpawnSpot("TeleportFog", 34);
+		PlaySound (34, "misc/teleport", CHAN_5, 1.0, FALSE, 0);
+	}
+}
+script 9 (void)
+{ // Berserk spawn
+	SpawnSpot("Berserk",35);
+	SpawnSpot("TeleportFog", 35);
+	HudMessage(s:"A care package arrived!"; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.1, 2.0);
+	PlaySound (35, "misc/teleport", CHAN_5, 1.0, FALSE, 0);
+}
+script 10 (void)
+{ // Open blue skull room
+	PlaySound(36, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Server Room opened."; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.1, 2.0);
+    Door_Open(45,16);
+}
+script 11 (void)
+{	// Teleporter to megasphere
+	Ceiling_MoveToValue(41,16,88);
+	Ceiling_MoveToValue(42,16,80);
+	Ceiling_MoveToValue(10,16,96);
+	Delay(35);
+	Floor_MoveToValue(41,16,8);
+	Floor_MoveToValue(42,16,16);
+}
+script 12 (void)
+{	//Reveal Cyberdemon
+	Floor_MoveToValue(15,16,0);
+	Floor_RaiseByValue(29,8,128);
+	Delay(35*3);
+	Floor_MoveToValue(25,16,0);
+}
+script 13 (void)
+{ // Cyberdemon dead
+	Floor_RaiseByValue(27,16,64);
+	Floor_MoveToValue(28,16,0);
+}
+script 14 (void)
+{ // Final TP door
+	if(ThingCount(T_NONE,50) == 0) {
+		Door_Open(34,16);
+	}
+}
+script 15 (void)
+{ // Secret TP door
+	SetFont("BIGFONT");
+	if(ThingCount(T_NONE,115) == 0) {
+		PlaySound (1000, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+		PlaySound (1000, "misc/secret", CHAN_5, 1.0, FALSE, 0);
+		HudMessage(s:"The Secret Exit is Open!"; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.1, 2.0);
+		Door_Open(49,16);
+	}
+}
+
+script 16 (void)
+{ //Random ass trivia
+
+	PlaySound (1000, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	int Num = Random(0,100);
+	str SelectedTrivia;
+	if (Num > 0 && Num < 11 )
+    {
+		SelectedTrivia = "Collect all the health/armor bonuses to open the secret exit!";
+	};
+	if (Num > 10 && Num < 21)
+	{
+		SelectedTrivia = "This is a tip.";
+	};
+	if (Num > 20 && Num < 41)
+	{
+		SelectedTrivia = "A single BFG9000 shot at point blank will kill the Spider Mastermind.";
+	};
+	if (Num > 40 && Num < 61)
+	{
+		SelectedTrivia =  "Remember to play on the original DOOM 2 IWAD.";
+	};
+	if (Num > 60 && Num < 81)
+	{
+		SelectedTrivia =  "Jumping is not prohibited.";
+	};
+	if (Num > 60 && Num < 101)
+	{
+		SelectedTrivia = "To defeat the Cyberdemon, shoot at it until it dies.";
+	};
+	if (Num == 0){
+		SelectedTrivia = "404. Tip not found.";
+	}
+		HudMessage(s:SelectedTrivia; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.1, 2.0);
+}
+script 17 (void)
+{ // Collectathon check
+	if(ThingCount(T_NONE,115) != 0) {
+		PlaySound (1000, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+		HudMessage(s:"There is still a secret to be found!"; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.1, 2.0);
+	}
+	if(ThingCount(T_NONE,115) == 0) {
+		PlaySound (1000, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+		HudMessage(s:"Leaving without the secret exit?"; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.1, 2.0);
+	}
+}
+script 18 (void)
+{ // DOOR OPENS REMOTELY NOTICE
+	PlaySound (1000, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"This door opens remotely."; HUDMSG_PLAIN|HUDMSG_LOG, 1, CR_WHITE, 0.5, 0.1, 2.0);
+}
