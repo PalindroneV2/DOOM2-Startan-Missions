@@ -5,3 +5,9 @@ script "RaiseBridge" (void)
 	Floor_RaiseByValue(1000, 16, 256);
 	Ceiling_RaiseByValue(1000, 16, 256);
 }
+
+script "BlueKeyTrap" (void)
+{
+	Ceiling_RaiseByValue(9, 64, 128);
+	Ceiling_RaiseByValue(10, 64, 196);
+}
