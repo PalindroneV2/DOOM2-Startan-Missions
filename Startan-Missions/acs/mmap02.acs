@@ -1,13 +1,53 @@
 #include "zcommon.acs"
 
+script 999 ENTER
+{ // Player Assign ID
+	Thing_ChangeTID(0,999);
+}
+
+script "FallHurt" (void)
+{
+	Teleport(1, 1, 0);
+	Thing_Damage2(999, 25,"Fire");
+}
+
 script "RaiseBridge" (void)
 {
-	Floor_RaiseByValue(1000, 16, 256);
-	Ceiling_RaiseByValue(1000, 16, 256);
+	Floor_RaiseByValue(11, 16, 256);
+	Ceiling_RaiseByValue(11, 16, 256);
+	Delay(140);
+	Door_Open(5,16);
 }
 
 script "BlueKeyTrap" (void)
 {
 	Ceiling_RaiseByValue(9, 64, 128);
 	Ceiling_RaiseByValue(10, 64, 196);
+}
+
+script "CourtyardCleared" (void)
+{
+	if(ThingCount(T_NONE,2)<=11)
+	{
+		// Ceiling_RaiseByValue(23, 16, 128);
+		Ceiling_MoveToValue(23, 16, 192);
+		ACS_NamedTerminate("CourtyardCleared",102);
+	}
+}
+
+script "CourtyardCleared2" (void)
+{
+	if(ThingCount(T_NONE,4)==0 && ThingCount(T_NONE, 2)==0)
+	{
+		Ceiling_RaiseByValue(13, 16, 128);
+		Floor_LowerByValue(17, 16, 128);
+		SpawnSpot("YellowSkull",10);
+		SpawnSpot("TeleportFog", 10);
+	}
+}
+
+script "PlasmaTrap_Escape" (void)
+{
+	Ceiling_RaiseByValue(20, 16, 128);
+	Floor_LowerByValue(18, 16, 128);
 }

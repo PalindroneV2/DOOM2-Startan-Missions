@@ -149,46 +149,6 @@ Switch	Doom 3		SW1WDZRG	On Pic	SW2WDZRG	Tics 0
 Switch	Doom 3		SW1WDZRL	On Pic	SW2WDZRL	Tics 0
 Switch	Doom 3		SW1WDZRS	On Pic	SW2WDZRS	Tics 0
 
-//CAGE1
-texture CGCANI00
-    allowdecals
-    pic CGCANI00 tics 1.5
-    pic CGCANI01 tics 1.5
-    pic CGCANI02 tics 1.5
-    pic CGCANI03 tics 1.5
-    pic CGCANI04 tics 1.5
-    pic CGCANI05 tics 1.5
-    pic CGCANI06 tics 1.5
-    pic CGCANI07 tics 1.5
-    
-switch CGSWC00A on sound Switch1 pic CGSWC00B tics 0
-switch CGSWC00B off sound Switch2 pic CGSWC00A tics 0
-
-switch CGSWC01A on sound Switch1 pic CGSWC01B tics 0
-switch CGSWC01B off sound Switch2 pic CGSWC01A tics 0
-
-switch CGSWC02A on sound Switch1 pic CGSWC02B tics 0
-switch CGSWC02B off sound Switch2 pic CGSWC02A tics 0
-
-switch CGSWC03A on sound Switch1 pic CGSWC03B tics 0
-switch CGSWC03B off sound Switch2 pic CGSWC03A tics 0
-
-//CAGE2
-switch C2SWC01A on sound Switch1 pic C2SWC01B tics 0
-switch C2SWC01B off sound Switch2 pic C2SWC01A tics 0
-
-switch C2SWC02A on sound Switch1 pic C2SWC02B tics 0
-switch C2SWC02B off sound Switch2 pic C2SWC02A tics 0
-
-switch C2SWC03A on sound Switch1 pic C2SWC03B tics 0
-switch C2SWC03B off sound Switch2 pic C2SWC03A tics 0
-
-switch C2SWC04A on sound Switch1 pic C2SWC04B tics 0
-switch C2SWC04B off sound Switch2 pic C2SWC04A tics 0
-
-switch C2SWC05A on sound Switch1 pic C2SWC05B tics 0
-switch C2SWC05B off sound Switch2 pic C2SWC05A tics 0
-
 // TNT Evilution
 /* Texture BLIP1
 	allowdecals

@@ -9,6 +9,7 @@ class W3DRifleman : W3DGuard
 		Attacksound "K98K/FIRE";
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
+		+MISSILEEVENMORE
 	}
 	States
 	{
