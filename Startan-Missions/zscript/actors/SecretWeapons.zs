@@ -26,7 +26,7 @@ class MP40 : DoomWeapon
 		MP40 A 1 A_Raise(10);
 		Loop;
 	Fire:
-		MP40 B 2 Bright A_MP40Fire;
+		MP40 B 1 Bright A_MP40Fire;
 		MP40 D 1;
 		MP40 CA 1; 
 		MP40 A 1 A_ReFire;
@@ -47,6 +47,7 @@ extend class MP40
 	action void A_MP40Fire()
 	{
 		A_FireBullets(4, 3, 1, 12, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_Quake(1,1,0,1);
 		A_GunFlash();
 		// Name NewAmmoClassName = 'TangoBulletClip';
 		// Class<Ammo> NewAmmoClass = NewAmmoClassName;
@@ -414,7 +415,7 @@ class Kar98k : DoomWeapon
 			
 		Fire:
 			K98K B 1 BRIGHT A_Firebullets(3,0,1,75,"RiflePuff",FBF_USEAMMO|FBF_NORANDOM);
-			// TNT1 A 0 A_Quake(2,3,0,3);
+			TNT1 A 0 A_Quake(2,3,0,3);
 			K98K CDEFEDCA 1;
 		Bolt:
 			K98K A 2;

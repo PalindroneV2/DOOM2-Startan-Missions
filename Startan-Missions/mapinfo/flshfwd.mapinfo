@@ -311,3 +311,38 @@ map MMAP35 "Sturme das Schloss"
 	NoJump
 	NoCrouch
 }
+
+cluster 27
+{
+	flat = GRAYVRA2
+	music = D_READ_M
+	entertext =
+ 	"Stepping from the shade of the",
+	"forest's trees you see it...",
+	"The white stone walls of another",
+	"Nazi-controlled castle..."
+	exittext =
+ 	"You are warped back to your time",
+	"content that you managed to send",
+	"more Nazi scum to hell.",
+	"You wonder if some of the demons you",
+	"kill next will be the same krauts you",
+	"slaughtered..."
+}
+
+map MMAP36 "Diner at the End of the World"
+{
+	next = "HUBMAP"
+	secretnext = "HUBMAP"
+    sky1 = "RSKY1"
+	cluster = 27
+	par = 300
+	music = "D_LOVESONG"
+	Author = "Palindrone"
+	levelnum = 136
+	ResetInventory
+	ResetItems
+	lightmode = 16
+	NoJump
+	NoCrouch
+}

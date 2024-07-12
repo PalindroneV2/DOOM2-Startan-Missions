@@ -51,3 +51,38 @@ script "PlasmaTrap_Escape" (void)
 	Ceiling_RaiseByValue(20, 16, 128);
 	Floor_LowerByValue(18, 16, 128);
 }
+
+script "ExecutionField" (void)
+{
+	Door_Open(32, 32);
+	Floor_LowerByValue(30, 16, 128);
+	Floor_RaiseByValue(35, 64, 128);
+	Delay(35*10);
+	Ceiling_RaiseByValue(39, 64, 128);
+}
+
+script "PharaohMusic" (void)
+{
+	Music_Change("D_LEGION", 0);
+	Delay(70);
+	Ceiling_RaiseByValue(41, 8, 128);
+}
+
+script "PharaohTomb" (void)
+{
+	SetPlayerProperty(0,1, PROP_TOTALLYFROZEN);
+	ClearInventory();
+	Floor_LowerByValue(37, 8, 64);
+	Ceiling_LowerByValue(37, 16, 128);
+	Ceiling_LowerByValue(38, 16, 128);
+	int timesbackwards = 2;
+	for (int times = 105; times >= 0; times--)
+	{
+		timesbackwards++;
+		Light_ChangeToValue(37, 192-timesbackwards);
+		Delay(1);
+	}
+	// Delay(35);
+	SetPlayerProperty(0,0, PROP_TOTALLYFROZEN);
+	Exit_Secret(0);
+}

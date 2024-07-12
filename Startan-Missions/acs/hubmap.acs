@@ -37,12 +37,12 @@ script "ChangeMusHub" (void)
 	}
 }
 
-str secretmidis[5] = {"D_EVIL","D_LEGION","D_115","D_COLIF","D_ARCHAI"};
-str secretmidiname[5] = {
-	"Evil Incarnate", "Legion of the Damned","115", "Coliformication","Archaic Doctrine"
+str secretmidis[6] = {"D_EVIL","D_LEGION","D_115","D_COLIF","D_ARCHAI","D_LOVESONG"};
+str secretmidiname[6] = {
+	"Evil Incarnate", "Legion of the Damned","115", "Coliformication","Archaic Doctrine", "Love Song for a Deadman"
 };
-str secretmidiauthor[5] ={
-	"Bobby Prince", " L.A. Sieben", "Gerardo Cappa", "Lippeth", "TrialD"
+str secretmidiauthor[6] ={
+	"Bobby Prince", " L.A. Sieben", "Gerardo Cappa", "Lippeth", "TrialD", "RemarkablyAmateur"
 };
 
 script "ChangeMusHub31" (void)
@@ -84,6 +84,14 @@ script "ChangeMusHub35" (void)
 	HudMessage(s:"MIDI: ",s:secretmidis[4];  HUDMSG_FADEOUT, 1, CR_WHITE, 0.5, 0.7, 3.0, 1);
 	HudMessage(s:"TITLE: ",s:secretmidiname[4];  HUDMSG_FADEOUT, 2, CR_WHITE, 0.5, 0.72, 3.0, 1);
 	HudMessage(s:"AUTHOR: ",s:secretmidiauthor[4];  HUDMSG_FADEOUT, 3, CR_WHITE, 0.5, 0.74, 3.0, 1);
+}
+script "ChangeMusHub36" (void)
+{
+	Music_Change(secretmidis[5], 0);
+	hubmusic = 0;
+	HudMessage(s:"MIDI: ",s:secretmidis[5];  HUDMSG_FADEOUT, 1, CR_WHITE, 0.5, 0.7, 3.0, 1);
+	HudMessage(s:"TITLE: ",s:secretmidiname[5];  HUDMSG_FADEOUT, 2, CR_WHITE, 0.5, 0.72, 3.0, 1);
+	HudMessage(s:"AUTHOR: ",s:secretmidiauthor[5];  HUDMSG_FADEOUT, 3, CR_WHITE, 0.5, 0.74, 3.0, 1);
 }
 
 script 1 (void)
@@ -169,6 +177,14 @@ script 35 (void)
 	HUDMSG_TYPEON, 10, CR_WHITE,0.5, 0.1, 2.0);
 }
 
+script 36 (void)
+{ //Enter MAP35 Sector 
+	SetFont("BIGFONT");
+	PlaySound(0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Enter Map:",s:"\n Diner at the End of the World";
+	HUDMSG_TYPEON, 10, CR_WHITE,0.5, 0.1, 2.0);
+}
+
 script "SecretLevelUnlock31" ENTER {
 	if(SecretLevel31 > 0){
 		Delay(35);
@@ -210,4 +226,5 @@ script 666  (void)
 	Door_Open(3, 32);
 	Door_Open(4, 32);
 	Door_Open(5, 32);
+	Door_Open(6, 32);
 }

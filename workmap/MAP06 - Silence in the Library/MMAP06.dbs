@@ -88,7 +88,7 @@ maps
 	
 	MMAP06
 	{
-		viewpositionx = -1694.478f;
+		viewpositionx = 66.73721f;
 		
 		grid
 		{
@@ -125,9 +125,9 @@ maps
 		defaultbottomtexture = "WOOD_N12";
 		defaulttoptexture = "WOOD_N12";
 		defaultwalltexture = "WOOD_N12";
-		viewpositiony = 590.0905f;
+		viewpositiony = 1460.769f;
 		overrideceilheight = false;
-		viewscale = 0.2818966f;
+		viewscale = 2.299514f;
 		
 		reloadresourcepostcommand
 		{
