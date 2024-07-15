@@ -30,9 +30,15 @@ script "CourtyardCleared" (void)
 	if(ThingCount(T_NONE,2)<=11)
 	{
 		// Ceiling_RaiseByValue(23, 16, 128);
-		Ceiling_MoveToValue(23, 16, 192);
-		ACS_NamedTerminate("CourtyardCleared",102);
+		ACS_NamedExecute("CourtyardCacoReveal",102,0,0,0);
+		ACS_NamedTerminate("CourtyardCacoReveal ",102);
 	}
+	ACS_NamedExecute("CourtyardCleared2",102,0,0,0);
+}
+
+script "CourtyardCacoReveal" (void)
+{
+	Ceiling_MoveToValue(23, 16, 192);
 }
 
 script "CourtyardCleared2" (void)
@@ -56,9 +62,9 @@ script "ExecutionField" (void)
 {
 	Door_Open(32, 32);
 	Floor_LowerByValue(30, 16, 128);
-	Floor_RaiseByValue(35, 64, 128);
-	Delay(35*10);
-	Ceiling_RaiseByValue(39, 64, 128);
+	Floor_RaiseByValue(40, 64, 128);  
+	Delay(35*10);  
+	Ceiling_RaiseByValue(39, 64, 128); 
 }
 
 script "PharaohMusic" (void)
@@ -85,4 +91,10 @@ script "PharaohTomb" (void)
 	// Delay(35);
 	SetPlayerProperty(0,0, PROP_TOTALLYFROZEN);
 	Exit_Secret(0);
+}
+
+script "VileTombTeleport" (void)
+{
+	Delay(35*3);
+	TeleportGroup(8, 7, 3,0, 1);
 }
