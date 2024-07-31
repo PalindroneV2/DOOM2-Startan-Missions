@@ -10,6 +10,7 @@ version "4.8.2"
 #include "zscript/actors/HealthArmor.zs"
 #include "zscript/actors/PowerUps.zs"
 #include "zscript/actors/HereticPort.zs"
+#include "zscript/actors/SMVehicles.zs"
 
 class DoomPlayerNew : DoomPlayer replaces DoomPlayer
 {

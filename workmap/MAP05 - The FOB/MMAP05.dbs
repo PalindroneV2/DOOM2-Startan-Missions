@@ -7,7 +7,7 @@ maps
 	
 	MMAP05
 	{
-		viewpositionx = -246.7696f;
+		viewpositionx = -1815.402f;
 		
 		grid
 		{
@@ -44,9 +44,9 @@ maps
 		defaultbottomtexture = "TEKGRE14";
 		defaulttoptexture = "TEKGRE14";
 		defaultwalltexture = "TEKGRE14";
-		viewpositiony = 1178.903f;
+		viewpositiony = 558.3191f;
 		overrideceilheight = false;
-		viewscale = 0.5297151f;
+		viewscale = 2.556833f;
 		
 		reloadresourcepostcommand
 		{

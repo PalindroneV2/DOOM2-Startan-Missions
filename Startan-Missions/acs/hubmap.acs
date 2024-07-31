@@ -5,6 +5,7 @@ global int 2 : SecretLevel32;
 global int 3 : SecretLevel33;
 global int 4 : SecretLevel34;
 global int 5 : SecretLevel35;
+global int 6 : SecretLevel36;
 
 int hubmusic = 0;
 
@@ -213,6 +214,12 @@ script "SecretLevelUnlock35" ENTER {
 	if(SecretLevel35 > 0){
 		Delay(35);
 		Door_Open(5, 32);
+	}
+}
+script "SecretLevelUnlock36" ENTER {
+	if(SecretLevel36 > 0){
+		Delay(35);
+		Door_Open(6, 32);
 	}
 }
 

@@ -2,6 +2,14 @@
 
 global int 3 : SecretLevel33;
 
+script 1500 ENTER
+{
+	ClearInventory();
+	GiveInventory("DoomFist", 1);
+	GiveInventory("WaltherPPK",1);
+	GiveInventory("Clip",32);
+}
+
 script  "YelloyHouse_BlueKey"  (void){
 	SpawnSpot("ShotgunGuy",3);
 	SpawnSpot("TeleportFog",3);

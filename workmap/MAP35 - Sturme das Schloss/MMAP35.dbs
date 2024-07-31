@@ -97,7 +97,7 @@ maps
 	
 	MMAP35
 	{
-		viewpositionx = -275.7347f;
+		viewpositionx = -34.61121f;
 		
 		grid
 		{
@@ -133,10 +133,10 @@ maps
 		defaultbottomtexture = "ROCK10D";
 		defaulttoptexture = "ROCK10D";
 		defaultwalltexture = "ROCK10D";
-		viewpositiony = 2737.103f;
+		viewpositiony = 535.4763f;
 		overrideceilheight = false;
 		defaultceiltexture = "F_SKY1";
-		viewscale = 0.1792158f;
+		viewscale = 0.5118582f;
 		
 		reloadresourcepostcommand
 		{

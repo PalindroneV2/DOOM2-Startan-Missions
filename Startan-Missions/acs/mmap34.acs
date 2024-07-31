@@ -2,6 +2,14 @@
 
 global int 4 : SecretLevel34;
 
+script 1500 ENTER
+{
+	ClearInventory();
+	GiveInventory("DoomFist", 1);
+	GiveInventory("WaltherPPK",1);
+	GiveInventory("Clip",32);
+}
+
 script "PlayerAssignTID" ENTER
 {
     Thing_ChangeTID(0,935);

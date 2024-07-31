@@ -196,3 +196,33 @@ extend class EnemyRocket
 		A_Explode(50, 96, XF_HURTSOURCE, false, 40);
 	}
 }
+
+//Fuck you, Revenants
+class RevenantTracerNoRand : Actor replaces RevenantTracer
+{
+	Default
+	{
+		Radius 11;
+		Height 8;
+		Speed 10;
+		DamageFunction (5*Random(2,8));
+		Projectile;
+		+SEEKERMISSILE 
+		+RANDOMIZE
+		+ZDOOMTRANS
+		SeeSound "skeleton/attack";
+		DeathSound "skeleton/tracex";
+		RenderStyle "Add";
+	}
+	States
+	{
+	Spawn:
+		FATB AB 2 BRIGHT A_Tracer;
+		Loop;
+	Death:
+		FBXP A 8 BRIGHT;
+		FBXP B 6 BRIGHT;
+		FBXP C 4 BRIGHT;
+		Stop;
+	}
+}

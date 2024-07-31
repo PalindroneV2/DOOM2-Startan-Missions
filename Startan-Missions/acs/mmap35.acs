@@ -2,10 +2,10 @@
 
 global int 5 : SecretLevel35;
 
-script 1 ENTER
+script 1 enter
 {
 	ClearInventory();
-	GiveInventory("Fist", 1);
+	GiveInventory("DoomFist", 1);
 	GiveInventory("WaltherPPK",1);
 	GiveInventory("Clip",32);
 }
