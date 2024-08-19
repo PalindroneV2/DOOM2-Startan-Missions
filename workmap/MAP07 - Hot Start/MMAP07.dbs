@@ -5,7 +5,7 @@ strictpatches = 0;
 maps
 {
 	
-	HUBMAP
+	MMAP07
 	{
 		
 		resources
@@ -20,22 +20,12 @@ maps
 				notfortesting = 0;
 				requiredarchives = "";
 			}
-			
-			resource1
-			{
-				type = 2;
-				location = "C:\\Users\\goopl\\Desktop\\Lambda\\DOOM\\GZDOOM\\lights.pk3";
-				option1 = 0;
-				option2 = 0;
-				notfortesting = 0;
-				requiredarchives = "";
-			}
 		}
-		defaultfloortexture = "PTEXPTP1";
-		defaultceiltexture = "PTEXPTP1";
-		defaulttoptexture = "SUPP316A";
-		defaultwalltexture = "SUPP316A";
-		defaultbottomtexture = "SUPP316A";
+		defaultfloortexture = "GROUND09";
+		defaultceiltexture = "ROCK30";
+		defaulttoptexture = "BSTONK2";
+		defaultwalltexture = "BSTONK2";
+		defaultbottomtexture = "BSTONK2";
 		custombrightness = 196;
 		customfloorheight = 0;
 		customceilheight = 128;
@@ -48,9 +38,9 @@ maps
 		overrideceilheight = false;
 		overridebrightness = false;
 		uselongtexturenames = false;
-		viewpositionx = 652.8403f;
-		viewpositiony = -504.7328f;
-		viewscale = 0.4999867f;
+		viewpositionx = 718.6573f;
+		viewpositiony = -138.7421f;
+		viewscale = 1.85646f;
 		scriptcompiler = "zdoom_acs.cfg";
 		
 		grid
@@ -105,7 +95,6 @@ maps
 				resource;
 				tabtype = 0;
 				scripttype = 18;
-				caretposition = 307;
 			}
 			
 			document1

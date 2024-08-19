@@ -16,14 +16,16 @@ str currentweapon;
 str lastweapon;
 str lastweapon2;
 str newweapon;
+str anothermiddleman;
 
 script 1 enter
 {
-	ClearInventory();
-	GiveInventory("DoomFist", 1);
-	GiveInventory("WaltherPPK",1);
-	GiveInventory("Clip",32);
+	// ClearInventory();
     Thing_ChangeTID(0,935);
+    ClearActorInventory(935);
+	GiveActorInventory(935, "DoomFist", 1);
+	GiveActorInventory(935, "WaltherPPK",1);
+	GiveActorInventory(935, "Clip",32);
     Delay(35);
     currentweapon = GetWeapon();
 }
@@ -52,14 +54,16 @@ script 666 ENTER
     Restart;
 }
 
-script "PukingGunNames" ENTER
-{
-    HudMessageBold(s:"CurrentWeapon: ", s:currentweapon;  HUDMSG_FADEOUT, 199, CR_WHITE, 0.9, 0.5, 1.0, 1);
-    HudMessageBold(s:"LastWeapon: ", s:lastweapon;  HUDMSG_FADEOUT, 200, CR_WHITE, 0.9, 0.525, 1.0, 1);
-    HudMessageBold(s:"LastWeapon2: ", s:lastweapon2;  HUDMSG_FADEOUT, 201, CR_WHITE, 0.9, 0.55, 1.0, 1);
-    Delay(1);
-    Restart;
-}
+// script "PukingGunNames" ENTER
+// {
+//     HudMessageBold(s:"CurrentWeapon: ", s:currentweapon;  HUDMSG_FADEOUT, 199, CR_WHITE, 0.9, 0.5, 1.0, 1);
+//     HudMessageBold(s:"LastWeapon: ", s:lastweapon;  HUDMSG_FADEOUT, 200, CR_WHITE, 0.9, 0.525, 1.0, 1);
+//     HudMessageBold(s:"LastWeapon2: ", s:lastweapon2;  HUDMSG_FADEOUT, 201, CR_WHITE, 0.9, 0.55, 1.0, 1);
+//     HudMessageBold(s:"NewWeapon: ", s:newweapon;  HUDMSG_FADEOUT, 202, CR_WHITE, 0.9, 0.575, 1.0, 1);
+//     HudMessageBold(s:"AnotherMiddleman: ", s:anothermiddleman;  HUDMSG_FADEOUT, 203, CR_WHITE, 0.9, 0.6, 1.0, 1);
+//     Delay(1);
+//     Restart;
+// }
 
 // str weakenemies[4] = {"DoomImp", "W3DMutant", "EnemyDog", "LostSoul"};
 str weakenemies[2] = {"DoomImp", "EnemyDog"};
@@ -254,13 +258,18 @@ script "PointsAddCheat" (void){
 
 function void  MaxAmmoHandler(void)
 {
-    GiveInventory("Clip", 200);
-    GiveInventory("Shell", 50);
-    GiveInventory("RocketAmmo", 50);
-    GiveInventory("Cell", 300);
-    GiveInventory("RifleBullets", 50);
+    // GiveInventory("Clip", 200);
+    // GiveInventory("Shell", 50);
+    // GiveInventory("RocketAmmo", 50);
+    // GiveInventory("Cell", 300);
+    // GiveInventory("RifleBullets", 50);
+    GiveActorInventory(935, "Clip", 400);
+    GiveActorInventory(935, "Shell", 100);
+    GiveActorInventory(935, "RocketAmmo", 100);
+    GiveActorInventory(935, "Cell", 600);
+    GiveActorInventory(935, "RifleBullets", 80);
     SetFont("BIGFONT");
-    HudMessageBold(s:"MAX AMMO!";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 2.0, 1);
+    HudMessageBold(s:"MAX AMMO!";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.6, 2.0, 1);
 }
 function void  NukeKaboom(void)
 {
@@ -270,7 +279,7 @@ function void  NukeKaboom(void)
     Thing_Destroy(118,1);
     zombiepoints = zombiepoints + 500;
     SetFont("BIGFONT");
-    HudMessageBold(s:"NUKE!";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 2.0, 1);
+    HudMessageBold(s:"NUKE!";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.6, 2.0, 1);
 }
 script "DoublePoints"(void)
 {
@@ -282,39 +291,32 @@ script "DoublePoints"(void)
     while(powertimer > 0){
         Delay(1);
         powertimer--;
-        HudMessageBold(s:"DOUBLE POINTS!";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7,1.0, 1);
-        HudMessage(i:powertimer / 35;  HUDMSG_FADEOUT, 15, CR_WHITE, 0.5, 0.725, 1.0, 1);
+        HudMessageBold(s:"DOUBLE POINTS!";  HUDMSG_FADEOUT, 1602, CR_WHITE, 0.5, 0.7,1.0, 1);
+        HudMessage(i:powertimer / 35;  HUDMSG_FADEOUT, 1603, CR_WHITE, 0.5, 0.725, 1.0, 1);
     }
     doublepointsbool = FALSE;
     // powertimer = 15 * 35;
 }
 function void MaxArmorHandler(void)
 {
-    GiveInventory("BlueArmor50", 1);
+    // GiveInventory("BlueArmor50", 1);
+    GiveActorInventory(935, "BlueArmor50", 1);
     SetFont("BIGFONT");
-    HudMessageBold(s:"MAX ARMOR!";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 2.0, 1);
+    HudMessageBold(s:"MAX ARMOR!";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.6, 2.0, 1);
 }
 function void SoulsphereHandler(void)
 {
-    GiveInventory("Soulsphere", 100);
+    // GiveInventory("Soulsphere", 100);
+    GiveActorInventory(935, "Soulsphere", 100);
     SetFont("BIGFONT");
-    HudMessageBold(s:"SOULSPHERE!";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 2.0, 1);
+    HudMessageBold(s:"SOULSPHERE!";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.6, 2.0, 1);
 }
 function void BerserkAdder(void)
 {
-    GiveInventory("NewBerserk", 100);
+    // GiveInventory("NewBerserk", 100);
+    GiveActorInventory(935, "NewBerserk", 100);
     SetFont("BIGFONT");
-    HudMessageBold(s:"BERSERK!";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 2.0, 1);
-}
-
-script "PukePowerUp" (void)
-{
-    int powerrandy = Random(1, 2);
-    if(powerrandy == 1){
-        MaxArmorHandler();
-    }else if(powerrandy == 2){
-        SoulsphereHandler();
-    }
+    HudMessageBold(s:"BERSERK!";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.6, 2.0, 1);
 }
 
 function void PowerUpHandler(void)
@@ -335,6 +337,11 @@ function void PowerUpHandler(void)
     }
 }
 
+script "PukePowerUp" (void)
+{
+    PowerUpHandler();
+}
+
 // script "MaxAmmoHandler" (void)
 // {
 //     GiveInventory("Clip", 200);
@@ -351,64 +358,95 @@ str weaponboxnames[11] = {"Walther PPK", "MP40", "Minigun", "M16A1", "Trenchgun"
 
 script "MysteryBox" (void){
     int randy;
-    lastweapon2 = currentweapon;
+    // str anothermiddleman;
     currentweapon = GetWeapon();
     
-    if(StrCmp(currentweapon, "DoomFist") == 0)
+    // if(StrCmp(currentweapon, "DoomFist") == 0)
+    // {
+    //     HudMessageBold(s:"Need another weapon to exchange.";  HUDMSG_FADEOUT | HUDMSG_LOG, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+    //     // currentweapon = lastweapon2;
+    //     Delay(35);
+    // }else{
+    if(zombiepoints >= 950)
     {
-        HudMessageBold(s:"Need another weapon to exchange.";  HUDMSG_FADEOUT | HUDMSG_LOG, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
-        currentweapon = lastweapon2;
-        Delay(35);
-    }else{
-        if(zombiepoints >= 950)
+        // HudMessageBold(s:"Exchanging ", s:currentweapon;  HUDMSG_FADEOUT | HUDMSG_LOG, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+        // Delay(35);
+        randy = Random(0, 10);
+        // newweapon = weaponbox[randy];
+        for (int el = 0;el <= 10; el++)
         {
-            // HudMessageBold(s:"Exchanging ", s:currentweapon;  HUDMSG_FADEOUT | HUDMSG_LOG, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
-            // Delay(35);
-            randy = Random(0, 10);
-            // newweapon = weaponbox[randy];
-            while ((StrCmp(newweapon, currentweapon) == 0) || (StrCmp(newweapon, lastweapon) == 0) || (StrCmp(newweapon, lastweapon2) == 0))
-            {
-                randy = Random(0, 10);
-                newweapon = weaponbox[randy];
-                // Log(i:randy, s:newweapon);
-            }
-            HudMessageBold(s:weaponboxnames[randy];  HUDMSG_FADEOUT | HUDMSG_LOG, 901, CR_WHITE, 0.5, 0.725, 1.0, 1);
-            zombiepoints = zombiepoints - 950;
-            Delay(1);
-            GiveInventory(newweapon, 1);
-            if(StrCmp("DoomFist", lastweapon) == 1){
-                TakeInventory(currentweapon, 1);
-            }
-            lastweapon2 = lastweapon;
-            lastweapon = currentweapon;
-            Delay(20);
-            currentweapon = newweapon;
-            if(randy<=3)
-            {
-                GiveInventory("Clip", 200);
-            }else if(randy ==4 || randy == 5)
-            {
-                GiveInventory("Shell", 50);
-            }else if (randy == 6)
-            {
-                GiveInventory("RocketAmmo", 50);
-            }else if(randy > 6 && randy < 10)
-            {
-                GiveInventory("Cell", 300);
-            }else if (randy == 10)
-            {
-                GiveInventory("RifleBullets", 50);
-            }
-            Delay(14);
-        }else{
-            HudMessageBold(s:"Not Enough Points.";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
-            Delay(35);
+            SpawnSpotFacing(weaponbox[el], 950, 654);
+            Delay(5);
+            Thing_Remove(654);
         }
+        while ((StrCmp(newweapon, lastweapon) == 0) || (StrCmp(newweapon, currentweapon) == 0) || (StrCmp(newweapon, anothermiddleman) == 0))
+        {
+            randy = Random(0, 10);
+            newweapon = weaponbox[randy];
+            // Log(i:randy, s:newweapon);
+        }
+        zombiepoints = zombiepoints - 950;
+        SpawnSpotFacing(newweapon, 951, 655);
+        SetThingSpecial(655, ACS_NamedExecute, "MysteryBoxGunSwitch");
+        lastweapon2 = lastweapon;
+        lastweapon = currentweapon;
+        currentweapon = newweapon;
+        anothermiddleman = newweapon;
+        Delay(20);
+        if(randy<=3)
+        {
+            GiveActorInventory(935, "Clip", 400);
+        }else if(randy ==4 || randy == 5)
+        {
+            GiveActorInventory(935, "Shell", 100);
+        }else if (randy == 6)
+        {
+            GiveActorInventory(935, "RocketAmmo", 100);
+        }else if(randy > 6 && randy < 10)
+        {
+            GiveActorInventory(935, "Cell", 300);
+        }else if (randy == 10)
+        {
+            GiveActorInventory(935, "RifleBullets", 50);
+        }
+        Delay(105);
+        Thing_Remove(655);
+    }else{
+        HudMessageBold(s:"Not Enough Points.";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+        Delay(35);
     }
+    // }
 }
+
+script "MysteryBoxGunSwitch" (void)
+{
+    str fuckthisgun;
+    int randy;
+    if(StrCmp(GetWeapon(), "DoomFist") == 0){
+        while (randy < 11)
+        {
+            randy = Random(0, 10);
+            fuckthisgun = weaponbox[randy];
+            Delay(1);
+            if (CheckInventory(fuckthisgun) > 0)
+            {
+                TakeInventory(fuckthisgun, 1);
+                Break;
+            }
+        }
+    }else if(StrCmp(GetWeapon(), newweapon) == 0){
+        TakeInventory(GetWeapon(), 1);
+        GiveInventory(newweapon, 1);
+    }else{
+        TakeInventory(GetWeapon(), 1);
+    }
+    // Log(s:"---Newloop---");
+}
+
 script "MysteryBoxTexto" (void)
 {
     HudMessageBold(s:"Mystery Box: $950";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+    Delay(35*5);
 }
 
 script "JuggerNog" (void)
@@ -442,6 +480,44 @@ script "JuggerNogTexto" (void)
 {
     HudMessageBold(s:"Health: $250";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
     if(playerisalive >= 100)
+    {
+        HudMessageBold(s:"Already at full health.";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+        Delay(35);
+    }
+}
+
+script "QuickRevive" (void)
+{
+    playerisarmored =  CheckInventory("Armor");
+    int randy = Random(1, 10);
+    if(playerisalive < 200)
+    {
+        if(zombiepoints > 750)
+        {
+            zombiepoints = zombiepoints - 750;
+            if(randy == 1)
+            {
+                GiveInventory("Megasphere", 1);
+                HudMessageBold(s:"Megasphere!";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+                Delay(35);
+            }else{
+                GiveInventory("Soulsphere", 100);
+                HudMessageBold(s:"Soulsphere!";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+                Delay(35);
+            }
+        }else{
+            HudMessageBold(s:"Not Enough Points.";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+            Delay(35);
+        }
+    }else{
+        HudMessageBold(s:"Already at full health.";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+        Delay(35);
+    }
+}
+script "QuickReviveTexto" (void)
+{
+    HudMessageBold(s:"Power Up: $750";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+    if(playerisalive >= 200)
     {
         HudMessageBold(s:"Already at full health.";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
         Delay(35);

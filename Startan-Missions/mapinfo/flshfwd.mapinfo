@@ -135,6 +135,23 @@ map MMAP06 "Silence in the Library"
 	NoCrouch
 }
 
+map MMAP07 "Hot Start"
+{
+	next = "HUBMAP"
+	secretnext = "MMAP37"
+    sky1 = "SKYD13"
+	cluster = 21
+	par = 300
+	music = "D_PLUNGE"
+	Author = "Palindrone"
+	levelnum = 107
+	ResetInventory
+	ResetItems
+	lightmode = 16
+	NoJump
+	NoCrouch
+}
+
 cluster 21
 {
 }
