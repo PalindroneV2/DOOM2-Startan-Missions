@@ -76,6 +76,7 @@ script "PharaohMusic" (void)
 
 script "PharaohTomb" (void)
 {
+	Delay(10);
 	SetPlayerProperty(0,1, PROP_TOTALLYFROZEN);
 	ClearInventory();
 	Floor_LowerByValue(37, 8, 64);
@@ -96,5 +97,5 @@ script "PharaohTomb" (void)
 script "VileTombTeleport" (void)
 {
 	Delay(35*3);
-	TeleportGroup(8, 7, 3,0, 1);
+	TeleportGroup(8, 7, 6,0, 1);
 }
