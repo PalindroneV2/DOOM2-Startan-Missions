@@ -340,11 +340,6 @@ cluster 27
 	"Nazi-controlled castle..."
 	exittext =
  	"You are warped back to your time",
-	"content that you managed to send",
-	"more Nazi scum to hell.",
-	"You wonder if some of the demons you",
-	"kill next will be the same krauts you",
-	"slaughtered..."
 }
 
 map MMAP36 "Diner at the End of the World"
