@@ -1,1 +1,29 @@
 #include "zcommon.acs"
+
+script "StairtoTP" (void)
+{
+    Floor_MoveToValue(2, 32, -24, 0);
+    Floor_MoveToValue(3, 32, -40, 0);
+    Floor_MoveToValue(4, 32, -56, 0);
+    Floor_MoveToValue(5, 32, -72, 0);
+}
+
+script "LowerEnemies1" (void)
+{
+    Floor_LowerByValue(8,16, 176);
+    Ceiling_LowerByValue(8,16, 176);
+    Floor_LowerByValue(9,16, 192);
+    Ceiling_LowerByValue(9,16, 128);
+}
+
+script "Bridgebreak" (void)
+{
+    Floor_LowerByValue(12,128, 256);
+    Delay(16);
+    ChangeFloor(12, "LAVA1");
+    Light_ChangeToValue(12, 224);
+    Sector_SetColor(12, 255, 188, 121, 0);
+    Sector_SetFloorGlow(12, 128, 255, 128, 0);
+    SetSectorDamage(12, 56, "FIRE", 16, 0);
+    SetSectorTerrain(12, 0, "Sludge");
+}

@@ -1,3 +1,5 @@
+// #include "./wunderwaffe.zs"
+
 class MP40 : DoomWeapon
 {
 	Default
@@ -272,6 +274,58 @@ class RayGun : DoomWeapon
 	}
 }
 
+extend class RayGun
+{
+	action void A_RayGun_Fire()
+	{
+		if (player == null)
+		{
+			return;
+		}
+		Weapon weap = player.ReadyWeapon;
+		if (weap != null && invoker == weap && stateinfo != null && stateinfo.mStateType == STATE_Psprite)
+		{
+			if (!weap.DepleteAmmo (weap.bAltFire, true, 1))
+				return;
+			
+			State flash = weap.FindState('Flash');
+			if (flash != null)
+			{
+				player.SetSafeFlash(weap, flash, random[FirePlasma](0, 1));
+			}
+			
+		}
+		SpawnPlayerMissile ("RayGunBall");
+	}
+}
+
+class RayGunBall : Actor
+{
+	Default
+	{
+		Radius 13;
+		Height 8;
+		Speed 50;
+		DamageFunction (200);
+		Projectile;
+		+RANDOMIZE
+		+ZDOOMTRANS
+		RenderStyle "Add";
+		Alpha 0.75;
+		SeeSound "baby/attack";
+		DeathSound "baby/shotx";
+	}
+	States
+	{
+	Spawn:
+		APLS AB 5 BRIGHT;
+		Loop;
+	Death:
+		APBX ABCDE 5 BRIGHT;
+		Stop;
+	}
+}
+
 class Trenchgun : DoomWeapon
 {
     Default
@@ -329,58 +383,6 @@ extend class Trenchgun
 		A_FireBullets(7.5,0, 8, 12, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_GunFlash();
     }
-}
-
-extend class RayGun
-{
-	action void A_RayGun_Fire()
-	{
-		if (player == null)
-		{
-			return;
-		}
-		Weapon weap = player.ReadyWeapon;
-		if (weap != null && invoker == weap && stateinfo != null && stateinfo.mStateType == STATE_Psprite)
-		{
-			if (!weap.DepleteAmmo (weap.bAltFire, true, 1))
-				return;
-			
-			State flash = weap.FindState('Flash');
-			if (flash != null)
-			{
-				player.SetSafeFlash(weap, flash, random[FirePlasma](0, 1));
-			}
-			
-		}
-		SpawnPlayerMissile ("RayGunBall");
-	}
-}
-
-class RayGunBall : Actor
-{
-	Default
-	{
-		Radius 13;
-		Height 8;
-		Speed 50;
-		DamageFunction (200);
-		Projectile;
-		+RANDOMIZE
-		+ZDOOMTRANS
-		RenderStyle "Add";
-		Alpha 0.75;
-		SeeSound "baby/attack";
-		DeathSound "baby/shotx";
-	}
-	States
-	{
-	Spawn:
-		APLS AB 5 BRIGHT;
-		Loop;
-	Death:
-		APBX ABCDE 5 BRIGHT;
-		Stop;
-	}
 }
 
 class Kar98k : DoomWeapon

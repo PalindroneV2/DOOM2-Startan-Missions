@@ -152,7 +152,7 @@ map MMAP07 "Hot Start"
 	NoCrouch
 }
 
-map MMAP08 "Weapon Factory"
+map MMAP09 "Weapon Factory"
 {
 	next = "HUBMAP"
 	secretnext = "MMAP38"

@@ -23,9 +23,9 @@ maps
 		}
 		defaultfloortexture = "GRAYFLA1";
 		defaultceiltexture = "F_SKY1";
-		defaulttoptexture = "BRICKPL0";
-		defaultwalltexture = "BRICKPL0";
-		defaultbottomtexture = "BRICKPL0";
+		defaulttoptexture = "CITY07";
+		defaultwalltexture = "CITY07";
+		defaultbottomtexture = "CITY07";
 		custombrightness = 196;
 		customfloorheight = 0;
 		customceilheight = 128;
@@ -41,6 +41,87 @@ maps
 		viewpositionx = -622.5884f;
 		viewpositiony = -303.8168f;
 		viewscale = 1.428047f;
+		scriptcompiler = "zdoom_acs.cfg";
+		
+		grid
+		{
+			background = "";
+			backsource = 0;
+			backoffsetx = 0;
+			backoffsety = 0;
+			backscalex = 100;
+			backscaley = 100;
+			gridsize = 8;
+			gridrotate = 0;
+			gridoriginx = 0;
+			gridoriginy = 0;
+		}
+		
+		reloadresourceprecommand
+		{
+			autocloseonsuccess = true;
+			exitcodeiserror = true;
+			stderriserror = true;
+		}
+		
+		reloadresourcepostcommand
+		{
+			autocloseonsuccess = true;
+			exitcodeiserror = true;
+			stderriserror = true;
+		}
+		
+		testprecommand
+		{
+			autocloseonsuccess = true;
+			exitcodeiserror = true;
+			stderriserror = true;
+		}
+		
+		testpostcommand
+		{
+			autocloseonsuccess = true;
+			exitcodeiserror = true;
+			stderriserror = true;
+		}
+	}
+	
+	MMAP09
+	{
+		
+		resources
+		{
+			
+			resource0
+			{
+				type = 1;
+				location = "C:\\Users\\goopl\\Desktop\\Lambda\\DOOM\\wads\\mywads\\DOOM2-Startan-Missions\\Startan-Missions";
+				option1 = 0;
+				option2 = 0;
+				notfortesting = 0;
+				requiredarchives = "";
+			}
+		}
+		defaultfloortexture = "GRAYFLA1";
+		defaultceiltexture = "F_SKY1";
+		defaulttoptexture = "CITY07";
+		defaultwalltexture = "CITY07";
+		defaultbottomtexture = "CITY07";
+		custombrightness = 196;
+		customfloorheight = 0;
+		customceilheight = 128;
+		overridefloortexture = false;
+		overrideceiltexture = false;
+		overridetoptexture = false;
+		overridemiddletexture = false;
+		overridebottomtexture = false;
+		overridefloorheight = false;
+		overrideceilheight = false;
+		overridebrightness = false;
+		uselongtexturenames = false;
+		viewpositionx = -21.10224f;
+		viewpositiony = 287.5514f;
+		viewscale = 2.413399f;
 		scriptcompiler = "zdoom_acs.cfg";
 		
 		grid
