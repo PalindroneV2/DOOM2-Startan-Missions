@@ -193,6 +193,7 @@ extend class M16
 	action void A_M16Fire()
 	{
 		A_FireBullets (1.5,1.5,-1,18,"BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_Quake(1,1,0,1);
 		// Name NewAmmoClassName = 'TangoBulletClip';
 		// Class<Ammo> NewAmmoClass = NewAmmoClassName;
 		// if(NewAmmoClass)
@@ -205,6 +206,7 @@ extend class M16
 	action void A_M16SemiFire()
 	{
 		A_FireBullets (0.5,0.5,1,18,"BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_Quake(1,1,0,1);
 		// Name NewAmmoClassName = 'TangoBulletClip';
 		// Class<Ammo> NewAmmoClass = NewAmmoClassName;
 		// if(NewAmmoClass)
@@ -381,6 +383,7 @@ extend class Trenchgun
     {
 		A_StartSound ("TRNCFIR", CHAN_WEAPON);
 		A_FireBullets(7.5,0, 8, 12, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_Quake(2,3,0,3);
 		A_GunFlash();
     }
 }

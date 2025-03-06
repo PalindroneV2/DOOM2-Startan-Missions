@@ -84,6 +84,11 @@ class W3DMissionsGuard : W3DGuard
 		Spawn:
 			NZGL AB 10 A_Look;
 			Loop;
+		Raise:
+			HRZM N 5;
+			HRZM MLKJI 5;
+			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }
 
@@ -104,6 +109,11 @@ class W3DHeerGuard : W3DGuard
 		Spawn:
 			HPGD AB 10 A_Look;
 			Loop;
+		Raise:
+			HRZM N 5;
+			HRZM MLKJI 5;
+			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }
 class W3DAfrikaGuard : W3DGuard
@@ -123,6 +133,11 @@ class W3DAfrikaGuard : W3DGuard
 		Spawn:
 			APGD AB 10 A_Look;
 			Loop;
+		Raise:
+			HRZM N 5;
+			HRZM MLKJI 5;
+			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }
 class W3DSSGuard : W3DGuard
@@ -144,6 +159,11 @@ class W3DSSGuard : W3DGuard
 		Spawn:
 			SPGD AB 10 A_Look;
 			Loop;
+		Raise:
+			SSZM N 5;
+			SSZM MLKJI 5;
+			SSZM I 0 A_CustomMissile("SSSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }
 
@@ -175,6 +195,16 @@ class W3DHeerGuardSMG : W3DGuard
 			"####" G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
 			"####" F 2 A_CPosRefire;
 			Goto SMGFire+1;
+		Raise:
+			HRZM N 5;
+			HRZM MLKJI 5;
+			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
+		Raise:
+			HRZM N 5;
+			HRZM MLKJI 5;
+			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }
 class W3DAfrikaGuardSMG : W3DHeerGuardSMG
@@ -195,6 +225,11 @@ class W3DAfrikaGuardSMG : W3DHeerGuardSMG
 		Spawn:
 			AMGD AB 10 A_Look;
 			Loop;
+		Raise:
+			HRZM N 5;
+			HRZM MLKJI 5;
+			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }
 class W3DSSGuardSMG : W3DHeerGuardSMG
@@ -217,5 +252,10 @@ class W3DSSGuardSMG : W3DHeerGuardSMG
 		Spawn:
 			SMGD AB 10 A_Look;
 			Loop;
+		Raise:
+			SSZM N 5;
+			SSZM MLKJI 5;
+			SSZM I 0 A_CustomMissile("SSSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }

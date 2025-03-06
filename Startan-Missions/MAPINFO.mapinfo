@@ -67,6 +67,8 @@ DoomEdNums
 11543=W3DAfrikaOfficerSMG
 11544=W3DSSOfficerSMG
 11545=WaltherPPK
+11546=W3DSSZombie
+11547=W3DHeerZombie
 11600=W3DPotTree
 11601=W3DPotPlant
 11602=W3DPotAlone
@@ -96,6 +98,8 @@ DoomEdNums
 11626=W3DDeadSSGuard
 11627=W3DDeadSSOfficer
 11628=W3DDeadSSNCO
+11629=W3DDeadSSZombie
+11630=W3DDeadHeerZombie
 11700=DeadCyberdemon
 11701=DeadSpiderMastermind
 11702=DeadArachnotron

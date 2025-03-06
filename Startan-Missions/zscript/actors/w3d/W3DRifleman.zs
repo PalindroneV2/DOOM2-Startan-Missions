@@ -107,6 +107,11 @@ class W3DHeerRifleman : W3DRifleman
 		Spawn:
 			HRGD AB 10 A_Look;
 			Loop;
+		Raise:
+			HRZM N 5;
+			HRZM MLKJI 5;
+			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }
 class W3DAfrikaRifleman : W3DRifleman
@@ -125,6 +130,11 @@ class W3DAfrikaRifleman : W3DRifleman
 		Spawn:
 			ARGD AB 10 A_Look;
 			Loop;
+		Raise:
+			HRZM N 5;
+			HRZM MLKJI 5;
+			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }
 class W3DSSRifleman : W3DRifleman
@@ -145,5 +155,10 @@ class W3DSSRifleman : W3DRifleman
 		Spawn:
 			SRGD AB 10 A_Look;
 			Loop;
+		Raise:
+			SSZM N 5;
+			SSZM MLKJI 5;
+			SSZM I 0 A_CustomMissile("SSSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }

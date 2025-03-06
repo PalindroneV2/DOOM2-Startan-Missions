@@ -111,6 +111,11 @@ class W3DHeerOfficer : W3DOfficer
 		Spawn:
 			HPOF AB 10 A_Look;
 			Loop;
+		Raise:
+			HRZM N 5;
+			HRZM MLKJI 5;
+			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }
 class W3DAfrikaOfficer : W3DOfficer
@@ -129,6 +134,11 @@ class W3DAfrikaOfficer : W3DOfficer
 		Spawn:
 			APOF AB 10 A_Look;
 			Loop;
+		Raise:
+			HRZM N 5;
+			HRZM MLKJI 5;
+			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }
 class W3DSSOfficer : W3DOfficer
@@ -149,6 +159,11 @@ class W3DSSOfficer : W3DOfficer
 		Spawn:
 			SPOF AB 10 A_Look;
 			Loop;
+		Raise:
+			SSZM N 5;
+			SSZM MLKJI 5;
+			SSZM I 0 A_CustomMissile("SSSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }
 
@@ -179,6 +194,11 @@ class W3DHeerOfficerSMG : W3DOfficer
 			"####" G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
 			"####" F 2 A_CPosRefire;
 			Goto SMGFire+1;
+		Raise:
+			HRZM N 5;
+			HRZM MLKJI 5;
+			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }
 class W3DAfrikaOfficerSMG : W3DHeerOfficerSMG
@@ -198,6 +218,11 @@ class W3DAfrikaOfficerSMG : W3DHeerOfficerSMG
 		Spawn:
 			AMOF AB 10 A_Look;
 			Loop;
+		Raise:
+			HRZM N 5;
+			HRZM MLKJI 5;
+			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }
 class W3DSSOfficerSMG : W3DHeerOfficerSMG
@@ -219,5 +244,10 @@ class W3DSSOfficerSMG : W3DHeerOfficerSMG
 		Spawn:
 			SMOF AB 10 A_Look;
 			Loop;
+		Raise:
+			SSZM N 5;
+			SSZM MLKJI 5;
+			SSZM I 0 A_CustomMissile("SSSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }

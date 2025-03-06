@@ -110,6 +110,11 @@ class W3DHeerNCO : W3DWaffenSS
 		Spawn:
 			HMNC AB 10 A_Look;
 			Loop;
+		Raise:
+			HRZM N 5;
+			HRZM MLKJI 5;
+			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }
 class W3DAfrikaNCO : W3DWaffenSS
@@ -128,6 +133,11 @@ class W3DAfrikaNCO : W3DWaffenSS
 		Spawn:
 			AMNC AB 10 A_Look;
 			Loop;
+		Raise:
+			HRZM N 5;
+			HRZM MLKJI 5;
+			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }
 class W3DSSNCO : W3DWaffenSS
@@ -148,6 +158,11 @@ class W3DSSNCO : W3DWaffenSS
 		Spawn:
 			SMNC AB 10 A_Look;
 			Loop;
+		Raise:
+			SSZM N 5;
+			SSZM MLKJI 5;
+			SSZM I 0 A_CustomMissile("SSSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }
 
@@ -177,6 +192,11 @@ class W3DHeerNCOPistol : W3DWaffenSS
 			"####" F 5 A_FaceTarget;
 			"####" F 2 A_CPosRefire;
 			Goto PistolFire+1;
+		Raise:
+			HRZM N 5;
+			HRZM MLKJI 5;
+			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }
 class W3DAfrikaNCOPistol : W3DWaffenSS
@@ -196,6 +216,20 @@ class W3DAfrikaNCOPistol : W3DWaffenSS
 		Spawn:
 			APNC AB 10 A_Look;
 			Loop;
+		Aim:
+			"####" EF 5 A_FaceTarget;
+			Goto PistolFire;
+		PistolFire:
+			"####" F 7 A_FaceTarget;
+			"####" G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
+			"####" F 5 A_FaceTarget;
+			"####" F 2 A_CPosRefire;
+			Goto PistolFire+1;
+		Raise:
+			HRZM N 5;
+			HRZM MLKJI 5;
+			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }
 class W3DSSNCOPistol : W3DWaffenSS
@@ -217,5 +251,19 @@ class W3DSSNCOPistol : W3DWaffenSS
 		Spawn:
 			SPNC AB 10 A_Look;
 			Loop;
+		Aim:
+			"####" EF 5 A_FaceTarget;
+			Goto PistolFire;
+		PistolFire:
+			"####" F 7 A_FaceTarget;
+			"####" G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
+			"####" F 5 A_FaceTarget;
+			"####" F 2 A_CPosRefire;
+			Goto PistolFire+1;
+		Raise:
+			SSZM N 5;
+			SSZM MLKJI 5;
+			SSZM I 0 A_CustomMissile("SSSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			Stop;
 	}
 }

@@ -2,6 +2,7 @@
 #include "./w3d/W3DNCO.zs"
 #include "./w3d/W3DOfficer.zs"
 #include "./w3d/W3DRifleman.zs"
+#include "./w3d/W3DZombies.zs"
 
 class EnemyDog : MBFHelperDog
 {

@@ -12,9 +12,28 @@ naziguard/die5		NZGDDIE4
 
 naziofficer/sight			NAZOSEE
 naziofficer/death			NAZODIE
-								
-naziguard/sight	NZGDSEE
 $random naziguard/death		{ naziguard/die1 naziguard/die2 naziguard/die3 naziguard/die4 naziguard/die5 }
+
+w3dzombie/see1   ZMBSEE01
+w3dzombie/see2   ZMBSEE02
+w3dzombie/see3   ZMBSEE03
+w3dzombie/see4   ZMBSEE04
+w3dzombie/see5   ZMBSEE05
+$random w3dzombie/see   {w3dzombie/see1  w3dzombie/see2 w3dzombie/see3  w3dzombie/see4  w3dzombie/see5}
+								
+w3dzombie/chase1   ZMBRUN01
+w3dzombie/chase2   ZMBRUN02
+w3dzombie/chase3   ZMBRUN03
+w3dzombie/chase4   ZMBRUN04
+w3dzombie/chase5   ZMBRUN04
+$random w3dzombie/chase {w3dzombie/chase1 w3dzombie/chase2   w3dzombie/chase3    w3dzombie/chase4   w3dzombie/chase5}
+
+w3dzombie/attack1    ZMBATT01
+w3dzombie/attack2    ZMBATT02
+w3dzombie/attack3    ZMBATT03
+$random w3dzombie/attack {w3dzombie/attack1 w3dzombie/attack2   w3dzombie/attack3}
+
+w3dzombie/death ZMBDED01
 
 plasmass/sight            SSPLSEE
 plasmass/death           SSPLDIE

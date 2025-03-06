@@ -400,3 +400,29 @@ class W3DDeadSSOfficer : Actor
             SPOF M -1;
 	}
 }
+class W3DDeadSSZombie : Actor
+{
+	Default
+	{
+		Tag "Dead Nazi Zombie  (SS)";
+       //$Category Decoration
+    }
+	States
+	{
+        Spawn:
+            SSZM N -1;
+	}
+}
+class W3DDeadHeerZombie : Actor
+{
+	Default
+	{
+		Tag "Dead German Zombie (Heer)";
+       //$Category Decoration
+    }
+	States
+	{
+        Spawn:
+            HRZM N -1;
+	}
+}

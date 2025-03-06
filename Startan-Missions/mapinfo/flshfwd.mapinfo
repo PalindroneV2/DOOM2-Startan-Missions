@@ -152,23 +152,6 @@ map MMAP07 "Hot Start"
 	NoCrouch
 }
 
-map MMAP09 "Weapon Factory"
-{
-	next = "HUBMAP"
-	secretnext = "MMAP38"
-    sky1 = "SKYND07"
-	cluster = 21
-	par = 300
-	music = "D_PLUNGE"
-	Author = "Palindrone"
-	levelnum = 107
-	ResetInventory
-	ResetItems
-	lightmode = 16
-	NoJump
-	NoCrouch
-}
-
 cluster 21
 {
 }
@@ -352,7 +335,7 @@ cluster 27
 	music = D_READ_M
 	entertext =
 	"You once more teleport to a",
-	"a location unknown."
+	"a location unknown.",
 	"The thick cloud of dust, debris,",
 	"and smoke clears and you see",
 	"the cracked earth and lava",
@@ -361,7 +344,7 @@ cluster 27
 	exittext =
  	"Near death, you are transported",
  	"back to your base, seemingly",
-	"uninjured.",
+	"uninjured."
 }
 
 map MMAP36 "Diner at the End of the World"
@@ -374,6 +357,41 @@ map MMAP36 "Diner at the End of the World"
 	music = "D_LOVESONG"
 	Author = "Palindrone"
 	levelnum = 136
+	ResetInventory
+	ResetItems
+	lightmode = 16
+	NoJump
+	NoCrouch
+}
+
+cluster 28
+{
+	flat = GRAYVRA2
+	music = D_READ_M
+	entertext =
+	"You once more teleport to a",
+	"a location unknown.",
+	"The thick cloud of dust, debris,",
+	"and smoke clears and you see",
+	"the cracked earth and lava",
+	"beneath your feet.",
+	"And you hear them coming..."
+	exittext =
+ 	"Near death, you are transported",
+ 	"back to your base, seemingly",
+	"uninjured."
+}
+
+map MMAP37 "Waffenfabrik"
+{
+	next = "HUBMAP"
+	secretnext = "MMAP38"
+    sky1 = "SKYND07"
+	cluster = 21
+	par = 300
+	music = "D_BEAUTY"
+	Author = "Palindrone"
+	levelnum = 137
 	ResetInventory
 	ResetItems
 	lightmode = 16

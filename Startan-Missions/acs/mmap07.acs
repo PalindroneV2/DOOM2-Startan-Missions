@@ -22,8 +22,56 @@ script "Bridgebreak" (void)
     Delay(16);
     ChangeFloor(12, "LAVA1");
     Light_ChangeToValue(12, 224);
-    Sector_SetColor(12, 255, 188, 121, 0);
+    // Sector_SetColor(12, 255, 188, 121, 0);
     Sector_SetFloorGlow(12, 128, 255, 128, 0);
     SetSectorDamage(12, 56, "FIRE", 16, 0);
     SetSectorTerrain(12, 0, "Sludge");
+}
+
+script "RevenantThingy" (void)
+{
+    SpawnSpotFacing("Archvile", 1 );
+    Ceiling_RaiseByValue(18, 32, 64);
+    Floor_LowerByValue(18,32, 64);
+    Ceiling_RaiseByValue(22, 32, 128);
+    Ceiling_LowerByValue(19, 16, 64); 
+}
+
+bool puzzlesw1 = false;
+bool puzzlesw2 = false;
+bool puzzlesw3 = false;
+bool puzzlesw4 = false;
+
+script "SecretExitOpenSW1" (void)
+{
+   puzzlesw1 = true;
+   ACS_NamedExecute("SecretExitOpen",0,0,0,0);
+}
+script "SecretExitOpenSW2" (void)
+{
+   puzzlesw2 = true;
+   ACS_NamedExecute("SecretExitOpen",0,0,0,0);
+}
+script "SecretExitOpenSW3" (void)
+{
+   puzzlesw3 = true;
+   ACS_NamedExecute("SecretExitOpen",0,0,0,0);
+}
+script "SecretExitOpenSW4" (void)
+{
+   puzzlesw4 = true;
+   ACS_NamedExecute("SecretExitOpen",0,0,0,0);
+}
+
+script "SecretExitOpen" (void)
+{
+    if(puzzlesw1 == true && puzzlesw2 == true && puzzlesw3 == true && puzzlesw4 == true)
+    {
+        SetFont("BIGFONT");
+        PlaySound (0, "misc/sfx/puzzlesolve", CHAN_5, 1.0, FALSE, 0);
+        Ceiling_RaiseByValue(27, 32, 144);
+        HudMessage(s:"THIS SECRET EXIT  HAS BEEN REVEALED!";  HUDMSG_FADEOUT | HUDMSG_LOG, 2, CR_RED, 0.5, 0.5, 3.0, 1);
+    }else{
+        PlaySound (0, "misc/sfx/puzzlesolve", CHAN_5, 1.0, FALSE, 0);
+    }
 }

@@ -23,7 +23,7 @@ class TrapVile : Actor
 		PainChance 15;
 		Monster;
 		MaxTargetRange 640;
-		+QUICKTORETALIATE 
+		+QUICKTORETALIATE
 		+FLOORCLIP 
 		+NOTARGET
 	}
