@@ -36,34 +36,40 @@ class W3DGuard : WolfensteinSS
 			NZGD AB 10 A_Look;
 			Loop;
 		See:
-			"####" E 10 A_FaceTarget;
+			#### E 10 A_FaceTarget;
 			Goto Chase;
 		Chase:
-			"####" AABBCCDD 3 A_Chase("Aim","Aim");
+			#### AABBCCDD 3 A_Chase("Aim","Aim");
 			Loop;
 		Aim:
-			"####" EF 5 A_FaceTarget;
+			#### EF 5 A_FaceTarget;
 			Goto Missile;
 		Missile:
-			"####" F 5 A_FaceTarget;
-			"####" G 4 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
-			"####" F 6 A_FaceTarget;
-			"####" F 4 A_CPosRefire;
+			#### F 5 A_FaceTarget;
+			#### G 4 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
+			#### F 6 A_FaceTarget;
+			#### F 4 A_CPosRefire;
 			Goto Missile+1;
 		Pain:
-			"####" H 3;
-			"####" H 3 A_Pain;
+			#### H 3;
+			#### H 3 A_Pain;
 			Goto See;
 		Death:
-			"####" I 5;
-			"####" J 5 A_Scream;
-			"####" K 5 A_NoBlocking;
-			"####" L 5;
-			"####" M -1;
+			#### I 5;
+			#### J 5 A_Scream;
+			#### K 5 A_NoBlocking;
+			#### L 5;
+			#### M -1;
+			Stop;
+		XDeath:
+			SSWV N 5 ;
+			SSWV O 5 A_XScream;
+			SSWV P 5 A_NoBlocking;
+			SSWV Q -1;
 			Stop;
 		Raise:
-			"####" M 5;
-			"####" LKJI 5;
+			#### M 5;
+			#### LKJI 5;
 			Goto See ;
 	}
 }
@@ -87,7 +93,7 @@ class W3DMissionsGuard : W3DGuard
 		Raise:
 			HRZM N 5;
 			HRZM MLKJI 5;
-			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			HRZM I 0 A_SpawnProjectile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
 			Stop;
 	}
 }
@@ -112,7 +118,7 @@ class W3DHeerGuard : W3DGuard
 		Raise:
 			HRZM N 5;
 			HRZM MLKJI 5;
-			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			HRZM I 0 A_SpawnProjectile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
 			Stop;
 	}
 }
@@ -136,7 +142,7 @@ class W3DAfrikaGuard : W3DGuard
 		Raise:
 			HRZM N 5;
 			HRZM MLKJI 5;
-			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			HRZM I 0 A_SpawnProjectile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
 			Stop;
 	}
 }
@@ -162,7 +168,7 @@ class W3DSSGuard : W3DGuard
 		Raise:
 			SSZM N 5;
 			SSZM MLKJI 5;
-			SSZM I 0 A_CustomMissile("SSSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			SSZM I 0 A_SpawnProjectile("SSSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
 			Stop;
 	}
 }
@@ -186,24 +192,24 @@ class W3DHeerGuardSMG : W3DGuard
 			HMGD AB 10 A_Look;
 			Loop;
 		Aim:
-			"####" EF 5 A_FaceTarget;
+			#### EF 5 A_FaceTarget;
 			Goto SMGFire;
 		SMGFire:
-			"####" F 5 A_FaceTarget;
-			"####" G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
-			"####" F 3 A_FaceTarget;
-			"####" G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
-			"####" F 2 A_CPosRefire;
+			#### F 5 A_FaceTarget;
+			#### G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
+			#### F 3 A_FaceTarget;
+			#### G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
+			#### F 2 A_CPosRefire;
 			Goto SMGFire+1;
 		Raise:
 			HRZM N 5;
 			HRZM MLKJI 5;
-			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			HRZM I 0 A_SpawnProjectile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
 			Stop;
 		Raise:
 			HRZM N 5;
 			HRZM MLKJI 5;
-			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			HRZM I 0 A_SpawnProjectile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
 			Stop;
 	}
 }
@@ -228,7 +234,7 @@ class W3DAfrikaGuardSMG : W3DHeerGuardSMG
 		Raise:
 			HRZM N 5;
 			HRZM MLKJI 5;
-			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			HRZM I 0 A_SpawnProjectile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
 			Stop;
 	}
 }
@@ -255,7 +261,7 @@ class W3DSSGuardSMG : W3DHeerGuardSMG
 		Raise:
 			SSZM N 5;
 			SSZM MLKJI 5;
-			SSZM I 0 A_CustomMissile("SSSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			SSZM I 0 A_SpawnProjectile("SSSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
 			Stop;
 	}
 }

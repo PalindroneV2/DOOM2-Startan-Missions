@@ -49,7 +49,7 @@ extend class MP40
 	action void A_MP40Fire()
 	{
 		A_FireBullets(4, 3, 1, 12, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		A_Quake(1,1,0,1);
+		A_Quake(1,2,0,1);
 		A_GunFlash();
 		// Name NewAmmoClassName = 'TangoBulletClip';
 		// Class<Ammo> NewAmmoClass = NewAmmoClassName;
@@ -124,6 +124,7 @@ extend class WaltherPPK
     {
 		A_StartSound ("WaltherPPK/Fire", CHAN_WEAPON);
 		A_FireBullets(2, 2, -1, 12, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_Quake(1,2,0,1);
 		A_GunFlash();
     }
 }
@@ -193,7 +194,7 @@ extend class M16
 	action void A_M16Fire()
 	{
 		A_FireBullets (1.5,1.5,-1,18,"BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		A_Quake(1,1,0,1);
+		A_Quake(1,2,0,1);
 		// Name NewAmmoClassName = 'TangoBulletClip';
 		// Class<Ammo> NewAmmoClass = NewAmmoClassName;
 		// if(NewAmmoClass)
@@ -206,7 +207,7 @@ extend class M16
 	action void A_M16SemiFire()
 	{
 		A_FireBullets (0.5,0.5,1,18,"BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		A_Quake(1,1,0,1);
+		A_Quake(1,2,0,1);
 		// Name NewAmmoClassName = 'TangoBulletClip';
 		// Class<Ammo> NewAmmoClass = NewAmmoClassName;
 		// if(NewAmmoClass)

@@ -36,42 +36,41 @@ class W3DWaffenSS : WolfensteinSS
 			SSWV AB 10 A_Look;
 			Loop;
 		See:
-			"####" E 8 A_FaceTarget;
+			#### E 8 A_FaceTarget;
 			Goto Chase;
 		Chase:
-			"####" AABBCCDD 3 A_Chase("Aim","Aim");
+			#### AABBCCDD 3 A_Chase("Aim","Aim");
 			Loop;
 		Aim:
-			"####" EF 3 A_FaceTarget;
+			#### EF 3 A_FaceTarget;
 			Goto Missile;
 		Missile:
-			"####" F 5 A_FaceTarget;
-			"####" G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
-			"####" F 3 A_FaceTarget;
-			"####" G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
-			"####" F 2 A_CPosRefire;
+			#### F 5 A_FaceTarget;
+			#### G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
+			#### F 3 A_FaceTarget;
+			#### G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
+			#### F 2 A_CPosRefire;
 			Goto Missile+1;
 		Pain:
-			"####" H 3;
-			"####" H 3 A_Pain;
+			#### H 3;
+			#### H 3 A_Pain;
 			Goto See;
 		Death:
-			"####" I 5;
-			"####" J 5 A_Scream;
-			"####" K 5 A_NoBlocking;
-			"####" L 5;
-			"####" M -1;
+			#### I 5;
+			#### J 5 A_Scream;
+			#### K 5 A_NoBlocking;
+			#### L 5;
+			#### M -1;
 			Stop;
 		XDeath:
-			"####" N 5 ;
-			"####" O 5 A_XScream;
-			"####" P 5 A_NoBlocking;
-			"####" QRSTU 5;
-			"####" V -1;
+			SSWV N 5 ;
+			SSWV O 5 A_XScream;
+			SSWV P 5 A_NoBlocking;
+			SSWV Q -1;
 			Stop;
 		Raise:
-			"####" M 5;
-			"####" LKJI 5;
+			#### M 5;
+			#### LKJI 5;
 			Goto See ;
 	}
 }
@@ -113,7 +112,7 @@ class W3DHeerNCO : W3DWaffenSS
 		Raise:
 			HRZM N 5;
 			HRZM MLKJI 5;
-			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			HRZM I 0 A_SpawnProjectile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
 			Stop;
 	}
 }
@@ -136,7 +135,7 @@ class W3DAfrikaNCO : W3DWaffenSS
 		Raise:
 			HRZM N 5;
 			HRZM MLKJI 5;
-			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			HRZM I 0 A_SpawnProjectile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
 			Stop;
 	}
 }
@@ -161,7 +160,7 @@ class W3DSSNCO : W3DWaffenSS
 		Raise:
 			SSZM N 5;
 			SSZM MLKJI 5;
-			SSZM I 0 A_CustomMissile("SSSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			SSZM I 0 A_SpawnProjectile("SSSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
 			Stop;
 	}
 }
@@ -184,18 +183,18 @@ class W3DHeerNCOPistol : W3DWaffenSS
 			HPNC AB 10 A_Look;
 			Loop;
 		Aim:
-			"####" EF 5 A_FaceTarget;
+			#### EF 5 A_FaceTarget;
 			Goto PistolFire;
 		PistolFire:
-			"####" F 7 A_FaceTarget;
-			"####" G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
-			"####" F 5 A_FaceTarget;
-			"####" F 2 A_CPosRefire;
+			#### F 7 A_FaceTarget;
+			#### G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
+			#### F 5 A_FaceTarget;
+			#### F 2 A_CPosRefire;
 			Goto PistolFire+1;
 		Raise:
 			HRZM N 5;
 			HRZM MLKJI 5;
-			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			HRZM I 0 A_SpawnProjectile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
 			Stop;
 	}
 }
@@ -217,18 +216,18 @@ class W3DAfrikaNCOPistol : W3DWaffenSS
 			APNC AB 10 A_Look;
 			Loop;
 		Aim:
-			"####" EF 5 A_FaceTarget;
+			#### EF 5 A_FaceTarget;
 			Goto PistolFire;
 		PistolFire:
-			"####" F 7 A_FaceTarget;
-			"####" G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
-			"####" F 5 A_FaceTarget;
-			"####" F 2 A_CPosRefire;
+			#### F 7 A_FaceTarget;
+			#### G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
+			#### F 5 A_FaceTarget;
+			#### F 2 A_CPosRefire;
 			Goto PistolFire+1;
 		Raise:
 			HRZM N 5;
 			HRZM MLKJI 5;
-			HRZM I 0 A_CustomMissile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			HRZM I 0 A_SpawnProjectile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
 			Stop;
 	}
 }
@@ -252,18 +251,18 @@ class W3DSSNCOPistol : W3DWaffenSS
 			SPNC AB 10 A_Look;
 			Loop;
 		Aim:
-			"####" EF 5 A_FaceTarget;
+			#### EF 5 A_FaceTarget;
 			Goto PistolFire;
 		PistolFire:
-			"####" F 7 A_FaceTarget;
-			"####" G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
-			"####" F 5 A_FaceTarget;
-			"####" F 2 A_CPosRefire;
+			#### F 7 A_FaceTarget;
+			#### G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
+			#### F 5 A_FaceTarget;
+			#### F 2 A_CPosRefire;
 			Goto PistolFire+1;
 		Raise:
 			SSZM N 5;
 			SSZM MLKJI 5;
-			SSZM I 0 A_CustomMissile("SSSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
+			SSZM I 0 A_SpawnProjectile("SSSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
 			Stop;
 	}
 }

@@ -46,41 +46,41 @@ class PlasmaSS : WolfensteinSS
 			SSPL AB 10 A_Look;
 			Loop;
 		See:
-			"####" E 5 A_FaceTarget;
+			#### E 5 A_FaceTarget;
 			Goto Chase;
 		Chase:
-			"####" AABBCCDD 3 A_Chase("Aim","Aim");
+			#### AABBCCDD 3 A_Chase("Aim","Aim");
 			Loop;
 		Aim:
-			"####" EF 3 A_FaceTarget;
+			#### EF 3 A_FaceTarget;
 			Goto Missile;
 		Missile:
-			"####" E 5 A_FaceTarget;
-			"####" G 4 BRIGHT A_PlasmaSSAttack;
-			"####" F 4 BRIGHT;
-			"####" F 5 A_CPosRefire;
+			#### E 5 A_FaceTarget;
+			#### G 4 BRIGHT A_PlasmaSSAttack;
+			#### F 4 BRIGHT;
+			#### F 5 A_CPosRefire;
 			Goto Missile+1;
 		Pain:
-			"####" H 3;
-			"####" H 3 A_Pain;
+			#### H 3;
+			#### H 3 A_Pain;
 			Goto See;
 		Death:
-			"####" I 5;
-			"####" J 5 A_Scream;
-			"####" K 5 A_NoBlocking;
-			"####" L 5;
-			"####" M -1;
+			#### I 5;
+			#### J 5 A_Scream;
+			#### K 5 A_NoBlocking;
+			#### L 5;
+			#### M -1;
 			Stop;
 		XDeath:
-			"####" N 5 ;
-			"####" O 5 A_XScream;
-			"####" P 5 A_NoBlocking;
-			"####" QRSTU 5;
-			"####" V -1;
+			#### N 5 ;
+			#### O 5 A_XScream;
+			#### P 5 A_NoBlocking;
+			#### QRSTU 5;
+			#### V -1;
 			Stop;
 		Raise:
-			"####" M 5;
-			"####" LKJI 5;
+			#### M 5;
+			#### LKJI 5;
 			Goto See ;
 	}
 }

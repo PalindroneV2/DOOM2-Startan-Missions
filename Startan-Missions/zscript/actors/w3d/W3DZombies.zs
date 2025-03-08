@@ -20,38 +20,45 @@ class W3DZombie : Actor
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
        //$Category Monsters
+		//$Sprite NZGDI
 	}
 	States
 	{
 	Spawn:
-		NZGD AB 10 A_Look;
+		SSWV AB 10 A_Look;
 		Loop;
 	See:
-		"####" E 2 A_FaceTarget;
-		"####" F 30 A_StartSound("w3dzombie/scream",CHAN_AUTO);
+		#### E 2 A_FaceTarget;
+		#### F 30 A_StartSound("w3dzombie/scream",CHAN_AUTO);
 		Goto Chase;
 	Chase:
-		"####" AABBCCDD 3 A_Chase("Melee",null);
+		#### AABBCCDD 3 A_Chase("Melee",null);
 		Loop;
 	Melee:
-		"####" EG 4 A_FaceTarget;
-		"####" H 4 A_W3DZombieSwipe;
+		#### EG 4 A_FaceTarget;
+		#### H 4 A_W3DZombieSwipe;
 		Goto Chase;
 	Pain:
-		"####" I 2;
-		"####" I 2 A_Pain;
+		#### I 2;
+		#### I 2 A_Pain;
 		Goto Chase;
 	Death:
-		"####" I 8;
-		"####" J 8 A_Scream;
-		"####" K 4;
-		"####" L 4 A_Fall;
-		"####" M 4;
-		"####" N -1;
+		#### I 8;
+		#### J 8 A_Scream;
+		#### K 4;
+		#### L 4 A_Fall;
+		#### M 4;
+		#### N -1;
+		Stop;
+	XDeath:
+		SSWV N 5 ;
+		SSWV O 5 A_XScream;
+		SSWV P 5 A_NoBlocking;
+		SSWV Q -1;
 		Stop;
 	Raise:
-		"####" N 5;
-		"####" MLKJI 5;
+		#### N 5;
+		#### MLKJI 5;
 		Goto See;
 	}
 }
@@ -106,6 +113,7 @@ class W3DSSZombie : W3DZombie
 {
 	Default
 	{
+		//$Sprite SSZMH0 
 		Obituary "You were torn to shreds by a Nazi Zombie";
 		Tag "Nazi Zombie (SS)";
 		Species "Nazi Zombie";
@@ -126,6 +134,7 @@ class W3DHeerZombie : W3DZombie
 {
 	Default
 	{
+		//$Sprite HRZMH0
 		Obituary "You were torn to shreds by a German Zombie";
 		Tag "German Zombie (Heer)";
 		Species "Nazi Zombie";
