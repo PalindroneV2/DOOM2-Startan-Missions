@@ -1,0 +1,9 @@
+#include "zcommon.acs"
+
+script "FurnaceRoomExplosion" (void)
+{  
+	SpawnProjectile(1,"Rocket",180,64,0,0,0);
+    // SpawnProjectile(int tid, string type, int angle, int speed, int vspeed, int gravity, int newtid)
+	Delay(1);
+	Floor_LowerByValue(3,256,128);
+}

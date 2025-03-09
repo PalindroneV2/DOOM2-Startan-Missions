@@ -19,6 +19,8 @@ class W3DZombie : Actor
 		MONSTER;
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
+		+JUMPDOWN 
+		+ALWAYSFAST
        //$Category Monsters
 		//$Sprite NZGDI
 	}
@@ -32,10 +34,19 @@ class W3DZombie : Actor
 		#### F 30 A_StartSound("w3dzombie/scream",CHAN_AUTO);
 		Goto Chase;
 	Chase:
-		#### AABBCCDD 3 A_Chase("Melee",null);
+		#### A 0 A_JumpIf(CheckForObstacle(),"Jump"); 
+		#### AA 3 A_Chase("Melee",null);
+		#### D 0 A_JumpIf(CheckForObstacle(),"Jump");
+		#### BB 3 A_Chase("Melee",null);
+		#### D 0 A_JumpIf(CheckForObstacle(),"Jump");
+		#### CC 3 A_Chase("Melee",null);
+		#### D 0 A_JumpIf(CheckForObstacle(),"Jump");
+		#### DD 3 A_Chase("Melee",null);
+		#### D 0 A_JumpIf(CheckForObstacle(),"Jump");
 		Loop;
 	Melee:
 		#### EG 4 A_FaceTarget;
+		#### G 0 A_JumpIf(CheckForObstacle(),"Jump");
 		#### H 4 A_W3DZombieSwipe;
 		Goto Chase;
 	Pain:
@@ -60,6 +71,13 @@ class W3DZombie : Actor
 		#### N 5;
 		#### MLKJI 5;
 		Goto See;
+	Jump:
+		#### A 1 A_FaceTarget;
+        #### A  1 A_Recoil(6); // Adjust the Z velocity for the jump
+        #### A  2;
+        #### AH  1 A_W3DZombieJump;
+        #### H  12;
+        Goto Chase ;
 	}
 }
 
@@ -74,6 +92,42 @@ extend class W3DZombie
 			A_CustomMeleeAttack(zmbdmg);
 		}
 	}
+	void A_W3DZombieJump()
+	{
+		// A_ChangeVelocity(9, 0, 9, CVF_REPLACE);
+		A_ChangeVelocity(5, 0, 5, CVF_RELATIVE);
+		// A_Recoil(-9);
+		Thrust(1,1e37);
+	}
+	bool CheckForObstacle()
+    {
+		double zombieangle = self.Angle;
+		// console.printf("ACTOR RELATIVE ANGLE: " .. self.Angle);
+ 
+        // Perform the line trace
+        FLineTraceData trace;
+        FLineTraceData trace2;
+		bool hit = LineTrace(zombieangle ,  48 , 0, TRF_NOSKY | TRF_THRUACTORS ,  31, 0, 0, trace);
+		bool hit2 = LineTrace(zombieangle,  48 , 0, TRF_NOSKY | TRF_THRUACTORS ,  33, 0, 0, trace2);
+		double hitHeight = trace.HitLocation.z - floorz;
+
+        // Check if the trace hit something within the desired height
+		if(hit2)
+		{
+			// console.printf("Dont jump at this wall!");
+			// console.printf("LineTrace2 has hit at height: " .. trace2.HitLocation.z - floorz .. " Where floorz is: " .. floorz);
+			// console.printf("LineTrace2 has hit a " .. trace.HitType);
+			return false;
+		}
+        if (hit)
+        {
+			// console.printf("Jump!");
+			// console.printf("LineTrace has hit at height: " .. trace.HitLocation.z - floorz .. " Where floorz is: " .. floorz);
+			// console.printf("LineTrace has hit a " .. trace.HitType);
+			return true;
+        }
+		return false;
+    }
 }
 
 class SSSoldiertoZombie : Actor

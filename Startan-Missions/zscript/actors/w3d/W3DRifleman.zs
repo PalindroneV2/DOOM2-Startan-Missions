@@ -76,7 +76,7 @@ extend class W3DRifleman
 		if (target)
 		{
 			A_CPosRefire();
-			A_StartSound("K98K/BOLT",CHAN_AUTO,0.65);
+			A_StartSound("K98K/BOLT",CHAN_AUTO,1);
 		}
 	}
 	void A_W3D8mmMauserAimedAttack()
