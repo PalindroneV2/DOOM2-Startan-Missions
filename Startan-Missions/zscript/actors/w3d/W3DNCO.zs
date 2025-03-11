@@ -26,6 +26,7 @@ class W3DWaffenSS : WolfensteinSS
 	{
 		// SSBL - Lost Missions Waffen SS
 		// SSWV - Original Waffen SS
+		// SSWV - Replaced Waffen SS
 		// AMNC - Afrikakorps Machinegun NCO
 		// APNC - Afrikakorps Pistol NCO
 		// HMNC - Heer Machinegun NCO
@@ -33,7 +34,7 @@ class W3DWaffenSS : WolfensteinSS
 		// SMNC - Waffen SS Machinegun NCO
 		// SPNC - Waffen SS Pistol NCO
 		Spawn:
-			SSWV AB 10 A_Look;
+			SS3D AB 10 A_Look;
 			Loop;
 		See:
 			#### E 8 A_FaceTarget;

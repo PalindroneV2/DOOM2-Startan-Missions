@@ -24,7 +24,7 @@ script 1 enter
     Thing_ChangeTID(0,935);
     ClearActorInventory(935);
 	GiveActorInventory(935, "DoomFist", 1);
-	GiveActorInventory(935, "WaltherPPK",1);
+	GiveActorInventory(935, "M1911A1",1);
 	GiveActorInventory(935, "Clip",32);
     Delay(35);
     currentweapon = GetWeapon();
@@ -353,7 +353,7 @@ script "PukePowerUp" (void)
 //     HudMessageBold(s:"MAX AMMO!";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 2.0, 1);
 // }
 
-str weaponbox[11] = {"WaltherPPK", "MP40", "Minigun", "M16", "Trenchgun", "NewSuperShotgun", "RocketLauncher", "FastPlasmaRifle", "BFG9000", "RayGun", "KAR98K"};
+str weaponbox[11] = {"M1911A1", "MP40", "Minigun", "M16", "Trenchgun", "NewSuperShotgun", "RocketLauncher", "FastPlasmaRifle", "BFG9000", "RayGun", "KAR98K"};
 str weaponboxnames[11] = {"Walther PPK", "MP40", "Minigun", "M16A1", "Trenchgun", "Super Shotgun", "Rocket Launcher", "Plasma Rifle", "BFG9000", "Ray Gun", "Kar98K"};
 
 script "MysteryBox" (void){

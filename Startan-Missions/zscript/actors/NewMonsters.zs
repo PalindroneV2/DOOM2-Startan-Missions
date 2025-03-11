@@ -352,3 +352,21 @@ class DeadHellion : Actor
 
 //End of Hellion
 
+class FireDecoration	:	Actor
+{    
+    Default
+    {
+        Tag "Fire";
+        //$Category Light sources
+        Radius 12;
+        Height 64;
+		+NOGRAVITY
+		+SPAWNCEILING
+    }
+    States
+    {
+        Spawn:
+            FIRE BCDBC 1;
+            Loop;
+    }
+}

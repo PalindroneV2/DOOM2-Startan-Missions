@@ -91,29 +91,29 @@ class WaltherPPK : DoomWeapon
 	States
 	{
 		Ready:
-			COLT A 1 A_WeaponReady;
+			WPPK A 1 A_WeaponReady;
 			Loop;
 		Deselect:
-			COLT A 1 A_Lower(6);
+			WPPK A 1 A_Lower(6);
 			Loop;
 		Select:
-			COLT A 1 A_Raise(6);
+			WPPK A 1 A_Raise(6);
 			Loop;
 		Fire:
-			COLT A 0;
-			COLF A 1 A_WaltherPPKShot;
-			COLF A 1 A_Light2;
-			COLF A 1 A_Light1;
-			COLT B 1 A_Light0;
-			COLT CDE 2;
-			COLT B 1 A_ReFire;
+			WPPK A 0;
+			WPPK F 1 A_WaltherPPKShot;
+			WPPK F 1 A_Light2;
+			WPPK F 1 A_Light1;
+			WPPK B 1 A_Light0;
+			WPPK CDE 2;
+			WPPK B 1 A_ReFire;
 			Goto Ready;
 		Flash:
-			COLF A 1 Bright A_Light1;
-			COLF A 1 Bright A_Light0;
+			WPPK F 1 Bright A_Light1;
+			WPPK F 1 Bright A_Light0;
 			Goto LightDone;
 		Spawn:
-			COLP A -1;
+			WPPK Z -1;
 			Stop;
 	}
 }
@@ -124,6 +124,59 @@ extend class WaltherPPK
     {
 		A_StartSound ("WaltherPPK/Fire", CHAN_WEAPON);
 		A_FireBullets(2, 2, -1, 12, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_Quake(1,2,0,1);
+		A_GunFlash();
+    }
+}
+
+class M1911A1 : Weapon
+{
+	Default
+	{
+		Weapon.SelectionOrder 700;
+		Weapon.SlotNumber 2;
+		Weapon.AmmoUse 1;
+		Weapon.AmmoGive 8;
+		Weapon.AmmoType "Clip";
+		Obituary "%o was Killed by %k's WPPK M1911A1.";
+		+WEAPON.WIMPY_WEAPON;
+		Inventory.Pickupmessage "Picked up a Colt M1911A1.";
+	}
+    States
+    {
+    Ready:
+        1911 A 1 A_WeaponReady;
+        Loop;
+    Deselect:
+        1911 A 1 A_Lower(6);
+        Loop;
+    Select:
+        1911 A 1 A_Raise(6);
+        Loop;
+    Fire:
+        1911 B 2 A_M1911Shot;
+        1911 C 1;
+        1911 DEED 1;
+        1911 B 2 Offset(0,34);
+        1911 B 2 Offset(0,33);
+        Goto Ready;
+    Flash:
+        GNFL A 1 BRIGHT A_Light2;
+        GNFL B 1 BRIGHT;
+        TNT1 A 2 A_Light1;
+        Goto LightDone;
+    Spawn:
+        1911 Z -1;
+        Stop;
+    }
+}
+
+extend class M1911A1
+{
+    action void A_M1911Shot()
+    {
+		A_StartSound ("WaltherPPK/Fire", CHAN_WEAPON);
+		A_FireBullets(2, 2, -1, 15, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(1,2,0,1);
 		A_GunFlash();
     }

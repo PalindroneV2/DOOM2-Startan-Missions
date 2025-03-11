@@ -1,5 +1,15 @@
 #include "zcommon.acs"
 
+script 1 enter
+{
+	// ClearInventory();
+    Thing_ChangeTID(0,935);
+    ClearActorInventory(935);
+	GiveActorInventory(935, "DoomFist", 1);
+	GiveActorInventory(935, "M1911A1",1);
+	GiveActorInventory(935, "Clip",32);
+}
+
 script "FurnaceRoomExplosion" (void)
 {  
 	SpawnProjectile(1,"Rocket",180,64,0,0,0);
