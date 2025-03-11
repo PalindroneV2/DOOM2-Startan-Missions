@@ -386,7 +386,7 @@ map MMAP37 "Waffenfabrik"
 {
 	next = "HUBMAP"
 	secretnext = "MMAP38"
-    sky1 = "SKYND07"
+    sky1 = "SKYSTORM"
 	cluster = 21
 	par = 300
 	music = "D_BEAUTY"

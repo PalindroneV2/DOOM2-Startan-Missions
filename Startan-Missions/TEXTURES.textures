@@ -765,6 +765,12 @@ WallTexture "W3DCC011", 64, 128
 	Patch "G935", 0, 0
 }
 
+WallTexture "W3DCC012", 128, 128
+{
+	Patch "BRICKPL0", 0, 0
+	Patch "G935", 32, 32
+}
+
 WallTexture "W3DSWA0", 64, 128
 {
 	Patch "W3DBRWN1", 0, 0

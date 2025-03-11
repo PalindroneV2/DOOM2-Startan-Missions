@@ -2,7 +2,7 @@ class W3DZombie : Actor
 {
 	default
 	{
-		Health 100;
+		Health 95;
 		Speed 20;
 		PainChance 50;
 		Radius 16;
@@ -45,9 +45,9 @@ class W3DZombie : Actor
 		#### D 0 A_JumpIf(CheckForObstacle(),"Jump");
 		Loop;
 	Melee:
-		#### EG 4 A_FaceTarget;
-		#### G 0 A_JumpIf(CheckForObstacle(),"Jump");
-		#### H 4 A_W3DZombieSwipe;
+		#### EG 6 A_FaceTarget;
+		#### H 1 A_W3DZombieSwipe;
+		#### H 3;
 		Goto Chase;
 	Pain:
 		#### I 2;
@@ -72,11 +72,11 @@ class W3DZombie : Actor
 		#### MLKJI 5;
 		Goto See;
 	Jump:
-		#### A 1 A_FaceTarget;
+		#### A 1;
         #### A  1 A_Recoil(6); // Adjust the Z velocity for the jump
         #### A  2;
-        #### AH  1 A_W3DZombieJump;
-        #### H  12;
+        #### AB  1 A_W3DZombieJump;
+        #### AB  6;
         Goto Chase ;
 	}
 }
@@ -85,7 +85,7 @@ extend class W3DZombie
 {
 	void A_W3DZombieSwipe()
 	{
-		int zmbdmg = 5 * Random(5,10);
+		int zmbdmg = 5 * Random(5,7);
 		if (target)
 		{
 			A_FaceTarget();
@@ -95,7 +95,7 @@ extend class W3DZombie
 	void A_W3DZombieJump()
 	{
 		// A_ChangeVelocity(9, 0, 9, CVF_REPLACE);
-		A_ChangeVelocity(5, 0, 5, CVF_RELATIVE);
+		A_ChangeVelocity(6, 0, 5, CVF_RELATIVE);
 		// A_Recoil(-9);
 		Thrust(1,1e37);
 	}
@@ -107,8 +107,8 @@ extend class W3DZombie
         // Perform the line trace
         FLineTraceData trace;
         FLineTraceData trace2;
-		bool hit = LineTrace(zombieangle ,  48 , 0, TRF_NOSKY | TRF_THRUACTORS ,  31, 0, 0, trace);
-		bool hit2 = LineTrace(zombieangle,  48 , 0, TRF_NOSKY | TRF_THRUACTORS ,  33, 0, 0, trace2);
+		bool hit = LineTrace(zombieangle ,  32 , 0, TRF_NOSKY | TRF_THRUACTORS ,  31, 0, 0, trace);
+		bool hit2 = LineTrace(zombieangle,  32 , 0, TRF_NOSKY | TRF_THRUACTORS ,  33, 0, 0, trace2);
 		double hitHeight = trace.HitLocation.z - floorz;
 
         // Check if the trace hit something within the desired height

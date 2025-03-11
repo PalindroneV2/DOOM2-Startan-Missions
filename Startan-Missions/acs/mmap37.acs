@@ -4,6 +4,108 @@ script "FurnaceRoomExplosion" (void)
 {  
 	SpawnProjectile(1,"Rocket",180,64,0,0,0);
     // SpawnProjectile(int tid, string type, int angle, int speed, int vspeed, int gravity, int newtid)
-	Delay(1);
+	Delay(15);
 	Floor_LowerByValue(3,256,128);
+}
+
+script "PowerOn" (void)
+{
+    Door_Open(7, 16);
+    Floor_LowerByValue(5 , 16, 96);
+    SetLineTexture(5, SIDE_FRONT, TEXTURE_BOTTOM,"COMPSW01"); 
+    SetLineActivation(5,SPAC_Use);
+}
+
+bool TP1 = false;
+bool TP2 = false;
+bool TP3 = false;
+bool TELEPORTER1 = false;
+bool TELEPORTER2 = false;
+bool TELEPORTER3 = false;
+bool MAINFRAME = false;
+int TELEPORTERTIME;
+
+script "Teleporter_Link_1" (void) // ANIMAL LAB
+{
+    TELEPORTERTIME = 35 * 30;
+    TP1 = true;
+    // Log(s:"TP1 == true");
+    while(MAINFRAME == false && TELEPORTERTIME != 0){
+        HudMessageBold(s:"LINK TELEPORTER TO MAINFRAME";  HUDMSG_FADEOUT, 101, CR_GOLD, 0.5, 0.2,1.0, 1);
+        HudMessageBold(i:TELEPORTERTIME / 35;  HUDMSG_FADEOUT, 102, CR_WHITE, 0.5, 0.25,1.0, 1);
+        Delay(1);
+        TELEPORTERTIME--;
+    }
+    TELEPORTERTIME = 35 * 30;
+    TP1 = false;
+}
+script "Teleporter_Link_2" (void) // ANIMAL LAB
+{
+    TELEPORTERTIME = 35 * 30;
+    TP2 = true;
+    // Log(s:"TP2 == true");
+    while(MAINFRAME == false && TELEPORTERTIME != 0){
+        HudMessageBold(s:"LINK TELEPORTER TO MAINFRAME";  HUDMSG_FADEOUT, 101, CR_GOLD, 0.5, 0.2,1.0, 1);
+        HudMessageBold(i:TELEPORTERTIME / 35;  HUDMSG_FADEOUT, 102, CR_WHITE, 0.5, 0.25,1.0, 1);
+        Delay(1);
+        TELEPORTERTIME--;
+    }
+    TELEPORTERTIME = 35 * 30;
+    TP2 = false;
+}
+script "Teleporter_Link_3" (void) // ANIMAL LAB
+{
+    TELEPORTERTIME = 35 * 30;
+    TP3 = true;
+    // Log(s:"TP3 == true");
+    while(MAINFRAME == false && TELEPORTERTIME != 0){
+        HudMessageBold(s:"LINK TELEPORTER TO MAINFRAME";  HUDMSG_FADEOUT, 101, CR_GOLD, 0.5, 0.2,1.0, 1);
+        HudMessageBold(i:TELEPORTERTIME / 35;  HUDMSG_FADEOUT, 102, CR_WHITE, 0.5, 0.25,1.0, 1);
+        Delay(1);
+        TELEPORTERTIME--;
+    }
+    TELEPORTERTIME = 35 * 30;
+    TP3 = false;
+}
+script "Teleporter_Activate" (void) // ANIMAL LAB
+{
+    if(TP1 == true){
+        MAINFRAME = true;
+        Floor_LowerByValue(8, 16, 128);
+        TELEPORTER1 = true;
+        ACS_NamedExecute("Teleporter_Main_Open",0,0,0,0);
+        ACS_NamedTerminate("Teleporter_Link_1",0);
+    }else{
+        HudMessageBold(s:"NO TELEPORTER LINK IN PROCESS";  HUDMSG_FADEOUT, 101, CR_GOLD, 0.5, 0.2,1.0, 1);
+    }
+
+    if(TP2 == true){
+        MAINFRAME = true;
+        Floor_LowerByValue(9, 16, 128);
+        TELEPORTER2 = true;
+        ACS_NamedExecute("Teleporter_Main_Open",0,0,0,0);
+        ACS_NamedTerminate("Teleporter_Link_2",0);
+        HudMessageBold(s:"TELEPORTER LINKED";  HUDMSG_FADEOUT, 101, CR_GOLD, 0.5, 0.2,1.0, 1);
+    }else{
+        HudMessageBold(s:"NO TELEPORTER LINK IN PROCESS";  HUDMSG_FADEOUT, 101, CR_GOLD, 0.5, 0.2,1.0, 1);
+    }
+
+    if(TP3 == true){
+        MAINFRAME = true;
+        Floor_LowerByValue(6, 16, 128);
+        TELEPORTER3 = true;
+        ACS_NamedExecute("Teleporter_Main_Open",0,0,0,0);
+        ACS_NamedTerminate("Teleporter_Link_3",0);
+    }else{
+        HudMessageBold(s:"NO TELEPORTER LINK IN PROCESS";  HUDMSG_FADEOUT, 101, CR_GOLD, 0.5, 0.2,1.0, 1);
+    }
+    
+    MAINFRAME = false;
+} 
+script "Teleporter_Main_Open" (void)
+{
+    if(TELEPORTER1 == true && TELEPORTER2 == true && TELEPORTER3 == true)
+    {
+        Floor_LowerByValue(10, 16, 128);
+    }
 }
