@@ -360,13 +360,15 @@ class FireDecoration	:	Actor
         //$Category Light sources
         Radius 12;
         Height 64;
-		+NOGRAVITY
-		+SPAWNCEILING
+		RenderStyle "Translucent";
+		Alpha 0.5;
+		// +NOGRAVITY
+		// +SPAWNCEILING
     }
     States
     {
         Spawn:
-            FIRE BCDBC 1;
+            FIRE BCDC 3;
             Loop;
     }
 }

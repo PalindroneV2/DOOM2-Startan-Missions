@@ -26,7 +26,7 @@ class W3DWaffenSS : WolfensteinSS
 	{
 		// SSBL - Lost Missions Waffen SS
 		// SSWV - Original Waffen SS
-		// SSWV - Replaced Waffen SS
+		// SS3D - Replaced Waffen SS
 		// AMNC - Afrikakorps Machinegun NCO
 		// APNC - Afrikakorps Pistol NCO
 		// HMNC - Heer Machinegun NCO
@@ -64,10 +64,10 @@ class W3DWaffenSS : WolfensteinSS
 			#### M -1;
 			Stop;
 		XDeath:
-			SSWV N 5 ;
-			SSWV O 5 A_XScream;
-			SSWV P 5 A_NoBlocking;
-			SSWV Q -1;
+			SS3D N 5 ;
+			SS3D O 5 A_XScream;
+			SS3D P 5 A_NoBlocking;
+			SS3D Q -1;
 			Stop;
 		Raise:
 			#### M 5;

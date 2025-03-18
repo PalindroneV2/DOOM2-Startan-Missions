@@ -198,6 +198,13 @@ extend class Minigun
 		A_Quake(2,2,0,2);
 		A_GunFlash();
     }
+    action void A_MinigunFire_PAP()
+    {
+		A_StartSound ("PAP/Fire", CHAN_WEAPON);
+		A_FireBullets(5, 0, 1, 20, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_Quake(2,2,0,2);
+		A_GunFlash();
+    }
 }
 
 class NewShotgun : DoomWeapon replaces Shotgun
@@ -313,6 +320,14 @@ extend class NewSuperShotgun
 		A_Quake(3,5,0,5);
 		A_GunFlash();
     }
+	action void A_FireSSG_PAP()
+    {
+		A_StartSound ("weapons/sshotf", CHAN_WEAPON);
+		A_StartSound ("PAP/Fire", CHAN_AUTO);
+		A_FireBullets(15,7.5, 25, 25, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_Quake(3,5,0,5);
+		A_GunFlash();
+    }
 }
 
 class FastPlasmaRifle : PlasmaRifle replaces PlasmaRifle
@@ -385,6 +400,8 @@ class NoRandRocket : Rocket replaces Rocket
 	Default
 	{
 		DamageFunction (128);
+		SeeSound "weapons/rocklf";
+		DeathSound "weapons/rocklx";
 	}
 	States
 	{
@@ -406,6 +423,12 @@ extend class NoRandRocket
 		A_Quake(4,12,0,400);
 		A_Quake(2,12,0,800);
 		A_Explode(128, 96, XF_HURTSOURCE, false, 40);
+	}
+	action void A_RocketExplode_PAP()
+	{
+		A_Quake(4,12,0,400);
+		A_Quake(2,12,0,800);
+		A_Explode(256, 96, XF_HURTSOURCE, false, 40);
 	}
 }
 
@@ -449,5 +472,17 @@ extend class BFGBallNoRand
 		A_Quake(4,12,0,400);
 		A_Quake(2,12,0,800);
 		// A_BFGSpray("BFGExtra",45, 0, 360, 1024, 90, 50, BFGF_MISSILEORIGIN); //BFG SHOOTS RAYS FROM BALL
+	}
+	action void A_BFGBlast_PAP()
+	{
+		A_Explode(100, 512, XF_THRUSTLESS, false, 64,0,10,"BFGExtra","BFGSplash"); //Extra explosion damage
+		A_BFGSpray("BFGExtra",90, 0, 90, 1024, 90, 100, 0); //Vanilla adjacent BFG
+		A_Quake(4,12,0,400);
+		A_Quake(2,12,0,800);
+		// A_BFGSpray("BFGExtra",45, 0, 360, 1024, 90, 50, BFGF_MISSILEORIGIN); //BFG SHOOTS RAYS FROM BALL
+	}
+	action void A_BFGRails()
+	{
+		A_BFGSpray("BFGExtra",45, 0, 360, 1024, 90, 50, BFGF_MISSILEORIGIN); //BFG SHOOTS RAYS FROM BALL
 	}
 }

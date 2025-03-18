@@ -19,7 +19,8 @@ class W3DZombie : Actor
 		MONSTER;
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
-		+JUMPDOWN 
+		+JUMPDOWN
+		+DROPOFF
 		+ALWAYSFAST
        //$Category Monsters
 		//$Sprite NZGDI
@@ -27,7 +28,7 @@ class W3DZombie : Actor
 	States
 	{
 	Spawn:
-		SSWV AB 10 A_Look;
+		SS3D AB 10 A_Look;
 		Loop;
 	See:
 		#### E 2 A_FaceTarget;
@@ -62,10 +63,10 @@ class W3DZombie : Actor
 		#### N -1;
 		Stop;
 	XDeath:
-		SSWV N 5 ;
-		SSWV O 5 A_XScream;
-		SSWV P 5 A_NoBlocking;
-		SSWV Q -1;
+		SS3D N 5 ;
+		SS3D O 5 A_XScream;
+		SS3D P 5 A_NoBlocking;
+		SS3D Q -1;
 		Stop;
 	Raise:
 		#### N 5;

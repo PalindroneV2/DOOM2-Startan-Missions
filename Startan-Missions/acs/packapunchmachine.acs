@@ -1,0 +1,17 @@
+global int 10 : zombiepoints;
+
+script "GivesPap" (void)
+{
+	if (zombiepoints >= 5000) {
+        str currentgun = GetWeapon();
+        str papgun = StrParam(s:currentgun, s:"_PAP");
+        //Log(s:papgun);
+        GiveInventory("PAP_PowerUp",1);
+        Delay(1);
+        SetWeapon(papgun);
+        zombiepoints = zombiepoints -5000;
+    }else{
+        HudMessageBold(s:"Not enough points.";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+        Delay(35);
+    }
+}

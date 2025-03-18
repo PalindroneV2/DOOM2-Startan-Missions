@@ -1,4 +1,5 @@
 // #include "./wunderwaffe.zs"
+#include "zscript/actors/PAPGUNS.zs"
 
 class MP40 : DoomWeapon
 {
@@ -15,6 +16,7 @@ class MP40 : DoomWeapon
 		Obituary "%o was riddled by %k's MP40.";
 		Tag "MP40";
 		Scale 0.5;
+		// Weapon.SisterWeapon "MP40_PAP";
 	}
 	States
 	{
@@ -51,14 +53,12 @@ extend class MP40
 		A_FireBullets(4, 3, 1, 12, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(1,2,0,1);
 		A_GunFlash();
-		// Name NewAmmoClassName = 'TangoBulletClip';
-		// Class<Ammo> NewAmmoClass = NewAmmoClassName;
-		// if(NewAmmoClass)
-		// {
-		// 	A_FireBullets(5, 4, 1, 12, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		// }else{
-		// 	A_FireBullets(5, 4, 1, 5, "BulletPuff");
-		// }
+	}
+	action void A_MP40Fire_PAP()
+	{
+		A_FireBullets(4, 3, 1, 25, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_Quake(1,2,0,1);
+		A_StartSound ("PAP/Fire", CHAN_WEAPON);
 	}
 	override void PostBeginPlay()
 	{
@@ -135,10 +135,13 @@ class M1911A1 : Weapon
 	{
 		Weapon.SelectionOrder 700;
 		Weapon.SlotNumber 2;
-		Weapon.AmmoUse 1;
-		Weapon.AmmoGive 8;
-		Weapon.AmmoType "Clip";
-		Obituary "%o was Killed by %k's WPPK M1911A1.";
+		Weapon.AmmoUse1 1;
+		Weapon.AmmoGive1 8;
+		Weapon.AmmoType1 "Clip";
+		Weapon.AmmoUse2 1;
+		Weapon.AmmoGive2 8;
+		Weapon.AmmoType2 "Clip";
+		Obituary "%o was Killed by %k's Colt M1911A1.";
 		+WEAPON.WIMPY_WEAPON;
 		Inventory.Pickupmessage "Picked up a Colt M1911A1.";
 	}
@@ -175,10 +178,28 @@ extend class M1911A1
 {
     action void A_M1911Shot()
     {
-		A_StartSound ("WaltherPPK/Fire", CHAN_WEAPON);
+		A_StartSound ("M1911/Fire", CHAN_WEAPON);
 		A_FireBullets(2, 2, -1, 15, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(1,2,0,1);
 		A_GunFlash();
+    }
+	action void A_MustangSallyShotLeft()
+    {
+		A_StartSound ("PAP/Fire", CHAN_WEAPON);
+		A_FireBullets(2, 2, -1, 15, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_Quake(1,2,0,1);
+		A_GunFlash();
+		// A_FireProjectile("MustangSallyRocket");
+		A_FireCustomMissile ("MustangSallyRocket", 0, 1, -8, 0, 0, 0);
+    }
+	action void A_MustangSallyShotRight()
+    {
+		A_StartSound ("PAP/Fire", CHAN_WEAPON);
+		A_FireBullets(2, 2, -1, 15, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_Quake(1,2,0,1);
+		A_GunFlash();
+		// A_FireProjectile("MustangSallyRocket");
+		A_FireCustomMissile ("MustangSallyRocket", 0, 1, 8, 0,0,0);
     }
 }
 
@@ -199,6 +220,7 @@ class M16 : DoomWeapon
 		Obituary "%o was cut down by %k's M16A1.";
 		Tag "M16A1";
 		Scale 0.8;
+		// Weapon.SisterWeapon "M16_PAP";
 	}
 	States
 	{
@@ -248,27 +270,23 @@ extend class M16
 	{
 		A_FireBullets (1.5,1.5,-1,18,"BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(1,2,0,1);
-		// Name NewAmmoClassName = 'TangoBulletClip';
-		// Class<Ammo> NewAmmoClass = NewAmmoClassName;
-		// if(NewAmmoClass)
-		// {
-		// 	A_FireBullets (1.6,1.6,1,17,"BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		// }else{
-		// 	A_FireBullets (1.6,1.6,1,8,"BulletPuff");
-		// }
+	}
+	action void A_M16PAPFire()
+	{
+		A_FireBullets (1.5,1.5,-1,36,"BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_Quake(1,2,0,1);
+		A_StartSound ("PAP/Fire", CHAN_WEAPON);
+	}
+	action void A_M16PAPALTFire()
+	{
+		A_FireProjectile("Rocket");
+		A_Quake(1,2,0,1);
+		A_StartSound ("M203/Fire", CHAN_WEAPON);
 	}
 	action void A_M16SemiFire()
 	{
 		A_FireBullets (0.5,0.5,1,18,"BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(1,2,0,1);
-		// Name NewAmmoClassName = 'TangoBulletClip';
-		// Class<Ammo> NewAmmoClass = NewAmmoClassName;
-		// if(NewAmmoClass)
-		// {
-		// 	A_FireBullets (1.6,1.6,1,17,"BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		// }else{
-		// 	A_FireBullets (1.6,1.6,1,8,"BulletPuff");
-		// }
 	}
 	override void PostBeginPlay()
 	{
@@ -297,6 +315,7 @@ class RayGun : DoomWeapon
 		Weapon.AmmoType "Cell";
 		Obituary "%k vaporized %o with a Ray Gun.";
 		-WEAPON.WIMPY_WEAPON;
+		+WEAPON.BFG;
 		Inventory.PickupMessage "You got a Ray Gun.";
 		Tag "Ray Gun";
 		Scale 0.2;
@@ -334,24 +353,15 @@ extend class RayGun
 {
 	action void A_RayGun_Fire()
 	{
-		if (player == null)
-		{
-			return;
-		}
-		Weapon weap = player.ReadyWeapon;
-		if (weap != null && invoker == weap && stateinfo != null && stateinfo.mStateType == STATE_Psprite)
-		{
-			if (!weap.DepleteAmmo (weap.bAltFire, true, 1))
-				return;
-			
-			State flash = weap.FindState('Flash');
-			if (flash != null)
-			{
-				player.SetSafeFlash(weap, flash, random[FirePlasma](0, 1));
-			}
-			
-		}
-		SpawnPlayerMissile ("RayGunBall");
+		A_FireProjectile("RayGunBall");
+		A_Quake(1,2,0,1);
+		A_StartSound ("raygun/fire", CHAN_NOSTOP);
+	}
+	action void A_RayGun_Fire_PAP()
+	{
+		A_FireProjectile("RayGunBall_PAP");
+		A_Quake(1,2,0,1);
+		A_StartSound ("raygun/fire", CHAN_NOSTOP);
 	}
 }
 
@@ -361,15 +371,15 @@ class RayGunBall : Actor
 	{
 		Radius 13;
 		Height 8;
-		Speed 50;
+		Speed 100;
 		DamageFunction (200);
 		Projectile;
 		+RANDOMIZE
 		+ZDOOMTRANS
 		RenderStyle "Add";
 		Alpha 0.75;
-		SeeSound "baby/attack";
-		DeathSound "baby/shotx";
+		// SeeSound "baby/attack";
+		DeathSound "raygun/splash";
 	}
 	States
 	{
@@ -431,12 +441,20 @@ class Trenchgun : DoomWeapon
 		Goto Ready;
   }
 }
+
 extend class Trenchgun
 {
     action void A_TrenchgunShot()
     {
 		A_StartSound ("TRNCFIR", CHAN_WEAPON);
 		A_FireBullets(7.5,0, 8, 12, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_Quake(2,3,0,3);
+		A_GunFlash();
+    }
+	action void A_TrenchgunShot_PAP()
+    {
+		A_StartSound ("PAP/Fire", CHAN_WEAPON);
+		A_FireBullets(7.5,0, 8, 24, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(2,3,0,3);
 		A_GunFlash();
     }
@@ -447,13 +465,12 @@ class Kar98k : DoomWeapon
 	Default
 	{
 		Weapon.Slotnumber 3;
-		Obituary "%o was sniped by %k.";
 		Weapon.Ammotype "RifleBullets";
 		Weapon.Ammogive 5;
 		Weapon.ammouse 1;
 		Decal "Bulletchip";
 		Inventory.Pickupmessage "You got the Kar98k!";
-		Attacksound "K98K/FIRE";
+		Obituary "%o was sniped by %k.";
 		Tag "Kar98k";
 		Scale 0.75;
        //$Category Weapons
@@ -473,9 +490,9 @@ class Kar98k : DoomWeapon
 			Loop;
 			
 		Fire:
-			K98K B 1 BRIGHT A_Firebullets(3,0,1,75,"RiflePuff",FBF_USEAMMO|FBF_NORANDOM);
-			TNT1 A 0 A_Quake(2,3,0,3);
+			K98K B 1 BRIGHT A_KAR98K_Shot;
 			K98K CDEFEDCA 1;
+			Goto Bolt;
 		Bolt:
 			K98K A 2;
 			TNT1 A 0 A_StartSound("K98K/BOLT",CHAN_AUTO);
@@ -494,8 +511,27 @@ class Kar98k : DoomWeapon
 		Spawn:
 			K98J A -1;
 			Stop;
-		
 	}
+}
+
+extend class Kar98k
+{
+    action void A_KAR98K_Shot()
+    {
+		A_StartSound ("K98K/FIRE", CHAN_WEAPON);
+		A_Firebullets(3, 0, 1, 75, "RiflePuff", FBF_USEAMMO | FBF_NORANDOM);
+		A_Quake(2,3,0,3);
+		A_GunFlash();
+    }
+	action void A_KAR98K_Shot_PAP()
+    {
+		A_StartSound ("PAP/Fire", CHAN_AUTO);
+		// A_RailAttack(int damage, int spawnofs_xy = 0, bool useammo = true, color color1 = 0, color color2 = 0, int flags = 0, double maxdiff = 0, class<Actor> pufftype = "BulletPuff", double spread_xy = 0, double spread_z = 0, double range = 0, int duration = 0, double sparsity = 1.0, double driftspeed = 1.0, class<Actor> spawnclass = "none", double spawnofs_z = 0, int spiraloffset = 270, int limit = 0)
+		A_RailAttack(150, 0, true, "FF00FF", "ffb9fc", RGF_FULLBRIGHT, 0, "RiflePuff", 1, 0, 8192, 35, 0.1, 0.1, "None", 0, 270, 5);
+		// A_Firebullets(3, 0, 1, 150, "RiflePuff", FBF_USEAMMO | FBF_NORANDOM);
+		A_Quake(2,3,0,3);
+		A_GunFlash();
+    }
 }
 
 class RifleBullets : Ammo

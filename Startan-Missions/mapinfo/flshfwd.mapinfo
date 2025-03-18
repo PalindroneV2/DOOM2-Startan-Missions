@@ -366,7 +366,7 @@ map MMAP36 "Diner at the End of the World"
 
 cluster 28
 {
-	flat = GRAYVRA2
+	flat = W3DCC011
 	music = D_READ_M
 	entertext =
 	"You once more teleport to a",
@@ -386,7 +386,7 @@ map MMAP37 "Waffenfabrik"
 {
 	next = "HUBMAP"
 	secretnext = "MMAP38"
-    sky1 = "SKYSTORM"
+    sky1 = "SKYGIANT"
 	cluster = 21
 	par = 300
 	music = "D_BEAUTY"

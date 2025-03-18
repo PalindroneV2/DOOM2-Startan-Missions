@@ -58,10 +58,10 @@ class W3DRifleman : W3DGuard
 			#### M -1;
 			Stop;
 		XDeath:
-			SSWV N 5 ;
-			SSWV O 5 A_XScream;
-			SSWV P 5 A_NoBlocking;
-			SSWV Q -1;
+			SS3D N 5 ;
+			SS3D O 5 A_XScream;
+			SS3D P 5 A_NoBlocking;
+			SS3D Q -1;
 			Stop;
 		Raise:
 			#### M 5;

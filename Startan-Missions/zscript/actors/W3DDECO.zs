@@ -265,7 +265,7 @@ class W3DDeadWaffenSS : Actor
 	States
 	{
         Spawn:
-            SSWV M -1;
+            SS3D M -1;
 	}
 }
 class W3DDeadMissionsWaffenSS : Actor

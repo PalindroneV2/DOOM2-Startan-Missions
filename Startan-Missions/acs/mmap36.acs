@@ -1,4 +1,5 @@
 #include "zcommon.acs"
+#include "packapunchmachine.acs"
 
 global int 6 : SecretLevel36;
 
@@ -9,7 +10,6 @@ int wavenumbers;
 bool waveover = TRUE;
 int playerisalive;
 int playerisarmored;
-int zombiepoints = 500;
 bool doublepointsbool = FALSE;
 
 str currentweapon;
@@ -28,6 +28,7 @@ script 1 enter
 	GiveActorInventory(935, "Clip",32);
     Delay(35);
     currentweapon = GetWeapon();
+    zombiepoints = 500;
 }
 
 script "pickedshotgunup" (void)
@@ -112,10 +113,10 @@ script 777 enter
                 }
             }
             SpawnSpot("TeleportFog", spothandler);
-            SetThingSpecial(115, ACS_NamedExecute, "PointsAddWeak");
-            SetThingSpecial(116, ACS_NamedExecute, "PointsAddMedium");
-            SetThingSpecial(117, ACS_NamedExecute, "PointsAddStrong");
-            SetThingSpecial(118, ACS_NamedExecute, "PointsAddBoss");
+            SetThingSpecial(115, ACS_NamedExecuteAlways, "PointsAddWeak");
+            SetThingSpecial(116, ACS_NamedExecuteAlways, "PointsAddMedium");
+            SetThingSpecial(117, ACS_NamedExecuteAlways, "PointsAddStrong");
+            SetThingSpecial(118, ACS_NamedExecuteAlways, "PointsAddBoss");
             wavenumbers++;
             // spothandler++;
             // if(spothandler>24)
@@ -241,14 +242,14 @@ script "PointsAddBoss" (void){
     
 // }
 
-script "PointsRemoveBerserk" (void){
+script "PointsRemoveBackpack" (void){
     if(zombiepoints >= 1000){
         zombiepoints = zombiepoints - 1000;
     }else{
         Thing_Damage2(935, playerisalive / 2, "Fire");
         HudMessageBold(s:"You could not meed the cost! Health sacrificed!";  HUDMSG_FADEOUT, 901, CR_RED, 0.5, 0.725, 2.0, 1);
     }
-    HudMessageBold(s:"Obtained the secret berserk!";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 2.0, 1);
+    HudMessageBold(s:"Obtained the secret backpack!";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 2.0, 1);
 }
 
 script "PointsAddCheat" (void){
@@ -650,6 +651,7 @@ script 999 ENTER
     }
     if(roundwave >= 10)
     {
+        zombiepoints = 0;
         SetFont("BIGFONT");
         SecretLevel36++;
         HudMessage(s:"You survived ", i:roundwave, s:" rounds.";  HUDMSG_FADEOUT, 1, CR_WHITE, 0.5, 0.6, 3.0, 1);
@@ -658,10 +660,23 @@ script 999 ENTER
         SetPlayerProperty(0,0, PROP_TOTALLYFROZEN);
          Exit_Normal(0);
     }else{
+        zombiepoints = 0;
         SetFont("BIGFONT");
         HudMessage(s:"You survived ", i:roundwave, s:" rounds.";  HUDMSG_FADEOUT, 1, CR_WHITE, 0.5, 0.7, 3.0, 1);
         Delay(35*3);
         SetPlayerProperty(0,0, PROP_TOTALLYFROZEN);
         Exit_Normal(0);
     }
+}
+
+script 99 ENTER
+{
+    if (roundwave >= 5)
+    {    
+        TeleportOther(26, 25, 1);
+        Delay(35);
+        Terminate;
+    }
+    Delay(35);
+    Restart;
 }
