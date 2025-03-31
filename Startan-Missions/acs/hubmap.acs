@@ -11,20 +11,20 @@ global int 8 : SecretLevel38;
 
 int hubmusic = 0;
 
-str hubmidis[10] = {"D_RUNNIN", "D_INBOX","D_WATCH", "D_DENY","D_CROOKD", "D_HATEM", "D_WELCOM","D_FEAR","D_NUISUK","D_PLUNGE"};
-str midiname[10] = {
+str hubmidis[11] = {"D_RUNNIN", "D_INBOX","D_WATCH", "D_DENY","D_CROOKD", "D_HATEM", "D_WELCOM","D_FEAR","D_NUISUK","D_PLUNGE", "D_TAPES"};
+str midiname[11] = {
 	"Running from Evil", "Man in the Box","Always Watching", "Denied","Behind the Crooked Cross",
 	"Hate Machine", "You're Not Welcome","The Only Thing They Fear is You","Nuisances Unknown",
-	"Plunge Saw"
+	"Plunge Saw", "Tapes Had Side A and Side B So It Makes Sense the Successor Was Called The CD"
 };
-str midiauthor[10] ={
+str midiauthor[11] ={
 	"Bobby Prince", "Bobby Prince (Alice in Chains)", "Lippeth", "Doomkid", "Bobby Prince (Slayer)",
-	"James Paddock", "Niel Forshaw", "Supasniffy333 &  Burn 7", "Doomkid", "Bucket"
+	"James Paddock", "Niel Forshaw", "Supasniffy333 &  Burn 7", "Doomkid", "Bucket", "Dragonfly"
 };
 
 script "ChangeMusHub" (void)
 {
-	if(hubmusic>=9)
+	if(hubmusic>=10)
 	{
 		hubmusic = 0;
 		Music_Change(hubmidis[hubmusic], 0);
@@ -40,12 +40,12 @@ script "ChangeMusHub" (void)
 	}
 }
 
-str secretmidis[6] = {"D_EVIL","D_LEGION","D_115","D_COLIF","D_ARCHAI","D_LOVESONG"};
-str secretmidiname[6] = {
-	"Evil Incarnate", "Legion of the Damned","115", "Coliformication","Archaic Doctrine", "Love Song for a Deadman"
+str secretmidis[8] = {"D_EVIL","D_LEGION","D_HANGAR","D_COLIF","D_ARCHAI","D_LOVESONG", "D_BEAUTY", "D_IDK"};
+str secretmidiname[8] = {
+	"Evil Incarnate", "Legion of the Damned","Hangar 18", "Coliformication","Archaic Doctrine", "Love Song for a Deadman", "Beauty of Annihilation", "idk"
 };
-str secretmidiauthor[6] ={
-	"Bobby Prince", " L.A. Sieben", "Gerardo Cappa", "Lippeth", "TrialD", "RemarkablyAmateur"
+str secretmidiauthor[8] ={
+	"Bobby Prince", " L.A. Sieben", "Megadeth - Jim 'Aku' Brimstone", "Lippeth", "TrialD", "RemarkablyAmateur", "idk", "IDK"
 };
 
 script "ChangeMusHub31" (void)
@@ -96,6 +96,14 @@ script "ChangeMusHub36" (void)
 	HudMessage(s:"TITLE: ",s:secretmidiname[5];  HUDMSG_FADEOUT, 2, CR_WHITE, 0.5, 0.72, 3.0, 1);
 	HudMessage(s:"AUTHOR: ",s:secretmidiauthor[5];  HUDMSG_FADEOUT, 3, CR_WHITE, 0.5, 0.74, 3.0, 1);
 }
+script "ChangeMusHub37" (void)
+{
+	Music_Change(secretmidis[6], 0);
+	hubmusic = 0;
+	HudMessage(s:"MIDI: ",s:secretmidis[6];  HUDMSG_FADEOUT, 1, CR_WHITE, 0.5, 0.7, 3.0, 1);
+	HudMessage(s:"TITLE: ",s:secretmidiname[6];  HUDMSG_FADEOUT, 2, CR_WHITE, 0.5, 0.72, 3.0, 1);
+	HudMessage(s:"AUTHOR: ",s:secretmidiauthor[6];  HUDMSG_FADEOUT, 3, CR_WHITE, 0.5, 0.74, 3.0, 1);
+}
 
 script 1 (void)
 {//Enter MAP01 sector
@@ -144,6 +152,13 @@ script 7(void)
 	SetFont("BIGFONT");
 	PlaySound(0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
 	HudMessage(s:"Enter Map:",s:"\nHot Start";
+	HUDMSG_TYPEON, 10, CR_WHITE,0.5, 0.1, 2.0);
+}
+script 8(void)
+{//Enter MAP08 sector
+	SetFont("BIGFONT");
+	PlaySound(0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Enter Map:",s:"\nBlacksite";
 	HUDMSG_TYPEON, 10, CR_WHITE,0.5, 0.1, 2.0);
 }
 
@@ -200,6 +215,14 @@ script 37 (void)
 	SetFont("BIGFONT");
 	PlaySound(0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
 	HudMessage(s:"Enter Map:",s:"\n Waffenfabrik";
+	HUDMSG_TYPEON, 10, CR_WHITE,0.5, 0.1, 2.0);
+}
+
+script 38 (void)
+{ //Enter MAP38 Sector 
+	SetFont("BIGFONT");
+	PlaySound(0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
+	HudMessage(s:"Enter Map:",s:"\n BlacksiteSecret";
 	HUDMSG_TYPEON, 10, CR_WHITE,0.5, 0.1, 2.0);
 }
 

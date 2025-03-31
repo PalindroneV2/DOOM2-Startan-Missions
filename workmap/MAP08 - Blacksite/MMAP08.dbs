@@ -5,7 +5,7 @@ strictpatches = 0;
 maps
 {
 	
-	MMAP01
+	MMAP08
 	{
 		
 		resources
@@ -22,10 +22,10 @@ maps
 			}
 		}
 		defaultfloortexture = "FLOOR0_1";
-		defaultceiltexture = "CEIL5_G1";
-		defaulttoptexture = "BARBRON1";
-		defaultwalltexture = "BARBRON1";
-		defaultbottomtexture = "BARBRON1";
+		defaultceiltexture = "CEIL5_1";
+		defaulttoptexture = "STARTAN1";
+		defaultwalltexture = "STARTAN1";
+		defaultbottomtexture = "STARTAN1";
 		custombrightness = 196;
 		customfloorheight = 0;
 		customceilheight = 128;
@@ -38,9 +38,9 @@ maps
 		overrideceilheight = false;
 		overridebrightness = false;
 		uselongtexturenames = false;
-		viewpositionx = -3135.65f;
-		viewpositiony = -898.1408f;
-		viewscale = 0.497335f;
+		viewpositionx = 634.5895f;
+		viewpositiony = -1170.329f;
+		viewscale = 0.4999905f;
 		scriptcompiler = "zdoom_acs.cfg";
 		
 		grid
@@ -85,50 +85,6 @@ maps
 			stderriserror = true;
 		}
 		
-		plugins
-		{
-			
-			stairsectorbuilder
-			{
-				
-				prefabs
-				{
-				}
-			}
-			
-			threedfloormode
-			{
-				
-				controlsectorarea
-				{
-					usecustomtagrange = false;
-					outerleft = -384;
-					outerright = 128;
-					outertop = -896;
-					outerbottom = -1408;
-				}
-			}
-		}
-		
-		selectiongroups
-		{
-			
-			2
-			{
-				linedefs = "1692 1693 1694 1695 1696 1697 1698 1699 1720 1721 1722 1723 1724 1725 1726 1727 1728 1729 3600 3601 3602 3603 3608 3619 3623 3625 3626 3627 3628 3629 3630 3631 3632 3633 3634 3635 3636 3637 3640 3641 3642 3643 3644 3645 3646 3647 3648 3649 3650 3651 3652 3653 3654 3655 3656 3657 3658 3659 3660 3661 3662 3663 3664 3699 3700";
-				sectors = "411 412 414 415 416 417 418 419 575 815 818 819 820 821 822 823 824 825 826 827";
-			}
-		}
-		
-		fieldtypes
-		{
-			
-			sector
-			{
-				user_managed_3d_floor = 3;
-			}
-		}
-		
 		scriptdocuments
 		{
 			
@@ -148,7 +104,7 @@ maps
 				resource;
 				tabtype = 0;
 				scripttype = 1;
-				caretposition = 25;
+				caretposition = 19;
 				activetab = true;
 			}
 		}

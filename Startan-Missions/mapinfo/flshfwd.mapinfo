@@ -152,6 +152,23 @@ map MMAP07 "Hot Start"
 	NoCrouch
 }
 
+map MMAP08 "Blacksite"
+{
+	next = "HUBMAP"
+	secretnext = "MMAP38"
+    sky1 = "SKYD13"
+	cluster = 21
+	par = 300
+	music = "D_TAPES"
+	Author = "Palindrone"
+	levelnum = 107
+	ResetInventory
+	ResetItems
+	lightmode = 16
+	NoJump
+	NoCrouch
+}
+
 cluster 21
 {
 }
@@ -251,7 +268,7 @@ map MMAP33 "Atomic Cul-De-Sac"
     sky1 = "RSKY1"
 	cluster = 24
 	par = 300
-	music = "D_115"
+	music = "D_HANGAR"
 	Author = "Palindrone"
 	levelnum = 133
 	ResetInventory
