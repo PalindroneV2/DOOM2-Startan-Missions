@@ -36,13 +36,17 @@ class W3DZombie : Actor
 		Goto Chase;
 	Chase:
 		#### A 0 A_JumpIf(CheckForObstacle(),"Jump"); 
-		#### AA 3 A_Chase("Melee",null);
-		#### D 0 A_JumpIf(CheckForObstacle(),"Jump");
-		#### BB 3 A_Chase("Melee",null);
-		#### D 0 A_JumpIf(CheckForObstacle(),"Jump");
+		// #### AA 3 A_Chase("Melee",null,CHF_NORANDOMTURN);
 		#### CC 3 A_Chase("Melee",null);
 		#### D 0 A_JumpIf(CheckForObstacle(),"Jump");
-		#### DD 3 A_Chase("Melee",null);
+		// #### AA 3 A_Chase("Melee",null,CHF_NORANDOMTURN);
+		#### CC 3 A_Chase("Melee",null);
+		#### D 0 A_JumpIf(CheckForObstacle(),"Jump");
+		// #### AA 3 A_Chase("Melee",null,CHF_NORANDOMTURN);
+		#### CC 3 A_Chase("Melee",null);
+		#### D 0 A_JumpIf(CheckForObstacle(),"Jump");
+		// #### AA 3 A_Chase("Melee",null,CHF_NORANDOMTURN);
+		#### CC 3 A_Chase("Melee",null);
 		#### D 0 A_JumpIf(CheckForObstacle(),"Jump");
 		Loop;
 	Melee:
@@ -86,7 +90,7 @@ extend class W3DZombie
 {
 	void A_W3DZombieSwipe()
 	{
-		int zmbdmg = 5 * Random(5,7);
+		int zmbdmg = 5 * Random(3,4);
 		if (target)
 		{
 			A_FaceTarget();

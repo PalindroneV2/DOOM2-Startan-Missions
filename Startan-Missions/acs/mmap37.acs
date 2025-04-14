@@ -2,6 +2,8 @@
 #include "packapunchmachine.acs"
 
 global int 7 : SecretLevel37;
+int playershealth;
+int playerisarmored;
 
 script 1 enter
 {
@@ -21,12 +23,21 @@ script "FurnaceRoomExplosion" (void)
 	Floor_LowerByValue(3,256,128);
 }
 
+bool poweron = false;
+
 script "PowerOn" (void)
 {
     Door_Open(7, 16);
     Floor_LowerByValue(5 , 16, 96);
     SetLineTexture(5, SIDE_FRONT, TEXTURE_BOTTOM,"COMPSW01"); 
     SetLineActivation(5,SPAC_Use);
+    ChangeFloor(15, "PERKTOP1");
+    ChangeFloor(16, "PERKTOP1");
+    ChangeFloor(17, "PERKTOP1");
+    Floor_RaiseByValue(15, 32, 96);
+    Floor_RaiseByValue(16, 32, 112);
+    Floor_RaiseByValue(17, 32, 96);
+    poweron = true;
 }
 
 bool TP1 = false;
@@ -180,6 +191,7 @@ script 666 ENTER
 {
     SetFont("BIGFONT");
     HudMessageBold(s:"$: ", i:zombiepoints;  HUDMSG_PLAIN, 937, CR_WHITE, 0.01, 0.7, 0, 1);
+    playershealth = GetActorProperty(900, APROP_Health);
     Delay(1);
     Restart;
 }
@@ -204,6 +216,7 @@ script "ZombieSpawn" ENTER
         SpawnSpotFacing("W3DSSZombie", 25, 115);
         SpawnSpotFacing("TeleportFog", 25, 115);
         SetThingSpecial(115, ACS_NamedExecuteAlways, "ZombieKill1");
+        SetActorFlag(115, "COUNTKILL", false);
         Thing_Hate(115, 900, 2);
     }
     Delay(35);
@@ -233,5 +246,217 @@ script "Teleporters" (void)
         Delay(35 * 15);
         Teleport(13, 13);
         samroom = false;
+    }
+}
+
+script "JuggerNog" (void)
+{
+    if (poweron == true){
+        int randy = Random(1, 10);
+        if(playershealth < 100)
+        {
+            if(zombiepoints > 500)
+            {
+                zombiepoints = zombiepoints - 500;
+                if(randy == 1)
+                {
+                    GiveInventory("NewBerserk", 100);
+                    HudMessageBold(s:"Berserk!";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+                    Delay(35);
+                }else{
+                    GiveInventory("FullHeal", 100);
+                    HudMessageBold(s:"Fully Healed!";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+                    Delay(35);
+                }
+            }else{
+                HudMessageBold(s:"Not Enough Points.";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+                Delay(35);
+            }
+        }else{
+            HudMessageBold(s:"Already at full health.";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+            Delay(35);
+        }
+    }else{
+        Delay(1);
+    }
+}
+script "JuggerNogTexto" (void)
+{
+    if (poweron == true){
+        HudMessageBold(s:"Health: $500";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+        if(playershealth >= 100)
+        {
+            HudMessageBold(s:"Already at full health.";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+            Delay(35);
+        }
+    }else{
+        Delay(1);
+    }
+}
+
+script "QuickRevive" (void)
+{
+    if (poweron == true){
+        playerisarmored =  CheckInventory("Armor");
+        int randy = Random(1, 10);
+        if(playershealth < 200)
+        {
+            if(zombiepoints > 1000)
+            {
+                zombiepoints = zombiepoints - 1000;
+                if(randy == 1)
+                {
+                    GiveInventory("Megasphere", 1);
+                    HudMessageBold(s:"Megasphere!";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+                    Delay(35);
+                }else{
+                    GiveInventory("Soulsphere", 100);
+                    HudMessageBold(s:"Soulsphere!";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+                    Delay(35);
+                }
+            }else{
+                HudMessageBold(s:"Not Enough Points.";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+                Delay(35);
+            }
+        }else{
+            HudMessageBold(s:"Already at full health.";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+            Delay(35);
+        }
+    }else{
+        Delay(1);
+    }
+}
+script "QuickReviveTexto" (void)
+{
+    if (poweron == true){
+        HudMessageBold(s:"Power Up: $1000";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+        if(playershealth >= 200)
+        {
+            HudMessageBold(s:"Already at full health.";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+            Delay(35);
+        }
+    }else{
+        Delay(1);
+    }
+}
+
+script "VictoriousTortoise" (void)
+{
+    if(poweron == true){
+        playerisarmored =  CheckInventory("Armor");
+        int randy = Random(1, 100);
+        if(playerisarmored < 100)
+        {
+            if(zombiepoints > 500)
+            {
+                zombiepoints = zombiepoints - 500;
+                if(randy <= 5)
+                {
+                    GiveInventory("EnchantedArmor", 1);
+                    HudMessageBold(s:"Enchanted Armor!";  HUDMSG_FADEOUT, 900, CR_GOLD, 0.5, 0.7, 1.0, 1);
+                    Delay(35);
+                }else if((randy >= 6) && (randy <= 20))
+                {
+                    GiveInventory("RedArmor", 1);
+                    HudMessageBold(s:"Advanced Armor!";  HUDMSG_FADEOUT, 900, CR_RED, 0.5, 0.7, 1.0, 1);
+                    Delay(35);
+                }else if((randy >= 21) && (randy <= 50))
+                {
+                    GiveInventory("BlueArmor50", 1);
+                    HudMessageBold(s:"Combat Armor!";  HUDMSG_FADEOUT, 900, CR_BLUE, 0.5, 0.7, 1.0, 1);
+                    Delay(35);
+                }else if((randy >= 51) && (randy <= 100))
+                {
+                    GiveInventory("GreenArmor35", 1);
+                    HudMessageBold(s:"Security Armor!";  HUDMSG_FADEOUT, 900, CR_GREEN, 0.5, 0.7, 1.0, 1);
+                    Delay(35);
+                }
+            }else{
+                HudMessageBold(s:"Not Enough Points.";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+                Delay(35);
+            }
+        }else if(playerisarmored >= 100 && playerisarmored <= 199){
+            if(zombiepoints > 1000)
+            {
+                zombiepoints = zombiepoints - 1000;
+                if(randy <= 5)
+                {
+                    GiveInventory("EnchantedArmor", 1);
+                    HudMessageBold(s:"Enchanted Armor!";  HUDMSG_FADEOUT, 900, CR_GOLD, 0.5, 0.7, 1.0, 1);
+                    Delay(35);
+                }else if((randy >= 6) && (randy <= 50))
+                {
+                    GiveInventory("RedArmor", 1);
+                    HudMessageBold(s:"Advanced Armor!";  HUDMSG_FADEOUT, 900, CR_RED, 0.5, 0.7, 1.0, 1);
+                    Delay(35);
+                }else if((randy >= 51) && (randy <= 100))
+                {
+                    GiveInventory("BlueArmor50", 1);
+                    HudMessageBold(s:"Combat Armor!";  HUDMSG_FADEOUT, 900, CR_BLUE, 0.5, 0.7, 1.0, 1);
+                    Delay(35);
+                }
+            }else{
+                HudMessageBold(s:"Not Enough Points.";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+                Delay(35);
+            }
+        }else if(playerisarmored == 200){
+            HudMessageBold(s:"Already at full armor.";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+            Delay(35);
+        }
+    }else{
+        Delay(1);
+    }
+}
+
+str armortypesarray[4] = {
+    "GreenArmor35",
+    "BlueArmor50",
+    "RedArmor",
+    "EnchantedArmor",
+};
+str armornamesarray[4] = {
+    "Security Armor",
+    "Combat Armor",
+    "Advanced Armor",
+    "Enchanted Armor",
+};
+str armorcolorsarray[4] = {
+    "\cd",
+    "\ch",
+    "\cg",
+    "\cf",
+};
+
+script "VictoriousTortoiseTexto" (void)
+{
+    if (poweron == true){
+        HudMessageBold(s:"Armor: $500";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+        playerisarmored =  CheckInventory("Armor");
+        str currentarmor;
+        str currentarmorcolor;
+        for (int i; i<5; i++)
+        {
+            if (GetArmorType(armortypesarray[i], PlayerNumber()))
+            {
+                currentarmor=armornamesarray[i];
+                currentarmorcolor=armorcolorsarray[i];
+                break;
+            }
+        }
+        if(playerisarmored >= 1)
+        {
+            HudMessageBold(s:"Current Armor: ", s:currentarmorcolor, s:currentarmor;  HUDMSG_FADEOUT, 901, CR_WHITE, 0.5, 0.725, 1.0, 1);
+            HudMessageBold(s:"At Value: ", i:playerisarmored;  HUDMSG_FADEOUT, 902, CR_WHITE, 0.5, 0.750, 1.0, 1);
+        }
+        if (playerisarmored >= 100 && playerisarmored < 200)
+        {
+            HudMessageBold(s:"Upgrade Armor: $1000";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+        }
+        if (playerisarmored == 200)
+        {
+            HudMessageBold(s:"Already at full armor.";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+        }
+    }else{
+        Delay(1);
     }
 }
