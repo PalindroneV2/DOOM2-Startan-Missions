@@ -5,8 +5,27 @@ strictpatches = 0;
 maps
 {
 	
-	MMAP08
+	MMAP38
 	{
+		
+		plugins
+		{
+			
+			threedfloormode
+			{
+				
+				controlsectorarea
+				{
+					usecustomtagrange = true;
+					firsttag = 9000;
+					lasttag = 10000;
+					outerleft = -1536;
+					outerright = 1536;
+					outertop = 7680;
+					outerbottom = 7168;
+				}
+			}
+		}
 		
 		resources
 		{
@@ -22,7 +41,7 @@ maps
 			}
 		}
 		defaultfloortexture = "FLOOR0_1";
-		defaultceiltexture = "CEIL5_1";
+		defaultceiltexture = "CEIL1_1";
 		defaulttoptexture = "STARTAN1";
 		defaultwalltexture = "STARTAN1";
 		defaultbottomtexture = "STARTAN1";
@@ -38,9 +57,9 @@ maps
 		overrideceilheight = false;
 		overridebrightness = false;
 		uselongtexturenames = false;
-		viewpositionx = 1504.332f;
-		viewpositiony = -1870.774f;
-		viewscale = 1.856424f;
+		viewpositionx = -799.6962f;
+		viewpositiony = -448.3399f;
+		viewscale = 0.08157302f;
 		scriptcompiler = "zdoom_acs.cfg";
 		
 		grid
@@ -51,7 +70,7 @@ maps
 			backoffsety = 0;
 			backscalex = 100;
 			backscaley = 100;
-			gridsize = 8;
+			gridsize = 512;
 			gridrotate = 0;
 			gridoriginx = 0;
 			gridoriginy = 0;
@@ -83,30 +102,6 @@ maps
 			autocloseonsuccess = true;
 			exitcodeiserror = true;
 			stderriserror = true;
-		}
-		
-		scriptdocuments
-		{
-			
-			document0
-			{
-				filename = "DIALOGUE";
-				hash = 3588187714;
-				resource;
-				tabtype = 0;
-				scripttype = 18;
-			}
-			
-			document1
-			{
-				filename = "SCRIPTS";
-				hash = 3469170009;
-				resource;
-				tabtype = 0;
-				scripttype = 1;
-				caretposition = 19;
-				activetab = true;
-			}
 		}
 	}
 }
