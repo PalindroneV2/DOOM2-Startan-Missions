@@ -161,7 +161,7 @@ map MMAP08 "Blacksite"
 	par = 300
 	music = "D_TAPES"
 	Author = "Palindrone"
-	levelnum = 107
+	levelnum = 108
 	ResetInventory
 	ResetItems
 	lightmode = 16
