@@ -50,13 +50,27 @@ extend class MP40
 {
 	action void A_MP40Fire()
 	{
-		A_FireBullets(4, 3, 1, 12, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		int dmg = 12;
+		if (Random(1, 100) <= 10)
+		{
+			dmg *= 1.25;
+		}else{
+			dmg = 12;
+		}
+		A_FireBullets(4, 3, 1, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(1,2,0,1);
 		A_GunFlash();
 	}
 	action void A_MP40Fire_PAP()
 	{
-		A_FireBullets(4, 3, 1, 25, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		int dmg = 25;
+		if (Random(1, 100) <= 10)
+		{
+			dmg *= 1.25;
+		}else{
+			dmg = 25;
+		}
+		A_FireBullets(4, 3, 1, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(1,2,0,1);
 		A_StartSound ("PAP/Fire", CHAN_WEAPON);
 	}
@@ -122,8 +136,15 @@ extend class WaltherPPK
 {
     action void A_WaltherPPKShot()
     {
+		int dmg = 12;
+		if (Random(1, 100) <= 10)
+		{
+			dmg *= 3;
+		}else{
+			dmg = 12;
+		}
 		A_StartSound ("WaltherPPK/Fire", CHAN_WEAPON);
-		A_FireBullets(2, 2, -1, 12, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_FireBullets(2, 2, -1, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(1,2,0,1);
 		A_GunFlash();
     }
@@ -178,15 +199,22 @@ extend class M1911A1
 {
     action void A_M1911Shot()
     {
+		int dmg = 15;
+		if (Random(1, 100) <= 20)
+		{
+			dmg *= 3;
+		}else{
+			dmg = 15;
+		}
 		A_StartSound ("M1911/Fire", CHAN_WEAPON);
-		A_FireBullets(2, 2, -1, 15, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_FireBullets(2, 2, -1, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(1,2,0,1);
 		A_GunFlash();
     }
 	action void A_MustangSallyShotLeft()
     {
 		A_StartSound ("PAP/Fire", CHAN_WEAPON);
-		A_FireBullets(2, 2, -1, 15, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		// A_FireBullets(2, 2, -1, 15, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(1,2,0,1);
 		A_GunFlash();
 		// A_FireProjectile("MustangSallyRocket");
@@ -195,7 +223,7 @@ extend class M1911A1
 	action void A_MustangSallyShotRight()
     {
 		A_StartSound ("PAP/Fire", CHAN_WEAPON);
-		A_FireBullets(2, 2, -1, 15, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		// A_FireBullets(2, 2, -1, 15, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(1,2,0,1);
 		A_GunFlash();
 		// A_FireProjectile("MustangSallyRocket");
@@ -268,12 +296,26 @@ extend class M16
 {
 	action void A_M16Fire()
 	{
-		A_FireBullets (1.5,1.5,-1,18,"BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		int dmg = 18;
+		if (Random(1, 100) <= 8)
+		{
+			dmg *= 1.5;
+		}else{
+			dmg = 18;
+		}
+		A_FireBullets (1.5,1.5,-1, dmg,"BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(1,2,0,1);
 	}
 	action void A_M16PAPFire()
 	{
-		A_FireBullets (1.5,1.5,-1,36,"BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		int dmg = 36;
+		if (Random(1, 100) <= 8)
+		{
+			dmg *= 1.5;
+		}else{
+			dmg = 36;
+		}
+		A_FireBullets (1.5,1.5,-1, dmg,"BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(1,2,0,1);
 		A_StartSound ("PAP/Fire", CHAN_WEAPON);
 	}
@@ -285,7 +327,14 @@ extend class M16
 	}
 	action void A_M16SemiFire()
 	{
-		A_FireBullets (0.5,0.5,1,18,"BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		int dmg = 18;
+		if (Random(1, 100) <= 15)
+		{
+			dmg *= 2;
+		}else{
+			dmg = 18;
+		}
+		A_FireBullets (0.5,0.5,1,dmg,"BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(1,2,0,1);
 	}
 	override void PostBeginPlay()
@@ -446,15 +495,29 @@ extend class Trenchgun
 {
     action void A_TrenchgunShot()
     {
+		int dmg = 12;
+		if (Random(1, 100) <= 10)
+		{
+			dmg *= 1.25;
+		}else{
+			dmg = 12;
+		}
 		A_StartSound ("TRNCFIR", CHAN_WEAPON);
-		A_FireBullets(7.5,0, 8, 12, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_FireBullets(7.5,0, 8, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(2,3,0,3);
 		A_GunFlash();
     }
 	action void A_TrenchgunShot_PAP()
     {
+		int dmg = 24;
+		if (Random(1, 100) <= 10)
+		{
+			dmg *= 1.25;
+		}else{
+			dmg = 24;
+		}
 		A_StartSound ("PAP/Fire", CHAN_WEAPON);
-		A_FireBullets(7.5,0, 8, 24, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_FireBullets(7.5,0, 8, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(2,3,0,3);
 		A_GunFlash();
     }
@@ -518,16 +581,30 @@ extend class Kar98k
 {
     action void A_KAR98K_Shot()
     {
+		int dmg = 75;
+		if (Random(1, 100) <= 10)
+		{
+			dmg *= 2;
+		}else{
+			dmg = 75;
+		}
 		A_StartSound ("K98K/FIRE", CHAN_WEAPON);
-		A_Firebullets(3, 0, 1, 75, "RiflePuff", FBF_USEAMMO | FBF_NORANDOM);
+		A_Firebullets(3, 0, 1, dmg, "RiflePuff", FBF_USEAMMO | FBF_NORANDOM);
 		A_Quake(2,3,0,3);
 		A_GunFlash();
     }
 	action void A_KAR98K_Shot_PAP()
     {
+		int dmg = 150;
+		if (Random(1, 100) <= 10)
+		{
+			dmg *= 2;
+		}else{
+			dmg = 150;
+		}
 		A_StartSound ("PAP/Fire", CHAN_AUTO);
 		// A_RailAttack(int damage, int spawnofs_xy = 0, bool useammo = true, color color1 = 0, color color2 = 0, int flags = 0, double maxdiff = 0, class<Actor> pufftype = "BulletPuff", double spread_xy = 0, double spread_z = 0, double range = 0, int duration = 0, double sparsity = 1.0, double driftspeed = 1.0, class<Actor> spawnclass = "none", double spawnofs_z = 0, int spiraloffset = 270, int limit = 0)
-		A_RailAttack(150, 0, true, "FF00FF", "ffb9fc", RGF_FULLBRIGHT, 0, "RiflePuff", 1, 0, 8192, 35, 0.1, 0.1, "None", 0, 270, 5);
+		A_RailAttack(dmg, 0, true, "FF00FF", "ffb9fc", RGF_FULLBRIGHT, 0, "RiflePuff", 1, 0, 8192, 35, 0.1, 0.1, "None", 0, 270, 5);
 		// A_Firebullets(3, 0, 1, 150, "RiflePuff", FBF_USEAMMO | FBF_NORANDOM);
 		A_Quake(2,3,0,3);
 		A_GunFlash();

@@ -141,8 +141,15 @@ extend class Handgun
 {
     action void A_HandgunFire()
     {
+		int dmg = 10;
+		if (Random(1, 100) <= 10)
+		{
+			dmg *= 4;
+		}else{
+			dmg = 10;
+		}
 		A_StartSound ("weapons/pistol", CHAN_WEAPON);
-		A_FireBullets(5, 4, 1, 10, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_FireBullets(5, 4, 1, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(1,3,0,1);
 		A_GunFlash();
     }
@@ -193,15 +200,29 @@ extend class Minigun
 {
     action void A_MinigunFire()
     {
+		int dmg = 10;
+		if (Random(1, 100) <= 5)
+		{
+			dmg *= 2;
+		} else {
+			dmg = 10;
+		}
 		A_StartSound ("weapons/chngun", CHAN_WEAPON);
-		A_FireBullets(5, 0, 1, 10, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_FireBullets(5, 0, 1, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(2,2,0,2);
 		A_GunFlash();
     }
     action void A_MinigunFire_PAP()
     {
+		int dmg = 20;
+		if (Random(1, 100) <= 5)
+		{
+			dmg *= 2;
+		} else {
+			dmg = 20;
+		}
 		A_StartSound ("PAP/Fire", CHAN_WEAPON);
-		A_FireBullets(5, 0, 1, 20, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_FireBullets(5, 0, 1, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(2,2,0,2);
 		A_GunFlash();
     }
@@ -254,8 +275,15 @@ extend class NewShotgun
 {
     action void A_ShotgunShot()
     {
+		int dmg = 12;
+		if (Random(1, 100) <= 10)
+		{
+			dmg *= 1.25;
+		}else{
+			dmg = 12;
+		}
 		A_StartSound ("weapons/shotgf", CHAN_WEAPON);
-		A_FireBullets(7.5,0, 8, 12, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_FireBullets(7.5,0, 8, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(2,3,0,3);
 		A_GunFlash();
     }

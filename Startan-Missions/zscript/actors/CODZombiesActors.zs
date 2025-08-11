@@ -56,18 +56,11 @@ extend class PAP_PowerUp
     // {"M1911A1", "MP40", "Minigun", "M16", "Trenchgun", "NewSuperShotgun", "RocketLauncher", "FastPlasmaRifle", "BFG9000", "RayGun", "KAR98K"};
     action void A_PAPUpgrade()
     {
-        string weaponbox[11];
-        weaponbox[0] ="M1911A1";
-        weaponbox[1] ="MP40";
-        weaponbox[2] ="Minigun";
-        weaponbox[3] ="M16";
-        weaponbox[4] ="Trenchgun";
-        weaponbox[5] ="NewSuperShotgun";
-        weaponbox[6] ="RocketLauncher";
-        weaponbox[7] ="FastPlasmaRifle";
-        weaponbox[8] ="BFG9000";
-        weaponbox[9] ="RayGun";
-        weaponbox[10] ="Kar98k";
+        string weaponbox[] = {
+            "M1911A1", "MP40", "Minigun", "M16", "Trenchgun",
+            "NewSuperShotgun", "RocketLauncher", "FastPlasmaRifle",
+            "BFG9000", "RayGun", "Kar98k"
+        };
         Weapon currentWeapon = player.ReadyWeapon;
         string guntoupgrade = currentWeapon.GetClassName() .. "";
         string upgradedgun = guntoupgrade .. "_PAP";
