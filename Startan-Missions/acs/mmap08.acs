@@ -1,1 +1,21 @@
 #include "zcommon.acs"
+
+script "Offices_Door_WallCollapse" (void)
+{
+    Ceiling_RaiseByValue(10, 16, 16);
+    // Floor_LowerByValue(11, 128, 128);
+    SpawnProjectile(1,"Rocket_Dud", GetActorAngle(1),6400,0,0,0);
+    Delay(10);
+    Floor_MoveToValue(11, 128, 64);
+}
+
+script "TestingRoom_BlueArmor_Pickup" (void)
+{
+    Scroll_Floor(14, -360, 0, CARRY);
+    Floor_LowerToNearest(15, 32);
+}
+
+script "SecretExit_ChangeMusic" (void)
+{
+    Music_Change("D_LEGION", 0);
+}

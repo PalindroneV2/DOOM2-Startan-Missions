@@ -395,6 +395,24 @@ class NoRandPlasmaBall : Actor replaces PlasmaBall
 	}
 }
 
+class Rocket_Dud : Rocket
+{
+	Default
+	{
+		DamageFunction (0);
+		SeeSound "weapons/rocklf";
+		DeathSound "weapons/rocklx";
+	}
+	States
+	{
+	Death:
+		MISL B 8 Bright;
+		MISL C 6 Bright;
+		MISL D 4 Bright;
+		Stop;
+	}
+}
+
 class NoRandRocket : Rocket replaces Rocket
 {
 	Default

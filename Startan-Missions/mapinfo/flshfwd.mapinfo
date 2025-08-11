@@ -161,7 +161,7 @@ map MMAP08 "Blacksite"
 	par = 300
 	music = "D_TAPES"
 	Author = "Palindrone"
-	levelnum = 108
+	levelnum = 108 
 	ResetInventory
 	ResetItems
 	lightmode = 16
@@ -409,6 +409,24 @@ map MMAP37 "Waffenfabrik"
 	music = "D_BEAUTY"
 	Author = "Palindrone"
 	levelnum = 137
+	ResetInventory
+	ResetItems
+	lightmode = 16
+	NoJump
+	NoCrouch
+}
+
+map MMAP38 "Ozymandias"
+{
+	next = "HUBMAP"
+	secretnext = "MMAP38"
+    sky1 = "SKYD14"
+	cluster = 21
+	par = 300
+	music = "D_LEGION"
+	Author = "Palindrone"
+	levelnum = 138
+	SkyFog = 200
 	ResetInventory
 	ResetItems
 	lightmode = 16

@@ -1,0 +1,35 @@
+#include "zcommon.acs"
+
+global int 8 : SecretLevel38;
+
+script "PlayerAssignTID" ENTER
+{
+    Thing_ChangeTID(0,935);
+}
+
+script "MyNameIsOzymandias" (void)
+{
+    PlaySound (935, "misc/sfx/puzzlesolve", CHAN_5, 1.0, FALSE, 0);
+    HudMessage(s:"My Name is Ozymandias. King of Kings";
+		HUDMSG_TYPEON|HUDMSG_LOG, 1, CR_WHITE,0.5, 0.6, 2.0);
+    Delay(70);
+    HudMessage(s:"Look upon my works ye mighty and despair!";
+		HUDMSG_TYPEON|HUDMSG_LOG, 2, CR_GOLD,0.5, 0.65, 2.0);
+    Delay(70);
+    Teleport(3, 3);
+}
+
+script "FInal_TP_Raise" (void)
+{
+    ChangeFloor(1, "PTEXPTP2");
+    Delay(1);
+    Floor_RaiseByValue(1, 8, 8);
+    Delay(35);
+    Floor_RaiseByValue(2, 8, 8);
+    SetLineActivation(1,SPAC_Cross);
+}
+
+script "ExitLevel" (void) {
+	SecretLevel38++;
+	Teleport_NewMap(100,0, 0);
+}
