@@ -206,11 +206,6 @@ class W3DHeerGuardSMG : W3DGuard
 			HRZM MLKJI 5;
 			HRZM I 0 A_SpawnProjectile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
 			Stop;
-		Raise:
-			HRZM N 5;
-			HRZM MLKJI 5;
-			HRZM I 0 A_SpawnProjectile("HeerSoldiertoZombie", 0, 0, 0, CMF_AIMDIRECTION);
-			Stop;
 	}
 }
 class W3DAfrikaGuardSMG : W3DHeerGuardSMG

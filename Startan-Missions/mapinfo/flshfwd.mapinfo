@@ -386,17 +386,18 @@ cluster 28
 	flat = W3DCC011
 	music = D_READ_M
 	entertext =
-	"You once more teleport to a",
-	"a location unknown.",
-	"The thick cloud of dust, debris,",
-	"and smoke clears and you see",
-	"the cracked earth and lava",
-	"beneath your feet.",
-	"And you hear them coming..."
+	"Another botched teleportation",
+	"transports you to an unfamiliar",
+	"location but familiar time.",
+	"The day is darkened by the",
+	"eclipse obscuring the sun."
 	exittext =
- 	"Near death, you are transported",
- 	"back to your base, seemingly",
-	"uninjured."
+ 	"The overloaded teleporter shoots",
+	"you back into the distant future,",
+	"or rather the present you came from.",
+	"You pray that it's the last time you",
+	"see the Third Reich try to control",
+	"power beyond their grasp."
 }
 
 map MMAP37 "Waffenfabrik"
@@ -404,7 +405,7 @@ map MMAP37 "Waffenfabrik"
 	next = "HUBMAP"
 	secretnext = "MMAP38"
     sky1 = "SKYGIANT"
-	cluster = 21
+	cluster = 28
 	par = 300
 	music = "D_BEAUTY"
 	Author = "Palindrone"
@@ -416,12 +417,30 @@ map MMAP37 "Waffenfabrik"
 	NoCrouch
 }
 
+cluster 29
+{
+	flat = EGYPWALL
+	music = D_READ_M
+	entertext =
+	"Two vast and trunkless legs of stone",
+	"Stand in the desert... Near them, on",
+	"the sand, half sunk a shattered visage",
+	"lies, whose frown, and wrinkled lip, and",
+	"sneer of cold command, tell that its",
+	"sculptor well those passions read which",
+	"yet survive, stamped on these lifeless things"
+	exittext =
+	"Nothing beside remains. Round the decay",
+	"Of that colossal Wreck, boundless and bare",
+	"The lone and level sands stretch far away."
+}
+
 map MMAP38 "Ozymandias"
 {
 	next = "HUBMAP"
 	secretnext = "MMAP38"
     sky1 = "SKYD14"
-	cluster = 21
+	cluster = 29
 	par = 300
 	music = "D_LEGION"
 	Author = "Palindrone"

@@ -33,3 +33,8 @@ script "ExitLevel" (void) {
 	SecretLevel38++;
 	Teleport_NewMap(100,0, 0);
 }
+
+script "MummySpawnE1M1" (void)
+{
+    SpawnSpotFacing("CustomMummy", 1, 0);
+}
