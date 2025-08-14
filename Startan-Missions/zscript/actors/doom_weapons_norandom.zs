@@ -142,7 +142,7 @@ extend class Handgun
     action void A_HandgunFire()
     {
 		int dmg = 10;
-		if (Random(1, 100) <= 10)
+		if (Random(1, 100) <= 5)
 		{
 			dmg *= 4;
 		}else{
@@ -153,6 +153,19 @@ extend class Handgun
 		A_Quake(1,3,0,1);
 		A_GunFlash();
     }
+	override bool HandlePickup(Inventory item)
+	{
+		if (item.GetClass() == "WaltherPPK" || item.GetClass() == "M1911A1")
+		{
+			// Deduct some ammo to compensate for the weapon pickup
+			owner.TakeInventory("Clip", 4);
+			//Take away the base Handgun
+			owner.TakeInventory("Handgun", 1);
+			item.bPickupgood = true;
+			return Super.HandlePickup(item); // Pickup was handled
+		}
+		return Super.HandlePickup(item);
+	}
 }
 
 class Minigun : DoomWeapon replaces Chaingun
@@ -261,7 +274,7 @@ class NewShotgun : DoomWeapon replaces Shotgun
 		SHTG CB 5;
 		SHTG A 3;
 		SHTG A 7 A_ReFire;
-		Goto Ready;
+		Goto TrueReady;
 	Flash:
 		SHTF A 4 Bright A_Light1;
 		SHTF B 3 Bright A_Light2;
@@ -269,6 +282,9 @@ class NewShotgun : DoomWeapon replaces Shotgun
 	Spawn:
 		SHOT A -1;
 		Stop;
+	// Pickup:
+	// 	TNT1 A 0 A_SecretShotgunPickup;
+	// 	Stop;
 	}
 }
 extend class NewShotgun
@@ -287,6 +303,28 @@ extend class NewShotgun
 		A_Quake(2,3,0,3);
 		A_GunFlash();
     }
+	action void A_SecretShotgunPickup()
+	{
+		TakeInventory("NewShotgun", 1);
+		TakeInventory("Shotgun", 1);
+		TakeInventory("Shell", 12);
+		GiveInventory("Trenchgun", 1);
+	}
+	override bool HandlePickup(Inventory item)
+	{
+		if (item.GetClass() == "Trenchgun")
+		{
+			if (owner.FindInventory("NewShotgun"))
+			{
+				// Give only ammo
+				owner.TakeInventory("Shell", 4);
+				owner.TakeInventory("NewShotgun", 1);
+			}
+			item.bPickupgood = true;
+			return Super.HandlePickup(item); // Pickup was handled
+		}
+		return Super.HandlePickup(item);
+	}
 }
 
 class NewSuperShotgun : DoomWeapon replaces SuperShotgun

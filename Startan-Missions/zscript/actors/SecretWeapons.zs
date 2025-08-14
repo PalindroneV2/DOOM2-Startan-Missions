@@ -101,6 +101,7 @@ class WaltherPPK : DoomWeapon
 		Obituary "%o was Killed by %k's Walther PPK.";
 		+WEAPON.WIMPY_WEAPON;
 		Inventory.Pickupmessage "Picked up a Walther PPK.";
+       //$Category Weapons
 	}
 	States
 	{
@@ -148,6 +149,37 @@ extend class WaltherPPK
 		A_Quake(1,2,0,1);
 		A_GunFlash();
     }
+	override bool HandlePickup(Inventory item)
+	{
+		// The WaltherPPK is an upgrade to the Handgun
+		//This makes it so a handgun pickup gives ammo for the WaltherPPK
+		if (item.GetClass() == "Handgun")
+		{
+			// If player already has WaltherPPK token
+			if (owner.FindInventory("WaltherPPK"))
+			{
+				// Give only ammo
+				owner.GiveInventory("Clip", 5);
+			}
+			item.bPickupgood = true;
+			return true; // Pickup was handled
+		}
+		// The M1911A1  is an upgrade to the WaltherPPK
+		//This makes it so a M1911A1  replaces the WaltherPPK
+		if (item.GetClass() == "M1911A1")
+		{
+			// If player already has WaltherPPK token
+			if (owner.FindInventory("WaltherPPK"))
+			{
+				// Give only ammo
+				owner.GiveInventory("Clip", 4);
+				owner.TakeInventory("WaltherPPK", 1);
+			}
+			item.bPickupgood = true;
+			return Super.HandlePickup(item); // Pickup was handled
+		}
+		return Super.HandlePickup(item);
+	}
 }
 
 class M1911A1 : Weapon
@@ -165,6 +197,7 @@ class M1911A1 : Weapon
 		Obituary "%o was Killed by %k's Colt M1911A1.";
 		+WEAPON.WIMPY_WEAPON;
 		Inventory.Pickupmessage "Picked up a Colt M1911A1.";
+       //$Category Weapons
 	}
     States
     {
@@ -202,7 +235,7 @@ extend class M1911A1
 		int dmg = 15;
 		if (Random(1, 100) <= 20)
 		{
-			dmg *= 3;
+			dmg *= 4;
 		}else{
 			dmg = 15;
 		}
@@ -229,6 +262,22 @@ extend class M1911A1
 		// A_FireProjectile("MustangSallyRocket");
 		A_FireCustomMissile ("MustangSallyRocket", 0, 1, 8, 0,0,0);
     }
+	override bool HandlePickup(Inventory item)
+	{
+		if (item.GetClass() == "Handgun" || item.GetClass() == "WaltherPPK")
+		{
+			// If player already has M1911A1 token
+			if (owner.FindInventory("M1911A1"))
+			{
+				// Give only ammo
+				owner.GiveInventory("Clip", 5);
+			}
+			// Prevent NewShotgun from actually being picked up
+			item.bPickupgood = true;
+			return true; // Pickup was handled
+		}
+		return Super.HandlePickup(item);
+	}
 }
 
 class M16 : DoomWeapon
@@ -521,6 +570,22 @@ extend class Trenchgun
 		A_Quake(2,3,0,3);
 		A_GunFlash();
     }
+	override bool HandlePickup(Inventory item)
+	{
+		if (item.GetClass() == "NewShotgun")
+		{
+			// If player already has Trenchgun token
+			if (owner.FindInventory("Trenchgun"))
+			{
+				// Give only ammo
+				owner.GiveInventory("Shell", 4);
+			}
+			// Prevent NewShotgun from actually being picked up
+			item.bPickupgood = true;
+			return true; // Pickup was handled
+		}
+		return Super.HandlePickup(item);
+	}
 }
 
 class Kar98k : DoomWeapon

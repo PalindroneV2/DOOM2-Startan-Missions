@@ -40,6 +40,19 @@ switch doom 2 W3DSWT03 off pic W3DSWT04 tics 0
 switch doom 2 ZMSW1 off pic ZMSW2 tics 0
 switch doom 2 ZMSW2 on pic ZMSW1 tics 0
 
+switch doom 2 EGYPSW01 off pic EGYPSW02 tics 0
+switch doom 2 EGYPSW02 on pic EGYPSW01 tics 0
+switch doom 2 EGYPSW11 off pic EGYPSW12 tics 0
+switch doom 2 EGYPSW12 on pic EGYPSW11 tics 0
+switch doom 2 EGYPSW21 off pic EGYPSW22 tics 0
+switch doom 2 EGYPSW22 on pic EGYPSW21 tics 0
+switch doom 2 EGYPSW31 off pic EGYPSW32 tics 0
+switch doom 2 EGYPSW32 on pic EGYPSW31 tics 0
+switch doom 2 EGYPSW41 off pic EGYPSW42 tics 0
+switch doom 2 EGYPSW42 on pic EGYPSW41 tics 0
+switch doom 2 EGYPSW51 off pic EGYPSW52 tics 0
+switch doom 2 EGYPSW52 on pic EGYPSW51 tics 0
+
 switch DOOM 2 DOSW1 on pic DOSWX1 tics 0
 switch DOOM 2 DOSW1C on pic DOSWX1C tics 0
 switch DOOM 2 DOSW2 on pic DOSWX2 tics 0

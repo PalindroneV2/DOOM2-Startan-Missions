@@ -3,7 +3,7 @@ class GreenArmor35 : GreenArmor replaces GreenArmor
     Default
     {
 		Tag "Security Armor";
-        Inventory.PickupMessage "Picked up the Security Armor. (35% DR)" ;
+        Inventory.PickupMessage "Picked up the Security Armor. (35% Damage Absorption)" ;
         Armor.SavePercent 35;
     }
 }
@@ -14,7 +14,29 @@ class BlueArmor50 : BlueArmor replaces BlueArmor
     {
 		Tag "Combat Armor";
        //$Category Health and Armor
-        Inventory.PickupMessage "Picked up the Combat Armor. (50% DR)" ;
+        Inventory.PickupMessage "Picked up the Combat Armor. (50% Damage Absorption)" ;
+    }
+}
+
+class RedArmor : BasicArmorPickup
+{
+    Default
+    {
+		Tag "Advanced Armor";
+        //$Category Health and Armor
+        Radius 20;
+        Height 16;
+        Inventory.PickupMessage "Picked up the Advanced Armor. (75% Damage Absorption)" ;
+        Inventory.Icon "ARM5A0";
+        Armor.SavePercent 75;
+        Armor.SaveAmount 250;
+    }
+    States
+    {
+        Spawn:
+            ARM5 A 6;
+            ARM5 B 7 Bright;
+            Loop;
     }
 }
 
@@ -26,7 +48,7 @@ class GreenArmorSmall : BasicArmorPickup
        //$Category Health and Armor
         Radius 20;
         Height 16;
-        Inventory.PickupMessage "Picked up the Light Security Armor. (35% DR)" ;
+        Inventory.PickupMessage "Picked up the Light Security Armor. (35% Damage Absorption)" ;
         Inventory.Icon "ARM3A0";
         Armor.SavePercent 35;
         Armor.SaveAmount 50;
@@ -48,38 +70,16 @@ class BlueArmorSmall : BasicArmorPickup
        //$Category Health and Armor
         Radius 20;
         Height 16;
-        Inventory.PickupMessage "Picked up the Light Combat Armor. (50% DR)" ;
+        Inventory.PickupMessage "Picked up the Light Combat Armor. (50% Damage Absorption)" ;
         Inventory.Icon "ARM4A0";
         Armor.SavePercent 50;
-        Armor.SaveAmount 75;
+        Armor.SaveAmount 100 ;
     }
     States
     {
         Spawn:
             ARM4 A 6;
             ARM4 B 7 Bright;
-            Loop;
-    }
-}
-
-class RedArmor : BasicArmorPickup
-{
-    Default
-    {
-		Tag "Advanced Armor";
-        //$Category Health and Armor
-        Radius 20;
-        Height 16;
-        Inventory.PickupMessage "Picked up the Advanced Armor. (75% DR)" ;
-        Inventory.Icon "ARM5A0";
-        Armor.SavePercent 75;
-        Armor.SaveAmount 200;
-    }
-    States
-    {
-        Spawn:
-            ARM5 A 6;
-            ARM5 B 7 Bright;
             Loop;
     }
 }
@@ -92,10 +92,10 @@ class RedArmorSmall : BasicArmorPickup
         //$Category Health and Armor
         Radius 20;
         Height 16;
-        Inventory.PickupMessage "Picked up the Light Advanced Armor.(75% DR)" ;
+        Inventory.PickupMessage "Picked up the Light Advanced Armor. (75% Damage Absorption)" ;
         Inventory.Icon "ARM6A0";
         Armor.SavePercent 75;
-        Armor.SaveAmount 100;
+        Armor.SaveAmount 125;
     }
     States
     {
@@ -114,10 +114,10 @@ class EnchantedArmor : BasicArmorPickup
        //$Category Health and Armor
         Radius 20;
         Height 16;
-        Inventory.PickupMessage "Behold! You picked up the Enchanted Armor! (100% DR)" ;
+        Inventory.PickupMessage "Behold! You picked up the Enchanted Armor! (100% Damage Absorption)" ;
         Inventory.Icon "ARM7A0";
         Armor.SavePercent 100;
-        Armor.SaveAmount 200;
+        Armor.SaveAmount 300;
     }
     States
     {
@@ -153,7 +153,7 @@ class  FullHeal : Health
 		Tag "Full Recovery Kit";
        //$Category Health and Armor
         Inventory.Amount 100;
-        Inventory.PickupMessage "Picked up a Full Recovery Kit.(100% HP)";
+        Inventory.PickupMessage "Picked up a Full Recovery Kit. (100% HP)";
         Health.LowMessage 25, "Picked up an Full Recovery Kit that you REALLY need! (100% HP)";
     }
     States
@@ -207,7 +207,7 @@ class ArmorPlate35 : BasicArmorBonus
         Radius 20;
         Height 20;
         Tag "Armor Plate";
-        Inventory.PickupMessage "Picked up an armor plate. (35%)";
+        Inventory.PickupMessage "Picked up an armor plate. (35% Damage Absorption)";
         Inventory.Icon "BON4A0";
         Armor.SavePercent 35;
         Armor.SaveAmount 25;

@@ -15,7 +15,7 @@ script "MyNameIsOzymandias" (void)
     Delay(70);
     HudMessage(s:"Look upon my works ye mighty and despair!";
 		HUDMSG_TYPEON|HUDMSG_LOG, 2, CR_GOLD,0.5, 0.65, 2.0);
-    Delay(70);
+    Delay(105);
     Teleport(3, 3);
 }
 
@@ -34,7 +34,87 @@ script "ExitLevel" (void) {
 	Teleport_NewMap(100,0, 0);
 }
 
+script "OpenOriginalSecretWall" (void)
+{
+    Floor_MoveToValue(9, 16, 0);
+}
+
+script "SecretBackpack" (void)
+{
+  Floor_LowerByValue(7, 16, 32);
+  Ceiling_RaiseByValue(6, 16, 64);
+}
+
 script "MummySpawnE1M1" (void)
 {
+    SpawnSpotFacing("TeleportFog", 1, 0);
     SpawnSpotFacing("CustomMummy", 1, 0);
+}
+script "MummySpawnTributeRoom" (void)
+{
+    SpawnSpotFacing("TeleportFog", 2, 0);
+    SpawnSpotFacing("CustomMummy", 2, 0);
+    SpawnSpotFacing("TeleportFog", 10, 0);
+    SpawnSpotFacing("Spectre", 10, 0);
+}
+
+script "Activate_Pool_Monsters" (void)
+{
+    // Activate the pool monsters
+    Thing_Activate(4);
+}
+
+script "RemoveHandgun" (void)
+{
+	TakeInventory("Handgun",1);
+}
+
+bool PickedUpSkull = false;
+
+script "PoolMonsterSpawn" (void)
+{
+    PickedUpSkull = true;
+    Door_Close(13, 64, 0);
+    SpawnSpotFacing("TeleportFog", 6, 0);
+    SpawnSpotFacing("CustomMummy", 6, 0);
+
+    SpawnSpotFacing("TeleportFog", 7, 0);
+    SpawnSpotFacing("Harbinger", 7, 0);
+
+    SpawnSpotFacing("TeleportFog", 8, 0);
+    SpawnSpotFacing("BaronofHell", 8, 0);
+
+    SpawnSpotFacing("TeleportFog", 9, 0);
+    SpawnSpotFacing("DoomImp", 9, 0);
+
+    SpawnSpotFacing("TeleportFog", 12, 0);
+    SpawnSpotFacing("Demon", 12, 0);
+    
+    SpawnSpotFacing("TeleportFog", 5, 0);
+    SpawnSpotFacing("Cacodemon", 5, 0);
+    Delay(35*5);
+    SpawnSpotFacing("TeleportFog", 5, 0);
+    SpawnSpotFacing("Cacodemon", 5, 0);
+    Floor_LowerByValue(18, 16, 128);
+}
+
+script "ExitRoomSwitchOpensClassicSecret" (void)
+{
+    Floor_MoveToValue(9, 16, 0);
+    Floor_LowerToNearest(12, 16); 
+}
+
+script "MummySpawnExitRoom" (void)
+{
+    if (PickedUpSkull == true){
+        SpawnSpotFacing("TeleportFog", 11, 0);
+        SpawnSpotFacing("CustomMummy", 11, 0);
+        PickedUpSkull = false;
+    }
+}
+
+script "CourtyardEntranceRevealEnemies" (void)
+{
+    Ceiling_RaiseByValue(14, 96, 128);
+    Floor_RaiseByValue(15, 96, 128);
 }

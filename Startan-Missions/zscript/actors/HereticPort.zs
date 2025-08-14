@@ -5,7 +5,7 @@ class CustomMummy : Actor
 {
 	Default
 	{
-		Health 600;
+		Health 450;
 		Radius 22;
 		Height 62;
 		Mass 75;
