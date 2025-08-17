@@ -134,5 +134,6 @@ script "ThroneRoom_BlueSkullSpawn" (void)
     {
         SpawnSpotFacing("TeleportFog", 14, 0);
         SpawnSpotFacing("BlueSkull", 14, 0);
+        Ceiling_RaiseByValue(30, 16, 64);
     }
 }
