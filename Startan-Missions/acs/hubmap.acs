@@ -222,7 +222,7 @@ script 38 (void)
 { //Enter MAP38 Sector 
 	SetFont("BIGFONT");
 	PlaySound(0, "misc/chat", CHAN_5, 1.0, FALSE, 0);
-	HudMessage(s:"Enter Map:",s:"\n BlacksiteSecret";
+	HudMessage(s:"Enter Map:",s:"\n Ozymandias";
 	HUDMSG_TYPEON, 10, CR_WHITE,0.5, 0.1, 2.0);
 }
 

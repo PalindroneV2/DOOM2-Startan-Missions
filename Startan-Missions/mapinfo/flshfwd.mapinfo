@@ -19,7 +19,7 @@ map HUBMAP "Startan Base"
 map MMAP01 "Works in Progress"
 {
 	next = "HUBMAP"
-	secretnext = "MMAP31"
+	secretnext = "SECRET1"
     sky1 = "SKYND07"
 	cluster = 21
 	par = 300
@@ -36,7 +36,7 @@ map MMAP01 "Works in Progress"
 /* map MMAP01 "Infected Flesh"
 {
 	next = "HUBMAP"
-	secretnext = "MMAP31"
+	secretnext = "SECRET1"
     sky1 = "RSKY3"
 	cluster = 21
 	par = 300
@@ -53,7 +53,7 @@ map MMAP01 "Works in Progress"
 map MMAP02 "Volcanic Fortress"
 {
 	next = "HUBMAP"
-	secretnext = "MMAP32"
+	secretnext = "SECRET2"
     sky1 = "RSKY3"
 	cluster = 21
 	par = 300
@@ -70,7 +70,7 @@ map MMAP02 "Volcanic Fortress"
 map MMAP03 "Escape Prohibited"
 {
 	next = "HUBMAP"
-	secretnext = "MMAP33"
+	secretnext = "SECRET3"
     sky1 = "RSKY2"
 	cluster = 21
 	par = 300
@@ -87,7 +87,7 @@ map MMAP03 "Escape Prohibited"
 map MMAP04 "The Tomb of Id-K'yeth"
 {
 	next = "HUBMAP"
-	secretnext = "MMAP34"
+	secretnext = "SECRET4"
     sky1 = "SKYD13"
 	cluster = 21
 	par = 300
@@ -104,7 +104,7 @@ map MMAP04 "The Tomb of Id-K'yeth"
 map MMAP05 "The FOB"
 {
 	next = "HUBMAP"
-	secretnext = "MMAP35"
+	secretnext = "SECRET5"
     sky1 = "SKYD14"
 	cluster = 21
 	par = 300
@@ -121,7 +121,7 @@ map MMAP05 "The FOB"
 map MMAP06 "Silence in the Library"
 {
 	next = "HUBMAP"
-	secretnext = "MMAP36"
+	secretnext = "SECRET6"
     sky1 = "SKYD13"
 	cluster = 21
 	par = 300
@@ -138,7 +138,7 @@ map MMAP06 "Silence in the Library"
 map MMAP07 "Hot Start"
 {
 	next = "HUBMAP"
-	secretnext = "MMAP37"
+	secretnext = "SECRET7"
     sky1 = "SKYD13"
 	cluster = 21
 	par = 300
@@ -155,7 +155,7 @@ map MMAP07 "Hot Start"
 map MMAP08 "Blacksite"
 {
 	next = "HUBMAP"
-	secretnext = "MMAP38"
+	secretnext = "SECRET8"
     sky1 = "SKYD13"
 	cluster = 21
 	par = 300
@@ -193,7 +193,7 @@ cluster 22
 	"timeline..."
 }
 
-map MMAP31 "Jamais Vu"
+map SECRET1 "Jamais Vu"
 {
 	next = "HUBMAP"
 	secretnext = "HUBMAP"
@@ -226,7 +226,7 @@ cluster 23
 	"back to where you belong."
 }
 
-map MMAP32 "Raiders"
+map SECRET2 "Raiders"
 {
 	next = "HUBMAP"
 	secretnext = "HUBMAP"
@@ -261,7 +261,7 @@ cluster 24
 	"keep your best interest at heart..."
 }
 
-map MMAP33 "Atomic Cul-De-Sac"
+map SECRET3 "Atomic Cul-De-Sac"
 {
 	next = "HUBMAP"
 	secretnext = "HUBMAP"
@@ -294,7 +294,7 @@ cluster 25
 	"and return to base."
 }
 
-map MMAP34 "Blood Sacrifice"
+map SECRET4 "Blood Sacrifice"
 {
 	next = "HUBMAP"
 	secretnext = "HUBMAP"
@@ -329,7 +329,7 @@ cluster 26
 	"slaughtered..."
 }
 
-map MMAP35 "Sturme das Schloss"
+map SECRET5 "Sturme das Schloss"
 {
 	next = "HUBMAP"
 	secretnext = "HUBMAP"
@@ -364,7 +364,7 @@ cluster 27
 	"uninjured."
 }
 
-map MMAP36 "Diner at the End of the World"
+map SECRET6 "Diner at the End of the World"
 {
 	next = "HUBMAP"
 	secretnext = "HUBMAP"
@@ -400,10 +400,10 @@ cluster 28
 	"power beyond their grasp."
 }
 
-map MMAP37 "Waffenfabrik"
+map SECRET7 "Waffenfabrik"
 {
 	next = "HUBMAP"
-	secretnext = "MMAP38"
+	secretnext = "SECRET8"
     sky1 = "SKYGIANT"
 	cluster = 28
 	par = 300
@@ -430,15 +430,19 @@ cluster 29
 	"sculptor well those passions read which",
 	"yet survive, stamped on these lifeless things"
 	exittext =
-	"Nothing beside remains. Round the decay",
-	"Of that colossal Wreck, boundless and bare",
-	"The lone and level sands stretch far away."
+	"Nothing beside remains.",
+	"",
+	"Round the decay of that colossal wreck.",
+	"Boundless and bare.",
+	"The lone and level sands",
+	"",
+	"stretch far away..."
 }
 
-map MMAP38 "Ozymandias"
+map SECRET8 "Ozymandias"
 {
 	next = "HUBMAP"
-	secretnext = "MMAP38"
+	secretnext = "HUBMAP"
     sky1 = "SKYD14"
 	cluster = 29
 	par = 300

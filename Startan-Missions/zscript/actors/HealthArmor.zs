@@ -128,6 +128,14 @@ class EnchantedArmor : BasicArmorPickup
     }
 }
 
+extend class EnchantedArmor
+{
+    action void A_EnchantedArmorPickup()
+    {
+        A_Log("You feel invincible!");
+    }
+}
+
 class  HalfHeal : Health
 {
     Default
@@ -219,5 +227,39 @@ class ArmorPlate35 : BasicArmorBonus
         Spawn:
             BON4 A -1;
             Loop;
+    }
+}
+
+class RedArmorBonus : BasicArmorBonus
+{
+    Default
+    {
+        //$Category Health and Armor
+        Radius 20;
+        Height 20;
+        Tag "RedArmorBonus";
+        Inventory.PickupMessage "Picked up an armor plate. (75% Damage Absorption)";
+        Inventory.Icon "BON5A0";
+        Armor.SavePercent 75;
+        Armor.SaveAmount 125;
+        Armor.MaxSaveAmount 250;
+        +INVENTORY.ALWAYSPICKUP;
+    }
+}
+
+class EnchantedArmorBonus : BasicArmorBonus
+{
+    Default
+    {
+        //$Category Health and Armor
+        Radius 20;
+        Height 20;
+        Tag "EnchantedArmorBonus";
+        Inventory.PickupMessage "Picked up an armor plate. (100% Damage Absorption)";
+        Inventory.Icon "BON6A0";
+        Armor.SavePercent 100;
+        Armor.SaveAmount 300;
+        Armor.MaxSaveAmount 300;
+        +INVENTORY.ALWAYSPICKUP;
     }
 }

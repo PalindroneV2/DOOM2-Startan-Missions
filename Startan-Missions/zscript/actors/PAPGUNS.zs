@@ -185,6 +185,7 @@ class Kar98k_PAP : Kar98k
 {
 	default
 	{
+		Weapon.SlotPriority 3;
 		Inventory.Pickupmessage "Your Kar98k became the Armaggedon!";
 		Obituary "%o was 360-noscoped by %k with the Armaggedon.";
 		Tag "Armaggedon";
@@ -252,13 +253,14 @@ class BFGBall_PAP : BFGBallNoRand
 	}
 }
 
-class RocketLauncher_PAP : RocketLauncher
+class RocketLauncher_PAP : NewRocketLauncher
 {
 	Default
 	{
-		Weapon.SelectionOrder 2499;
+		Weapon.SelectionOrder 2555;
 		Weapon.AmmoGive 5;
         Weapon.SlotNumber 5;
+		Weapon.SlotPriority 4;
 		Inventory.PickupMessage "Rocket Launcher has become the Unclean Launcher";
 		Tag "Unclean Launcher";
 	}

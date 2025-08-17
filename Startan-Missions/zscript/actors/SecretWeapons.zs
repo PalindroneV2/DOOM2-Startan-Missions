@@ -592,7 +592,8 @@ class Kar98k : DoomWeapon
 {
 	Default
 	{
-		Weapon.Slotnumber 3;
+		Weapon.SlotNumber 5;
+		Weapon.SlotPriority 1;
 		Weapon.Ammotype "RifleBullets";
 		Weapon.Ammogive 5;
 		Weapon.ammouse 1;

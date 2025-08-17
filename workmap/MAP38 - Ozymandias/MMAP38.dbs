@@ -57,9 +57,9 @@ maps
 		overrideceilheight = false;
 		overridebrightness = false;
 		uselongtexturenames = false;
-		viewpositionx = -1263.546f;
-		viewpositiony = 6431.384f;
-		viewscale = 0.04588684f;
+		viewpositionx = -4.795176f;
+		viewpositiony = -889.0621f;
+		viewscale = 2.348747f;
 		scriptcompiler = "zdoom_acs.cfg";
 		
 		grid
@@ -110,7 +110,198 @@ maps
 			2
 			{
 				linedefs = "3541 3544 3546 3557 3558 3579 3580 3581 3582 3583 3584 3585 3586 3587 3589 3590 3591 3592 3593 3594 3595 3596 3597 3598 3599 3600 3601 3602 3603 3604 3605 3606 3607 3608 3609 3610 3611 3612 3613 3614 3615 3626 3630 3690 3796 4500 4502 4582 4584 4729 4730 4731 4732 4733 4734 4735 4736 4737 4738 4739 4740 4741 4742 4744 4745 4747 4748 4753 4754 4755 4756 4757 4758 4759 4760 4761 4762 4763 4764 4765 4766 4767 4768 4769 4770 4771 4772 4801 4802 4803 4804 4805 4806 4807 4808 4809 4810";
-				sectors = "602 609 611 612 614 615 616 617 618 619 620 621 622 629 630 631 632 633 634 635 636 637 638 639 640 641 642 643 644 645 646 647 648 655 662 663 664 665 666 667 668 669 670 672 673 674 675 676 677 678 702 703 705 707 712 739 740 741 742 743 744 745 752 753 754 755 756 794 795 796 797 798 800 801 802 803 804 805 806 807 813 815 816 817";
+				sectors = "602 609 611 612 614 615 616 617 618 619 620 621 622 629 630 631 632 633 634 635 636 637 638 639 640 641 642 643 644 645 646 647 648 655 662 663 664 665 666 667 668 669 670 672 673 674 675 676 677 678 702 703 705 707 712 739 740 741 742 743 744 745 753 754 755 756 794 795 796 797 798 800 801 802 803 804 805 806 807 813 815 816 817 964 965";
+				things = "177";
+			}
+			
+			3
+			{
+				things = "177";
+			}
+		}
+		
+		fieldtypes
+		{
+			
+			sector
+			{
+				user_managed_3d_floor = 3;
+			}
+		}
+		
+		scriptdocuments
+		{
+			
+			document0
+			{
+				filename = "DIALOGUE";
+				hash = 3588187714;
+				resource;
+				tabtype = 0;
+				scripttype = 18;
+			}
+			
+			document1
+			{
+				filename = "SCRIPTS";
+				hash = 3469170009;
+				resource;
+				tabtype = 0;
+				scripttype = 1;
+				caretposition = 25;
+				activetab = true;
+			}
+		}
+	}
+	
+	SECRET8
+	{
+		
+		plugins
+		{
+			
+			threedfloormode
+			{
+				
+				controlsectorarea
+				{
+					usecustomtagrange = true;
+					firsttag = 9000;
+					lasttag = 10000;
+					outerleft = -2560;
+					outerright = 2560;
+					outertop = -2624;
+					outerbottom = -5504;
+				}
+			}
+			
+			stairsectorbuilder
+			{
+				
+				prefabs
+				{
+					
+					prefab1
+					{
+						name = "[Previous]";
+						numberofsectors = 14;
+						outervertexmultiplier = 1;
+						innervertexmultiplier = 1;
+						stairtype = 0;
+						sectordepth = 32;
+						spacing = 0;
+						frontside = true;
+						singlesectors = true;
+						distinctsectors = false;
+						singledirection = true;
+						distinctbaseheights = true;
+						flipping = 0;
+						numberofcontrolpoints = 1;
+						applyfloormod = true;
+						floormod = 0;
+						applyceilingmod = true;
+						ceilingmod = 0;
+						applyfloortexture = false;
+						floortexture = "";
+						applyceilingtexture = false;
+						ceilingtexture = "";
+						applyuppertexture = true;
+						uppertexture = "-";
+						upperunpegged = true;
+						applymiddletexture = false;
+						middletexture = "-";
+						applylowertexture = true;
+						lowertexture = "-";
+						lowerunpegged = true;
+					}
+				}
+			}
+		}
+		
+		resources
+		{
+			
+			resource0
+			{
+				type = 1;
+				location = "C:\\Users\\goopl\\Desktop\\Lambda\\DOOM\\wads\\mywads\\DOOM2-Startan-Missions\\Startan-Missions";
+				option1 = 0;
+				option2 = 0;
+				notfortesting = 0;
+				requiredarchives = "";
+			}
+		}
+		defaultfloortexture = "EGYPFT04";
+		defaultceiltexture = "F_SKY1";
+		defaulttoptexture = "SKYD14";
+		defaultwalltexture = "SKYD14";
+		defaultbottomtexture = "SKYD14";
+		custombrightness = 196;
+		customfloorheight = 0;
+		customceilheight = 128;
+		overridefloortexture = false;
+		overrideceiltexture = false;
+		overridetoptexture = false;
+		overridemiddletexture = false;
+		overridebottomtexture = false;
+		overridefloorheight = false;
+		overrideceilheight = false;
+		overridebrightness = false;
+		uselongtexturenames = false;
+		viewpositionx = 4165.624f;
+		viewpositiony = 12680.86f;
+		viewscale = 1.149762f;
+		scriptcompiler = "zdoom_acs.cfg";
+		
+		grid
+		{
+			background = "";
+			backsource = 0;
+			backoffsetx = 0;
+			backoffsety = 0;
+			backscalex = 100;
+			backscaley = 100;
+			gridsize = 8;
+			gridrotate = 0;
+			gridoriginx = 0;
+			gridoriginy = 0;
+		}
+		
+		reloadresourceprecommand
+		{
+			autocloseonsuccess = true;
+			exitcodeiserror = true;
+			stderriserror = true;
+		}
+		
+		reloadresourcepostcommand
+		{
+			autocloseonsuccess = true;
+			exitcodeiserror = true;
+			stderriserror = true;
+		}
+		
+		testprecommand
+		{
+			autocloseonsuccess = true;
+			exitcodeiserror = true;
+			stderriserror = true;
+		}
+		
+		testpostcommand
+		{
+			autocloseonsuccess = true;
+			exitcodeiserror = true;
+			stderriserror = true;
+		}
+		
+		selectiongroups
+		{
+			
+			2
+			{
+				linedefs = "3541 3544 3546 3557 3558 3579 3580 3581 3582 3583 3584 3585 3586 3587 3589 3590 3591 3592 3593 3594 3595 3596 3597 3598 3599 3600 3601 3602 3603 3604 3605 3606 3607 3608 3609 3610 3611 3612 3613 3614 3615 3626 3630 3690 3796 4500 4502 4582 4584 4729 4730 4731 4732 4733 4734 4735 4736 4737 4738 4739 4740 4741 4742 4744 4745 4747 4748 4753 4754 4755 4756 4757 4758 4759 4760 4761 4762 4763 4764 4765 4766 4767 4768 4769 4770 4771 4772 4801 4802 4803 4804 4805 4806 4807 4808 4809 4810 5971 5972 5973 6042 6043 6044 6045 6046 6047 6048 6049 6050 6051 6052 6053 6058 6059 6060 6061 6062 6063 6064 6065 6066 6067 6068 6069 6070 6071 6072 6073 6074 6075 6076 6077 6078 6079 6080 6081 6082 6083 6084 6085 6086 6087 6088 6089 6090 6091 6092 6093 6094 6095 6096 6097 6102 6104 6110 6112 6113 6140 6144 6164 6165 6166 6167 6174 6176 6283 6284 6370";
+				sectors = "602 609 611 612 614 615 616 617 618 619 620 621 622 629 630 631 632 633 634 635 636 637 638 639 640 641 642 643 644 645 646 647 648 655 662 663 664 665 666 667 668 669 670 672 673 674 675 676 677 678 702 703 705 707 712 739 740 741 742 743 744 745 753 754 755 756 794 795 796 797 798 800 801 802 803 804 805 806 807 813 815 816 817 964 965 1121 1122 1124 1125 1126 1127 1128 1129 1130 1131 1132 1133 1170 1171 1172 1173 1174 1175 1176 1177 1178 1179";
 				things = "177";
 			}
 			

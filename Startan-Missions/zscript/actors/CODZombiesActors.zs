@@ -53,12 +53,12 @@ class PAP_PowerUp : CustomInventory
 
 extend class PAP_PowerUp
 {
-    // {"M1911A1", "MP40", "Minigun", "M16", "Trenchgun", "NewSuperShotgun", "RocketLauncher", "FastPlasmaRifle", "BFG9000", "RayGun", "KAR98K"};
+    // {"M1911A1", "MP40", "Minigun", "M16", "Trenchgun", "NewSuperShotgun", "NewRocketLauncher", "FastPlasmaRifle", "BFG9000", "RayGun", "KAR98K"};
     action void A_PAPUpgrade()
     {
         string weaponbox[] = {
             "M1911A1", "MP40", "Minigun", "M16", "Trenchgun",
-            "NewSuperShotgun", "RocketLauncher", "FastPlasmaRifle",
+            "NewSuperShotgun", "NewRocketLauncher", "FastPlasmaRifle",
             "BFG9000", "RayGun", "Kar98k"
         };
         Weapon currentWeapon = player.ReadyWeapon;

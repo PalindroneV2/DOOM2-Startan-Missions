@@ -67,21 +67,21 @@ script 666 ENTER
 // }
 
 // str weakenemies[4] = {"DoomImp", "W3DMutant", "EnemyDog", "LostSoul"};
-str weakenemies[2] = {"DoomImp", "EnemyDog"};
-str mediumenemies[5] = {"Demon","Revenant", "HellKnight","Arachnotron","Cacodemon"};
-str strongenemies[3] = {"Archvile","BaronofHell", "Fatso"};
-str bossenemies[2] = {"Harbinger", "SpiderMastermind"};
+str weakenemies[3] = {"DoomImp", "EnemyDog", "W3DHeerZombie"};
+str mediumenemies[6] = {"Demon","Revenant", "HellKnight","Arachnotron","Cacodemon", "W3DHeerZombie"};
+str strongenemies[4] = {"Archvile","BaronofHell", "Fatso", "W3DHeerZombie"};
+str bossenemies[3] = {"Harbinger", "SpiderMastermind","W3DHeerZombie"};
 
-str allenemies[12] = {
-    "DoomImp", "EnemyDog", "Demon","Revenant", "HellKnight","Arachnotron",
-    "Cacodemon", "Cacodemon","Fatso", "BaronofHell", "Harbinger", "SpiderMastermind",
+str allenemies[13] = {
+    "W3DSSZombie", "W3DHeerZombie", "Demon","Revenant", "HellKnight","Arachnotron",
+    "Cacodemon", "Cacodemon","Fatso", "BaronofHell", "Harbinger", "SpiderMastermind", "W3DSSZombie"
 };
-int allenemiestids[12] = {
+int allenemiestids[13] = {
     115,115,116,116,116,116,
-    116,117,117,117,118,118
+    116,117,117,117,118,118, 115
 };
 
-script 777 enter
+script 777 open
 //This handles the rounds
 {
     if(roundwave > 0){
@@ -98,10 +98,10 @@ script 777 enter
                 SpawnSpotFacing(allenemies[Random(0,1)], spothandler, allenemiestids[Random(0,1)]);
                 // SpawnSpot("TeleportFog", spothandler);
             }else if(roundwave > 4 && roundwave < 10){
-                SpawnSpotFacing(allenemies[Random(2,6)], spothandler, allenemiestids[Random(2,6)]);
+                SpawnSpotFacing(allenemies[Random(1,6)], spothandler, allenemiestids[Random(1,6)]);
                 // SpawnSpot("TeleportFog", spothandler);
             }else if(roundwave > 9 && roundwave < 15){
-                SpawnSpotFacing(allenemies[Random(2,9)], spothandler, allenemiestids[Random(2,9)]);
+                SpawnSpotFacing(allenemies[Random(1,9)], spothandler, allenemiestids[Random(1,9)]);
                 // SpawnSpot("TeleportFog", spothandler);
             }else if(roundwave > 14 ){
                 // SpawnSpot("TeleportFog", spothandler);
@@ -109,7 +109,7 @@ script 777 enter
                 {
                     SpawnSpotFacing(allenemies[9], spothandler, allenemiestids[9]);
                 }else{
-                    SpawnSpotFacing(allenemies[Random(9,11)], spothandler, allenemiestids[Random(9,11)]);
+                    SpawnSpotFacing(allenemies[Random(9,12)], spothandler, allenemiestids[Random(9,12)]);
                 }
             }
             SpawnSpot("TeleportFog", spothandler);
@@ -150,39 +150,10 @@ script 777 enter
     Restart;
 }
 
-// script "DinerRoundHandler" (void){
-//     int spothandler = 1;
-//     int spotspawn;
-//     if(roundwave > 0 && waveover == false && wavesize < 1){
-//         for (spotspawn = 1; spotspawn <= roundnumbers; spotspawn++ )
-//         {
-//             if(roundwave > 4){
-//                 SpawnSpotFacing(mediumenemies[Random(3,7)], spothandler, 116);
-//                 SetThingSpecial(116, ACS_NamedExecute, "PointsAddMedium");
-//                 wavenumbers++;
-//                 spothandler++;
-//                 SpawnSpot("TeleportFog", spothandler);
-//             }else if(roundwave > 9){
-//                 SpawnSpotFacing(strongenemies[Random(8,10)], spothandler, 117);
-//                 SetThingSpecial(117, ACS_NamedExecute, "PointsAddStrong");
-//                 wavenumbers++;
-//                 spothandler++;
-//                 SpawnSpot("TeleportFog", spothandler);
-//             }else if(roundwave <= 4){
-//                 SpawnSpotFacing(weakenemies[Random(0,2)], spothandler, 115);
-//                 SetThingSpecial(115, ACS_NamedExecute, "PointsAddWeak");
-//                 wavenumbers++;
-//                 spothandler++;
-//                 SpawnSpot("TeleportFog", spothandler);
-//             }
-//             if(spothandler>24)
-//             {
-//                 spothandler = 1;
-//             }
-//             Delay(7);
-//         }
-//     }
-// }
+script "WavenumberDebig" (void)
+{
+    roundwave = 9;
+}
 
 script "PointsAddWeak" (void){
     int enemyvalue = 75 + (10 * Random(0,2));
@@ -236,11 +207,6 @@ script "PointsAddBoss" (void){
         // ACS_NamedExecute("MaxAmmoHandler",0,0,0);
     }
 }
-
-// function void PointsAddKill(void)
-// {
-    
-// }
 
 script "PointsRemoveBackpack" (void){
     if(zombiepoints >= 1000){
@@ -354,7 +320,7 @@ script "PukePowerUp" (void)
 //     HudMessageBold(s:"MAX AMMO!";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 2.0, 1);
 // }
 
-str weaponbox[11] = {"M1911A1", "MP40", "Minigun", "M16", "Trenchgun", "NewSuperShotgun", "RocketLauncher", "FastPlasmaRifle", "BFG9000", "RayGun", "KAR98K"};
+str weaponbox[11] = {"M1911A1", "MP40", "Minigun", "M16", "Trenchgun", "NewSuperShotgun", "NewRocketLauncher", "FastPlasmaRifle", "BFG9000", "RayGun", "KAR98K"};
 str weaponboxnames[11] = {"Walther PPK", "MP40", "Minigun", "M16A1", "Trenchgun", "Super Shotgun", "Rocket Launcher", "Plasma Rifle", "BFG9000", "Ray Gun", "Kar98K"};
 
 script "MysteryBox" (void){
@@ -637,6 +603,38 @@ script "VictoriousTortoiseTexto" (void)
     }
 }
 
+function void DinerExit (void)
+{
+    SetFont("BIGFONT");
+    zombiepoints = 0;
+    Thing_Destroy(115, 1, 0);
+    Thing_Destroy(116, 1, 0);
+    Thing_Destroy(117, 1, 0);
+    Thing_Destroy(118, 1, 0);
+    Thing_Destroy(119, 1, 0);
+    ACS_Terminate(777,0);
+    SetFont("BIGFONT");
+    SecretLevel36++;
+    HudMessage(s:"THIS SECRET LEVEL HAS BEEN REVEALED!";  HUDMSG_FADEOUT, 2, CR_GOLD, 0.5, 0.5, 3.0, 1);
+}
+
+script "VoluntaryExit_Script" (void)
+{
+    SetFont("BIGFONT");
+    HudMessage(s:"You survived ", i:roundwave, s:" rounds and escaped!";  HUDMSG_FADEOUT, 1, CR_WHITE, 0.5, 0.25, 3.0, 1);
+    DinerExit();
+    Delay(35*3);
+    Exit_Normal(0);
+}
+
+script "VoluntaryExit_Text" (void)
+{
+    if (roundwave >= 10)
+    {
+        HudMessageBold(s:"Exit the Map.";  HUDMSG_FADEOUT, 900, CR_WHITE, 0.5, 0.7, 1.0, 1);
+    }
+}
+
 script 999 ENTER
 //ENDGAME HANDLER
 {
@@ -651,21 +649,24 @@ script 999 ENTER
     }
     if(roundwave >= 10)
     {
-        zombiepoints = 0;
         SetFont("BIGFONT");
-        SecretLevel36++;
-        HudMessage(s:"You survived ", i:roundwave, s:" rounds.";  HUDMSG_FADEOUT, 1, CR_WHITE, 0.5, 0.6, 3.0, 1);
-        HudMessage(s:"THIS SECRET LEVEL HAS BEEN REVEALED!";  HUDMSG_FADEOUT, 2, CR_RED, 0.5, 0.5, 3.0, 1);
-        Delay(35*3);
-        SetPlayerProperty(0,0, PROP_TOTALLYFROZEN);
-         Exit_Normal(0);
-    }else{
-        zombiepoints = 0;
-        SetFont("BIGFONT");
-        HudMessage(s:"You survived ", i:roundwave, s:" rounds.";  HUDMSG_FADEOUT, 1, CR_WHITE, 0.5, 0.7, 3.0, 1);
+        DinerExit();
+        HudMessage(s:"You survived ", i:roundwave, s:" rounds.";  HUDMSG_FADEOUT, 1, CR_WHITE, 0.5, 0.25, 3.0, 1);
         Delay(35*3);
         SetPlayerProperty(0,0, PROP_TOTALLYFROZEN);
         Exit_Normal(0);
+    }else{
+        zombiepoints = 0;
+        Thing_Destroy(115, 1, 0);
+        Thing_Destroy(116, 1, 0);
+        Thing_Destroy(117, 1, 0);
+        Thing_Destroy(118, 1, 0);
+        Thing_Destroy(119, 1, 0);
+        ACS_Terminate(777,0);
+        SetFont("BIGFONT");
+        HudMessage(s:"You survived ", i:roundwave, s:" rounds.";  HUDMSG_FADEOUT, 1, CR_WHITE, 0.5, 0.25, 3.0, 1);
+        Delay(35*3);
+        SetPlayerProperty(0,0, PROP_TOTALLYFROZEN);
     }
 }
 
@@ -678,5 +679,19 @@ script 99 ENTER
         Terminate;
     }
     Delay(35);
+    Restart;
+}
+
+script 96 enter
+{
+    if (roundwave == 10)
+    {
+        PlaySound (935, "misc/sfx/puzzlesolve", CHAN_5, 1.0, FALSE, 0);
+        Floor_MoveToValue(27, 8, 136); 
+        ChangeFloor(27, "COMPSPN2");
+        SetLineActivation(1,SPAC_Use);
+        Terminate;
+    }
+    Delay(1);
     Restart;
 }

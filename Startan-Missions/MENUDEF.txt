@@ -1,0 +1,4 @@
+AddListMenu "MainMenu"
+{
+	StaticPatchCentered 158, 42, "M_STARN"
+}

@@ -114,7 +114,25 @@ script "MummySpawnExitRoom" (void)
 }
 
 script "CourtyardEntranceRevealEnemies" (void)
-{
+{ 
     Ceiling_RaiseByValue(14, 96, 128);
     Floor_RaiseByValue(15, 96, 128);
+}
+
+script "ThroneRoomCybers" (void)
+{
+    SpawnSpotFacing("TeleportFog", 13, 0);
+    SpawnSpotFacing("Harbinger", 13, 150);
+    SetThingSpecial(150, ACS_NamedExecuteAlways, "ThroneRoom_BlueSkullSpawn");
+}
+
+int keythrone = 0;
+script "ThroneRoom_BlueSkullSpawn" (void)
+{
+    keythrone++;
+    if (keythrone == 6)
+    {
+        SpawnSpotFacing("TeleportFog", 14, 0);
+        SpawnSpotFacing("BlueSkull", 14, 0);
+    }
 }

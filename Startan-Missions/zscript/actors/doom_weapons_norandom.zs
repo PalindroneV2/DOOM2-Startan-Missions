@@ -274,7 +274,7 @@ class NewShotgun : DoomWeapon replaces Shotgun
 		SHTG CB 5;
 		SHTG A 3;
 		SHTG A 7 A_ReFire;
-		Goto TrueReady;
+		Goto Ready;
 	Flash:
 		SHTF A 4 Bright A_Light1;
 		SHTF B 3 Bright A_Light2;
@@ -282,9 +282,6 @@ class NewShotgun : DoomWeapon replaces Shotgun
 	Spawn:
 		SHOT A -1;
 		Stop;
-	// Pickup:
-	// 	TNT1 A 0 A_SecretShotgunPickup;
-	// 	Stop;
 	}
 }
 extend class NewShotgun
@@ -394,6 +391,16 @@ extend class NewSuperShotgun
 		A_Quake(3,5,0,5);
 		A_GunFlash();
     }
+}
+
+class NewRocketLauncher : RocketLauncher replaces RocketLauncher
+{
+	Default
+	{
+		Tag "Rocket Launcher";
+		Weapon.SlotNumber 5;
+		Weapon.SlotPriority 2;
+	}
 }
 
 class FastPlasmaRifle : PlasmaRifle replaces PlasmaRifle
