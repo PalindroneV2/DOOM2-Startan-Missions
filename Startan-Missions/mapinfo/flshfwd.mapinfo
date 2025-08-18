@@ -33,23 +33,6 @@ map MMAP01 "Works in Progress"
 	NoCrouch
 }
 
-/* map MMAP01 "Infected Flesh"
-{
-	next = "HUBMAP"
-	secretnext = "SECRET1"
-    sky1 = "RSKY3"
-	cluster = 21
-	par = 300
-	music = "D_NUISUK"
-	Author = "Palindrone"
-	levelnum = 101
-	ResetInventory
-	ResetItems
-	lightmode = 16
-	NoJump
-	NoCrouch
-} */
-
 map MMAP02 "Volcanic Fortress"
 {
 	next = "HUBMAP"

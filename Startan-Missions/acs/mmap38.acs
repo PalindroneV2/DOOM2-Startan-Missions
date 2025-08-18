@@ -149,7 +149,13 @@ script "RevealZaWarudo" (void)
     if (revealzawarudo == 4)
     {
         SpawnSpotFacing("TeleportFog", 7, 0);
-        SpawnSpotFacing("DIOFists", 7, 0);
+        SpawnSpotFacing("THEWORLD", 7, 0);
         PlaySound (935, "misc/sfx/puzzlesolve", CHAN_5, 1.0, FALSE, 0);
+        if (PickedUpSkull == true && keythrone == 6)
+        {
+            SpawnSpotFacing("TeleportFog", 14, 0);
+            SpawnSpotFacing("THEWORLD", 14, 0);
+            PlaySound (935, "misc/sfx/puzzlesolve", CHAN_5, 1.0, FALSE, 0);
+        }
     }
 }

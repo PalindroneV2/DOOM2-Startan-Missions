@@ -1,18 +1,102 @@
-MIDI CREDITS
+==========================
+         HUB MIDIS
+==========================
 
-D_CROOKD - Deep Into the Code by Bobby Prince
-    Based on Behind the Crooked Cross by Slayer
-D_FEAR - The Only Thing They Fear is You by Mick Gordon
-    MIDI by Supasniffy333 & Burn7
-D_LEGION - Legion of the Lost by L.A. Sieben
-    Final DOOM: TNT Evilution
-D_NUISUK - Nuisances Unknown by Doomkid
-    MID the way id did 2
-D_PLUNGE - Plunge Saw by Bucket
-    Plutonia Midi Pack
-D_WATCH - Always Watching by Lippeth
-D_DENY - Denied by Doomkid
-D_COLIF - Coliformication by Lippeth
+1. Running from Evil  
+   Author: Bobby Prince  
+   File: D_RUNNIN  
+   Used in: HUBMAP "Startan Base"  
+
+2. Man in the Box  
+   Author: Bobby Prince (Alice in Chains)  
+   File: D_INBOX  
+   Used in: MMAP01 "Works in Progress"  
+
+3. Always Watching  
+   Author: Lippeth  
+   File: D_WATCH  
+   Used in: MMAP02 "Volcanic Fortress"  
+
+4. Denied  
+   Author: Doomkid  
+   File: D_DENY  
+   Used in: MMAP03 "Escape Prohibited"  
+
+5. Behind the Crooked Cross  
+   Author: Bobby Prince (Slayer)  
+   File: D_CROOKD  
+   Used in: MMAP04 "The Tomb of Id-K'yeth"  
+
+6. Hate Machine  
+   Author: James Paddock  
+   File: D_HATEM  
+   Used in: MMAP05 "The FOB"  
+
+7. You're Not Welcome  
+   Author: Niel Forshaw  
+   File: D_WELCOM  
+   Used in: MMAP06 "Silence in the Library"  
+
+8. The Only Thing They Fear is You  
+   Author: Supasniffy333 & Burn 7  
+   File: D_FEAR  
+   Used in: HUBMAP "Startan Base" Jukebox
+
+9. Nuisances Unknown  
+   Author: Doomkid  
+   File: D_NUISUK
+   Used in: HUBMAP "Startan Base" Jukebox
+
+10. Plunge Saw  
+    Author: Bucket  
+    File: D_PLUNGE  
+    Used in: MMAP07 "Hot Start"  
+
+11. Tapes Had Side A and Side B So It Makes Sense the Successor Was Called The CD  
+    Author: Dragonfly  
+    File: D_TAPES  
+    Used in: MMAP08 "Blacksite"  
+
+
+==========================
+        SECRET MIDIS
+==========================
+
+1. Evil Incarnate  
+   Author: Bobby Prince  
+   File: D_EVIL  
+   Used in: SECRET1 "Jamais Vu"  
+
+2. Legion of the Damned  
+   Author: L.A. Sieben  
+   File: D_LEGION  
+   Used in: SECRET2 "Raiders"  
+            SECRET8 "Ozymandias"  
+
+3. Hangar 18  
+   Author: Megadeth - Jim "Aku" Brimstone  
+   File: D_HANGAR  
+   Used in: SECRET3 "Atomic Cul-De-Sac"  
+
+4. Coliformication  
+   Author: Lippeth  
+   File: D_COLIF  
+   Used in: SECRET4 "Blood Sacrifice"  
+
+5. Archaic Doctrine  
+   Author: TrialD  
+   File: D_ARCHAI  
+   Used in: SECRET5 "Sturme das Schloss"  
+
+6. Love Song for a Deadman  
+   Author: RemarkablyAmateur  
+   File: D_LOVESONG  
+   Used in: SECRET6 "Diner at the End of the World"  
+
+7. Beauty of Annihilation  
+   Author: Jurmicc  
+   File: D_BEAUTY  
+   Used in: SECRET7 "Waffenfabrik"  
 
 HARBINGER / SUPERDEMON
 Submitted: Xim
@@ -55,7 +139,35 @@ Sounds: OKgo555
 Sprites: Id Software, Luchador (model), adapted by Sgt_Mark_IV
 Sprite Edit: Okgo5555
 World Sprite Edit: Palindrone
-Minor code edit: Palindrone
+Modifications: Palindrone
+
+WaltherPPK:
+Submitted: JoeyTD
+Decorate: JoeyTD, SuperSonix07
+Sounds: Wolfenstein
+Sprites: 3D realm's rise of the triad: Dark war
+Sprite Edit: JoeyTD
+Idea Base: ID software's pistol
+Modifications: Palindrone
+
+Trenchgun:
+Submitted: LossForWords
+Code: LossForWords
+Sprites: Sonik.O.Fan, Joblez, iD Software
+Sprite Edit: LossForWords
+Sounds: Fistful of Frags
+Idea base: 1897 Trenchgun
+Modifications: Palindrone
+
+M1911A1:
+Sprites: Weasel Presents: Nazis!
+Sounds: Treyarch
+Code: Palindrone
+
+Kar98k:
+Sprites: Kar 98:White Ace,Laz Rojas,Wolf Skevos-Jones,Captain J Flavor,Lippeth,EletricPulse
+Sounds: Brutal Wolfenstein team
+Code: Palindrone
 
 RAY GUN (COD)
 Code: Palindrone
@@ -63,3 +175,38 @@ Sounds: idSoftware
 Sprites: idSoftware, Palindrone
 Source model: Treyarch
 
+SS-HEER-AFRIKAKORPS WOLFENSTEIN ENEMIES:
+Code: Palindrone
+Sounds: idSoftware
+Sprites: Wolf Skevos-Jones
+
+SS-HEER Zombies
+Code: Palindrone
+Sounds: Treyarch
+Sprites: https://dhw.wolfenstein3d.com/viewtopic.php?t=8821
+
+THE WORLD / Fists of Fury edit
+Code: Gothic
+Sounds: id Software (Doom 3 & D3 alpha), 3DRealms (Shadow Warrior)
+Sprites: 3DRealms (Shadow Warrior & SW prototype), id Software (Doom)
+Sprite Edit: Gothic
+Idea Base: Fists from Shadow Warrior
+Modifications: Palindrone
+Sounds added: Capcom's JoJo's Bizarre Adventure Heritage for the Future
+
+Mummy from HERETIC:
+Sprites: Raven Software
+Sounds: Raven Software
+Base Code: Raven Software
+Modifications: Palindrone
+
+TextureSets:
+
+32in24-15 Textures
+Wolfenstein 3d Textures
+CAGE1
+CAGE2
+Plutonia Experiment
+TNT Evilution
+UDET
+Psyren

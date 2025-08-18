@@ -37,9 +37,9 @@ extend class NewBerserk
         A_GiveInventory("PowerStrength");
         HealThing(100);
         A_SelectWeapon("DoomFist");
-        if (FindInventory("DIOfists"))
+        if (FindInventory("THEWORLD"))
         {
-            A_SelectWeapon("DIOfists");
+            A_SelectWeapon("THEWORLD");
         }
     }
 }
@@ -70,7 +70,7 @@ extend class NewMegasphere
 {
     action void A_MegaSpherePickup()
     {
-        bool ArmorisRed = CheckArmorType("EnchantedArmor", 1);
+        bool ArmorisRed = CheckArmorType("RedArmor", 1);
         bool ArmorisRedSmall = CheckArmorType("RedArmorSmall", 1);
         bool ArmorisEnchanted = CheckArmorType("EnchantedArmor", 1);
         GiveInventory("MegasphereHealth", 200);
@@ -79,7 +79,7 @@ extend class NewMegasphere
             // Player has RedArmor equipped
             GiveInventory("RedArmor", 1);
         }
-        else if (ArmorisEnchanted)
+        else if(ArmorisEnchanted)
         {
             // Player has EnchantedArmor equipped
             GiveInventory("EnchantedArmor", 1);

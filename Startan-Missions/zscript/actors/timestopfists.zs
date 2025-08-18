@@ -1,4 +1,4 @@
-class DIOfists : Weapon
+class THEWORLD : Weapon
 {
     int AltFireRegenTimer;
     int FirstSelect;
@@ -11,9 +11,9 @@ class DIOfists : Weapon
         Weapon.KickBack 50;
         Weapon.SelectionOrder 3700;
         Scale 1;
-        Inventory.PickupMessage "You learned Fists of Fury!";
-        Obituary "%o suffered the wrath of %k's fists.";
-        Tag "Fists of Fury";
+        Inventory.PickupMessage "You have obtained STAND POWER! THE WORLD!";
+        Obituary "%k obliterated %o with his STAND, THE WORLD.";
+        Tag "THE WORLD";
 		Radius 20;
 		Height 20;
         +PICKUP;
@@ -84,7 +84,7 @@ class DIOfists : Weapon
     }
 }
 
-extend class DIOfists
+extend class THEWORLD
 {
     bool ZaWarudoCharge;
     action void A_DIOPunch()

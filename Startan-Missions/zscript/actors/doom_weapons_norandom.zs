@@ -51,7 +51,7 @@ extend class DoomFist
 	}
 	override bool HandlePickup(Inventory item)
 	{
-		if (item.GetClass() == "DIOFists")
+		if (item.GetClass() == "THEWORLD")
 		{
 			//Take away the base DOOMFist
 			owner.TakeInventory("DoomFist", 1);

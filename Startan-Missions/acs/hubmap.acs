@@ -40,12 +40,12 @@ script "ChangeMusHub" (void)
 	}
 }
 
-str secretmidis[8] = {"D_EVIL","D_LEGION","D_HANGAR","D_COLIF","D_ARCHAI","D_LOVESONG", "D_BEAUTY", "D_IDK"};
-str secretmidiname[8] = {
-	"Evil Incarnate", "Legion of the Damned","Hangar 18", "Coliformication","Archaic Doctrine", "Love Song for a Deadman", "Beauty of Annihilation", "idk"
+str secretmidis[7] = {"D_EVIL","D_LEGION","D_HANGAR","D_COLIF","D_ARCHAI","D_LOVESONG", "D_BEAUTY"};
+str secretmidiname[7] = {
+	"Evil Incarnate", "Legion of the Damned","Hangar 18", "Coliformication","Archaic Doctrine", "Love Song for a Deadman", "Beauty of Annihilation"
 };
-str secretmidiauthor[8] ={
-	"Bobby Prince", " L.A. Sieben", "Megadeth - Jim 'Aku' Brimstone", "Lippeth", "TrialD", "RemarkablyAmateur", "idk", "IDK"
+str secretmidiauthor[7] ={
+	"Bobby Prince", " L.A. Sieben", "Megadeth - Jim 'Aku' Brimstone", "Lippeth", "TrialD", "RemarkablyAmateur", "Jurmicc"
 };
 
 script "ChangeMusHub31" (void)
