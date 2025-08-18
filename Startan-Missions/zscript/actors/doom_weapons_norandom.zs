@@ -49,6 +49,17 @@ extend class DoomFist
 		}
 		A_CustomPunch(dmg, norandom:true, range: meleeRange + 20, meleesound: "*fist");
 	}
+	override bool HandlePickup(Inventory item)
+	{
+		if (item.GetClass() == "DIOFists")
+		{
+			//Take away the base DOOMFist
+			owner.TakeInventory("DoomFist", 1);
+			item.bPickupgood = true;
+			return Super.HandlePickup(item); // Pickup was handled
+		}
+		return Super.HandlePickup(item);
+	}
 }
 
 class ChainsawNoRand : Weapon replaces Chainsaw

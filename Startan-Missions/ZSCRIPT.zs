@@ -12,6 +12,7 @@ version "4.8.2"
 #include "zscript/actors/HereticPort.zs"
 #include "zscript/actors/SMVehicles.zs"
 #include "zscript/actors/CODZombiesActors.zs"
+#include "zscript/actors/timestopfists.zs"
 
 class DoomPlayerNew : DoomPlayer replaces DoomPlayer
 {

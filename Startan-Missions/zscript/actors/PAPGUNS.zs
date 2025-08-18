@@ -40,10 +40,10 @@ class M1911A1_PAP : M1911A1
 			191A A 1 A_WeaponReady;
 			Loop;
 		Deselect:
-			191A A 1 A_Lower(6);
+			191A A 1 A_Lower(12);
 			Loop;
 		Select:
-			191A A 1 A_Raise(6);
+			191A A 1 A_Raise(12);
 			Loop;
 		Flash:
 			GNFL C 1 BRIGHT A_Light2;
@@ -55,26 +55,46 @@ class M1911A1_PAP : M1911A1
 			GNFL F 1 BRIGHT;
 			TNT1 A 2 A_Light1;
 			Goto LightDone;
-		// Fire:
-		// 	TNT1 A 0 {
-		// 		M1911Akimbo = ! M1911Akimbo;
-		// 	}
-		// 	Goto Fire1;
-		AltFire:
+		Fire:
+			TNT1 A 0 A_JumpIf(invoker.M1911Akimbo,"Right");
+			TNT1 A 0 A_JumpIf(!invoker.M1911Akimbo,"Left");
+		Right:
 			// TNT1 A 0 A_JumpIf(M1911Akimbo,"Fire2");
-			191A B 2 A_MustangSallyShotRight;
+			191A B 2 {
+				invoker.M1911Akimbo = false;
+				A_MustangSallyShotRight();
+			}
 			191A C 1;
 			191A DEED 1;
 			191A B 2 Offset(0,34);
 			191A B 2 Offset(0,33);
 			Goto Ready;
-		Fire:
-			191B B 2 A_MustangSallyShotLeft;
+		Left:
+			191B B 2{
+				invoker.M1911Akimbo = true;
+				A_MustangSallyShotLeft();
+			}
 			191B C 1;
 			191B DEED 1;
 			191B B 2 Offset(0,34);
 			191B B 2 Offset(0,33);
 			Goto Ready;
+		
+		// AltFire:
+		// 	// TNT1 A 0 A_JumpIf(M1911Akimbo,"Fire2");
+		// 	191A B 2 A_MustangSallyShotRight;
+		// 	191A C 1;
+		// 	191A DEED 1;
+		// 	191A B 2 Offset(0,34);
+		// 	191A B 2 Offset(0,33);
+		// 	Goto Ready;
+		// Fire:
+		// 	191B B 2 A_MustangSallyShotLeft;
+		// 	191B C 1;
+		// 	191B DEED 1;
+		// 	191B B 2 Offset(0,34);
+		// 	191B B 2 Offset(0,33);
+		// 	Goto Ready;
 	}
 }
 class MustangSallyRocket : NoRandRocket
@@ -253,7 +273,7 @@ class BFGBall_PAP : BFGBallNoRand
 	}
 }
 
-class RocketLauncher_PAP : NewRocketLauncher
+class NewRocketLauncher_PAP : NewRocketLauncher
 {
 	Default
 	{

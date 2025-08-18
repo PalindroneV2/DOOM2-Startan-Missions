@@ -37,6 +37,10 @@ extend class NewBerserk
         A_GiveInventory("PowerStrength");
         HealThing(100);
         A_SelectWeapon("DoomFist");
+        if (FindInventory("DIOfists"))
+        {
+            A_SelectWeapon("DIOfists");
+        }
     }
 }
 
@@ -85,5 +89,131 @@ extend class NewMegasphere
             // Player has no special armor equipped
             GiveInventory("BlueArmor50", 1);
         }
+    }
+}
+
+class ZaWarudo : ZaWarudoTimeStop
+{
+    Default
+    {
+        Inventory.PickupMessage "Time stopped!";
+        Inventory.Icon "KUNGA0";      // optional (make a graphic or remove this line)
+        Powerup.Duration -10;            // seconds (negative value => seconds)
+        // You can tweak these for audiovisual flair:
+        Powerup.Color "GoldMap",0.25; // subtle blue tint (remove if undesired)
+        // Powerup.Mode "TimeFreezer";       // not strictly needed; class already does it
+    }
+}
+
+class ZaWarudoTimeStop : Powerup
+{
+	Default
+	{
+		Powerup.Duration -5;
+	}
+	
+	//===========================================================================//
+	// InitEffect
+	//===========================================================================//
+	override void InitEffect()
+	{
+		int freezemask;
+
+		Super.InitEffect();
+
+		if (Owner == null || Owner.player == null)
+			return;
+
+		// When this powerup is in effect, pause the music.
+		S_PauseSound(false, true);
+        S_StartSound("dio/timestopsfx", CHAN_AUTO);
+        S_StartSound("dio/timestop", CHAN_AUTO);
+
+		// Give the player and his teammates the power to move when time is frozen.
+		freezemask = 1 << Owner.PlayerNumber();
+		Owner.player.timefreezer |= freezemask;
+		for (int i = 0; i < MAXPLAYERS; i++)
+		{
+			if (playeringame[i] &&
+				players[i].mo != null &&
+				players[i].mo.IsTeammate(Owner)
+			   )
+			{
+				players[i].timefreezer |= freezemask;
+			}
+		}
+
+		// Ensure the effect ends one tic after the counter hits zero.
+		EffectTics += !(EffectTics & 1);
+		if ((EffectTics & 1) == 0)
+		{
+			EffectTics++;
+		}
+
+		// Make sure the effect starts and ends on an even tic.
+		if ((Level.maptime & 1) == 0)
+		{
+			Level.SetFrozen(true);
+		}
+		else
+		{
+			if(EffectTics < 0x7fffffff)
+				EffectTics++;
+		}
+	}
+
+	//===========================================================================//
+	// DoEffect
+	//===========================================================================//
+
+	override void DoEffect()
+    {
+        Super.DoEffect();
+
+        // Keep time frozen for the entire duration of the effect
+        if (Owner == null || Owner.player == null || (Owner.player.cheats & CF_PREDICTING))
+        {
+            return;
+        }
+        if (EffectTics == 75) // 35 tics = 1 second
+        {
+            S_StartSound("dio/timeresume", CHAN_AUTO); // Replace with your sound path
+        }
+
+        // Freeze the level unconditionally while the powerup is active
+        Level.SetFrozen(true);
+    }
+
+	//===========================================================================//
+	// EndEffect
+	//===========================================================================//
+
+	override void EndEffect()
+	{
+		Super.EndEffect();
+
+		if (Owner != null && Owner.player != null)
+		{
+			int freezemask = ~(1 << Owner.PlayerNumber());
+			for (int i = 0; i < MAXPLAYERS; ++i)
+			{
+				players[i].timefreezer &= freezemask;
+			}
+		}
+
+		for (int i = 0; i < MAXPLAYERS; ++i)
+		{
+			if (playeringame[i] && players[i].timefreezer != 0)
+			{
+				return;
+			}
+		}
+
+		Level.SetFrozen(false);
+		S_ResumeSound(false);
+	}
+    override bool isBlinking()
+    {
+        return false;
     }
 }

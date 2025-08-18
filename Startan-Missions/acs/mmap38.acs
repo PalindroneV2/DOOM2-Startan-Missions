@@ -137,3 +137,19 @@ script "ThroneRoom_BlueSkullSpawn" (void)
         Ceiling_RaiseByValue(30, 16, 64);
     }
 }
+
+int revealzawarudo = 0;
+
+script "RevealZaWarudo" (void)
+{
+    if (revealzawarudo <4)
+    {
+        revealzawarudo++;
+    }
+    if (revealzawarudo == 4)
+    {
+        SpawnSpotFacing("TeleportFog", 7, 0);
+        SpawnSpotFacing("DIOFists", 7, 0);
+        PlaySound (935, "misc/sfx/puzzlesolve", CHAN_5, 1.0, FALSE, 0);
+    }
+}

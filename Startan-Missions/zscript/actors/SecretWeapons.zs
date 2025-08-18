@@ -109,10 +109,10 @@ class WaltherPPK : DoomWeapon
 			WPPK A 1 A_WeaponReady;
 			Loop;
 		Deselect:
-			WPPK A 1 A_Lower(6);
+			WPPK A 1 A_Lower(12);
 			Loop;
 		Select:
-			WPPK A 1 A_Raise(6);
+			WPPK A 1 A_Raise(12);
 			Loop;
 		Fire:
 			WPPK A 0;
@@ -205,10 +205,10 @@ class M1911A1 : Weapon
         1911 A 1 A_WeaponReady;
         Loop;
     Deselect:
-        1911 A 1 A_Lower(6);
+        1911 A 1 A_Lower(12);
         Loop;
     Select:
-        1911 A 1 A_Raise(6);
+        1911 A 1 A_Raise(12);
         Loop;
     Fire:
         1911 B 2 A_M1911Shot;
@@ -251,7 +251,14 @@ extend class M1911A1
 		A_Quake(1,2,0,1);
 		A_GunFlash();
 		// A_FireProjectile("MustangSallyRocket");
-		A_FireCustomMissile ("MustangSallyRocket", 0, 1, -8, 0, 0, 0);
+		// A_FireCustomMissile ("MustangSallyRocket", 0, 1, -8, 0, 0, 0);
+		A_FireProjectile("MustangSallyRocket",
+                 angle: 0,
+                 useammo: true,
+                 spawnofs_xy: -8,
+                 spawnheight: 0,
+                 flags: 0,
+                 pitch: 0);
     }
 	action void A_MustangSallyShotRight()
     {
@@ -260,7 +267,14 @@ extend class M1911A1
 		A_Quake(1,2,0,1);
 		A_GunFlash();
 		// A_FireProjectile("MustangSallyRocket");
-		A_FireCustomMissile ("MustangSallyRocket", 0, 1, 8, 0,0,0);
+		A_FireProjectile("MustangSallyRocket",
+                 angle: 0,
+                 useammo: true,
+                 spawnofs_xy: 8,
+                 spawnheight: 0,
+                 flags: 0,
+                 pitch: 0);
+
     }
 	override bool HandlePickup(Inventory item)
 	{
@@ -670,7 +684,26 @@ extend class Kar98k
 		}
 		A_StartSound ("PAP/Fire", CHAN_AUTO);
 		// A_RailAttack(int damage, int spawnofs_xy = 0, bool useammo = true, color color1 = 0, color color2 = 0, int flags = 0, double maxdiff = 0, class<Actor> pufftype = "BulletPuff", double spread_xy = 0, double spread_z = 0, double range = 0, int duration = 0, double sparsity = 1.0, double driftspeed = 1.0, class<Actor> spawnclass = "none", double spawnofs_z = 0, int spiraloffset = 270, int limit = 0)
-		A_RailAttack(dmg, 0, true, "FF00FF", "ffb9fc", RGF_FULLBRIGHT, 0, "RiflePuff", 1, 0, 8192, 35, 0.1, 0.1, "None", 0, 270, 5);
+		A_RailAttack(
+			dmg,                     // damage
+			0,                       // spawnofs_xy
+			true,                    // useammo
+			"FF00FF",                // color1
+			"ffb9fc",                // color2
+			RGF_FULLBRIGHT,          // flags
+			0,                       // maxdiff
+			"RiflePuff",             // pufftype
+			1,                       // spread_xy
+			0,                       // spread_z
+			8192,                    // range
+			35,                      // duration
+			0.5,                     // sparsity
+			1,                     // driftspeed
+			"None",                  // spawnclass
+			0,                       // spawnofs_z
+			270,                     // spiraloffset
+			5                        // limit
+		);
 		// A_Firebullets(3, 0, 1, 150, "RiflePuff", FBF_USEAMMO | FBF_NORANDOM);
 		A_Quake(2,3,0,3);
 		A_GunFlash();
