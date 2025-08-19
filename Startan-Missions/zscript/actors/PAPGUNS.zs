@@ -30,9 +30,9 @@ class M1911A1_PAP : M1911A1
 		Weapon.AmmoUse2 1;
 		Weapon.AmmoGive2 8;
 		Weapon.AmmoType2 "Clip";
-		Tag "Mustang/Sally";
-		Obituary "%o was blasted into pieces by %k's Mustang/Sally.";
-		Inventory.Pickupmessage "Your Colt M1911A1 became Mustang/Sally!.";
+		Tag "Mustang & Sally";
+		Obituary "%o was blasted into pieces by %k's Mustang & Sally.";
+		Inventory.Pickupmessage "Your Colt M1911A1 became Mustang & Sally!";
 	}
 	States
 	{
@@ -97,12 +97,43 @@ class M1911A1_PAP : M1911A1
 		// 	Goto Ready;
 	}
 }
-class MustangSallyRocket : NoRandRocket
+class MustangSallyRocket : FastProjectile
 {
 	Default
 	{
-		DamageFunction (128);
-		Speed 256;
+		Radius 11;
+		Height 8;
+		Speed 96;
+		DamageFunction 128;
+		Projectile;
+		+RANDOMIZE
+		+DEHEXPLOSION
+		+ROCKETTRAIL
+		+ZDOOMTRANS
+		SeeSound "weapons/rocklf";
+		DeathSound "weapons/rocklx";
+		Obituary "%o was blasted into pieces by %k's Mustang & Sally.";
+	}
+	States
+	{
+	Spawn:
+		MISL A 1 Bright;
+		Loop;
+	Death:
+		MISL B 8 Bright A_MustangSallyExplode();
+		MISL C 6 Bright;
+		MISL D 4 Bright;
+		Stop;
+	BrainExplode:
+		MISL BC 10 Bright;
+		MISL D 10 A_BrainExplode;
+		Stop;
+	}
+	action void A_MustangSallyExplode()
+	{
+		A_Quake(4,12,0,400);
+		A_Quake(2,12,0,800);
+		A_Explode(128, 96, XF_HURTSOURCE, false, 40);
 	}
 }
 
@@ -169,6 +200,19 @@ class RayGunBall_PAP : RayGunBall
 	default
 	{
 		DamageFunction (500);
+		Translation 2;
+	}
+	States
+	{
+	Spawn:
+		APLS AB 4 BRIGHT A_SpawnItemEx("RayGunRing_PAP");
+		Loop;
+	}
+}
+class RayGunRing_PAP : RayGunRing
+{
+	default
+	{
 		Translation 2;
 	}
 }

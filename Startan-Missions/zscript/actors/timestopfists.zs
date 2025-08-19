@@ -2,6 +2,7 @@ class THEWORLD : Weapon
 {
     int AltFireRegenTimer;
     int FirstSelect;
+    bool CanThrow;
     Default
     {
 		Weapon.AmmoUse2 1;
@@ -51,11 +52,25 @@ class THEWORLD : Weapon
             KNGF A 1 A_Lower(18);
             Loop;
         Ready:
+            TNT1 A 0 A_JumpIf(invoker.CanThrow,"StandReady");
             KNGF A 1 A_WeaponReady;
+		    Loop;
+        StandReady:
+            KNGF A 1 A_WeaponReady(WRF_ALLOWRELOAD);
 		    Loop;
         Fire:
             KNGF A 0 A_StartSound("dio/mudaloop", CHAN_VOICE);
             // First punch: right-hand jab
+            KNGF C 1;
+            KNGF C 1 A_WeaponOffset(-12, 0);
+            KNGF C 1 { A_WeaponOffset(-35, -14); A_DIOPunch(); }
+            KNGF C 1 A_WeaponOffset(-41, 30);
+            // Transition to second punch (left-hand)
+            KNGF D 1;
+            KNGF D 1 A_WeaponOffset(12, 0);
+            KNGF D 1 { A_WeaponOffset(35, -14); A_DIOPunch(); }
+            KNGF D 1 A_WeaponOffset(41, 30);
+            //START RIGHT HAND JAB AGAIN
             KNGF C 1;
             KNGF C 1 A_WeaponOffset(-12, 0);
             KNGF C 1 { A_WeaponOffset(-35, -14); A_DIOPunch(); }
@@ -73,6 +88,18 @@ class THEWORLD : Weapon
             KNGF A 1 A_WeaponOffset(0, 42);
             KNGF A 1 A_WeaponOffset(0, 32);
             Goto Ready;
+        Reload:
+            TNT1 A 0 A_JumpIf(!invoker.CanThrow,"Ready");
+            PUNG A 1 A_WeaponOffset(0, 64);
+            PUNG A 1 A_WeaponOffset(0, 60);
+            PUNG A 1 A_WeaponOffset(0, 56);
+            PUNG A 1 A_WeaponOffset(0, 52);
+            PUNG A 1 A_WeaponOffset(0, 48);
+            PUNG A 1 A_WeaponOffset(0, 40);
+            PUNG A 1 A_WeaponOffset(0, 32);
+            PUNG A 1 A_DIOKnifeThrowTall();
+            PUNG A 12;
+            Goto StandReady;
         AltFire:
             TNT1 A 0 A_JumpIf(invoker.ZaWarudoCharge,"ZaWarudo");
             KNGF A 35 A_StartSound("dio/mudada", CHAN_AUTO);
@@ -80,7 +107,10 @@ class THEWORLD : Weapon
         ZaWarudo:
             KNGF A 54 A_StartSound("dio/ZAWARUDO", CHAN_AUTO);
             KNGF A 1 A_ZaWarudo();
-            Goto Ready;
+            TNT1 A 0 {
+                invoker.CanThrow = true;
+            }
+            Goto StandReady;
     }
 }
 
@@ -95,6 +125,47 @@ extend class THEWORLD
 			dmg  = 5 * Random(10,12);
 		}
         A_CustomPunch(dmg, norandom:true, CPF_NOTURN, "FuryPuff", 64, 0, 0, "ArmorBonus", "Puff/HitThing", "Puff/HitMiss");
+    }
+    action void A_DIOKnifeThrow()
+    {
+        A_StartSound("dio/knifethrow", CHAN_AUTO);
+        A_FireProjectile("DIOKnife",
+                        angle: 0,
+                        useammo: true,
+                        spawnofs_xy: 0,
+                        spawnheight: 0,
+                        flags: 0,
+                        pitch: 0);
+    }
+    action void A_DIOKnifeThrowTall()
+    {
+		for (int i = 0; i < 5; i++)
+        {
+            int offset = -2 + (i * 8); // Calculate the offset: -32, -24, ..., 24
+            A_StartSound("dio/knifethrow", CHAN_AUTO);
+            A_FireProjectile("DIOKnife",
+                            angle: 0,
+                            useammo: true,
+                            spawnofs_xy: 0,
+                            spawnheight: offset,
+                            flags: 0,
+                            pitch: 0);
+        }
+    }
+    action void A_DIOKnifeThrowWide()
+    {
+		for (int i = 0; i < 5; i++)
+        {
+            int offset = -2 + (i * 8); // Calculate the offset: -32, -24, ..., 24
+            A_StartSound("dio/knifethrow", CHAN_AUTO);
+            A_FireProjectile("DIOKnife",
+                            angle: 0,
+                            useammo: true,
+                            spawnofs_xy: offset,
+                            spawnheight: 0,
+                            flags: 0,
+                            pitch: 0);
+        }
     }
     action void A_ZaWarudo()
     {
@@ -124,6 +195,10 @@ extend class THEWORLD
         ZaWarudoCharge = CheckAmmo(AltFire, false, true);
        if (!ZaWarudoCharge)
         {
+            if (AltFireRegenTimer <= 350 && AltFireRegenTimer > 0)
+            {
+                CanThrow = false;
+            }
             if (AltFireRegenTimer <= 0)
             {
                 AltFireRegenTimer = 700; // e.g., 20-second countdown
@@ -202,5 +277,34 @@ class FuryPowerPuff : FuryPuff
         Spawn:
             BAL1 DE 4;
             Stop;
+    }
+}
+
+class DIOKnife : FastProjectile
+{
+    Default
+    {
+        Speed 60;                // How fast the knife flies
+        Radius 4;
+        Height 4;
+        DamageFunction 25;               // Damage it does on hit
+        +NOBLOCKMAP;
+        Projectile;
+        +MISSILE;
+        RenderStyle "Normal";
+        Translation "None";
+        Obituary "%o was skewered by a knife!";
+        Scale 0.15;
+    }
+
+    States
+    {
+    Spawn:
+        KNIF A 1 Bright;
+        Loop;
+    Death:
+        KNIF A 1 Bright A_StartSound("dio/knifehit", CHAN_AUTO);
+        KNIF A 5 Bright;
+        Stop;
     }
 }

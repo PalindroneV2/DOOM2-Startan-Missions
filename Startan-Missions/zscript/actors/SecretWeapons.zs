@@ -477,14 +477,14 @@ extend class RayGun
 	}
 }
 
-class RayGunBall : Actor
+class RayGunBall : FastProjectile
 {
 	Default
 	{
 		Radius 13;
-		Height 8;
-		Speed 100;
-		DamageFunction (200);
+		Height 13;
+		Speed 96;
+		DamageFunction (100);
 		Projectile;
 		+RANDOMIZE
 		+ZDOOMTRANS
@@ -496,12 +496,37 @@ class RayGunBall : Actor
 	States
 	{
 	Spawn:
-		APLS AB 5 BRIGHT;
+		APLS AB 4 BRIGHT A_SpawnItemEx("RayGunRing");
 		Loop;
 	Death:
-		APBX ABCDE 5 BRIGHT;
+		BAL7 C 1 BRIGHT A_RaygunBallExplodes();
+		BAL7 CDE 5 BRIGHT;
 		Stop;
 	}
+
+	action void A_RaygunBallExplodes()
+	{
+		A_Quake(4,12,0,400);
+		A_Quake(2,12,0,800);
+		A_Explode(100, 64, XF_HURTSOURCE | XF_THRUSTLESS  | XF_CIRCULAR , false, 40);
+	}
+}
+
+class RayGunRing : RocketSmokeTrail
+{
+    Default
+    {
+        // Customize appearance and behavior
+        RenderStyle "Translucent";
+        Alpha 0.9;
+    }
+
+    States
+    {
+    Spawn:
+        RAYR ABCD 2 Bright;
+        Stop;
+    }
 }
 
 class Trenchgun : DoomWeapon
