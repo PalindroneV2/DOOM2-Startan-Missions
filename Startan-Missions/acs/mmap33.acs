@@ -6,7 +6,7 @@ script 1500 ENTER
 {
 	ClearInventory();
 	GiveInventory("DoomFist", 1);
-	GiveInventory("WaltherPPK",1);
+	GiveInventory("M1911A1",1);
 	GiveInventory("Clip",32);
 }
 
