@@ -381,11 +381,11 @@ cluster 28
 	flat = W3DCC011
 	music = D_READ_M
 	entertext =
-	"Another botched teleportation",
-	"transports you to an unfamiliar",
-	"location but familiar time.",
-	"The day is darkened by the",
-	"eclipse obscuring the sun."
+	"The Giant is rising.",
+	" Face the might of the Nazi Zombies in their heartland.",
+	"This is where it all began.",
+	"This is where the master plan took shape.",
+	"Is this where it all ends?"
 	exittext =
  	"The overloaded teleporter shoots",
 	"you back into the distant future,",
@@ -446,6 +446,45 @@ map SECRET8 "Ozymandias"
 	Author = "Palindrone"
 	levelnum = 138
 	SkyFog = 200
+	ResetInventory
+	ResetItems
+	ResetHealth
+	lightmode = 16
+	NoJump
+	NoCrouch
+}
+
+cluster 30
+{
+	flat = W3DCC011
+	music = D_READ_M
+	entertext =
+	"You drove them deep into the Heart",
+	"of the Reich.",
+	"",
+	"You thought they were dead...",
+	"",
+	"You were wrong."
+	exittext =
+ 	"Once more you survive the endless hordes.",
+	"A fate much kinder than that of the doomed",
+	"marines you found dead in the bunker is",
+	"assured for you as another rip in space-time",
+	"takes you back to the future."
+}
+
+
+
+map SECRET9 "Nacht"
+{
+	next = "HUBMAP"
+	secretnext = "HUBMAP"
+    sky1 = "SKYHX3B"
+	cluster = 30
+	par = 300
+	music = "D_BEAUTY"
+	Author = "Palindrone"
+	levelnum = 137
 	ResetInventory
 	ResetItems
 	ResetHealth
