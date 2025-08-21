@@ -152,7 +152,7 @@ extend class Handgun
 {
     action void A_HandgunFire()
     {
-		int dmg = 5;
+		int dmg = 10;
 		if (Random(1, 100) <= 5)
 		{
 			dmg *= 2.5;

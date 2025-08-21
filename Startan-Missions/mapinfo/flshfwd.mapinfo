@@ -484,7 +484,7 @@ map SECRET9 "Nacht"
 	par = 300
 	music = "D_BEAUTY"
 	Author = "Palindrone"
-	levelnum = 137
+	levelnum = 139
 	ResetInventory
 	ResetItems
 	ResetHealth
