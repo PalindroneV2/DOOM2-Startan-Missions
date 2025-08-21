@@ -205,7 +205,7 @@ class RayGunBall_PAP : RayGunBall
 	States
 	{
 	Spawn:
-		APLS AB 4 BRIGHT A_SpawnItemEx("RayGunRing_PAP");
+		APLS AB 1 BRIGHT A_SpawnItemEx("RayGunRing_PAP");
 		Loop;
 	}
 }
@@ -383,6 +383,15 @@ class PlasmaBall_PAP : NoRandPlasmaBall
 		DamageFunction (50);
         Translation 2;
 		Obituary "%k liquified %o with a Fusion Repeater.";
+	}
+	States
+	{
+	Spawn:
+		APLS AB 5 BRIGHT;
+		Loop;
+	Death:
+		APBX ABCDE 5 BRIGHT;
+		Stop;
 	}
 }
 

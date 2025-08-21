@@ -79,6 +79,7 @@ map MMAP04 "The Tomb of Id-K'yeth"
 	levelnum = 104
 	ResetInventory
 	ResetItems
+	ResetHealth
 	lightmode = 16
 	NoJump
 	NoCrouch
@@ -96,6 +97,7 @@ map MMAP05 "The FOB"
 	levelnum = 105
 	ResetInventory
 	ResetItems
+	ResetHealth
 	lightmode = 16
 	NoJump
 	NoCrouch
@@ -113,6 +115,7 @@ map MMAP06 "Silence in the Library"
 	levelnum = 106
 	ResetInventory
 	ResetItems
+	ResetHealth
 	lightmode = 16
 	NoJump
 	NoCrouch
@@ -130,6 +133,7 @@ map MMAP07 "Hot Start"
 	levelnum = 107
 	ResetInventory
 	ResetItems
+	ResetHealth
 	lightmode = 16
 	NoJump
 	NoCrouch
@@ -147,6 +151,7 @@ map MMAP08 "Blacksite"
 	levelnum = 108 
 	ResetInventory
 	ResetItems
+	ResetHealth
 	lightmode = 16
 	NoJump
 	NoCrouch
@@ -186,8 +191,9 @@ map SECRET1 "Jamais Vu"
 	music = "D_EVIL"
 	Author = "Palindrone"
 	levelnum = 131
-	ResetHealth
 	ResetInventory
+	ResetItems
+	ResetHealth
 	lightmode = 16
 	NoJump
 	NoCrouch
@@ -219,8 +225,9 @@ map SECRET2 "Raiders"
 	music = "D_LEGION"
 	Author = "Palindrone"
 	levelnum = 132
-	ResetHealth
 	ResetInventory
+	ResetItems
+	ResetHealth
 	lightmode = 16
 	NoJump
 	NoCrouch
@@ -256,6 +263,7 @@ map SECRET3 "Atomic Cul-De-Sac"
 	levelnum = 133
 	ResetInventory
 	ResetItems
+	ResetHealth
 	lightmode = 16
 	NoJump
 	NoCrouch
@@ -289,6 +297,7 @@ map SECRET4 "Blood Sacrifice"
 	levelnum = 134
 	ResetInventory
 	ResetItems
+	ResetHealth
 	lightmode = 16
 	NoJump
 	NoCrouch
@@ -324,6 +333,7 @@ map SECRET5 "Sturme das Schloss"
 	levelnum = 135
 	ResetInventory
 	ResetItems
+	ResetHealth
 	lightmode = 16
 	NoJump
 	NoCrouch
@@ -357,8 +367,10 @@ map SECRET6 "Diner at the End of the World"
 	music = "D_LOVESONG"
 	Author = "Palindrone"
 	levelnum = 136
+	SkyFog = 200
 	ResetInventory
 	ResetItems
+	ResetHealth
 	lightmode = 16
 	NoJump
 	NoCrouch
@@ -395,6 +407,7 @@ map SECRET7 "Waffenfabrik"
 	levelnum = 137
 	ResetInventory
 	ResetItems
+	ResetHealth
 	lightmode = 16
 	NoJump
 	NoCrouch
@@ -435,6 +448,7 @@ map SECRET8 "Ozymandias"
 	SkyFog = 200
 	ResetInventory
 	ResetItems
+	ResetHealth
 	lightmode = 16
 	NoJump
 	NoCrouch

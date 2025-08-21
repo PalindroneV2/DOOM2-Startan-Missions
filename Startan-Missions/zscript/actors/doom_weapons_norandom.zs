@@ -152,10 +152,10 @@ extend class Handgun
 {
     action void A_HandgunFire()
     {
-		int dmg = 10;
+		int dmg = 5;
 		if (Random(1, 100) <= 5)
 		{
-			dmg *= 4;
+			dmg *= 2.5;
 		}else{
 			dmg = 10;
 		}
@@ -389,16 +389,32 @@ extend class NewSuperShotgun
 {
     action void A_FireSSG()
     {
+		int dmg = 12;
+		//SSG SuperCrit
+		if (Random(1, 200) == 1)
+		{
+			dmg = 125;
+		}else{
+			dmg = 12;
+		}
 		A_StartSound ("weapons/sshotf", CHAN_WEAPON);
-		A_FireBullets(15,7.5, 25, 12, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_FireBullets(15,7.5, 25, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(3,5,0,5);
 		A_GunFlash();
     }
 	action void A_FireSSG_PAP()
     {
+		int dmg = 25;
+		//SSG SuperCrit
+		if (Random(1, 200) == 1)
+		{
+			dmg = 150;
+		}else{
+			dmg = 25;
+		}
 		A_StartSound ("weapons/sshotf", CHAN_WEAPON);
 		A_StartSound ("PAP/Fire", CHAN_AUTO);
-		A_FireBullets(15,7.5, 25, 25, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
+		A_FireBullets(15,7.5, 25, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
 		A_Quake(3,5,0,5);
 		A_GunFlash();
     }

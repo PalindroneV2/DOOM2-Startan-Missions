@@ -4,7 +4,7 @@ script "Offices_Door_WallCollapse" (void)
 {
     Ceiling_RaiseByValue(10, 16, 16);
     // Floor_LowerByValue(11, 128, 128);
-    SpawnProjectile(1,"Rocket_Dud", GetActorAngle(1),6400,0,0,0);
+    SpawnProjectile(1,"Rocket_Dud", -90,6400,0,0,0);
     Delay(10);
     Floor_MoveToValue(11, 128, 64);
 }
@@ -18,4 +18,9 @@ script "TestingRoom_BlueArmor_Pickup" (void)
 script "SecretExit_ChangeMusic" (void)
 {
     Music_Change("D_LEGION", 0);
+}
+
+script "ChangeMusicBack" (void)
+{
+    Music_Change("D_TAPES", 0);
 }

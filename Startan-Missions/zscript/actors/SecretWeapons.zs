@@ -467,13 +467,13 @@ extend class RayGun
 	{
 		A_FireProjectile("RayGunBall");
 		A_Quake(1,2,0,1);
-		A_StartSound ("raygun/fire", CHAN_NOSTOP);
+		A_StartSound ("raygun/fire", CHAN_AUTO);
 	}
 	action void A_RayGun_Fire_PAP()
 	{
 		A_FireProjectile("RayGunBall_PAP");
 		A_Quake(1,2,0,1);
-		A_StartSound ("raygun/fire", CHAN_NOSTOP);
+		A_StartSound ("raygun/fire", CHAN_AUTO);
 	}
 }
 
@@ -496,7 +496,7 @@ class RayGunBall : FastProjectile
 	States
 	{
 	Spawn:
-		APLS AB 4 BRIGHT A_SpawnItemEx("RayGunRing");
+		APLS AB 1 BRIGHT A_SpawnItemEx("RayGunRing");
 		Loop;
 	Death:
 		BAL7 C 1 BRIGHT A_RaygunBallExplodes();
@@ -687,7 +687,7 @@ extend class Kar98k
     action void A_KAR98K_Shot()
     {
 		int dmg = 75;
-		if (Random(1, 100) <= 10)
+		if (Random(1, 100) <= 15)
 		{
 			dmg *= 2;
 		}else{

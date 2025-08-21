@@ -1,0 +1,9 @@
+Model smjeep
+{
+	Model 0 "models/smjeep.obj"
+
+	USEACTORPITCH
+	USEACTORROLL
+   
+	FrameIndex PLAY A 0 0
+}

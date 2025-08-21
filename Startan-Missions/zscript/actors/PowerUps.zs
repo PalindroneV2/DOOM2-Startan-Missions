@@ -1,8 +1,9 @@
-class BerserkProtect : Powerup
+class BerserkProtect : PowerProtection
 {
     Default
     {
-        Powerup.Duration -60;
+        Powerup.Duration -15;
+		DamageFactor 0.25;
 		Powerup.Color "ff 00 00", 0.25;
     }
 }
@@ -35,6 +36,7 @@ extend class NewBerserk
     {
         A_GiveInventory("BerserkProtect");
         A_GiveInventory("PowerStrength");
+		A_Log("Your rage makes you ignore your injuries!");
         HealThing(100);
         A_SelectWeapon("DoomFist");
         if (FindInventory("THEWORLD"))
@@ -179,6 +181,11 @@ class ZaWarudoTimeStop : Powerup
         {
             S_StartSound("dio/timeresume", CHAN_AUTO); // Replace with your sound path
         }
+		if (!paused)
+		{
+			S_ResumeSound(false);
+			S_PauseSound(false, true);
+		}
 
         // Freeze the level unconditionally while the powerup is active
         Level.SetFrozen(true);

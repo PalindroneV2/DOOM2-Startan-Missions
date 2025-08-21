@@ -5,6 +5,7 @@ clearepisodes
 Episode HUBMAP
 {
 	Name = "Startan Base"
+	NoSkillMenu
 }
 
 GameInfo {
