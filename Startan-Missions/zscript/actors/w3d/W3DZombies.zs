@@ -3,7 +3,7 @@ class W3DZombie : Actor
 	default
 	{
 		Health 95;
-		Speed 20;
+		Speed 15;
 		PainChance 50;
 		Radius 16;
 		Height 56;
@@ -21,7 +21,7 @@ class W3DZombie : Actor
 		+NOINFIGHTSPECIES
 		+JUMPDOWN
 		+DROPOFF
-		+ALWAYSFAST
+		// +ALWAYSFAST
        //$Category Monsters
 		//$Sprite NZGDI
 	}
@@ -32,22 +32,18 @@ class W3DZombie : Actor
 		Loop;
 	See:
 		#### E 2 A_FaceTarget;
+		#### E 3;
 		#### F 30 A_StartSound("w3dzombie/scream",CHAN_AUTO);
 		Goto Chase;
 	Chase:
 		#### A 0 A_JumpIf(CheckForObstacle(),"Jump"); 
-		// #### AA 3 A_Chase("Melee",null,CHF_NORANDOMTURN);
-		#### CC 3 A_Chase("Melee",null);
+		#### AA 2 A_Chase("Melee",null);
+		#### B 0 A_JumpIf(CheckForObstacle(),"Jump");
+		#### BB 2 A_Chase("Melee",null);
+		#### C 0 A_JumpIf(CheckForObstacle(),"Jump");
+		#### CC 2 A_Chase("Melee",null);
 		#### D 0 A_JumpIf(CheckForObstacle(),"Jump");
-		// #### AA 3 A_Chase("Melee",null,CHF_NORANDOMTURN);
-		#### CC 3 A_Chase("Melee",null);
-		#### D 0 A_JumpIf(CheckForObstacle(),"Jump");
-		// #### AA 3 A_Chase("Melee",null,CHF_NORANDOMTURN);
-		#### CC 3 A_Chase("Melee",null);
-		#### D 0 A_JumpIf(CheckForObstacle(),"Jump");
-		// #### AA 3 A_Chase("Melee",null,CHF_NORANDOMTURN);
-		#### CC 3 A_Chase("Melee",null);
-		#### D 0 A_JumpIf(CheckForObstacle(),"Jump");
+		#### DD 2 A_Chase("Melee",null);
 		Loop;
 	Melee:
 		#### EG 6 A_FaceTarget;

@@ -485,6 +485,7 @@ map SECRET9 "Nacht"
 	music = "D_BEAUTY"
 	Author = "Palindrone"
 	levelnum = 139
+	SkyFog = 128
 	ResetInventory
 	ResetItems
 	ResetHealth
