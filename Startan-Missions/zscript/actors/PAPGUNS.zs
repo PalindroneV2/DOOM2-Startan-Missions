@@ -336,6 +336,17 @@ class NewRocketLauncher_PAP : NewRocketLauncher
 		MISG B 0 A_ReFire;
 		Goto Ready;
     }
+
+	action void A_RPGPAPFire()
+	{
+		A_FireProjectile("PAP_Rocket",
+                 angle: 0,
+                 useammo: true,
+                 spawnofs_xy: 0,
+                 spawnheight: 1,
+                 flags: 0,
+                 pitch: 0);
+	}
 }
 
 class PAP_Rocket : NoRandRocket

@@ -256,7 +256,7 @@ extend class M1911A1
                  angle: 0,
                  useammo: true,
                  spawnofs_xy: -8,
-                 spawnheight: 0,
+                 spawnheight: 1,
                  flags: 0,
                  pitch: 0);
     }
@@ -271,10 +271,9 @@ extend class M1911A1
                  angle: 0,
                  useammo: true,
                  spawnofs_xy: 8,
-                 spawnheight: 0,
+                 spawnheight: 1,
                  flags: 0,
                  pitch: 0);
-
     }
 	override bool HandlePickup(Inventory item)
 	{
@@ -384,7 +383,13 @@ extend class M16
 	}
 	action void A_M16PAPALTFire()
 	{
-		A_FireProjectile("Rocket");
+		A_FireProjectile("Rocket",
+                 angle: 0,
+                 useammo: true,
+                 spawnofs_xy: 0,
+                 spawnheight: 1,
+                 flags: 0,
+                 pitch: 0);
 		A_Quake(1,2,0,1);
 		A_StartSound ("M203/Fire", CHAN_WEAPON);
 	}
@@ -465,13 +470,25 @@ extend class RayGun
 {
 	action void A_RayGun_Fire()
 	{
-		A_FireProjectile("RayGunBall");
+		A_FireProjectile("RayGunBall",
+                 angle: 0,
+                 useammo: true,
+                 spawnofs_xy: 0,
+                 spawnheight: 1,
+                 flags: 0,
+                 pitch: 0);
 		A_Quake(1,2,0,1);
 		A_StartSound ("raygun/fire", CHAN_AUTO);
 	}
 	action void A_RayGun_Fire_PAP()
 	{
-		A_FireProjectile("RayGunBall_PAP");
+		A_FireProjectile("RayGunBall_PAP",
+                 angle: 0,
+                 useammo: true,
+                 spawnofs_xy: 0,
+                 spawnheight: 1,
+                 flags: 0,
+                 pitch: 0);
 		A_Quake(1,2,0,1);
 		A_StartSound ("raygun/fire", CHAN_AUTO);
 	}
@@ -499,8 +516,8 @@ class RayGunBall : FastProjectile
 		APLS AB 1 BRIGHT A_SpawnItemEx("RayGunRing");
 		Loop;
 	Death:
-		BAL7 C 1 BRIGHT A_RaygunBallExplodes();
-		BAL7 CDE 5 BRIGHT;
+		RGBA C 1 BRIGHT A_RaygunBallExplodes();
+		RGBA CDE 5 BRIGHT;
 		Stop;
 	}
 
