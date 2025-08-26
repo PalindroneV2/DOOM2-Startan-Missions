@@ -109,6 +109,49 @@ extend class PAP_PowerUp
     }
 }
 
+class MaxAmmo_Powerup : CustomInventory
+{
+    Default
+    {
+        Tag "Max Ammo Power Up";
+		Radius 20;
+		Height 20;
+        Scale 1;
+        +PICKUP;
+        +NOGRAVITY;
+        +COUNTITEM;
+        +FLOATBOB;
+		+INVENTORY.ALWAYSPICKUP;
+        FloatBobStrength 0.25;
+        Inventory.Amount 1;
+        Inventory.MaxAmount 1;
+        Inventory.InterHubAmount 0;
+        Inventory.Icon "MXAMA0";
+        Inventory.AltHUDIcon "MXAMA0";
+        Inventory.PickupMessage "MAX AMMO!";
+		Inventory.PickupSound "misc/p_pkup";
+       //$Category Powerups
+    }
+    States
+    {
+        Spawn:
+            MXAM AB 2 BRIGHT;
+            Loop;
+        Pickup:
+            TNT1 A 0 A_MaxAmmoPickup;
+            Stop;
+    }
+
+    action void A_MaxAmmoPickup()
+    {
+        A_GiveInventory("Clip", 400);
+        A_GiveInventory("Shell", 100);
+        A_GiveInventory("RocketAmmo", 100);
+        A_GiveInventory("Cell", 600);
+        A_GiveInventory("RifleBullets", 80);
+    }
+}
+
 class TeddyBear : Actor
 {
 	Default
