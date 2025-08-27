@@ -28,6 +28,9 @@ class W3DZombie : Actor
 	States
 	{
 	Spawn:
+		//SS3D is placeholder
+		//SSZM is SS Zombie
+		//HRZM is Heer Zombie
 		SS3D AB 10 A_Look;
 		Loop;
 	See:
@@ -108,8 +111,8 @@ extend class W3DZombie
         // Perform the line trace
         FLineTraceData trace;
         FLineTraceData trace2;
-		bool hit = LineTrace(zombieangle ,  32 , 0, TRF_NOSKY | TRF_THRUACTORS ,  31, 0, 0, trace);
-		bool hit2 = LineTrace(zombieangle,  32 , 0, TRF_NOSKY | TRF_THRUACTORS ,  33, 0, 0, trace2);
+		bool hit = LineTrace(zombieangle ,  32 , 0, TRF_NOSKY | TRF_THRUACTORS | TRF_BLOCKSELF,  31, 0, 0, trace);
+		bool hit2 = LineTrace(zombieangle,  32 , 0, TRF_NOSKY | TRF_THRUACTORS | TRF_BLOCKSELF,  33, 0, 0, trace2);
 		double hitHeight = trace.HitLocation.z - floorz;
 
         // Check if the trace hit something within the desired height

@@ -462,7 +462,7 @@ class FastPlasmaRifle : PlasmaRifle replaces PlasmaRifle
 			PLSG A 1 A_WeaponReady;
 			Loop;
 		Fire:
-			PLSG A 3 A_FirePlasma;
+			PLSG A 3 A_NewFirePlasma();
 			PLSG B 0 A_Quake(2,2,0,2);
 			PLSG B 10 A_ReFire;
 			Goto Ready;
@@ -483,6 +483,17 @@ class FastPlasmaRifle : PlasmaRifle replaces PlasmaRifle
 		Spawn:
 			PLAS A -1;
 			Stop;
+	}
+
+	action void A_NewFirePlasma()
+	{
+		A_FireProjectile("NoRandPlasmaBall",
+                 angle: 0,
+                 useammo: true,
+                 spawnofs_xy: 0,
+                 spawnheight: 1,
+                 flags: 0,
+                 pitch: 0);
 	}
 }
 

@@ -525,7 +525,8 @@ class RayGunBall : FastProjectile
 	{
 		A_Quake(4,12,0,400);
 		A_Quake(2,12,0,800);
-		A_Explode(100, 64, XF_HURTSOURCE | XF_THRUSTLESS  | XF_CIRCULAR , false, 40);
+		A_Explode(100, 64, XF_THRUSTLESS  | XF_CIRCULAR , false, 40);
+		// A_Explode(100, 64, XF_HURTSOURCE | XF_THRUSTLESS  | XF_CIRCULAR , false, 40);
 	}
 }
 

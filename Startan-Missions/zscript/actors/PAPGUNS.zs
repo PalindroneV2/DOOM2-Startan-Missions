@@ -380,10 +380,22 @@ class FastPlasmaRifle_PAP : FastPlasmaRifle
 	States
 	{
 		Fire:
-			PLSG A 3 A_FireProjectile ("PlasmaBall_PAP");
+			PLSG A 3 A_NewFirePlasma_PAP();
 			PLSG B 0 A_Quake(2,2,0,2);
 			PLSG B 10 A_ReFire;
 			Goto Ready;
+	}
+	
+
+	action void A_NewFirePlasma_PAP()
+	{
+		A_FireProjectile("PlasmaBall_PAP",
+                 angle: 0,
+                 useammo: true,
+                 spawnofs_xy: 0,
+                 spawnheight: 1,
+                 flags: 0,
+                 pitch: 0);
 	}
 }
 
