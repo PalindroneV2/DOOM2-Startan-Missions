@@ -131,8 +131,8 @@ class MustangSallyRocket : FastProjectile
 	}
 	action void A_MustangSallyExplode()
 	{
-		A_Quake(4,12,0,400);
-		A_Quake(2,12,0,800);
+		(4,12,0,400);
+		(2,12,0,800);
 		A_Explode(128, 96, XF_HURTSOURCE, false, 40);
 	}
 }
@@ -381,7 +381,7 @@ class FastPlasmaRifle_PAP : FastPlasmaRifle
 	{
 		Fire:
 			PLSG A 3 A_NewFirePlasma_PAP();
-			PLSG B 0 A_Quake(2,2,0,2);
+			// PLSG B 0 A_Quake(2,2,0,2);
 			PLSG B 10 A_ReFire;
 			Goto Ready;
 	}

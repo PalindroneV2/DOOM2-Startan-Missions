@@ -161,7 +161,7 @@ extend class Handgun
 		}
 		A_StartSound ("weapons/pistol", CHAN_WEAPON);
 		A_FireBullets(5, 4, 1, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		A_Quake(1,3,0,1);
+		(1,3,0,1);
 		A_GunFlash();
     }
 	override bool HandlePickup(Inventory item)
@@ -233,7 +233,7 @@ extend class Minigun
 		}
 		A_StartSound ("weapons/chngun", CHAN_WEAPON);
 		A_FireBullets(5, 0, 1, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		A_Quake(2,2,0,2);
+		(2,2,0,2);
 		A_GunFlash();
     }
     action void A_MinigunFire_PAP()
@@ -247,7 +247,7 @@ extend class Minigun
 		}
 		A_StartSound ("PAP/Fire", CHAN_WEAPON);
 		A_FireBullets(5, 0, 1, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		A_Quake(2,2,0,2);
+		(2,2,0,2);
 		A_GunFlash();
     }
 }
@@ -308,7 +308,7 @@ extend class NewShotgun
 		}
 		A_StartSound ("weapons/shotgf", CHAN_WEAPON);
 		A_FireBullets(7.5,0, 8, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		A_Quake(2,3,0,3);
+		(2,3,0,3);
 		A_GunFlash();
     }
 	action void A_SecretShotgunPickup()
@@ -399,7 +399,7 @@ extend class NewSuperShotgun
 		}
 		A_StartSound ("weapons/sshotf", CHAN_WEAPON);
 		A_FireBullets(15,7.5, 25, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		A_Quake(3,5,0,5);
+		(3,5,0,5);
 		A_GunFlash();
     }
 	action void A_FireSSG_PAP()
@@ -415,7 +415,7 @@ extend class NewSuperShotgun
 		A_StartSound ("weapons/sshotf", CHAN_WEAPON);
 		A_StartSound ("PAP/Fire", CHAN_AUTO);
 		A_FireBullets(15,7.5, 25, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		A_Quake(3,5,0,5);
+		(3,5,0,5);
 		A_GunFlash();
     }
 }
@@ -463,7 +463,7 @@ class FastPlasmaRifle : PlasmaRifle replaces PlasmaRifle
 			Loop;
 		Fire:
 			PLSG A 3 A_NewFirePlasma();
-			PLSG B 0 A_Quake(2,2,0,2);
+			// PLSG B 0 A_Quake(2,2,0,2);
 			PLSG B 10 A_ReFire;
 			Goto Ready;
 		Ready:
@@ -568,14 +568,14 @@ extend class NoRandRocket
 {
 	action void A_ExplodeNoRand()
 	{
-		A_Quake(4,12,0,400);
-		A_Quake(2,12,0,800);
+		(4,12,0,400);
+		(2,12,0,800);
 		A_Explode(128, 96, XF_HURTSOURCE, false, 40);
 	}
 	action void A_RocketExplode_PAP()
 	{
-		A_Quake(4,12,0,400);
-		A_Quake(2,12,0,800);
+		(4,12,0,400);
+		(2,12,0,800);
 		A_Explode(256, 96, XF_HURTSOURCE, false, 40);
 	}
 }
@@ -603,8 +603,8 @@ class BFGBallNoRand : Actor replaces BFGBall
 		BFS1 AB 4 Bright;
 		Loop;
 	Death:
-		BFE1 AB 0 Bright A_Quake(4,12,0,400);
-		BFE1 AB 0 Bright A_Quake(2,12,0,800);
+		// BFE1 AB 0 Bright A_Quake(4,12,0,400);
+		// BFE1 AB 0 Bright A_Quake(2,12,0,800);
 		BFE1 AB 8 Bright;
 		BFE1 C 8 Bright A_BFGBlast;
 		BFE1 DEF 8 Bright;
@@ -617,16 +617,16 @@ extend class BFGBallNoRand
 	{
 		A_Explode(100, 256, XF_THRUSTLESS, false, 64,0,10,"BFGExtra","BFGSplash"); //Extra explosion damage
 		A_BFGSpray("BFGExtra",45, 0, 90, 1024, 90, 50, 0); //Vanilla adjacent BFG
-		A_Quake(4,12,0,400);
-		A_Quake(2,12,0,800);
+		(4,12,0,400);
+		(2,12,0,800);
 		// A_BFGSpray("BFGExtra",45, 0, 360, 1024, 90, 50, BFGF_MISSILEORIGIN); //BFG SHOOTS RAYS FROM BALL
 	}
 	action void A_BFGBlast_PAP()
 	{
 		A_Explode(100, 512, XF_THRUSTLESS, false, 64,0,10,"BFGExtra","BFGSplash"); //Extra explosion damage
 		A_BFGSpray("BFGExtra",90, 0, 90, 1024, 90, 100, 0); //Vanilla adjacent BFG
-		A_Quake(4,12,0,400);
-		A_Quake(2,12,0,800);
+		(4,12,0,400);
+		(2,12,0,800);
 		// A_BFGSpray("BFGExtra",45, 0, 360, 1024, 90, 50, BFGF_MISSILEORIGIN); //BFG SHOOTS RAYS FROM BALL
 	}
 	action void A_BFGRails()

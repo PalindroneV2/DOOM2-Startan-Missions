@@ -58,7 +58,7 @@ extend class MP40
 			dmg = 12;
 		}
 		A_FireBullets(4, 3, 1, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		A_Quake(1,2,0,1);
+		(1,2,0,1);
 		A_GunFlash();
 	}
 	action void A_MP40Fire_PAP()
@@ -71,7 +71,7 @@ extend class MP40
 			dmg = 25;
 		}
 		A_FireBullets(4, 3, 1, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		A_Quake(1,2,0,1);
+		(1,2,0,1);
 		A_StartSound ("PAP/Fire", CHAN_WEAPON);
 	}
 	override void PostBeginPlay()
@@ -146,7 +146,7 @@ extend class WaltherPPK
 		}
 		A_StartSound ("WaltherPPK/Fire", CHAN_WEAPON);
 		A_FireBullets(2, 2, -1, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		A_Quake(1,2,0,1);
+		(1,2,0,1);
 		A_GunFlash();
     }
 	override bool HandlePickup(Inventory item)
@@ -241,14 +241,14 @@ extend class M1911A1
 		}
 		A_StartSound ("M1911/Fire", CHAN_WEAPON);
 		A_FireBullets(2, 2, -1, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		A_Quake(1,2,0,1);
+		(1,2,0,1);
 		A_GunFlash();
     }
 	action void A_MustangSallyShotLeft()
     {
 		A_StartSound ("PAP/Fire", CHAN_WEAPON);
 		// A_FireBullets(2, 2, -1, 15, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		A_Quake(1,2,0,1);
+		(1,2,0,1);
 		A_GunFlash();
 		// A_FireProjectile("MustangSallyRocket");
 		// A_FireCustomMissile ("MustangSallyRocket", 0, 1, -8, 0, 0, 0);
@@ -264,7 +264,7 @@ extend class M1911A1
     {
 		A_StartSound ("PAP/Fire", CHAN_WEAPON);
 		// A_FireBullets(2, 2, -1, 15, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		A_Quake(1,2,0,1);
+		(1,2,0,1);
 		A_GunFlash();
 		// A_FireProjectile("MustangSallyRocket");
 		A_FireProjectile("MustangSallyRocket",
@@ -366,7 +366,7 @@ extend class M16
 			dmg = 18;
 		}
 		A_FireBullets (1.5,1.5,-1, dmg,"BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		A_Quake(1,2,0,1);
+		(1,2,0,1);
 	}
 	action void A_M16PAPFire()
 	{
@@ -378,7 +378,7 @@ extend class M16
 			dmg = 36;
 		}
 		A_FireBullets (1.5,1.5,-1, dmg,"BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		A_Quake(1,2,0,1);
+		(1,2,0,1);
 		A_StartSound ("PAP/Fire", CHAN_WEAPON);
 	}
 	action void A_M16PAPALTFire()
@@ -390,7 +390,7 @@ extend class M16
                  spawnheight: 1,
                  flags: 0,
                  pitch: 0);
-		A_Quake(1,2,0,1);
+		(1,2,0,1);
 		A_StartSound ("M203/Fire", CHAN_WEAPON);
 	}
 	action void A_M16SemiFire()
@@ -403,7 +403,7 @@ extend class M16
 			dmg = 18;
 		}
 		A_FireBullets (0.5,0.5,1,dmg,"BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		A_Quake(1,2,0,1);
+		(1,2,0,1);
 	}
 	override void PostBeginPlay()
 	{
@@ -477,7 +477,7 @@ extend class RayGun
                  spawnheight: 1,
                  flags: 0,
                  pitch: 0);
-		A_Quake(1,2,0,1);
+		(1,2,0,1);
 		A_StartSound ("raygun/fire", CHAN_AUTO);
 	}
 	action void A_RayGun_Fire_PAP()
@@ -489,7 +489,7 @@ extend class RayGun
                  spawnheight: 1,
                  flags: 0,
                  pitch: 0);
-		A_Quake(1,2,0,1);
+		(1,2,0,1);
 		A_StartSound ("raygun/fire", CHAN_AUTO);
 	}
 }
@@ -523,8 +523,8 @@ class RayGunBall : FastProjectile
 
 	action void A_RaygunBallExplodes()
 	{
-		A_Quake(4,12,0,400);
-		A_Quake(2,12,0,800);
+		(4,12,0,400);
+		(2,12,0,800);
 		A_Explode(100, 64, XF_THRUSTLESS  | XF_CIRCULAR , false, 40);
 		// A_Explode(100, 64, XF_HURTSOURCE | XF_THRUSTLESS  | XF_CIRCULAR , false, 40);
 	}
@@ -610,7 +610,7 @@ extend class Trenchgun
 		}
 		A_StartSound ("TRNCFIR", CHAN_WEAPON);
 		A_FireBullets(7.5,0, 8, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		A_Quake(2,3,0,3);
+		(2,3,0,3);
 		A_GunFlash();
     }
 	action void A_TrenchgunShot_PAP()
@@ -624,7 +624,7 @@ extend class Trenchgun
 		}
 		A_StartSound ("PAP/Fire", CHAN_WEAPON);
 		A_FireBullets(7.5,0, 8, dmg, "BulletPuff",FBF_USEAMMO|FBF_NORANDOM);
-		A_Quake(2,3,0,3);
+		(2,3,0,3);
 		A_GunFlash();
     }
 	override bool HandlePickup(Inventory item)
@@ -713,7 +713,7 @@ extend class Kar98k
 		}
 		A_StartSound ("K98K/FIRE", CHAN_WEAPON);
 		A_Firebullets(3, 0, 1, dmg, "RiflePuff", FBF_USEAMMO | FBF_NORANDOM);
-		A_Quake(2,3,0,3);
+		(2,3,0,3);
 		A_GunFlash();
     }
 	action void A_KAR98K_Shot_PAP()
@@ -748,7 +748,7 @@ extend class Kar98k
 			5                        // limit
 		);
 		// A_Firebullets(3, 0, 1, 150, "RiflePuff", FBF_USEAMMO | FBF_NORANDOM);
-		A_Quake(2,3,0,3);
+		(2,3,0,3);
 		A_GunFlash();
     }
 }
