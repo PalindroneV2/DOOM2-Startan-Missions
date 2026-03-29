@@ -1,4 +1,4 @@
-class W3DGuard : WolfensteinSS
+class W3DGuard : W3DNPC_Template
 {
 	Default
 	{
@@ -20,6 +20,10 @@ class W3DGuard : WolfensteinSS
 		Species "Nazi";
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
+		W3DNPC_Template.W3D_PistolClip 8;
+		W3DNPC_Template.W3D_RifleClip 5;
+		W3DNPC_Template.W3D_SMGClip 32;
+		W3DNPC_Template.W3D_PlasmaClip 20;
        //$Category Monsters
 	}
 	States
@@ -42,13 +46,17 @@ class W3DGuard : WolfensteinSS
 			#### AABBCCDD 3 A_Chase("Aim","Aim");
 			Loop;
 		Aim:
+			#### E 0 A_CPosRefire;
 			#### EF 5 A_FaceTarget;
 			Goto Missile;
+		Reloading:
+			#### EEE 15 A_W3DReload();
+			Goto Aim;
 		Missile:
 			#### F 5 A_FaceTarget;
-			#### G 4 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
+			#### G 4 BRIGHT A_W3DPistolAttack();
 			#### F 6 A_FaceTarget;
-			#### F 4 A_CPosRefire;
+			#### F 4 A_W3DCheckAmmo;
 			Goto Missile+1;
 		Pain:
 			#### H 3;
@@ -154,6 +162,7 @@ class W3DSSGuard : W3DGuard
 		Tag "Nazi Guard (SS)";
 		Dropitem "Clip";
 		Species "Nazi";
+		Health 45;
 		Speed 12;
 		PainChance 150;
 		+DONTHARMSPECIES
@@ -165,6 +174,14 @@ class W3DSSGuard : W3DGuard
 		Spawn:
 			SPGD AB 10 A_Look;
 			Loop;
+		See:
+			#### E 7 A_FaceTarget;
+			#### E 0 A_W3DSightorFlight;
+			Goto Chase;
+		Aim:
+			#### E 0 A_CPosRefire;
+			#### EF 3 A_FaceTarget;
+			Goto Missile;
 		Raise:
 			SSZM N 5;
 			SSZM MLKJI 5;
@@ -192,15 +209,19 @@ class W3DHeerGuardSMG : W3DGuard
 			HMGD AB 10 A_Look;
 			Loop;
 		Aim:
+			#### E 0 A_CPosRefire;
 			#### EF 5 A_FaceTarget;
 			Goto SMGFire;
+		Missile:
+			goto SMGFire;
+		Reloading:
+			#### EEE 20 A_W3DReload();
+			Goto Aim;
 		SMGFire:
-			#### F 5 A_FaceTarget;
-			#### G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
 			#### F 3 A_FaceTarget;
-			#### G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
-			#### F 2 A_CPosRefire;
-			Goto SMGFire+1;
+			#### G 3 BRIGHT A_W3DSMGAttack();
+			#### F 2 A_W3DCheckAmmo;
+			Loop;
 		Raise:
 			HRZM N 5;
 			HRZM MLKJI 5;
@@ -242,6 +263,7 @@ class W3DSSGuardSMG : W3DHeerGuardSMG
 		Dropitem "MP40";
 		AttackSound "MP40/Fire";
 		Species "Nazi";
+		Health 45;
 		Speed 12;
 		PainChance 150;
 		+DONTHARMSPECIES
@@ -253,6 +275,14 @@ class W3DSSGuardSMG : W3DHeerGuardSMG
 		Spawn:
 			SMGD AB 10 A_Look;
 			Loop;
+		See:
+			#### E 7 A_FaceTarget;
+			// #### E 0 A_W3DSightorFlight;
+			Goto Chase;
+		Aim:
+			#### E 0 A_CPosRefire;
+			#### EF 3 A_FaceTarget;
+			Goto SMGFire;
 		Raise:
 			SSZM N 5;
 			SSZM MLKJI 5;

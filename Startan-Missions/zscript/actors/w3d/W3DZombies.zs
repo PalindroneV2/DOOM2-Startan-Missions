@@ -39,15 +39,30 @@ class W3DZombie : Actor
 		#### F 30 A_StartSound("w3dzombie/scream",CHAN_AUTO);
 		Goto Chase;
 	Chase:
-		#### A 0 A_JumpIf(CheckForObstacle(),"Jump"); 
-		#### AA 2 A_Chase("Melee",null);
-		#### B 0 A_JumpIf(CheckForObstacle(),"Jump");
-		#### BB 2 A_Chase("Melee",null);
-		#### C 0 A_JumpIf(CheckForObstacle(),"Jump");
-		#### CC 2 A_Chase("Melee",null);
-		#### D 0 A_JumpIf(CheckForObstacle(),"Jump");
-		#### DD 2 A_Chase("Melee",null);
-		Loop;
+        // Check for obstacles first
+        #### A 0 A_JumpIf(CheckForObstacle(), "Jump");
+        // If the player is in sight, move directly toward them
+        #### A 0 A_JumpIfTargetInLOS("DirectChase", 360);
+        
+        // Otherwise, use standard wandering/zigzagging to find them
+        #### AA 2 A_Chase("Melee", null);
+        #### B 0 A_JumpIf(CheckForObstacle(), "Jump");
+        #### BB 2 A_Chase("Melee", null);
+        Loop;
+
+    DirectChase:
+        // Move in a straight line toward the target
+        // #### A 0 A_FaceTarget();
+        // #### A 0 A_JumpIf(CheckForObstacle(), "Jump");
+        #### AA 2 A_W3DZombieChase();
+        
+        // #### B 0 A_FaceTarget();
+        // #### B 0 A_JumpIf(CheckForObstacle(), "Jump");
+        #### BB 2 A_W3DZombieChase();
+        
+        // Check if we still see them; if not, go back to normal hunting
+        #### A 0 A_JumpIfTargetInLOS("DirectChase", 360);
+        Goto Chase;
 	Melee:
 		#### EG 6 A_FaceTarget;
 		#### H 1 A_W3DZombieSwipe;
@@ -132,6 +147,25 @@ extend class W3DZombie
         }
 		return false;
     }
+	void A_W3DZombieChase()
+	{
+		// 1. Check for obstacles to jump over
+		if (CheckForObstacle())
+		{
+			SetStateLabel("Jump");
+			return;
+		}
+
+		// 2. Face the target to ensure straight-line movement
+		if (target) 
+		{
+			A_FaceTarget();
+		}
+
+		// 3. Perform the move
+		// Using CHF_NOPLAYERSLOW ensures they don't stutter when close to the player
+		A_Chase("Melee", null); 
+	}
 }
 
 class SSSoldiertoZombie : Actor

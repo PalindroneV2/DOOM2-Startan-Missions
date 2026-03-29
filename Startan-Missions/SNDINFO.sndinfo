@@ -12,6 +12,7 @@ naziguard/die2		NZGDDIE1
 naziguard/die3		NZGDDIE2
 naziguard/die4		NZGDDIE3
 naziguard/die5		NZGDDIE4
+naziguard/sight			NZGDSEE
 
 naziofficer/sight			NAZOSEE
 naziofficer/death			NAZODIE

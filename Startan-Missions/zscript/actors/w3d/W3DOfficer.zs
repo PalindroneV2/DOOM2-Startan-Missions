@@ -1,13 +1,13 @@
 
-class W3DOfficer : WolfensteinSS
+class W3DOfficer : W3DNPC_Template
 {
 	Default
 	{
-		Health 50;
+		Health 60;
 		Radius 16;
 		Height 56;
 		Speed 10;
-		PainChance 150;
+		PainChance 125;
 		Monster;
 		+FLOORCLIP
 		SeeSound "naziofficer/sight";
@@ -21,6 +21,10 @@ class W3DOfficer : WolfensteinSS
 		Species "Nazi";
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
+		W3DNPC_Template.W3D_PistolClip 8;
+		W3DNPC_Template.W3D_RifleClip 5;
+		W3DNPC_Template.W3D_SMGClip 32;
+		W3DNPC_Template.W3D_PlasmaClip 20;
        //$Category Monsters
 	}
 	States
@@ -38,18 +42,24 @@ class W3DOfficer : WolfensteinSS
 			Loop;
 		See:
 			#### E 5 A_FaceTarget;
+			#### E 0 A_W3DSightorFlight;
 			Goto Chase;
 		Chase:
 			#### AABBCCDD 3 A_Chase("Aim","Aim");
 			Loop;
 		Aim:
+			#### E 0 A_CPosRefire;
 			#### EF 3 A_FaceTarget;
 			Goto Missile;
+		Reloading:
+			#### EEE 15 A_W3DReload();
+			Goto Aim;
 		Missile:
 			#### F 6 A_FaceTarget;
-			#### G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
+			#### G 3 BRIGHT A_W3DPistolAttack();
 			#### F 5 A_FaceTarget;
-			#### F 2 A_CPosRefire;
+			// #### F 2 A_CPosRefire;
+			#### F 2 A_W3DCheckAmmo; 
 			Goto Missile+1;
 		Pain:
 			#### H 3;
@@ -83,6 +93,7 @@ class W3DMissionsOfficer : W3DOfficer
 		Tag "Nazi Officer (W3D Missions)";
 		Dropitem "Clip";
 		Species "Nazi";
+		Health 50;
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
 	}
@@ -109,6 +120,7 @@ class W3DHeerOfficer : W3DOfficer
 		Tag "German Officer (Heer)";
 		Dropitem "Clip";
 		Species "Nazi";
+		Health 45;
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
 	}
@@ -132,6 +144,7 @@ class W3DAfrikaOfficer : W3DOfficer
 		Tag "German Officer (Afrika)";
 		Dropitem "Clip";
 		Species "Nazi";
+		Health 45;
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
 	}
@@ -155,6 +168,7 @@ class W3DSSOfficer : W3DOfficer
 		Tag "Nazi Officer (SS)";
 		Dropitem "Clip";
 		Species "Nazi";
+		Health 60;
 		Speed 12;
 		PainChance 100;
 		+DONTHARMSPECIES
@@ -165,6 +179,14 @@ class W3DSSOfficer : W3DOfficer
 		Spawn:
 			SPOF AB 10 A_Look;
 			Loop;
+		See:
+			#### E 3 A_FaceTarget;
+			#### E 0 A_W3DSightorFlight;
+			Goto Chase;
+		Aim:
+			#### E 0 A_CPosRefire;
+			#### EF 3 A_FaceTarget;
+			Goto Missile;
 		Raise:
 			SSZM N 5;
 			SSZM MLKJI 5;
@@ -182,6 +204,7 @@ class W3DHeerOfficerSMG : W3DOfficer
 		Dropitem "MP40";
 		AttackSound "MP40/Fire";
 		Species "Nazi";
+		Health 45;
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
 	}
@@ -191,14 +214,20 @@ class W3DHeerOfficerSMG : W3DOfficer
 			HMOF AB 10 A_Look;
 			Loop;
 		Aim:
+			#### E 0 A_CPosRefire;
 			#### EF 5 A_FaceTarget;
 			Goto SMGFire;
+		Missile:
+			#### F 0 A_FaceTarget;
+			goto SMGFire;
+		Reloading:
+			#### EEE 20 A_W3DReload();
+			Goto Aim;
 		SMGFire:
-			#### F 5 A_FaceTarget;
-			#### G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
 			#### F 3 A_FaceTarget;
-			#### G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
-			#### F 2 A_CPosRefire;
+			#### G 3 BRIGHT A_W3DSMGAttack();
+			// #### F 2 A_CPosRefire;
+			#### F 2 A_W3DCheckAmmo;
 			Goto SMGFire+1;
 		Raise:
 			HRZM N 5;
@@ -216,6 +245,7 @@ class W3DAfrikaOfficerSMG : W3DHeerOfficerSMG
 		Dropitem "MP40";
 		AttackSound "MP40/Fire";
 		Species "Nazi";
+		Health 45;
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
 	}
@@ -240,6 +270,7 @@ class W3DSSOfficerSMG : W3DHeerOfficerSMG
 		Dropitem "MP40";
 		AttackSound "MP40/Fire";
 		Species "Nazi";
+		Health 60;
 		Speed 12;
 		PainChance 100;
 		+DONTHARMSPECIES
@@ -250,6 +281,14 @@ class W3DSSOfficerSMG : W3DHeerOfficerSMG
 		Spawn:
 			SMOF AB 10 A_Look;
 			Loop;
+		See:
+			#### E 3 A_FaceTarget;
+			#### E 0 A_W3DSightorFlight;
+			Goto Chase;
+		Aim:
+			#### E 0 A_CPosRefire;
+			#### EF 3 A_FaceTarget;
+			Goto SMGFire;
 		Raise:
 			SSZM N 5;
 			SSZM MLKJI 5;

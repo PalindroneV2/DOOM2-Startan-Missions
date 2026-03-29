@@ -1,11 +1,11 @@
-class W3DWaffenSS : WolfensteinSS
+class W3DWaffenSS : W3DNPC_Template
 {
 	Default
 	{
 		Health 50;
 		Radius 16;
 		Height 56;
-		Speed 8;
+		Speed 9;
 		PainChance 150;
 		Monster;
 		+FLOORCLIP
@@ -20,6 +20,10 @@ class W3DWaffenSS : WolfensteinSS
 		Species "Nazi";
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
+		W3DNPC_Template.W3D_PistolClip 8;
+		W3DNPC_Template.W3D_RifleClip 5;
+		W3DNPC_Template.W3D_SMGClip 32;
+		W3DNPC_Template.W3D_PlasmaClip 20;
        //$Category Monsters
 	}
 	States
@@ -43,15 +47,17 @@ class W3DWaffenSS : WolfensteinSS
 			#### AABBCCDD 3 A_Chase("Aim","Aim");
 			Loop;
 		Aim:
+			#### E 0 A_CPosRefire;
 			#### EF 3 A_FaceTarget;
 			Goto Missile;
+		Reloading:
+			#### EEE 20 A_W3DReload();
+			Goto Aim;
 		Missile:
-			#### F 5 A_FaceTarget;
-			#### G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
 			#### F 3 A_FaceTarget;
-			#### G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
-			#### F 2 A_CPosRefire;
-			Goto Missile+1;
+			#### G 3 BRIGHT A_W3DSMGAttack();
+			#### F 2 A_W3DCheckAmmo();
+			Loop;
 		Pain:
 			#### H 3;
 			#### H 3 A_Pain;
@@ -76,6 +82,27 @@ class W3DWaffenSS : WolfensteinSS
 	}
 }
 
+class W3DTestSS : W3DWaffenSS
+{
+	Default
+	{
+		Obituary "You were riddled by holes by a Waffen SS test unit.";
+		Tag "Waffen SS Test Unit";
+		Dropitem "MP40";
+	}
+	States
+	{
+		Spawn:
+			SS3D AB 10 A_Look;
+			Loop;
+		Missile:
+			#### F 2 A_FaceTarget;
+			#### G 2 BRIGHT A_W3DSMGAttack();
+			#### F 2 A_MonsterRefire(0, "See");
+			Loop;
+	}
+}
+
 class W3DMissionsWaffenSS : W3DWaffenSS
 {
 	Default
@@ -84,6 +111,7 @@ class W3DMissionsWaffenSS : W3DWaffenSS
 		Tag "Waffen SS (W3D Missions)";
 		Dropitem "MP40";
 		Species "Nazi";
+		Health 60;
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
 	}
@@ -148,7 +176,8 @@ class W3DSSNCO : W3DWaffenSS
 		Tag "Nazi Unteroffizier (SS)";
 		Dropitem "MP40";
 		Species "Nazi";
-		Speed 12;
+		Health 60;
+		Speed 11;
 		PainChance 100;
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
@@ -158,6 +187,14 @@ class W3DSSNCO : W3DWaffenSS
 		Spawn:
 			SMNC AB 10 A_Look;
 			Loop;
+		See:
+			#### E 5 A_FaceTarget;
+			#### E 0 A_W3DSightorFlight;
+			Goto Chase;
+		Aim:
+			#### E 0 A_CPosRefire;
+			#### EF 3 A_FaceTarget;
+			Goto Missile;
 		Raise:
 			SSZM N 5;
 			SSZM MLKJI 5;
@@ -184,14 +221,21 @@ class W3DHeerNCOPistol : W3DWaffenSS
 			HPNC AB 10 A_Look;
 			Loop;
 		Aim:
+			#### E 0 A_CPosRefire;
 			#### EF 5 A_FaceTarget;
 			Goto PistolFire;
+		Reloading:
+			#### EEE 15 A_W3DReload();
+			Goto Aim;
+		Missile:
+			#### F 0 A_FaceTarget;
+			goto PistolFire;
 		PistolFire:
 			#### F 7 A_FaceTarget;
-			#### G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
+			#### G 3 BRIGHT A_W3DPistolAttack();
 			#### F 5 A_FaceTarget;
-			#### F 2 A_CPosRefire;
-			Goto PistolFire+1;
+			#### F 2 A_W3DCheckAmmo();
+			Loop;
 		Raise:
 			HRZM N 5;
 			HRZM MLKJI 5;
@@ -199,7 +243,7 @@ class W3DHeerNCOPistol : W3DWaffenSS
 			Stop;
 	}
 }
-class W3DAfrikaNCOPistol : W3DWaffenSS
+class W3DAfrikaNCOPistol : W3DHeerNCOPistol
 {
 	Default
 	{
@@ -216,15 +260,6 @@ class W3DAfrikaNCOPistol : W3DWaffenSS
 		Spawn:
 			APNC AB 10 A_Look;
 			Loop;
-		Aim:
-			#### EF 5 A_FaceTarget;
-			Goto PistolFire;
-		PistolFire:
-			#### F 7 A_FaceTarget;
-			#### G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
-			#### F 5 A_FaceTarget;
-			#### F 2 A_CPosRefire;
-			Goto PistolFire+1;
 		Raise:
 			HRZM N 5;
 			HRZM MLKJI 5;
@@ -232,7 +267,7 @@ class W3DAfrikaNCOPistol : W3DWaffenSS
 			Stop;
 	}
 }
-class W3DSSNCOPistol : W3DWaffenSS
+class W3DSSNCOPistol : W3DHeerNCOPistol
 {
 	Default
 	{
@@ -241,7 +276,8 @@ class W3DSSNCOPistol : W3DWaffenSS
 		Dropitem "Clip";
 		AttackSound "WaltherPPK/Fire";
 		Species "Nazi";
-		Speed 12;
+		Health 60;
+		Speed 11;
 		PainChance 100;
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
@@ -251,15 +287,13 @@ class W3DSSNCOPistol : W3DWaffenSS
 		Spawn:
 			SPNC AB 10 A_Look;
 			Loop;
+		See:
+			#### E 5 A_FaceTarget;
+			#### E 0 A_W3DSightorFlight;
+			Goto Chase;
 		Aim:
-			#### EF 5 A_FaceTarget;
+			#### EF 3 A_FaceTarget;
 			Goto PistolFire;
-		PistolFire:
-			#### F 7 A_FaceTarget;
-			#### G 3 BRIGHT A_CustomBulletAttack(20, 1, 1, random(8,12), "BulletPuff", 0, CBAF_NORANDOM);
-			#### F 5 A_FaceTarget;
-			#### F 2 A_CPosRefire;
-			Goto PistolFire+1;
 		Raise:
 			SSZM N 5;
 			SSZM MLKJI 5;

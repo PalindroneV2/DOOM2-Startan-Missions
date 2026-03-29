@@ -1,7 +1,7 @@
 class THEWORLD : Weapon
 {
     int AltFireRegenTimer;
-    int FirstSelect;
+    bool FirstSelect;
     bool CanThrow;
     Default
     {

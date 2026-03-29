@@ -473,8 +473,6 @@ cluster 30
 	"takes you back to the future."
 }
 
-
-
 map SECRET9 "Nacht"
 {
 	next = "HUBMAP"
@@ -483,6 +481,25 @@ map SECRET9 "Nacht"
 	cluster = 30
 	par = 300
 	music = "D_BEAUTY"
+	Author = "Palindrone"
+	levelnum = 139
+	SkyFog = 128
+	ResetInventory
+	ResetItems
+	ResetHealth
+	lightmode = 16
+	NoJump
+	NoCrouch
+}
+
+map SECRET10 "Old Ruin"
+{
+	next = "HUBMAP"
+	secretnext = "HUBMAP"
+    sky1 = "SKYHX3B"
+	cluster = 30
+	par = 300
+	music = "D_ARKANGEL"
 	Author = "Palindrone"
 	levelnum = 139
 	SkyFog = 128

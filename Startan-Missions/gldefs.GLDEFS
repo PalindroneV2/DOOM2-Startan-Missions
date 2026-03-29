@@ -3,7 +3,7 @@
 // Candelabra
 pointlight W3DCHANDELIER
 {
-    color 1.0 1.0 0.3
+    color 1.0 1.0 0.7
     size 128
     offset 0 52 0
 	attenuate 1

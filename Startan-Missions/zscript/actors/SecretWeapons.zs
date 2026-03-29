@@ -140,7 +140,7 @@ extend class WaltherPPK
 		int dmg = 12;
 		if (Random(1, 100) <= 10)
 		{
-			dmg *= 3;
+			dmg *= 2.25;
 		}else{
 			dmg = 12;
 		}
@@ -233,9 +233,9 @@ extend class M1911A1
     action void A_M1911Shot()
     {
 		int dmg = 15;
-		if (Random(1, 100) <= 20)
+		if (Random(1, 1000) <= 125)
 		{
-			dmg *= 4;
+			dmg *= 2;
 		}else{
 			dmg = 15;
 		}

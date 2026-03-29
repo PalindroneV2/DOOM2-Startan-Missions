@@ -101,8 +101,8 @@ class MustangSallyRocket : FastProjectile
 {
 	Default
 	{
-		Radius 11;
-		Height 8;
+		Radius 2;
+		Height 2;
 		Speed 96;
 		DamageFunction 128;
 		Projectile;
