@@ -72,19 +72,11 @@ extend class PAP_PowerUp
             if((weaponbox[fuck] != guntoupgrade) || guntoupgrade == guntoupgrade.."_PAP")
             {
                 weaponupgradable = false;
-                // console.printf("//////////// FAILURE ////////////");
-                // console.printf("Failed to upgrade: " .. guntoupgrade);
-                // console.printf("Boxgun: " .. weaponbox[fuck]);
-                // console.printf("Upgradable? : " .. weaponupgradable);
                 continue;
             }
             if ((weaponbox[fuck] == guntoupgrade) && guntoupgrade != upgradedgun)
             {
                 weaponupgradable = true;
-                // console.printf("//////////// SUCCESS ////////////");
-                // console.printf("Gun to upgrade: " .. guntoupgrade);
-                // console.printf("Upgraded gun: " .. upgradedgun);
-                // console.printf("Upgradable? : " .. weaponupgradable);
                 break;
             }
         }
