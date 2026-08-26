@@ -1,8 +1,6 @@
 //Trap Archvile
 class TrapVile : Actor
 {
-    int VileLife;
-    property VileLife : VileLife;
 	Default
 	{
        //$Category Monsters
@@ -14,7 +12,6 @@ class TrapVile : Actor
 		ActiveSound "vile/active";
 		MeleeSound "vile/stop";
 		Obituary "$OB_VILE";
-        TrapVile.VileLife 1;
 		Health 600;
 		Radius 20;
 		Height 16;
@@ -27,19 +24,6 @@ class TrapVile : Actor
 		+FLOORCLIP 
 		+NOTARGET
 	}
-
-    state VileRaiseSelf(int ChancetoRaise = 0, statelabel endstate = "See")
-    {
-        if(VileLife == 1)
-        {
-            return  ResolveState("RaiseSelf");
-        }
-        else if(ChancetoRaise > random(0,100))
-        {
-            return ResolveState(endstate);
-        }
-        return null;
-    }
 	States
 	{
 	Spawn:
@@ -62,7 +46,6 @@ class TrapVile : Actor
 		VILE Q 0
         {
             A_SetSolid();
-            VileLife = 0;
 			A_SetSize(-1,56);
 			A_SetShootable();
         }
@@ -83,11 +66,7 @@ class TrapVile : Actor
 		VILE Q 5 A_Pain;
 		Goto See;
 	Death:
-		VILE Q 0
-        {
-            A_SetSolid();
-            VileLife = 0;
-        }
+		VILE Q 0 A_SetSolid();
 		VILE Q 7;
 		VILE R 7 A_Scream;
 		VILE S 7 A_NoBlocking;
