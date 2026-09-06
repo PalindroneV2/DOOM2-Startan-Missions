@@ -1,5 +1,6 @@
 // #include "./wunderwaffe.zs"
 #include "zscript/actors/PAPGUNS.zs"
+#include "zscript/actors/wunderwaffe.zs"
 
 class MP40 : DoomWeapon
 {

@@ -4,7 +4,7 @@ class W3DGuard : W3DNPC_Template
 	{
 		Health 30;
 		Radius 16;
-		Height 56;
+		Height 48;
 		Speed 10;
 		PainChance 200;
 		Monster;

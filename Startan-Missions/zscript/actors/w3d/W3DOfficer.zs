@@ -121,6 +121,7 @@ class W3DHeerOfficer : W3DOfficer
 		Dropitem "Clip";
 		Species "Nazi";
 		Health 45;
+		Height 48;
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
 	}
@@ -145,6 +146,7 @@ class W3DAfrikaOfficer : W3DOfficer
 		Dropitem "Clip";
 		Species "Nazi";
 		Health 45;
+		Height 48;
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
 	}
@@ -169,6 +171,7 @@ class W3DSSOfficer : W3DOfficer
 		Dropitem "Clip";
 		Species "Nazi";
 		Health 60;
+		Height 48;
 		Speed 12;
 		PainChance 100;
 		+DONTHARMSPECIES
@@ -205,6 +208,7 @@ class W3DHeerOfficerSMG : W3DOfficer
 		AttackSound "MP40/Fire";
 		Species "Nazi";
 		Health 45;
+		Height 48;
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
 	}
@@ -246,6 +250,7 @@ class W3DAfrikaOfficerSMG : W3DHeerOfficerSMG
 		AttackSound "MP40/Fire";
 		Species "Nazi";
 		Health 45;
+		Height 48;
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
 	}
@@ -271,6 +276,7 @@ class W3DSSOfficerSMG : W3DHeerOfficerSMG
 		AttackSound "MP40/Fire";
 		Species "Nazi";
 		Health 60;
+		Height 48;
 		Speed 12;
 		PainChance 100;
 		+DONTHARMSPECIES

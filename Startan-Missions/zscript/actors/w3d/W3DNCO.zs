@@ -130,6 +130,7 @@ class W3DHeerNCO : W3DWaffenSS
 		Tag "German Unteroffizier (Heer)";
 		Dropitem "MP40";
 		Species "Nazi";
+		Height 48;
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
 	}
@@ -153,6 +154,7 @@ class W3DAfrikaNCO : W3DWaffenSS
 		Tag "German Unteroffizier (Afrika)";
 		Dropitem "MP40";
 		Species "Nazi";
+		Height 48;
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
 	}
@@ -176,6 +178,7 @@ class W3DSSNCO : W3DWaffenSS
 		Tag "Nazi Unteroffizier (SS)";
 		Dropitem "MP40";
 		Species "Nazi";
+		Height 48;
 		Health 60;
 		Speed 11;
 		PainChance 100;
@@ -212,6 +215,7 @@ class W3DHeerNCOPistol : W3DWaffenSS
 		Dropitem "Clip";
 		AttackSound "WaltherPPK/Fire";
 		Species "Nazi";
+		Height 48;
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
 	}
@@ -252,6 +256,7 @@ class W3DAfrikaNCOPistol : W3DHeerNCOPistol
 		Dropitem "Clip";
 		AttackSound "WaltherPPK/Fire";
 		Species "Nazi";
+		Height 48;
 		+DONTHARMSPECIES
 		+NOINFIGHTSPECIES
 	}
@@ -277,6 +282,7 @@ class W3DSSNCOPistol : W3DHeerNCOPistol
 		AttackSound "WaltherPPK/Fire";
 		Species "Nazi";
 		Health 60;
+		Height 48;
 		Speed 11;
 		PainChance 100;
 		+DONTHARMSPECIES
