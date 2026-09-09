@@ -23,6 +23,42 @@ class W3DNPC_Template : WolfensteinSS
 }
 extend class W3DNPC_Template
 {
+	void A_W3D_Hatred()
+	{
+		let it = ThinkerIterator.Create('Actor');
+		Actor candidate;
+
+		while ((candidate = Actor(it.Next())))
+		{
+			if (candidate == self)
+				continue;
+
+			if (candidate.Health <= 0)
+				continue;
+
+			if (!candidate.bIsMonster && candidate.Player == null)
+				continue;
+			
+			if (candidate.Player != null)
+			{
+				if (candidate.Player.Cheats & CF_NOTARGET)
+					continue;
+			}
+
+			if (candidate.GetSpecies() == 'Nazi')
+				continue;
+
+			if (!CheckFov(candidate, 90))
+				continue;
+
+			if (!CheckSight(candidate))
+				continue;
+
+			Target = candidate;
+			SetStateLabel("See");
+			return;
+		}
+	}
 	void A_W3DSightorFlight()
 	{
 		if (Target && (Target.health > 0) && CheckSight(Target))

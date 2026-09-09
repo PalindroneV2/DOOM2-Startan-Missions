@@ -1,0 +1,561 @@
+namespace = "GZDoom";
+//COMPUTER TELEPORT VILE
+Conversation
+{
+	ID = 1;
+	Page
+	{
+		Name = "Computer";
+		Dialog = "Welcome to UAC System E-091. Select your command.";
+		Goodbye = "Exit.";
+		Choice
+		{
+			Text = "Teleport [EXPUNGED DATA] test.";
+			Special = 80;
+			Arg0 = 2;
+		}
+		Choice
+		{
+			Text = "Give me STAND POWER.";
+			Special = 80;
+			Arg0 = 3;
+		}
+		Choice
+		{
+			Text = "State purpose.";
+			NextPage = 10;
+		}
+	}
+	Page
+	{
+		Name = "Computer";
+		Dialog = "This computer was made to test [EXPUNGED DATA] teleportation.";
+		Goodbye = "Exit.";
+		Choice
+		{
+			Text = "Return.";
+			NextPage = 1;
+		}
+	}
+}
+Conversation
+{
+	ID = 2;
+	Page
+	{
+		Name = "Computer";
+		Dialog = "Welcome to UAC System E-069. Select your command.";
+		Goodbye = "Exit.";
+		Choice
+		{
+			Text = "Refill test chamber.";
+			Special = 80;
+			Arg0 = 4;
+		}
+		Choice
+		{
+			Text = "State purpose.";
+			NextPage = 10;
+		}
+	}
+	Page
+	{
+		Name = "Computer";
+		Dialog = "This computer was made to re-stock the combat test chamber.";
+		Goodbye = "Exit.";
+		Choice
+		{
+			Text = "Return.";
+			NextPage = 1;
+		}
+	}
+}
+
+//ChainGunToRedCard_Trader
+Conversation
+{
+	ID = 5;
+	Page //1 . StartTalk_NoMinigun
+	{
+		Name = "Marine";
+		Dialog = "Hey buddy. Wanna trade? I can give you a red keycard if you give me a minigun.";
+		Goodbye = "No thanks.";
+		IfItem
+		{
+			Item = "Minigun";
+			Amount = 1;
+		}
+		Link = 9;
+		Choice
+		{
+			Text = "I don't got one unfortunately";
+			NextPage = 3;
+		}
+	}
+	Page //2 TradeTime_NoMinigun
+	{
+		Name = "Marine";
+		Dialog = "Great! Give it and the key is yours.";
+		Goodbye = "Exit.";
+		IfItem
+		{
+			Item = "Minigun";
+			Amount = 1;
+		}
+		Link = 10;
+		Choice
+		{
+			text = "Nevermind. I think I actually lost it.";
+			nextpage = 11;
+		}
+	}
+	Page //3 FindMinigunPlease
+	{
+		Name = "Marine";
+		Dialog = "Could you find one?";
+		Goodbye = "Exit.";
+		Choice
+        {
+            Text = "I'll be back.";
+			CloseDialog = true;
+            NextPage = 5;
+        }
+	}
+	Page //4 RedCard_Get
+	{
+		Name = "Marine";
+		Dialog = "Here's the key!.";
+		Goodbye = "Exit.";
+		Choice
+		{
+			Text = "Bye!";
+			NextPage = 6;
+			CloseDialog =true;
+		}
+	}
+	Page //5 MinigunYet_No
+	{
+		Name = "Marine";
+		Dialog = "Hey did you get that minigun yet?";
+		Goodbye = "Exit.";
+		IfItem
+		{
+			Item = "Minigun";
+			Amount = 1;
+		}
+		Link = 12;
+		Choice
+		{
+			Text = "Not yet.";
+			NextPage = 3;
+		}
+		Choice
+		{
+			Text = "I did but I actually lost it in the way.";
+			NextPage = 11;
+		}
+	}
+	Page //6 FinalLine
+	{
+		Name = "Marine";
+		Dialog = "I don't have anything else for you.";
+		Goodbye = "Goodbye.";
+	}
+	Page //7 SuitSelf_LostMinigun
+	{
+		Name = "Marine";
+		Dialog = "Suit yourself.";
+		Goodbye = "Exit.";
+		IfItem
+		{
+			Item = "Minigun";
+			Amount = 1;
+		}
+		Link = 14;
+		Choice
+		{
+			Text = "Bye";
+			NextPage = 8;
+			CloseDialog =true;
+		}
+	}
+	Page //8 GiveMinigunNow_LostMinigun
+	{
+		Name = "Marine";
+		Dialog = "You wanna give me that minigun now?";
+		Goodbye = "Exit.";
+		IfItem
+		{
+			Item = "Minigun";
+			Amount = 1;
+		}
+		Link = 13;
+		Choice //
+		{
+			text = "I kinda lost it...";
+			nextpage = 11;
+		}
+	}
+	Page //9 . StartTalk_YesMinigun
+	{
+		Name = "Marine";
+		Dialog = "Hey buddy. Wanna trade? I can give you a red keycard if you give me a minigun.";
+		Goodbye = "No thanks.";
+		Choice
+		{
+			Text = "I got one right here.";
+			NextPage = 10;
+		}
+		Choice
+		{
+			Text = "I have one, but I don't wanna give it away.";
+			NextPage = 7;
+		}
+	}
+	Page //10. TradeTime_YesMinigun
+	{
+		Name = "Marine";
+		Dialog = "Great! Give it and the key is yours.";
+		Goodbye = "Exit.";
+		Choice
+		{
+			text = "[Give chaingun].";
+			cost
+			{
+				item = "Minigun";
+				amount = 1;
+			}
+			GiveItem = "RedCard";
+			nextpage = 4;
+			// NoMessage = "Wait, you don't actually have one!";
+		}
+		Choice
+		{
+			text = "Nevermind.";
+			nextpage = 7; //Goes to SuitSelf
+		}
+	}
+	Page //11 FindMinigunAgain
+	{
+		Name = "Marine";
+		Dialog = "What the-!? Go find another one then!";
+		Goodbye = "Exit.";
+		Choice
+        {
+            Text = "I'll be back.";
+			CloseDialog = true;
+            NextPage = 5;
+        }
+	}
+	Page //12 MinigunYet_Yes
+	{
+		Name = "Marine";
+		Dialog = "Hey did you get that minigun yet?";
+		Goodbye = "Exit.";
+		Choice
+		{
+			Text = "Yup!";
+			NextPage = 2;
+		}
+		Choice
+		{
+			Text = "I did, but I need to use it for a little while longer.";
+			NextPage = 7;
+		}
+	}
+	Page //13 GiveMinigunNow_YesMinigun
+	{
+		Name = "Marine";
+		Dialog = "You wanna give me that minigun now?";
+		Goodbye = "Exit.";
+		Choice
+		{
+			text = "Sure.";
+			NextPage = 10;
+		}
+		Choice //
+		{
+			text = "Not yet. I wanna use it more.";
+			nextpage = 7;
+		}
+	}
+	Page //14 SuitSelf_YesMinigun
+	{
+		Name = "Marine";
+		Dialog = "Suit yourself.";
+		Goodbye = "Exit.";
+		Choice
+		{
+			Text = "Actually, let me give you the minigun!";
+			NextPage = 10;
+		}
+		Choice
+		{
+			Text = "Bye";
+			NextPage = 8;
+			CloseDialog =true;
+		}
+	}
+}
+
+//ChainGunToRedCard_Trader
+Conversation
+{
+    ID = 55;
+
+    Page //1 StartTalk
+    {
+        Name = "Marine";
+        Dialog = "Hey buddy. Wanna trade? I can give you a red keycard if you give me a minigun.";
+        Goodbye = "No thanks.";
+
+        Choice
+        {
+            Text = "I got one right here.";
+
+            Require
+            {
+                Item = "Minigun";
+                Amount = 1;
+            }
+
+            NextPage = 2;
+        }
+
+        Choice
+        {
+            Text = "I have one, but I don't wanna give it away.";
+
+            Require
+            {
+                Item = "Minigun";
+                Amount = 1;
+            }
+
+            NextPage = 6;
+        }
+
+        Choice
+        {
+            Text = "I don't got one unfortunately";
+
+            Exclude
+            {
+                Item = "Minigun";
+                Amount = 1;
+            }
+
+            NextPage = 3;
+        }
+    }
+
+    Page //2 TradeTime
+    {
+        Name = "Marine";
+        Dialog = "Great! Give it and the key is yours.";
+        Goodbye = "Exit.";
+
+        Choice
+        {
+            Text = "[Give minigun].";
+
+            Cost
+            {
+                Item = "Minigun";
+                Amount = 1;
+            }
+
+            GiveItem = "RedCard";
+            NextPage = 4;
+
+            NoMessage = "Wait, you don't actually have one!";
+        }
+
+        Choice
+        {
+            Text = "Nevermind.";
+            NextPage = 6;
+        }
+    }
+
+    Page //3 FindMinigunPlease
+    {
+        Name = "Marine";
+        Dialog = "Could you find one?";
+        Goodbye = "Exit.";
+
+        Choice
+        {
+            Text = "I'll be back.";
+            CloseDialog = true;
+            NextPage = 5;
+        }
+    }
+
+    Page //4 RedCard_Get
+    {
+        Name = "Marine";
+        Dialog = "Here's the key!.";
+        Goodbye = "Exit.";
+
+        Choice
+        {
+            Text = "Bye!";
+            NextPage = 9;
+            CloseDialog = true;
+        }
+    }
+
+    Page //5 MinigunYet
+    {
+        Name = "Marine";
+        Dialog = "Hey did you get that minigun yet?";
+        Goodbye = "Exit.";
+
+        Choice
+        {
+            Text = "Yup!";
+
+            Require
+            {
+                Item = "Minigun";
+                Amount = 1;
+            }
+
+            NextPage = 2;
+        }
+
+        Choice
+        {
+            Text = "I did, but I need to use it for a little while longer.";
+
+            Require
+            {
+                Item = "Minigun";
+                Amount = 1;
+            }
+
+            NextPage = 6;
+        }
+
+        Choice
+        {
+            Text = "Not yet.";
+
+            Exclude
+            {
+                Item = "Minigun";
+                Amount = 1;
+            }
+
+            NextPage = 3;
+        }
+
+        Choice
+        {
+            Text = "I did but I actually lost it in the way.";
+
+            Exclude
+            {
+                Item = "Minigun";
+                Amount = 1;
+            }
+
+            NextPage = 8;
+        }
+    }
+
+    Page //6 SuitSelf
+    {
+        Name = "Marine";
+        Dialog = "Suit yourself.";
+        Goodbye = "Exit.";
+
+        Choice
+        {
+            Text = "Actually, let me give you the minigun!";
+
+            Require
+            {
+                Item = "Minigun";
+                Amount = 1;
+            }
+
+            NextPage = 2;
+        }
+
+        Choice
+        {
+            Text = "Bye";
+            NextPage = 7;
+            CloseDialog = true;
+        }
+    }
+
+    Page //7 GiveMinigunNow
+    {
+        Name = "Marine";
+        Dialog = "You wanna give me that minigun now?";
+        Goodbye = "Exit.";
+
+        Choice
+        {
+            Text = "Sure.";
+
+            Require
+            {
+                Item = "Minigun";
+                Amount = 1;
+            }
+
+            NextPage = 2;
+        }
+
+        Choice
+        {
+            Text = "Not yet. I wanna use it more.";
+
+            Require
+            {
+                Item = "Minigun";
+                Amount = 1;
+            }
+
+            NextPage = 6;
+        }
+
+        Choice
+        {
+            Text = "I kinda lost it...";
+
+            Exclude
+            {
+                Item = "Minigun";
+                Amount = 1;
+            }
+
+            NextPage = 8;
+        }
+    }
+
+    Page //8 FindMinigunAgain
+    {
+        Name = "Marine";
+        Dialog = "What the-!? Go find another one then!";
+        Goodbye = "Exit.";
+
+        Choice
+        {
+            Text = "I'll be back.";
+            CloseDialog = true;
+            NextPage = 5;
+        }
+    }
+
+    Page //9 FinalLine
+    {
+        Name = "Marine";
+        Dialog = "I don't have anything else for you.";
+        Goodbye = "Goodbye.";
+    }
+}

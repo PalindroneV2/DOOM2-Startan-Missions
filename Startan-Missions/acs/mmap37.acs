@@ -5,6 +5,13 @@ global int 7 : SecretLevel37;
 int playershealth;
 int playerisarmored;
 
+bool isZombieMap = true;
+
+script "IsZombieMap" (void)
+{
+    SetResultValue(isZombieMap);
+} 
+
 script 1 enter
 {
 	ClearInventory();
