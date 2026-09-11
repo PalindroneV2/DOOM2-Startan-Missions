@@ -1,6 +1,7 @@
 // #include "./wunderwaffe.zs"
 #include "zscript/actors/PAPGUNS.zs"
-#include "zscript/actors/wunderwaffe.zs"
+#include "zscript/actors/timestopfists.zs"
+#include "zscript/actors/codz/wunderwaffe.zs"
 
 class MP40 : DoomWeapon
 {
@@ -713,8 +714,28 @@ extend class Kar98k
 			dmg = 75;
 		}
 		A_StartSound ("K98K/FIRE", CHAN_WEAPON);
-		A_Firebullets(3, 0, 1, dmg, "RiflePuff", FBF_USEAMMO | FBF_NORANDOM);
-		(2,3,0,3);
+		// A_Firebullets(3, 0, 1, dmg, "RiflePuff", FBF_USEAMMO | FBF_NORANDOM);
+		// (2,3,0,3);
+		A_RailAttack(
+			dmg,                          // damage
+			0,                          // XY offset
+			false,                      // don't use ammo
+			"White",                    // inner color
+			"White",                    // outer color
+			RGF_SILENT | RGF_FULLBRIGHT,
+			0,                          // maxdiff
+			"RiflePuff",
+			0,                          // horizontal spread
+			0,                          // vertical spread
+			4096,                       // range
+			1,                          // duration
+			1.0,                        // sparsity
+			0,                          // drift
+			"None",      // visual trail
+			0,                       // spawnofs_z
+			0,                     // spiraloffset
+			3                        // limit
+		);
 		A_GunFlash();
     }
 	action void A_KAR98K_Shot_PAP()
@@ -746,7 +767,7 @@ extend class Kar98k
 			"None",                  // spawnclass
 			0,                       // spawnofs_z
 			270,                     // spiraloffset
-			5                        // limit
+			6                        // limit
 		);
 		// A_Firebullets(3, 0, 1, 150, "RiflePuff", FBF_USEAMMO | FBF_NORANDOM);
 		(2,3,0,3);

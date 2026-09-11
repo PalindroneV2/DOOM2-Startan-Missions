@@ -8,6 +8,9 @@ class Wunderwaffe : DoomWeapon
         Weapon.AmmoUse 20;
         Weapon.AmmoGive 60;
         Weapon.AmmoType "Cell";
+		Weapon.AmmoUse2 2;
+		Weapon.AmmoGive2 0;
+		Weapon.AmmoType2 "Cell";
         Obituary "%k zapped %o with a Wunderwaffe DG-2.";
         -WEAPON.WIMPY_WEAPON;
         Inventory.PickupMessage "You got a Wunderwaffe DG-2.";
@@ -38,6 +41,17 @@ class Wunderwaffe : DoomWeapon
 	Fire:
 		RLGF A 3 A_WaffeFire;
 		RLGF B 3;
+		RLGG B 12;
+		RLGG B 6;
+		RLGG CDEFG 6;
+		RLGG H 6;
+		RLGG I 3 A_StartSound ("DG2/HAPPY", CHAN_AUTO);
+		RLGG J 3;
+		Goto Ready;
+	AltFire:
+		RLGF A 1 A_WaffeAltFire;
+		RLGF B 1;
+		RLGF B 2 A_ReFire;
 		RLGG B 12;
 		RLGG B 6;
 		RLGG CDEFG 6;
@@ -83,6 +97,66 @@ extend class Wunderwaffe
 			1                        // limit
 		);
     }
+	//DMG CALC
+	int CalcLightningGunDMG(Actor target)
+	{
+		//get the actor that was hit
+		//do the following dmg calc
+		int lightningDMG = target.Health / 10;
+		string bossmonsers[] = {"Cyberdemon", "SpiderMastermind", "Harbinger"};
+		for (int i = 0; i < bossmonsers.Size(); i++)
+		{
+			if (target.GetClass() == bossmonsers[i])
+			{
+				lightningDMG = target.GetMaxHealth() / 100;
+			}
+		}
+	}
+	action void A_WaffeAltFire()
+	{
+		// LineTracer tracer = new("LineTracer");
+
+		// Vector3 start = Pos + (0, 0, ViewHeight);
+		// Vector3 direction = Vector3(
+		// 	cos(Pitch) * cos(Angle),
+		// 	cos(Pitch) * sin(Angle),
+		// 	sin(Pitch)
+		// );
+
+		// tracer.Trace(
+		// 	start,
+		// 	Sector,
+		// 	direction,
+		// 	8192,
+		// 	TRACE_Aim,
+		// 	0xFFFFFFFF,
+		// 	false,
+		// 	self
+		// );
+
+		// Actor target = tracer.Results.HitActor;
+		A_StartSound ("DG2/FIRE", CHAN_WEAPON);
+		A_RailAttack(
+			10,                     // damage
+			0,                       // spawnofs_xy
+			true,                    // useammo
+			"LightBlue",                // color1
+			"White",                // color2
+			RGF_SILENT | RGF_FULLBRIGHT,          // flags
+			0,                       // maxdiff
+			"WaffeAltPuff",             // pufftype
+			0,                       // spread_xy
+			0,                       // spread_z
+			8192,                    // range
+			5,                      // duration
+			0.1,                     // sparsity
+			1,                     // driftspeed
+			"None",                  // spawnclass
+			0,                       // spawnofs_z
+			0,                     // spiraloffset
+			10                        // limit
+		);
+	}
 }
 
 class WaffeChainActor : Actor
@@ -230,14 +304,14 @@ extend class WaffePuff
 			extra.ChainCount = 1;
 			extra.ChainOrigin = target;
 		}
-
-		int victimsHealth = target.GetMaxHealth();
+		//DMG CALC
+		int victimsHealth = target.Health;
 		string bossmonsers[] = {"Cyberdemon", "SpiderMastermind", "Harbinger"};
 		for (int i = 0; i < bossmonsers.Size(); i++)
 		{
 			if (target.GetClass() == bossmonsers[i])
 			{
-				victimsHealth = victimsHealth / 20;
+				victimsHealth = target.GetMaxHealth() / 20;
 			}
 		}
         target.DamageMobj(
@@ -246,6 +320,21 @@ extend class WaffePuff
             victimsHealth,
             'BFGSplash'
         );
+	}
+}
+
+class WaffeAltPuff : WaffePuff
+{
+	States
+	{
+	Spawn:
+		BFE2 AB 4 Bright;
+		BFE2 CD 4 Bright;
+		Stop;
+	Crash:
+		BFE2 AB 4 Bright;
+		BFE2 CD 4 Bright;
+		Stop;
 	}
 }
 
@@ -361,14 +450,14 @@ extend class WaffeExtra
             extra.ChainCount = ChainCount + 1;
             extra.ChainOrigin = target;
         }
-
-		int victimsHealth = target.GetMaxHealth();
+		//DMG CALC
+		int victimsHealth = target.Health;
 		string bossmonsers[] = {"Cyberdemon", "SpiderMastermind", "Harbinger"};
 		for (int i = 0; i < bossmonsers.Size(); i++)
 		{
 			if (target.GetClass() == bossmonsers[i])
 			{
-				victimsHealth = victimsHealth / 20;
+				victimsHealth = target.GetMaxHealth() / 20;
 			}
 		}
         target.DamageMobj(

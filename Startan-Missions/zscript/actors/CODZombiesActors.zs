@@ -1,3 +1,5 @@
+#include "zscript/actors/codz/cod_powerups.zs"
+
 class PackaPunchMachine : Actor
 {
     Default
@@ -97,177 +99,6 @@ extend class PAP_PowerUp
         if (currentWeapon.AmmoType2 != null){
             A_GiveInventory(currentWeapon.AmmoType2.GetClassName(), 600);
             A_Log("Secondary Ammo Topped Off!.");
-        }
-    }
-}
-
-class MaxAmmo_Powerup : CustomInventory
-{
-    Default
-    {
-        Tag "Max Ammo Power Up";
-		Radius 20;
-		Height 20;
-        Scale 1;
-        +PICKUP;
-        +NOGRAVITY;
-        +COUNTITEM;
-        +FLOATBOB;
-		+INVENTORY.ALWAYSPICKUP;
-        FloatBobStrength 0.25;
-        Inventory.Amount 1;
-        Inventory.MaxAmount 1;
-        Inventory.InterHubAmount 0;
-        Inventory.Icon "MXAMA0";
-        Inventory.AltHUDIcon "MXAMA0";
-        Inventory.PickupMessage "MAX AMMO!";
-		Inventory.PickupSound "misc/p_pkup";
-       //$Category Powerups
-    }
-    States
-    {
-        Spawn:
-            MXAM CD 2 BRIGHT;
-            Loop;
-        Pickup:
-            TNT1 A 0 A_MaxAmmoPickup;
-            Stop;
-    }
-
-    action void A_MaxAmmoPickup()
-    {
-        A_GiveInventory("Clip", 400);
-        A_GiveInventory("Shell", 100);
-        A_GiveInventory("RocketAmmo", 100);
-        A_GiveInventory("Cell", 600);
-        A_GiveInventory("RifleBullets", 80);
-    }
-}
-
-class Armor_CODPowerUp : CustomInventory
-{
-    Default
-    {
-        Tag "Max Armor Power Up";
-		Radius 20;
-		Height 20;
-        Scale 1;
-        +PICKUP;
-        +NOGRAVITY;
-        +COUNTITEM;
-        +FLOATBOB;
-		+INVENTORY.ALWAYSPICKUP;
-        FloatBobStrength 0.25;
-        Inventory.Amount 1;
-        Inventory.MaxAmount 1;
-        Inventory.InterHubAmount 0;
-        Inventory.Icon "ARMPA0";
-        Inventory.AltHUDIcon "ARMPA0";
-        Inventory.PickupMessage "MAX ARMOR!";
-		Inventory.PickupSound "misc/p_pkup";
-       //$Category Powerups
-    }
-    States
-    {
-        Spawn:
-            ARMP AB 2 BRIGHT;
-            Loop;
-        Pickup:
-            TNT1 A 0 A_ArmorCODPickup;
-            Stop;
-    }
-
-    action void A_ArmorCODPickup()
-    {
-        A_GiveInventory("EnchantedArmor", 1);
-    }
-}
-
-class Berserk_CODPowerUp : CustomInventory
-{
-    Default
-    {
-        Tag "Berserk Power Up";
-		Radius 20;
-		Height 20;
-        Scale 1;
-        +PICKUP;
-        +NOGRAVITY;
-        +COUNTITEM;
-        +FLOATBOB;
-		+INVENTORY.ALWAYSPICKUP;
-        FloatBobStrength 0.25;
-        Inventory.Amount 1;
-        Inventory.MaxAmount 1;
-        Inventory.InterHubAmount 0;
-        Inventory.Icon "BSKPA0";
-        Inventory.AltHUDIcon "BSKPA0";
-        Inventory.PickupMessage "MAX ARMOR!";
-		Inventory.PickupSound "misc/p_pkup";
-       //$Category Powerups
-    }
-    States
-    {
-        Spawn:
-            BSKP ABAB 2 BRIGHT;
-            Loop;
-        Pickup:
-            TNT1 A 0 A_ArmorCODPickup;
-            Stop;
-    }
-
-    action void A_ArmorCODPickup()
-    {
-        A_GiveInventory("NewBerserk", 1);
-    }
-}
-
-class Nuke_CODPowerUp : CustomInventory
-{
-    Default
-    {
-        Tag "Nuke Power Up";
-        Radius 20;
-        Height 20;
-        Scale 1;
-        +PICKUP;
-        +NOGRAVITY;
-        +COUNTITEM;
-        +FLOATBOB;
-        +INVENTORY.ALWAYSPICKUP;
-        FloatBobStrength 0.25;
-        Inventory.Amount 1;
-        Inventory.MaxAmount 1;
-        Inventory.InterHubAmount 0;
-        Inventory.Icon "NUKPA0";
-        Inventory.AltHUDIcon "NUKPA0";
-        Inventory.PickupMessage "NUKE!";
-        Inventory.PickupSound "misc/p_pkup";
-    }
-    States
-    {
-        Spawn:
-            MXAM ABAB 2 BRIGHT;
-            Loop;
-        Pickup:
-            TNT1 A 0 A_CODNukeKaboom();
-            Stop;
-    }
-    action void A_CODNukeKaboom()
-    {
-        let iterator = ThinkerIterator.Create("Actor");
-
-        Actor actor;
-
-        while (actor = Actor(iterator.Next()))
-        {
-            if (actor == null)
-                continue;
-
-            if (actor.bIsMonster && actor.bShootable)
-            {
-                actor.DamageMobj(self, self, 1000000, 'Nuke');
-            }
         }
     }
 }
@@ -398,6 +229,8 @@ class CODPowerupShuffler : Object play
         dropList.Push("MaxAmmo_Powerup");
         dropList.Push("Armor_CODPowerUp");
         dropList.Push("Berserk_CODPowerUp");
+        dropList.Push("Nuke_CODPowerUp");
+        dropList.Push("KillingTime_CODPowerUp");
         ShuffleQueue();
         // "MaxAmmo_Powerup", "Armor_CODPowerUp", "Berserk_CODPowerUp"
     }
@@ -473,4 +306,72 @@ class CODPowerupDropper : EventHandler
             ReadyPowerUpShuffler.SpawnPowerup(dead.Thing.pos);
         }
     }
+}
+
+class CODZombieHealthRegen : EventHandler
+{
+    override void WorldThingDamaged(WorldEvent hurtDude)
+    {
+        if (ACS_NamedExecuteWithResult("IsZombieMap") == 0)
+        {
+            // console.printf("Is this even zombiemap?");
+            return;
+        }
+        //if not a thing dont do anything
+        if (hurtDude.Thing == null)return;
+        //if not player dont do anything
+        if (hurtDude.Thing.player == null) return;
+        //if not zombie map dont do anything
+        //do stuff
+        let iterator = ThinkerIterator.Create('CODZombieRegenTimer');
+        Thinker thinker;
+        while ((thinker = iterator.Next()) != null)
+        {
+            CODZombieRegenTimer oldTimer = CODZombieRegenTimer(thinker);
+            if (oldTimer.Player == hurtDude.Thing)
+            {
+                oldTimer.Destroy();
+            }
+        }
+        PlayerPawn gamer = PlayerPawn(hurtDude.Thing);
+        int topHP=100;
+        // if (hurtDude.Thing.FindInventory("CODJuggernog") != null)
+        // {
+        //     topHP = 250;
+        // }else{
+        //     topHP = 100;
+        // }
+        int hurtPlayerHealth = hurtDude.Thing.player.health;
+        // Console.Printf("Gamer topHP: " .. topHP);
+        // Console.Printf("Gamer's current health: " .. hurtPlayerHealth);
+        if (hurtPlayerHealth > 0 && hurtPlayerHealth < topHP)
+        {
+            // Console.Printf("Gamer will regenerate");
+            CODZombieRegenTimer timer = new("CODZombieRegenTimer");
+            timer.TicsLeft = 5 * 35;
+            timer.Player = hurtDude.Thing;
+            timer.maxHealth = topHP;
+        }
+    }
+}
+
+class CODZombieRegenTimer : Thinker
+{
+	int TicsLeft;
+	Actor Player;
+    int maxHealth;
+
+	override void Tick()
+	{
+		TicsLeft--;
+		if ((TicsLeft <= 2 * 35) && (Level.maptime % 5 == 0) && (Player.health < maxHealth))
+		{
+            Player.A_GiveInventory("Health",10);
+		}
+		if (TicsLeft <= 0)
+		{
+			// Console.Printf("feeling better :)");
+			Destroy();
+		}
+	}
 }
