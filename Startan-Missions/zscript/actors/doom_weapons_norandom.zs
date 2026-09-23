@@ -280,6 +280,8 @@ class NewShotgun : DoomWeapon replaces Shotgun
 	Fire:
 		SHTG A 3;
 		SHTG A 7 A_ShotgunShot;
+		Goto Reload;
+	Reload:
 		SHTG BC 5;
 		SHTG D 4;
 		SHTG CB 5;
@@ -363,6 +365,8 @@ class NewSuperShotgun : DoomWeapon replaces SuperShotgun
 	Fire:
 		SHT2 A 3;
 		SHT2 A 7 A_FireSSG;
+		Goto Reload;
+	Reload:
 		SHT2 B 7;
 		SHT2 C 7 A_CheckReload;
 		SHT2 D 7 A_OpenShotgun2;
@@ -372,10 +376,6 @@ class NewSuperShotgun : DoomWeapon replaces SuperShotgun
 		SHT2 H 6 A_CloseShotgun2;
 		SHT2 A 5 A_ReFire;
 		Goto Ready;
-	// unused states
-		SHT2 B 7;
-		SHT2 A 3;
-		Goto Deselect;
 	Flash:
 		SHT2 I 4 Bright A_Light1;
 		SHT2 J 3 Bright A_Light2;

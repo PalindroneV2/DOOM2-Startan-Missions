@@ -28,10 +28,6 @@ class NewBerserk : CustomInventory replaces Berserk
 		TNT1 A 0 A_Steroids;
 		Stop;
 	}
-}
-
-extend class NewBerserk
-{
     action void A_Steroids()
     {
         A_GiveInventory("BerserkProtect");

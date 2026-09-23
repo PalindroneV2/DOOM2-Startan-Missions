@@ -48,17 +48,18 @@ class Wunderwaffe : DoomWeapon
 		RLGG I 3 A_StartSound ("DG2/HAPPY", CHAN_AUTO);
 		RLGG J 3;
 		Goto Ready;
-	AltFire:
-		RLGF A 1 A_WaffeAltFire;
-		RLGF B 1;
-		RLGF B 2 A_ReFire;
-		RLGG B 12;
-		RLGG B 6;
-		RLGG CDEFG 6;
-		RLGG H 6;
-		RLGG I 3 A_StartSound ("DG2/HAPPY", CHAN_AUTO);
-		RLGG J 3;
-		Goto Ready;
+	//Altfire that functions like the QUAKE lightning gun, not sure if I like it.
+	// AltFire:
+	// 	RLGF A 1 A_WaffeAltFire;
+	// 	RLGF B 1;
+	// 	RLGF B 2 A_ReFire;
+	// 	RLGG B 12;
+	// 	RLGG B 6;
+	// 	RLGG CDEFG 6;
+	// 	RLGG H 6;
+	// 	RLGG I 3 A_StartSound ("DG2/HAPPY", CHAN_AUTO);
+	// 	RLGG J 3;
+	// 	Goto Ready;
     Flash:
 		TNT1 A 3 Bright A_Light1;
 		TNT1 A 3 Bright A_Light2;
@@ -80,64 +81,60 @@ extend class Wunderwaffe
 			0,                     // damage
 			0,                       // spawnofs_xy
 			true,                    // useammo
-			"LightBlue",                // color1
+			"",                // color1
 			"White",                // color2
 			RGF_SILENT | RGF_FULLBRIGHT | RGF_NOPIERCING,          // flags
-			0,                       // maxdiff
+			30,                       // maxdiff
 			"WaffePuff",             // pufftype
 			1,                       // spread_xy
 			0,                       // spread_z
 			8192,                    // range
 			35,                      // duration
-			0.5,                     // sparsity
-			1,                     // driftspeed
+			0.25,                     // sparsity
+			0.0001,                     // driftspeed
 			"None",                  // spawnclass
 			0,                       // spawnofs_z
-			270,                     // spiraloffset
+			0,                     // spiraloffset
 			1                        // limit
 		);
     }
-	//DMG CALC
-	int CalcLightningGunDMG(Actor target)
-	{
-		//get the actor that was hit
-		//do the following dmg calc
-		int lightningDMG = target.Health / 10;
-		string bossmonsers[] = {"Cyberdemon", "SpiderMastermind", "Harbinger"};
-		for (int i = 0; i < bossmonsers.Size(); i++)
-		{
-			if (target.GetClass() == bossmonsers[i])
-			{
-				lightningDMG = target.GetMaxHealth() / 100;
-			}
-		}
-	}
 	action void A_WaffeAltFire()
 	{
-		// LineTracer tracer = new("LineTracer");
+		FTranslatedLineTarget lineTarget;
 
-		// Vector3 start = Pos + (0, 0, ViewHeight);
-		// Vector3 direction = Vector3(
-		// 	cos(Pitch) * cos(Angle),
-		// 	cos(Pitch) * sin(Angle),
-		// 	sin(Pitch)
-		// );
+		AimLineAttack(
+			Angle,
+			8192,
+			lineTarget
+		);
 
-		// tracer.Trace(
-		// 	start,
-		// 	Sector,
-		// 	direction,
-		// 	8192,
-		// 	TRACE_Aim,
-		// 	0xFFFFFFFF,
-		// 	false,
-		// 	self
-		// );
+		Actor target = lineTarget.linetarget;
 
-		// Actor target = tracer.Results.HitActor;
+		int lightningDMG = 0;
+
+		if (target != null)
+		{
+			lightningDMG = target.GetMaxHealth() / 5;
+
+			string bossmonsters[] =
+			{
+				"Cyberdemon",
+				"SpiderMastermind",
+				"Harbinger"
+			};
+
+			for (int i = 0; i < bossmonsters.Size(); i++)
+			{
+				if (target.GetClass() == bossmonsters[i])
+				{
+					lightningDMG = target.GetMaxHealth() / 20;
+					break;
+				}
+			}
+		}
 		A_StartSound ("DG2/FIRE", CHAN_WEAPON);
 		A_RailAttack(
-			10,                     // damage
+			lightningDMG,                     // damage
 			0,                       // spawnofs_xy
 			true,                    // useammo
 			"LightBlue",                // color1
@@ -250,31 +247,30 @@ extend class WaffePuff
 
 		FRailParams p;
 
-		p.damage = 0;
-		p.offset_xy = 0;
-		p.offset_z = 0;
+        p.damage = 0;
+        p.offset_xy = 0;
+        p.offset_z = 0;
 
-		p.color1 = Color("LightBlue");
-		p.color2 = Color("White");
+        p.color1 = Color("");
+        p.color2 = Color("White");
 
-		p.maxdiff = 0;
-		p.flags = RGF_SILENT | RGF_FULLBRIGHT | RGF_NOPIERCING;
+        p.maxdiff = 30;
+        p.flags = RGF_SILENT | RGF_FULLBRIGHT | RGF_NOPIERCING;
+        p.puff = null;
 
-		p.puff = null;
+        // Fire along our newly-set orientation.
+        p.angleoffset = 0;
+        p.pitchoffset = 0;
 
-		// No offset. Rail fires along the puff's orientation.
-		p.angleoffset = 0;
-		p.pitchoffset = 0;
+        p.distance = direction.Length();
 
-		p.distance = direction.Length();
+        p.duration = 35;
+        p.sparsity = 0.25;
+        p.drift = 0.0001;
 
-		p.duration = 35;
-		p.sparsity = 0.5;
-		p.drift = 1;
-
-		p.spawnclass = null;
-		p.SpiralOffset = 270;
-		p.limit = 1;
+        p.spawnclass = null;
+        p.SpiralOffset = 0;
+        p.limit = 1;
 
 		RailAttack(p);
 	}
@@ -391,13 +387,11 @@ extend class WaffeExtra
         p.offset_xy = 0;
         p.offset_z = 0;
 
-        p.color1 = Color("LightBlue");
+        p.color1 = Color("");
         p.color2 = Color("White");
 
-        p.maxdiff = 0;
+        p.maxdiff = 30;
         p.flags = RGF_SILENT | RGF_FULLBRIGHT | RGF_NOPIERCING;
-
-        // No puff: this rail is purely visual.
         p.puff = null;
 
         // Fire along our newly-set orientation.
@@ -407,11 +401,11 @@ extend class WaffeExtra
         p.distance = direction.Length();
 
         p.duration = 35;
-        p.sparsity = 0.5;
-        p.drift = 1;
+        p.sparsity = 0.25;
+        p.drift = 0.0001;
 
         p.spawnclass = null;
-        p.SpiralOffset = 270;
+        p.SpiralOffset = 0;
         p.limit = 1;
 
         RailAttack(p);
@@ -419,7 +413,7 @@ extend class WaffeExtra
 
     void A_WaffeChainContinue()
     {
-        if (ChainCount >= 8)
+        if (ChainCount >= 10)
             return;
 
         if (ChainOrigin == null)
@@ -468,64 +462,3 @@ extend class WaffeExtra
         );
     }
 }
-
-// OLD
-// class WaffeProjectile : WaffeChainActor
-// {
-// 	Default
-// 	{
-// 		Radius 8;
-// 		Height 8;
-// 		Speed 128;
-// 		DamageFunction (500);
-// 		Projectile;
-// 		+RANDOMIZE
-// 		+ZDOOMTRANS
-// 		RenderStyle "Add";
-// 		Alpha 0.75;
-// 		DeathSound "weapons/bfgx";
-// 		Obituary "$OB_MPBFG_BOOM";
-// 		DamageType "BFGSplash";
-// 	}
-
-// 	States
-// 	{
-// 	Spawn:
-// 		BFS1 AB 4 Bright;
-// 		Loop;
-
-// 	Death:
-// 		BFE1 AB 8 Bright;
-// 		BFE1 C 0 A_WaffeChainStart;
-// 		BFE1 C 8 Bright;
-// 		BFE1 DEF 8 Bright;
-// 		Stop;
-// 	}
-// }
-
-
-// extend class WaffeProjectile
-// {
-// 	void A_WaffeChainStart()
-// 	{
-// 		Actor target =
-// 			FindNearestWaffeTarget(self, 128);
-
-// 		if (target == null) return;
-
-// 		WaffeExtra extra = WaffeExtra(Spawn('WaffeExtra', target.Pos + (0, 0, target.Height/2)));
-
-// 		target.DamageMobj(
-// 			self,
-// 			self,
-// 			10000,
-// 			'BFGSplash'
-// 		);
-
-// 		if (extra != null)
-// 		{
-// 			extra.ChainCount = 1;
-// 			extra.ChainOrigin = target;
-// 		}
-// 	}
-// }

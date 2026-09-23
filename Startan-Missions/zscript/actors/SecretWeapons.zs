@@ -588,6 +588,8 @@ class Trenchgun : DoomWeapon
 		TREN D 1;
 		TREN E 2;
 		TREN F 6;
+		Goto Reload;
+	Reload:
 		TREN GH 1;
 		TREN IJ 2;
 		TREN K 0 A_StartSound ("TRNCREL", CHAN_WEAPON);
@@ -668,20 +670,17 @@ class Kar98k : DoomWeapon
 		Ready:
 			K98K A 1 A_Weaponready;
 			Loop;
-			
 		Select:
 			K98K A 1 A_Raise(10);
 			Loop;
-			
 		Deselect:
 			K98K A 1 A_Lower(10);
 			Loop;
-			
 		Fire:
 			K98K B 1 BRIGHT A_KAR98K_Shot;
 			K98K CDEFEDCA 1;
-			Goto Bolt;
-		Bolt:
+			Goto Reload;
+		Reload:
 			K98K A 2;
 			TNT1 A 0 A_StartSound("K98K/BOLT",CHAN_AUTO);
 			K98R A 2;
@@ -715,26 +714,25 @@ extend class Kar98k
 		}
 		A_StartSound ("K98K/FIRE", CHAN_WEAPON);
 		// A_Firebullets(3, 0, 1, dmg, "RiflePuff", FBF_USEAMMO | FBF_NORANDOM);
-		// (2,3,0,3);
 		A_RailAttack(
 			dmg,                          // damage
 			0,                          // XY offset
-			false,                      // don't use ammo
+			true,                      // don't use ammo
 			"White",                    // inner color
 			"White",                    // outer color
 			RGF_SILENT | RGF_FULLBRIGHT,
 			0,                          // maxdiff
 			"RiflePuff",
-			0,                          // horizontal spread
-			0,                          // vertical spread
+			1,                          // horizontal spread
+			1,                          // vertical spread
 			4096,                       // range
-			1,                          // duration
-			1.0,                        // sparsity
+			0,                          // duration
+			0,                        // sparsity
 			0,                          // drift
 			"None",      // visual trail
-			0,                       // spawnofs_z
-			0,                     // spiraloffset
-			3                        // limit
+			8,                       // spawnofs_z
+			1,                     // spiraloffset
+			4                        // limit
 		);
 		A_GunFlash();
     }
@@ -765,9 +763,9 @@ extend class Kar98k
 			0.5,                     // sparsity
 			1,                     // driftspeed
 			"None",                  // spawnclass
-			0,                       // spawnofs_z
+			8,                       // spawnofs_z
 			270,                     // spiraloffset
-			6                        // limit
+			8                        // limit
 		);
 		// A_Firebullets(3, 0, 1, 150, "RiflePuff", FBF_USEAMMO | FBF_NORANDOM);
 		(2,3,0,3);

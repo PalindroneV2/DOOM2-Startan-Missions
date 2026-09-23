@@ -1,4 +1,4 @@
-global int 10 : zombiepoints;
+global int 11 : zombiepoints;
 
 script "GivesPap" (void)
 {

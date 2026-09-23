@@ -17,6 +17,8 @@ class DoomPlayerNew : DoomPlayer replaces DoomPlayer
 {
     Default
     {
+        Health 100;
+        Player.MaxHealth 100;
         Player.StartItem    "Handgun";
         Player.StartItem    "DoomFist";
         Player.StartItem    "Clip", 50;

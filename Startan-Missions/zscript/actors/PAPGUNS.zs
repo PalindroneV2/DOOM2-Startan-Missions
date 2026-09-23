@@ -234,14 +234,7 @@ class Trenchgun_PAP : Trenchgun
             TREN D 1;
             TREN E 2;
             TREN F 6;
-            TREN GH 1;
-            TREN IJ 2;
-            TREN K 0 A_StartSound ("TRNCREL", CHAN_WEAPON);
-            TREN KM 2;
-            TREN NMLK 1;
-            TREN JIHG 2;
-            TREN A 2 A_Refire;
-            Goto Ready;
+			Goto Reload;
 	}
 }
 
@@ -259,7 +252,7 @@ class Kar98k_PAP : Kar98k
         Fire:
 			K98K B 1 BRIGHT A_KAR98K_Shot_PAP;
 			K98K CDEFEDCA 1;
-			Goto Bolt;
+			Goto Reload;
     }
 }
 
@@ -432,15 +425,7 @@ class NewSuperShotgun_PAP : NewSuperShotgun
 	Fire:
 		SHT2 A 3;
 		SHT2 A 7 A_FireSSG_PAP;
-		SHT2 B 7;
-		SHT2 C 7 A_CheckReload;
-		SHT2 D 7 A_OpenShotgun2;
-		SHT2 E 7;
-		SHT2 F 7 A_LoadShotgun2;
-		SHT2 G 6;
-		SHT2 H 6 A_CloseShotgun2;
-		SHT2 A 5 A_ReFire;
-		Goto Ready;
+		Goto Reload;
 	}
 }
 

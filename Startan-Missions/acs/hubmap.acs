@@ -8,6 +8,8 @@ global int 5 : SecretLevel35;
 global int 6 : SecretLevel36;
 global int 7 : SecretLevel37;
 global int 8 : SecretLevel38;
+global int 9 : SecretLevel39;
+global int 10 : SecretLevel40;
 
 int hubmusic = 0;
 

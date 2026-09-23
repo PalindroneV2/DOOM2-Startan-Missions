@@ -245,14 +245,13 @@ script "SamRoomBool" (void)
 
 script "Teleporters" (void)
 {
-    if (samroom == false)
-    {
-        Teleport(13, 13);
-    }else{
+    if(samroom == true && TELEPORTER1 == true && TELEPORTER2 == true && TELEPORTER3 == true){
         Teleport(14, 14);
         Delay(35 * 15);
         Teleport(13, 13);
         samroom = false;
+    }else{
+        Teleport(13, 13);
     }
 }
 

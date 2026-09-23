@@ -276,3 +276,44 @@ class KillTimeStopTime : TimeStopPower
         // Powerup.Mode "TimeFreezer";       // not strictly needed; class already does it
     }
 }
+
+class Perkaholic_CODPowerup : Default_CODPowerup
+{
+    Default
+    {
+        Tag "Perkaholic Power Up";
+		Radius 20;
+		Height 20;
+        Scale 1;
+        +PICKUP;
+        +NOGRAVITY;
+        +COUNTITEM;
+        +FLOATBOB;
+		+INVENTORY.ALWAYSPICKUP;
+        FloatBobStrength 0.25;
+        Inventory.Amount 1;
+        Inventory.MaxAmount 1;
+        Inventory.InterHubAmount 0;
+        Inventory.PickupMessage "Perkaholic!";
+		Inventory.PickupSound "misc/p_pkup";
+       //$Category Powerups
+    }
+    States
+    {
+        Spawn:
+            PRKA ABAB 2 BRIGHT;
+            Loop;
+        Pickup:
+            TNT1 A 0 A_Perkaholic_Juggernog;
+            Stop;
+    }
+    action void A_PerkaholicJuggle()
+    {
+        
+    }
+    action void A_Perkaholic_Juggernog()
+    {
+        A_GiveInventory("JuggernautHealth",150);
+        A_GiveInventory("Perk_Juggernog",1);
+    }
+}
